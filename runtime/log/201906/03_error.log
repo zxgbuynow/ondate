@@ -1,0 +1,9 @@
+---------------------------------------------------------------
+[ 2019-06-03T21:30:34+08:00 ] 115.215.220.127 POST wx.gongniuchazuo.com.cn/public/index.php/admin/attribute/update/pbid/80
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'jsbn' in 'wp_shop_order'[/data/httpd/wx/thinkphp/library/think/db/Connection.php:764]
+---------------------------------------------------------------
+[ 2019-06-03T21:31:03+08:00 ] 115.215.220.127 GET wx.gongniuchazuo.com.cn/public/index.php/admin/attribute/remove/name/jsbn/model_id/1408/pbid/80
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1091 Can't DROP 'jsbn'; check that column/key exists[/data/httpd/wx/thinkphp/library/think/db/Connection.php:764]
+---------------------------------------------------------------
+[ 2019-06-03T21:31:08+08:00 ] 115.215.220.127 GET wx.gongniuchazuo.com.cn/public/index.php/admin/attribute/remove/name/category_id/model_id/1408/pbid/80
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1091 Can't DROP 'category_id'; check that column/key exists[/data/httpd/wx/thinkphp/library/think/db/Connection.php:764]

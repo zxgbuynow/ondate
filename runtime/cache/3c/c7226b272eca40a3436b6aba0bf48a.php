@@ -1,0 +1,4 @@
+<?php
+//000000000000
+ exit();?>
+think_serialize:a:32:{s:2:"id";i:158;s:5:"title";s:12:"贵妃奶浴";s:5:"cover";s:89:"http://wx.gongniuchazuo.com.cn/public/uploads/picture//20190602/5cf378d3623ff_330X360.jpg";s:4:"imgs";s:4:"3216";s:7:"is_show";i:1;s:12:"is_recommend";i:0;s:4:"rank";i:0;s:9:"show_time";i:1559460085;s:10:"cost_price";s:4:"0.00";s:11:"category_id";N;s:9:"auto_send";s:1:"0";s:16:"virtual_textarea";N;s:4:"wpid";i:1;s:6:"weight";N;s:7:"sn_code";N;s:6:"diy_id";i:0;s:9:"is_delete";i:0;s:6:"is_new";N;s:11:"can_deposit";i:1;s:12:"reduce_score";i:0;s:18:"distribution_price";N;s:7:"is_spec";i:0;s:8:"file_url";N;s:7:"express";s:4:"0.00";s:9:"send_type";s:1:"1";s:10:"stores_ids";N;s:12:"is_all_store";i:0;s:3:"tab";s:2:"zy";s:13:"param_temp_id";N;s:7:"content";s:0:"";s:8:"cover_db";i:3216;s:8:"imgs_url";a:1:{i:0;s:81:"http://wx.gongniuchazuo.com.cn/public/uploads/picture//20190602/5cf378d3623ff.jpg";}}

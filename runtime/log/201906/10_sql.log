@@ -1,0 +1,20 @@
+---------------------------------------------------------------
+[ 2019-06-10T10:53:24+08:00 ] 47.98.34.250 GET wx.gongniuchazuo.com.cn/./public/index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000811s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000979s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000811s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000503s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000567s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user` [ RunTime:0.001028s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000537s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000760s ]
+[ sql ] [ SQL ] SELECT `openid`,`uid`,`has_subscribe`,`syc_status`,`remark`,`unionid`,`pbid` FROM `wp_public_follow` WHERE  ( uid='1' ) [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag_link` [ RunTime:0.000671s ]
+[ sql ] [ SQL ] SELECT `tag_id` FROM `wp_user_tag_link` WHERE  `uid` = 1 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group_access` [ RunTime:0.000671s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group_access` `a` INNER JOIN `wp_auth_group` `s` ON `a`.`group_id`=`s`.`id` WHERE  `uid` = 1 [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_auth` [ RunTime:0.000706s ]
+[ sql ] [ SQL ] SELECT `name`,type_3 as val FROM `wp_public_auth` [ RunTime:0.000392s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000485s ]

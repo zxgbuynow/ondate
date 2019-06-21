@@ -1,0 +1,11 @@
+<?php
+//000000086400
+ exit();?>
+think_serialize:a:21:{s:2:"id";i:1;s:4:"name";s:4:"user";s:5:"title";s:15:"用户信息表";s:6:"extend";i:0;s:8:"relation";s:0:"";s:7:"need_pk";i:0;s:10:"field_sort";s:237:"["come_from","nickname","password","truename","mobile","email","sex","headimgurl","city","province","country","language","score","unionid","login_count","reg_ip","reg_time","last_login_ip","last_login_time","status","is_init","is_audit"]";s:11:"field_group";s:8:"1:基础";s:14:"attribute_list";s:0:"";s:13:"template_list";s:0:"";s:12:"template_add";s:0:"";s:13:"template_edit";s:0:"";s:9:"list_grid";s:275:"headimgurl|url_img_html:头像
+login_name:登录账号
+login_password:登录密码
+nickname|deal_emoji:用户昵称
+sex|get_name_by_status:性别
+group:分组
+score:金币值
+ids:操作:set_login?uid=[uid]|设置登录账号,detail?uid=[uid]|详细资料,[EDIT]|编辑";s:8:"list_row";i:20;s:10:"search_key";s:0:"";s:11:"search_list";s:0:"";s:11:"create_time";i:1436929111;s:11:"update_time";i:1441187405;s:6:"status";i:1;s:11:"engine_type";s:6:"MyISAM";s:5:"addon";s:4:"core";}

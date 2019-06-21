@@ -1,0 +1,1519 @@
+---------------------------------------------------------------
+[ 2019-06-08T03:25:52+08:00 ] 60.191.52.254 GET 112.124.42.80:63435/public/index.php
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',
+  'host' => '112.124.42.80:63435',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'proxy-connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T03:25:53+08:00 ] 60.191.52.254 GET 112.124.42.80:63435/public/index.php/home/user/login
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=k168mersqm8nhi151ghssgifq7',
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36',
+  'host' => '112.124.42.80:63435',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'proxy-connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/home/view/user/login.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'key',
+  17 => 'qrcode',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:15:50+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T08:15:50+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/config/group/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/config/group.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => 'list',
+  18 => 'button_show',
+  19 => 'id',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:15:51+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/update/getremoteversion/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/config/group/pbid/80',
+  'x-requested-with' => 'XMLHttpRequest',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T08:15:51+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/config/group/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'mdm' => '366',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/model/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_page',
+  18 => '_total',
+  19 => 'list',
+  20 => '_list',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:16:04+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/attribute/index/model_id/1485/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'model_id' => '1485',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/attribute/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_list',
+  18 => 'model_id',
+  19 => 'model_title',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:16:06+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/config/group/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'mdm' => '366',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/model/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_page',
+  18 => '_total',
+  19 => 'list',
+  20 => '_list',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:16:13+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/model/del/ids/1485/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366',
+  'x-requested-with' => 'XMLHttpRequest',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'ids' => '1485',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T08:16:37+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'mdm' => '366',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/model/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_page',
+  18 => '_total',
+  19 => 'list',
+  20 => '_list',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:16:45+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/model/importmodel/model_name/cardlist/model_addon/shop/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'model_name' => 'cardlist',
+  'model_addon' => 'shop',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/common/view/base/jump.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => 'code',
+  18 => 'msg',
+  19 => 'data',
+  20 => 'url',
+  21 => 'wait',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:16:48+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/model/index/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/model/importmodel/model_name/cardlist/model_addon/shop/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/model/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_page',
+  18 => '_total',
+  19 => 'list',
+  20 => '_list',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:16:56+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/attribute/index/model_id/1486/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/model/index/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'model_id' => '1486',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/attribute/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_list',
+  18 => 'model_id',
+  19 => 'model_title',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:21:17+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/menu/lists/pbid/80?&mdm=368_369
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/attribute/index/model_id/1486/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'mdm' => '368_369',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/menu/lists.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => 'model',
+  18 => 'placeholder',
+  19 => 'search_key',
+  20 => 'fields',
+  21 => 'list_grids',
+  22 => 'db_fields',
+  23 => 'list_data',
+  24 => 'count',
+  25 => '_page',
+  26 => 'nav_title',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:21:18+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/menu/add/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/menu/lists/pbid/80?&mdm=368_369',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/menu/add.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => 'model',
+  18 => 'fields',
+  19 => 'post_url',
+  20 => 'nav_title',
+) ]
+[ info ] [ VIEW ] /data/httpd/wx/application/common/view/widget/cascade.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => 'model',
+  18 => 'fields',
+  19 => 'post_url',
+  20 => 'nav_title',
+  21 => 'json',
+  22 => 'name',
+  23 => 'value',
+  24 => 'extra',
+  25 => 'default_value',
+) ]
+[ info ] [ VIEW ] /data/httpd/wx/application/common/view/widget/dynamic_select.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => 'model',
+  18 => 'fields',
+  19 => 'post_url',
+  20 => 'nav_title',
+  21 => 'json',
+  22 => 'name',
+  23 => 'value',
+  24 => 'extra',
+  25 => 'default_value',
+  26 => 'list',
+  27 => 'first_option',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:21:39+08:00 ] 115.215.218.185 POST wx.gongniuchazuo.com.cn/public/index.php/admin/menu/add/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/menu/add/pbid/80',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'x-requested-with' => 'XMLHttpRequest',
+  'content-length' => '145',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+)
+[ info ] [ PARAM ] array (
+  'menu_type' => '1',
+  'pid0' => '761',
+  'pid' => '761',
+  'title' => '会员卡',
+  'url_type' => '1',
+  'addon_name' => '0',
+  'url' => 'shop/shop/card',
+  'target' => '_self',
+  'is_hide' => '0',
+  'sort' => '',
+  'place' => '',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T08:21:41+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/menu/lists/place/0/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/menu/add/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'place' => '0',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/menu/lists.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => 'model',
+  18 => 'placeholder',
+  19 => 'search_key',
+  20 => 'fields',
+  21 => 'list_grids',
+  22 => 'db_fields',
+  23 => 'list_data',
+  24 => 'count',
+  25 => '_page',
+  26 => 'nav_title',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:29:11+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/menu/lists/place/0/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'mdm' => '366',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/model/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_page',
+  18 => '_total',
+  19 => 'list',
+  20 => '_list',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T08:29:14+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/model/edit/id/1486/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1486',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/model/edit.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => 'list',
+  18 => 'fields',
+  19 => 'list_grid',
+  20 => 'info',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T09:33:16+08:00 ] 106.14.215.243 GET wx.gongniuchazuo.com.cn/./public/index.php
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D))',
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T10:14:42+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/attribute/index/model_id/1486/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/model/edit/id/1486/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=jtqr7h85uu2jjeo99u71cofp64; ScanLoginKey=5cfa5c66e328d; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'model_id' => '1486',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/attribute/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_list',
+  18 => 'model_id',
+  19 => 'model_title',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T12:47:27+08:00 ] 47.92.125.35 GET wx.gongniuchazuo.com.cn/public/index.php
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0)',
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T12:47:28+08:00 ] 47.92.125.35 GET wx.gongniuchazuo.com.cn/public/index.php/home/user/login
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0)',
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/home/view/user/login.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'key',
+  17 => 'qrcode',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T12:54:20+08:00 ] 47.92.75.171 GET wx.gongniuchazuo.com.cn/public/index.php
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0)',
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T12:54:20+08:00 ] 47.92.75.171 GET wx.gongniuchazuo.com.cn/public/index.php/home/user/login
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0)',
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'connection' => 'keep-alive',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/home/view/user/login.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'key',
+  17 => 'qrcode',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T22:24:17+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T22:24:17+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/home/user/login
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/home/view/user/login.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'key',
+  17 => 'qrcode',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T22:24:29+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T22:24:29+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/publics/login
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/publics/login.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T22:24:31+08:00 ] 115.215.218.185 POST wx.gongniuchazuo.com.cn/public/index.php/admin/publics/login/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/publics/login',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'x-requested-with' => 'XMLHttpRequest',
+  'content-length' => '32',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0',
+)
+[ info ] [ PARAM ] array (
+  'username' => 'admin',
+  'password' => 'admin123',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T22:24:31+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/index/index/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/publics/login',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T22:24:31+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/config/group/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/publics/login',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/config/group.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => 'list',
+  18 => 'button_show',
+  19 => 'id',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T22:24:32+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/update/getremoteversion/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => '*/*',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/config/group/pbid/80',
+  'x-requested-with' => 'XMLHttpRequest',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-08T22:24:33+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/config/group/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'mdm' => '366',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/model/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_page',
+  18 => '_total',
+  19 => 'list',
+  20 => '_list',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T22:24:49+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/config/group/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'mdm' => '366',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/model/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_page',
+  18 => '_total',
+  19 => 'list',
+  20 => '_list',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T22:24:53+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/model/importmodel/model_name/cardlog/model_addon/shop/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/Admin/model/index/pbid/80?&mdm=366',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'model_name' => 'cardlog',
+  'model_addon' => 'shop',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] ../application/common/view/base/jump.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => 'code',
+  18 => 'msg',
+  19 => 'data',
+  20 => 'url',
+  21 => 'wait',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T22:24:56+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/model/index/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/model/importmodel/model_name/cardlog/model_addon/shop/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/model/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_page',
+  18 => '_total',
+  19 => 'list',
+  20 => '_list',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T22:25:04+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/model/index/pbid/80/title/card
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/model/index/pbid/80',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'pbid' => '80',
+  'title' => 'card',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/model/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_page',
+  18 => '_total',
+  19 => 'list',
+  20 => '_list',
+) ]
+---------------------------------------------------------------
+[ 2019-06-08T22:25:12+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/attribute/index/model_id/1487/pbid/80
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'accept-language' => 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://wx.gongniuchazuo.com.cn/public/index.php/admin/model/index/pbid/80/title/card',
+  'dnt' => '1',
+  'connection' => 'keep-alive',
+  'cookie' => 'PHPSESSID=pp4aedomc1fnv1p9p2eekpd6u5; ScanLoginKey=5cfbc511591c0; __forward__=%2Fpublic%2Findex.php%2FAdmin%2Fmodel%2Findex%2Fpbid%2F80%3F%26mdm%3D366',
+  'upgrade-insecure-requests' => '1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'model_id' => '1487',
+  'pbid' => '80',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/admin/view/attribute/index.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'meta_title',
+  17 => '_list',
+  18 => 'model_id',
+  19 => 'model_title',
+) ]

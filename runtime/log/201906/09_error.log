@@ -1,0 +1,6 @@
+---------------------------------------------------------------
+[ 2019-06-09T21:23:59+08:00 ] 115.215.218.185 GET wx.gongniuchazuo.com.cn/public/index.php/admin/model/freshdbtofile/model_id/1162/pbid/80
+[ error ] [2]file_put_contents(/data/httpd/wx/application/shop/data_table/StoresTable.php): failed to open stream: Permission denied[/data/httpd/wx/application/common/model/Models.php:329]
+---------------------------------------------------------------
+[ 2019-06-09T21:27:51+08:00 ] 115.215.218.185 POST wx.gongniuchazuo.com.cn/public/index.php/shop/stores/import/pbid/80
+[ error ] /data/httpd/wx/public/uploads/download//20190609/5cfd0956cb9f4.xls

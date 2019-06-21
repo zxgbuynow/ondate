@@ -1,0 +1,58 @@
+---------------------------------------------------------------
+[ 2019-06-06T02:56:52+08:00 ] 47.103.101.250 GET wx.gongniuchazuo.com.cn/public/index.php
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'XSRF-TOKEN=eyJpdiI6ImVhOTMwazVneHVXOFJMeFNOVVBtK3c9PSIsInZhbHVlIjoiV0VcL2xPa1ZoeDFrQ2xDV2FwSnM2M2pDSzdWRzd0RWJRdGc4aTdNeVlwTmhpWGVYckZ6eW80OVB3OU83dlViVm1wa1g0dXd2ZXZHZFwvcmVkS0tlVjd0QT09IiwibWFjIjoiYTQyZTBkZGFlODdhZTg2NTdmNzY1MjMwYTNlOTQzYWQ2MzQzZGEzZTVmMDA1ZTJmMWJhMjg2ZGJlYmZiNTBiZiJ9; laravel_session=eyJpdiI6ImhzZmFTNDFjOFFSYWd0cTI1SDFoeWc9PSIsInZhbHVlIjoieGtQUURlTVJIajViRE5WV1ZZQ1lnQ2ZLV01kZ3gzNVBNTnpWS29nNENTYkJVaUxrSjFPYkNSbkFma0VLcGhxaDNcLzNoaUE0Qzk5RjdIczNTamFTdklRPT0iLCJtYWMiOiI3NzU2YWU4OTg2NmZhMzAzYzljYzg5YTQ0YmYxNmFhYzMzMmZmMjU5OWJmMTc0NzBmYzY0YWY2YTFlNWE0ZjcxIn0%3D',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[ 2019-06-06T02:56:53+08:00 ] 47.103.101.250 GET wx.gongniuchazuo.com.cn/public/index.php/home/user/login
+[ info ] [ LANG ] /data/httpd/wx/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'wx.gongniuchazuo.com.cn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'XSRF-TOKEN=eyJpdiI6ImVhOTMwazVneHVXOFJMeFNOVVBtK3c9PSIsInZhbHVlIjoiV0VcL2xPa1ZoeDFrQ2xDV2FwSnM2M2pDSzdWRzd0RWJRdGc4aTdNeVlwTmhpWGVYckZ6eW80OVB3OU83dlViVm1wa1g0dXd2ZXZHZFwvcmVkS0tlVjd0QT09IiwibWFjIjoiYTQyZTBkZGFlODdhZTg2NTdmNzY1MjMwYTNlOTQzYWQ2MzQzZGEzZTVmMDA1ZTJmMWJhMjg2ZGJlYmZiNTBiZiJ9; laravel_session=eyJpdiI6ImhzZmFTNDFjOFFSYWd0cTI1SDFoeWc9PSIsInZhbHVlIjoieGtQUURlTVJIajViRE5WV1ZZQ1lnQ2ZLV01kZ3gzNVBNTnpWS29nNENTYkJVaUxrSjFPYkNSbkFma0VLcGhxaDNcLzNoaUE0Qzk5RjdIczNTamFTdklRPT0iLCJtYWMiOiI3NzU2YWU4OTg2NmZhMzAzYzljYzg5YTQ0YmYxNmFhYzMzMmZmMjU5OWJmMTc0NzBmYzY0YWY2YTFlNWE0ZjcxIn0%3D; PHPSESSID=3pav3qgtgh3esstufbmod3okb1',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /data/httpd/wx/application/home/view/user/login.html [ array (
+  0 => 'get_param',
+  1 => 'public_info',
+  2 => 'page_title',
+  3 => 'system_copy_right',
+  4 => 'tongji_code',
+  5 => 'mid',
+  6 => 'uid',
+  7 => 'myinfo',
+  8 => 'add_button',
+  9 => 'del_button',
+  10 => 'search_button',
+  11 => 'check_all',
+  12 => 'top_more_button',
+  13 => 'top_menu',
+  14 => 'now_top_menu_name',
+  15 => 'nav',
+  16 => 'key',
+  17 => 'qrcode',
+) ]

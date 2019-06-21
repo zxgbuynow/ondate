@@ -1,0 +1,300 @@
+body{
+    margin: 0px;
+    font-family: "黑体";
+    color: #333;
+}
+
+#head{
+    width:100%;
+    height:338px;
+    background-image: url(./img/bg.jpg);
+    display:inline-block;
+}
+
+.goback{
+    width: 100%;
+    height: 38px;
+    margin-top: 22px;
+}
+
+.goback img{
+    margin-left: 20px;
+}
+
+.head_body{
+    width: 200px;
+    height: 260px;
+    margin:0 auto;
+}
+
+.picture{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: pink;
+}
+
+.head_text{
+    color: #fff;
+    text-align: center;
+    font-size: 35px;
+    line-height: 60px;
+}
+
+#body{
+    width: 100%;
+    height: 500px;
+}
+
+.list1{
+    width: 80%;
+    height: 80px;
+    border-top: 1px solid #333;
+    margin: 0px auto;
+}
+
+.label{
+    width: 25%;
+    height: 80px;
+    line-height: 80px;
+    float: left;
+    font-size: 30px;
+}
+
+.list_text{
+    width: 70%;
+    height: 80px;
+    float: left;
+}
+
+.list_text input{
+    width: 80%;
+    height: 50px;
+    margin: 15px auto;
+    border: hidden;
+    font-size: 25px;
+}
+
+.list_text .choose_radio{
+    width: 40%;
+    height: 60px;
+    line-height: 60px;
+    margin: 10px auto;
+    float: left;
+    font-size: 30px;
+}
+
+.list_text .radio{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+.list_text label{
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin-left: 10%;
+}
+
+.submit{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+}
+
+
+.house{
+    width: 100%;
+    height: 80px;
+    margin-top: 50px;
+}
+
+.house_label{
+    width: 15%;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 30px;
+    float: left;
+    margin-left: 5%;
+}
+
+.house_text{
+    width: 70%;
+    height: 80px;
+    line-height: 70px;
+    font-size: 70px;
+}
+
+.choose{
+    width: 100%;
+    heigth:80px;
+}
+
+.choose_list{
+    width: 70%;
+    height: 80px;
+    margin: 150px auto;
+    font-size: 40px;
+    line-height: 80px;
+    text-align: center;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa
+}
+
+.list2{
+    width: 94%;
+    height: 120px;
+    margin: 30px auto;
+}
+
+.bgcolor1{
+    background: #ffe0e1;
+}
+
+.bgcolor2{
+    background: #fc3033;
+}
+
+.list2_tp{
+    width: 20%;
+    height: 120px;
+    display:inline-block;
+    float: left;
+}
+
+.list2_tp_picture{
+    width: 90px;
+    height: 90px;
+    margin: 15px;
+    border-radius: 50%;
+    background: green;
+}
+
+.list2_body{
+    width: 80%;
+    height: 120px;
+    float: left;
+}
+
+.list2_body_top{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-size: 28px;
+}
+
+.list2_body_top_label{
+    width: 25%;
+    height: 60px;
+    color: #fff;
+    float: left;
+}
+
+.list2_body_top_text{
+    width: 75%;
+    height: 60px;
+    color: #fff;
+    float: left;
+}
+
+.list2_body_top_label2{
+    width: 30%;
+    height: 60px;
+    color: #fff;
+    font-size: 25px;
+    float: left;
+}
+
+.list2_body_top_text2{
+    width: 70%;
+    height: 60px;
+    color: #fff;
+    font-size: 23px;
+    float: left;
+    text-align: left;
+}
+
+.foot{
+    width: 90%;
+    height: 100px;
+    margin: 50px auto;
+}
+
+.foot_list{
+    width: 33%;
+    height: 100px;
+    float: left;
+    text-align: center;
+}
+
+
+
+.body_head{
+    width: 90%;
+    margin: 10px auto;
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+}
+
+.body_time{
+    width: 60%;
+    height: 200px;
+    line-height: 200px;
+    margin: 150px auto;
+    font-size: 100px;
+    text-align: center;
+    color: #333;
+}
+
+.outside_pull{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:10000%;
+	background:rgba(0,0,0,.3);
+	z-index:5;
+	display:none;
+}
+
+.frame{
+    position:absolute;
+    left: 20%;
+    top: 40%;
+    width: 60%;
+    height: 200px;
+    background: #fff;
+    z-index:6;
+    display:none;
+}
+
+.frame_title{
+    width: 100%;
+    height: 120px;
+    line-height: 120px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.frame_list{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    font-size: 28px;
+    text-align: center;
+}
+
+.frame_cho{
+    width: 49%;
+    float: left;
+}
+
+/*.frame_border{
+    width: 2%;
+    float: left;
+    font-size: 30px;
+}*/
+

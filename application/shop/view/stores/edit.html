@@ -1,0 +1,75 @@
+{extend name="common@base/common" /}
+{block name="body"}
+        <style>
+            .text.input-large{
+                width: 95%;
+                max-width: 300px;
+            }
+        </style>
+  <div class="span9 page_message">
+    <section id="contents"> {include file="common@base/_nav" /}
+      <div class="tab-content"> 
+        <!-- 表单 -->
+        {php} isset($post_url) || $post_url = U('edit?model='.$model['id'], $get_param);{/php}
+        <form class="form-horizontal form-center" method="post" action="{$post_url}" id="form">
+        <input type='hidden' name='id' value='{$data.id|default=0}'/>
+          <div class="form-group row toggle-name">
+            <label class="col-sm-2"> <span class="need_flag">*</span> 会员卡号 </label>
+            <div class="col-sm-8">
+              <input type="text"  name="card_no" value="{$data.card_no}"class="text input-large">
+            </div>
+          </div>
+          <div class="form-group row toggle-phone">
+            <label class="col-sm-2"><span class="need_flag">*</span> 联系电话 </label>
+            <div class="col-sm-8">
+              <input type="text"  name="phone" value="{$data.phone}" class="text input-large">
+            </div>
+          </div>    
+          <div class="form-group row">
+            <label class="col-sm-2"> <span class="need_flag">*</span>余额 </label>
+            <div class="col-sm-8">
+              <input type="text"  name="money" value="{$data.money}" class="text input-large">
+            </div>
+          </div>                   
+          <div class="form-group row">
+            <label class="col-sm-2"> <span class="need_flag">*</span> 姓名 </label>
+            <div class="col-sm-8">
+              <input type="text"  name="name" id="name" value="{$data.name}"class="text input-large">
+            </div>
+          </div>
+            <div class="form-group row">
+                <label class="col-sm-2"> <span class="need_flag">*</span> 最后消费时间 </label>
+                <div class="col-sm-8">
+                    <input type="text"   readonly name="last_time" id="last_time" value="{$data.last_time|date='Y-m-d H:i:s'}"class="text input-large">
+                </div>
+            </div>
+
+
+          <input type="hidden" value="0" name="coupon_id" class="text">
+          
+          <div class="form-item form_bh" style="padding-left: 5px">
+             <label class="col-sm-2"></label>
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">{$submit_name|default='确 定'}</button>
+          </div>
+          
+        </form>
+      </div>
+    </section>
+  </div>
+{/block}
+{block name="script"} 
+  <script type="text/javascript" src="__STATIC__/bdMap.js?v={:SITE_VERSION}"></script> 
+  <script type="text/javascript" >
+function initMap(){
+	var _addr = '';
+	_addr = $('#address').val();
+	ShowMap("map",{city:'深圳',addr:_addr,title:'',lawfirm:'',tel:'',mapx:'',pic:'',ismove:'1',piobj:'gps'});
+}
+$(function(){
+    initUploadImg();
+    initUploadFile();
+	initMap();
+	$('#address').keyup(function(){ initMap(); });
+});
+</script> 
+{/block}

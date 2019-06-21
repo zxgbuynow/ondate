@@ -1,0 +1,6 @@
+---------------------------------------------------------------
+[ 2019-06-02T15:25:26+08:00 ] 60.12.218.186 GET wx.gongniuchazuo.com.cn/public/index.php/Admin/update/delcache/pbid/80?&mdm=367_375
+[ error ] [2]mkdir(): File exists[/data/httpd/wx/application/admin/controller/Update.php:63]
+---------------------------------------------------------------
+[ 2019-06-02T15:25:35+08:00 ] 60.12.218.186 GET wx.gongniuchazuo.com.cn/public/index.php/shop/goods/addorder/id/158/pbid/80
+[ error ] [0]模板文件不存在:/data/httpd/wx/application/shop/view/goods/add_order.html[/data/httpd/wx/thinkphp/library/think/view/driver/Think.php:86]

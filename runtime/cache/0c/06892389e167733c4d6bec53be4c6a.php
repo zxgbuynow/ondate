@@ -1,0 +1,10 @@
+<?php
+//000000086400
+ exit();?>
+think_serialize:a:21:{s:2:"id";i:1350;s:4:"name";s:18:"shop_goods_comment";s:5:"title";s:18:"商品评论信息";s:6:"extend";i:0;s:8:"relation";s:0:"";s:7:"need_pk";i:1;s:10:"field_sort";s:75:"["goods_id","score","content","order_id","uid","cTime","shop_id","is_show"]";s:11:"field_group";s:8:"1:基础";s:14:"attribute_list";N;s:13:"template_list";s:0:"";s:12:"template_add";s:0:"";s:13:"template_edit";s:0:"";s:9:"list_grid";s:258:"id:10%编号
+uid|get_username:15%用户昵称
+cTime|time_format:15%评论时间
+score:15%星星数
+content:25%评论内容
+is_show|get_name_by_status:10%是否显示
+ids:编辑:changeShow?id=[id]&is_show=[is_show]&goods_id=[goods_id]|设置显示状态";s:8:"list_row";i:10;s:10:"search_key";s:0:"";s:11:"search_list";s:0:"";s:11:"create_time";i:1457430858;s:11:"update_time";i:1458901414;s:6:"status";i:1;s:11:"engine_type";s:6:"MyISAM";s:5:"addon";s:4:"shop";}

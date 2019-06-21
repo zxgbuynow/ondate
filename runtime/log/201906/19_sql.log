@@ -1,0 +1,243 @@
+---------------------------------------------------------------
+[ 2019-06-19T11:35:34+08:00 ] 175.184.165.220 GET wujieliulan.com/public/index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000916s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001151s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000365s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000896s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000936s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000588s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user` [ RunTime:0.000986s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000594s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000871s ]
+[ sql ] [ SQL ] SELECT `openid`,`uid`,`has_subscribe`,`syc_status`,`remark`,`unionid`,`pbid` FROM `wp_public_follow` WHERE  ( uid='1' ) [ RunTime:0.000443s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag_link` [ RunTime:0.000709s ]
+[ sql ] [ SQL ] SELECT `tag_id` FROM `wp_user_tag_link` WHERE  `uid` = 1 [ RunTime:0.000423s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group_access` [ RunTime:0.000871s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group_access` `a` INNER JOIN `wp_auth_group` `s` ON `a`.`group_id`=`s`.`id` WHERE  `uid` = 1 [ RunTime:0.000562s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_auth` [ RunTime:0.000911s ]
+[ sql ] [ SQL ] SELECT `name`,type_3 as val FROM `wp_public_auth` [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000490s ]
+---------------------------------------------------------------
+[ 2019-06-19T11:35:35+08:00 ] 175.184.165.220 GET www.minghui.org/public/index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000921s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000443s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000857s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000500s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000900s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000565s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000556s ]
+---------------------------------------------------------------
+[ 2019-06-19T11:35:35+08:00 ] 175.184.165.220 GET www.epochtimes.com/public/index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000947s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001263s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000908s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000581s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000788s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000550s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000491s ]
+---------------------------------------------------------------
+[ 2019-06-19T11:35:35+08:00 ] 175.184.165.220 GET www.boxun.com/public/index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000879s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001112s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000799s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000857s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000567s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000626s ]
+---------------------------------------------------------------
+[ 2019-06-19T11:35:35+08:00 ] 175.184.165.220 GET www.bing.com/public/index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000890s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001014s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000805s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000796s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000518s ]
+---------------------------------------------------------------
+[ 2019-06-19T11:35:36+08:00 ] 175.184.165.220 GET www.123cha.com/public/index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000877s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001026s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000373s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000827s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000844s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000562s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000524s ]
+---------------------------------------------------------------
+[ 2019-06-19T11:35:36+08:00 ] 175.184.165.220 GET www.baidu.com/public/index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000923s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001069s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000410s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000924s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000545s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000876s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000563s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000523s ]
+---------------------------------------------------------------
+[ 2019-06-19T19:41:04+08:00 ] 115.215.216.22 GET wx.gongniuchazuo.com.cn/public/index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000997s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001078s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000811s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000507s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user` [ RunTime:0.001086s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000811s ]
+[ sql ] [ SQL ] SELECT `openid`,`uid`,`has_subscribe`,`syc_status`,`remark`,`unionid`,`pbid` FROM `wp_public_follow` WHERE  ( uid='1' ) [ RunTime:0.000376s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag_link` [ RunTime:0.000769s ]
+[ sql ] [ SQL ] SELECT `tag_id` FROM `wp_user_tag_link` WHERE  `uid` = 1 [ RunTime:0.000376s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group_access` [ RunTime:0.000798s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group_access` `a` INNER JOIN `wp_auth_group` `s` ON `a`.`group_id`=`s`.`id` WHERE  `uid` = 1 [ RunTime:0.000454s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000464s ]
+---------------------------------------------------------------
+[ 2019-06-19T19:41:05+08:00 ] 115.215.216.22 GET wx.gongniuchazuo.com.cn/public/index.php/home/user/login
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000893s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001023s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000952s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000556s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000811s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000548s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000535s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_qr_code` [ RunTime:0.000960s ]
+[ sql ] [ SQL ] SELECT `id`,`qr_code`,`addon`,`aim_id`,`cTime`,`action_name`,`extra_text`,`extra_int`,`request_count`,`scene_id`,`expire_seconds`,`pbid` FROM `wp_qr_code` WHERE  `addon` = 'ScanLogin'  AND `extra_text` = '5d0a1f50dc646' LIMIT 1 [ RunTime:0.000480s ]
+[ sql ] [ SQL ] SELECT `scene_id` FROM `wp_qr_code` WHERE  ( action_name='QR_SCENE' ) ORDER BY `scene_id` DESC LIMIT 1 [ RunTime:0.000614s ]
+[ sql ] [ SQL ] INSERT INTO `wp_qr_code` (`scene_id` , `addon` , `aim_id` , `action_name` , `extra_text` , `extra_int` , `cTime` , `pbid` , `qr_code`) VALUES (100020 , 'ScanLogin' , 0 , 'QR_SCENE' , '5d0a1f50dc646' , 0 , 1560944465 , 80 , 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQEE8DwAAAAAAAAAAS5odHRwOi8vd2VpeGluLnFxLmNvbS9xLzAySG05ZUZnbWhjU20xOWhJTk50MUYAAgRRHwpdAwQAjScA') [ RunTime:0.001225s ]
+---------------------------------------------------------------
+[ 2019-06-19T20:03:12+08:00 ] 115.215.216.22 GET wx.gongniuchazuo.com.cn/public/index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001004s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001037s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000786s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000758s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000543s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000493s ]
+---------------------------------------------------------------
+[ 2019-06-19T20:03:12+08:00 ] 115.215.216.22 GET wx.gongniuchazuo.com.cn/public/index.php/home/user/login
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000935s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000981s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000830s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000521s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000786s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000521s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_qr_code` [ RunTime:0.000871s ]
+[ sql ] [ SQL ] SELECT `id`,`qr_code`,`addon`,`aim_id`,`cTime`,`action_name`,`extra_text`,`extra_int`,`request_count`,`scene_id`,`expire_seconds`,`pbid` FROM `wp_qr_code` WHERE  `addon` = 'ScanLogin'  AND `extra_text` = '5d0a1f50dc646' LIMIT 1 [ RunTime:0.000469s ]
+---------------------------------------------------------------
+[ 2019-06-19T20:03:17+08:00 ] 115.215.216.22 POST wx.gongniuchazuo.com.cn/public/index.php/home/user/login/wpid/0/pbid/80
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000940s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000978s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000548s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user` [ RunTime:0.001259s ]
+[ sql ] [ SQL ] SELECT `uid`,`nickname`,`password`,`truename`,`mobile`,`email`,`sex`,`headimgurl`,`city`,`province`,`country`,`language`,`score`,`unionid`,`login_count`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status`,`is_init`,`is_audit`,`subscribe_time`,`remark`,`groupid`,`come_from`,`login_name`,`login_password`,`manager_id`,`level`,`membership`,`bind_openid`,`audit_time`,`grade`,`wpid`,`number` FROM `wp_user` WHERE  `nickname` = 'admin' LIMIT 1 [ RunTime:0.000606s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_action` [ RunTime:0.000814s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_action` WHERE  `name` = 'user_login' LIMIT 1 [ RunTime:0.000476s ]
+[ sql ] [ SQL ] UPDATE `wp_user`  SET `uid` = 1 , `login_count` = login_count+1 , `last_login_time` = 1560945796 , `last_login_ip` = '1943525398'  WHERE  `uid` = 1 [ RunTime:0.000503s ]
+---------------------------------------------------------------
+[ 2019-06-19T20:03:17+08:00 ] 115.215.216.22 GET wx.gongniuchazuo.com.cn/public/index.php/weixin/publics/lists/pbid/80
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000880s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000861s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000541s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000821s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000569s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000492s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000875s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'publics' LIMIT 1 [ RunTime:0.000501s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000854s ]
+[ sql ] [ SQL ] SELECT `id`,`uid`,`public_name`,`public_id`,`wechat`,`interface_url`,`headface_url`,`area`,`addon_status`,`is_use`,`type`,`appid`,`secret`,`encodingaeskey`,`tips_url`,`domain`,`is_bind`,`mch_id`,`partner_key`,`cert_pem`,`key_pem`,`authorizer_refresh_token`,`check_file`,`app_type`,`wpid`,`order_payok_messageid` FROM `wp_publics` WHERE  `uid` = 1 [ RunTime:0.000545s ]
+---------------------------------------------------------------
+[ 2019-06-19T20:03:18+08:00 ] 115.215.216.22 GET wx.gongniuchazuo.com.cn/public/index.php/shop/shop/lists/pbid/80?&mdm=761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001024s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.001037s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000553s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000822s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000583s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000861s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000931s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'shop' LIMIT 1 [ RunTime:0.000533s ]
+---------------------------------------------------------------
+[ 2019-06-19T20:03:18+08:00 ] 115.215.216.22 GET wx.gongniuchazuo.com.cn/public/index.php/shop/shop/summary/pbid/80/mdm/761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000853s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000874s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000568s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000559s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000500s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000799s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000452s ]
+[ sql ] [ SQL ] SELECT count(1) as cc,FROM_UNIXTIME(subscribe_time, '%m%d') as hh FROM `wp_user` as u left join `wp_public_follow` as f on u.uid = f.uid WHERE f.pbid='80' and u.subscribe_time>'1558353798' GROUP BY hh [ RunTime:0.000560s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods` [ RunTime:0.000890s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_shop_goods` WHERE  `wpid` = 1  AND `is_delete` = 0 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop_goods` WHERE  `id` = 158 LIMIT 1 [ RunTime:0.000493s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods_content` [ RunTime:0.000746s ]
+[ sql ] [ SQL ] SELECT `content` FROM `wp_shop_goods_content` WHERE  `goods_id` = 158 LIMIT 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_picture` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_picture` WHERE  `status` = 1  AND `id` = 3216 LIMIT 1 [ RunTime:0.000422s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods_stock` [ RunTime:0.000769s ]
+[ sql ] [ SQL ] SELECT `stock_id`,`stock`,`stock_active`,`lock_count`,`sale_count`,`goods_id`,`event_type`,`market_price`,`sale_price`,`shop_goods_id`,`del_at` FROM `wp_shop_goods_stock` WHERE  `goods_id` = 158  AND `event_type` = 0 ORDER BY `stock_id` DESC LIMIT 1 [ RunTime:0.000474s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop_goods` WHERE  `id` = 159 LIMIT 1 [ RunTime:0.000485s ]
+[ sql ] [ SQL ] SELECT `content` FROM `wp_shop_goods_content` WHERE  `goods_id` = 159 LIMIT 1 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_picture` WHERE  `status` = 1  AND `id` = 3217 LIMIT 1 [ RunTime:0.000426s ]
+[ sql ] [ SQL ] SELECT `stock_id`,`stock`,`stock_active`,`lock_count`,`sale_count`,`goods_id`,`event_type`,`market_price`,`sale_price`,`shop_goods_id`,`del_at` FROM `wp_shop_goods_stock` WHERE  `goods_id` = 159  AND `event_type` = 0 ORDER BY `stock_id` DESC LIMIT 1 [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_order` [ RunTime:0.000929s ]
+[ sql ] [ SQL ] SELECT sum( is_new ) as new_count, count(1) as total_count FROM `wp_shop_order` WHERE  `wpid` = 1 LIMIT 1 [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000753s ]
+[ sql ] [ SQL ] SELECT count(1) as total, sum(has_subscribe) as has_count FROM `wp_public_follow` WHERE  `pbid` = 80 LIMIT 1 [ RunTime:0.000386s ]
+---------------------------------------------------------------
+[ 2019-06-19T20:03:23+08:00 ] 115.215.216.22 GET wx.gongniuchazuo.com.cn/public/index.php/weixin/publics/lists/pbid/80?&mdm=792_793
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000997s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000899s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000633s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000894s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000646s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000637s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000975s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'publics' LIMIT 1 [ RunTime:0.000587s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000898s ]
+[ sql ] [ SQL ] SELECT `id`,`uid`,`public_name`,`public_id`,`wechat`,`interface_url`,`headface_url`,`area`,`addon_status`,`is_use`,`type`,`appid`,`secret`,`encodingaeskey`,`tips_url`,`domain`,`is_bind`,`mch_id`,`partner_key`,`cert_pem`,`key_pem`,`authorizer_refresh_token`,`check_file`,`app_type`,`wpid`,`order_payok_messageid` FROM `wp_publics` WHERE  `uid` = 1 [ RunTime:0.000587s ]
+---------------------------------------------------------------
+[ 2019-06-19T20:03:27+08:00 ] 115.215.216.22 GET wx.gongniuchazuo.com.cn/public/index.php/shop/shop/lists/pbid/80?&mdm=761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000963s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.001111s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000543s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000885s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000562s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000503s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000864s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000429s ]
+---------------------------------------------------------------
+[ 2019-06-19T20:03:27+08:00 ] 115.215.216.22 GET wx.gongniuchazuo.com.cn/public/index.php/shop/shop/summary/pbid/80/mdm/761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000975s ] mysql:host=rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000862s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000788s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000534s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000490s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000951s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000453s ]
+[ sql ] [ SQL ] SELECT count(1) as cc,FROM_UNIXTIME(subscribe_time, '%m%d') as hh FROM `wp_user` as u left join `wp_public_follow` as f on u.uid = f.uid WHERE f.pbid='80' and u.subscribe_time>'1558353807' GROUP BY hh [ RunTime:0.000582s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods` [ RunTime:0.000882s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_shop_goods` WHERE  `wpid` = 1  AND `is_delete` = 0 [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop_goods` WHERE  `id` = 158 LIMIT 1 [ RunTime:0.000482s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods_content` [ RunTime:0.000718s ]
+[ sql ] [ SQL ] SELECT `content` FROM `wp_shop_goods_content` WHERE  `goods_id` = 158 LIMIT 1 [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods_stock` [ RunTime:0.000729s ]
+[ sql ] [ SQL ] SELECT `stock_id`,`stock`,`stock_active`,`lock_count`,`sale_count`,`goods_id`,`event_type`,`market_price`,`sale_price`,`shop_goods_id`,`del_at` FROM `wp_shop_goods_stock` WHERE  `goods_id` = 158  AND `event_type` = 0 ORDER BY `stock_id` DESC LIMIT 1 [ RunTime:0.000457s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop_goods` WHERE  `id` = 159 LIMIT 1 [ RunTime:0.000483s ]
+[ sql ] [ SQL ] SELECT `content` FROM `wp_shop_goods_content` WHERE  `goods_id` = 159 LIMIT 1 [ RunTime:0.000381s ]
+[ sql ] [ SQL ] SELECT `stock_id`,`stock`,`stock_active`,`lock_count`,`sale_count`,`goods_id`,`event_type`,`market_price`,`sale_price`,`shop_goods_id`,`del_at` FROM `wp_shop_goods_stock` WHERE  `goods_id` = 159  AND `event_type` = 0 ORDER BY `stock_id` DESC LIMIT 1 [ RunTime:0.000462s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_order` [ RunTime:0.000933s ]
+[ sql ] [ SQL ] SELECT sum( is_new ) as new_count, count(1) as total_count FROM `wp_shop_order` WHERE  `wpid` = 1 LIMIT 1 [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000721s ]
+[ sql ] [ SQL ] SELECT count(1) as total, sum(has_subscribe) as has_count FROM `wp_public_follow` WHERE  `pbid` = 80 LIMIT 1 [ RunTime:0.000397s ]
