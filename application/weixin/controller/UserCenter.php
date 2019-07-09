@@ -13,15 +13,15 @@ class UserCenter extends WebBase
     {
         parent::initialize();
         $this->syc_wechat = public_interface('user_group');
-        
+
         $type = input('type/d', 0);
         $this->assign('type', $type);
-        
+
         $res['title'] = '微信用户';
         $res['url'] = U('weixin/UserCenter/lists');
         $res['class'] = $type == 0 ? 'current' : '';
         $nav[] = $res;
-        
+
         $res['title'] = '取消关注用户';
         $res['url'] = U('weixin/UserCenter/lists', array(
             'type' => 1
@@ -44,25 +44,23 @@ class UserCenter extends WebBase
         $model = $this->getModel('user');
         $isAjax == 0 && $isAjax = I('isAjax');
         $this->assign('isAjax', $isAjax);
-        $s='as999998ssss';
-        dump($s);
-        
+
         $isRadio = I('isRadio');
         $this->assign('isRadio', $isRadio);
-        
+
         // 解析列表规则
         $list_data = $this->_list_grid($model);
-        
+
         $map['u.status'] = array(
             'gt',
             0
         );
         $map['f.pbid'] = get_pbid();
-        
+
         // 搜索类型
         $search_type = input('search_type', 0);
         $this->assign('search_type', $search_type);
-        
+
         $key = urldecode(input('key'));
         $this->assign('search_key', $key);
         if (! empty($key)) {
@@ -77,7 +75,7 @@ class UserCenter extends WebBase
                 $map['u.uid'] = 0;
             }
         }
-        
+
         $group_id = input('group_id/d', 0);
         $this->assign('group_id', $group_id);
         if ($group_id > 0) {
@@ -91,14 +89,14 @@ class UserCenter extends WebBase
                 );
             }
         }
-        
+
         $param = [];
         // 时间
         $s_time = input('s_time');
         $this->assign('s_time', $s_time);
         $s_time = strtotime($s_time);
         empty($s_time) && $s_time = 0;
-        
+
         $e_time = input('e_time', '');
         $this->assign('e_time', $e_time);
         if ($e_time) {
@@ -115,7 +113,7 @@ class UserCenter extends WebBase
                 ]
             ];
         }
-        
+
         // 标签
         $tag_id = input('tag_id', '');
         if ($tag_id) {
@@ -129,17 +127,17 @@ class UserCenter extends WebBase
             }
         }
         $this->assign('tag_id', $tag_id);
-        
+
         // 性别
         $sex = input('sex', '');
         if ($sex) {
             $map['sex'] = $sex;
         }
         $this->assign('sex', $sex);
-        
+
         $type = input('type/d', 0);
         $map['f.has_subscribe'] = 1 - $type;
-        
+
         $row = empty($model['list_row']) ? 20 : $model['list_row'];
         $order = 'u.uid desc';
         // 读取模型数据列表
@@ -152,23 +150,23 @@ class UserCenter extends WebBase
             ->order($order)
             ->paginate($row);
         $list_data = $this->parsePageData($data, $model, $list_data, false);
-        
+
         foreach ($list_data['list_data'] as $k => $d) {
             $user = getUserInfo($d['uid']);
             $user['openid'] = $d['openid'];
             $user['group'] = isset($user['groups']) ? implode(', ', getSubByKey($user['groups'], 'title')) : '';
             $list_data['list_data'][$k] = array_merge($d, $user);
         }
-        
+
         // 用户组
         $gmap['pbid'] = get_pbid();
         $auth_group = M('auth_group')->where(wp_where($gmap))->select();
         $this->assign('auth_group', $auth_group);
-        
+
         $tagmap['pbid'] = get_pbid();
         $tags = M('user_tag')->where(wp_where($tagmap))->select();
         $this->assign('tags', $tags);
-        
+
         $this->assign('syc_wechat', $this->syc_wechat);
         if ($this->syc_wechat) {
             $this->assign('normal_tips', '请定期手动点击“一键同步微信公众号粉丝”按钮同步微信数据');
@@ -182,38 +180,38 @@ class UserCenter extends WebBase
         }
     }
     //编辑个人信息页面
-     function edit_page(){
-         $uid = I('uid');
-         $userInfo = getUserInfoS($uid);
-          //dump($userInfo);
-         $strgroup = '';
-         //dump($userInfo);
-         foreach ($userInfo['groups'] as $v) {
-             $strgroup .= $v['title'] . ',';
-         }
-         $len = strlen($strgroup) - 1;
-         $str = substr($strgroup, 0, $len);
-         $userInfo['groupstr'] = $str;
+    function edit_page(){
+        $uid = I('uid');
+        $userInfo = getUserInfoS($uid);
+        //dump($userInfo);
+        $strgroup = '';
+        //dump($userInfo);
+        foreach ($userInfo['groups'] as $v) {
+            $strgroup .= $v['title'] . ',';
+        }
+        $len = strlen($strgroup) - 1;
+        $str = substr($strgroup, 0, $len);
+        $userInfo['groupstr'] = $str;
 
-         $userInfo['openid'] = isset($userInfo['pbids'][PBID]) ? $userInfo['pbids'][PBID] : '';
+        $userInfo['openid'] = isset($userInfo['pbids'][PBID]) ? $userInfo['pbids'][PBID] : '';
 
-         if ($userInfo['reg_time'] > 0) {
-             $day = ceil((NOW_TIME - $userInfo['reg_time']) / 86400);
-             $year = floor($day / 365);
-             $day = $day % 365;
+        if ($userInfo['reg_time'] > 0) {
+            $day = ceil((NOW_TIME - $userInfo['reg_time']) / 86400);
+            $year = floor($day / 365);
+            $day = $day % 365;
 
-             $userInfo['reg_time'] = '';
-             if ($year > 0) {
-                 $userInfo['reg_time'] = $year . '年 ';
-             }
-             $userInfo['reg_time'] .= $day . '天';
-         } else {
-             $userInfo['reg_time'] = '';
-         }
+            $userInfo['reg_time'] = '';
+            if ($year > 0) {
+                $userInfo['reg_time'] = $year . '年 ';
+            }
+            $userInfo['reg_time'] .= $day . '天';
+        } else {
+            $userInfo['reg_time'] = '';
+        }
 
-         $this->assign('info', $userInfo);
+        $this->assign('info', $userInfo);
 
-         return $this->fetch();
+        return $this->fetch();
     }
     //执行更新个人信息
     function edit_action(){
@@ -225,7 +223,7 @@ class UserCenter extends WebBase
         $where['uid']=$data['uid'];
         $flag = M('user')->where($where)->update($up);
         if ($flag !== false) {
-           // D('common/User')->getUserInfo($data['uid'], true);
+            // D('common/User')->getUserInfo($data['uid'], true);
             $this->success('保存成功！', U('edit_page',array('uid'=>$data['uid'])));
         } else {
             $this->error('保存失败');
@@ -256,14 +254,14 @@ class UserCenter extends WebBase
         $len = strlen($strgroup) - 1;
         $str = substr($strgroup, 0, $len);
         $userInfo['groupstr'] = $str;
-        
+
         $userInfo['openid'] = isset($userInfo['pbids'][PBID]) ? $userInfo['pbids'][PBID] : '';
-        
+
         if ($userInfo['reg_time'] > 0) {
             $day = ceil((NOW_TIME - $userInfo['reg_time']) / 86400);
             $year = floor($day / 365);
             $day = $day % 365;
-            
+
             $userInfo['reg_time'] = '';
             if ($year > 0) {
                 $userInfo['reg_time'] = $year . '年 ';
@@ -272,9 +270,9 @@ class UserCenter extends WebBase
         } else {
             $userInfo['reg_time'] = '';
         }
-        
+
         $this->assign('info', $userInfo);
-        
+
         return $this->fetch();
     }
 
@@ -282,16 +280,16 @@ class UserCenter extends WebBase
     {
         $model = $this->getModel('user');
         $map['uid'] = $id = I('uid');
-        
+
         // 获取数据
         $data = M($model['name'])->where('id', $id)->find();
         $data || $this->error('数据不存在！');
-        
+
         if (IS_POST) {
             if (empty(input('post.login_name')) || empty(input('post.login_password'))) {
                 $this->error('账号信息不能为空');
             }
-            
+
             $save['login_name'] = I('login_name');
             $old_uid = M('user')->where(wp_where($save))->value('uid');
             if ($old_uid > 0 && $old_uid != $id) {
@@ -301,7 +299,7 @@ class UserCenter extends WebBase
             if (is_install("Shop")) {
                 $membership_condition = M('shop_membership')->where('id', input('post.membership'))->value('condition');
             }
-            
+
             $save['leven'] = 1;
             $save['manager_id'] = $this->mid;
             $save['is_audit'] = 1;
@@ -313,14 +311,14 @@ class UserCenter extends WebBase
             // 获取模型的字段信息
             if (M('user')->where(wp_where($map))->update($save) !== false) {
                 D('common/User')->getUserInfo($id, true);
-                
+
                 $this->success('保存' . $model['title'] . '成功！', U('lists'));
             } else {
                 $this->error('保存失败');
             }
         } else {
             $fields = get_model_attribute($model);
-            
+
             $extra = $this->getMembershipData();
             if (! empty($extra)) {
                 foreach ($fields as &$vo) {
@@ -329,12 +327,12 @@ class UserCenter extends WebBase
                     }
                 }
             }
-            
+
             $this->assign('fields', $fields);
             $this->assign('data', $data);
-            
+
             $this->assign('post_url', U('set_login', $map));
-            
+
             return $this->fetch('edit');
         }
     }
@@ -368,12 +366,12 @@ class UserCenter extends WebBase
         }
         $wpid = $map['wpid'] = get_wpid();
         $model = $this->getModel('user');
-        
+
         if (IS_POST) {
             $data = I('post.');
             $is_admin_edit && $data['status'] = 2;
             $Model = D($model['name']);
-            
+
             $data = $this->checkData($data, $model);
             $res = $Model->where(wp_where($map))->update($data);
             if ($res !== false) {
@@ -381,7 +379,7 @@ class UserCenter extends WebBase
                 $bind_backurl = cookie('__forward__');
                 $config = getAddonConfig('UserCenter');
                 $jumpurl = $config['jumpurl'];
-                
+
                 if (! empty($bind_backurl)) {
                     $url = $bind_backurl;
                     cookie('__forward__', null);
@@ -390,7 +388,7 @@ class UserCenter extends WebBase
                 } elseif (! $is_admin_edit) {
                     $url = U('wei_site/Wap/index', $map);
                 }
-                
+
                 $this->success('操作成功！', $url);
             } else {
                 // lastsql();
@@ -412,18 +410,18 @@ class UserCenter extends WebBase
                         unset($fields[$k]);
                     }
                 }
-                
+
                 $this->assign('button_name', '用户绑定');
             }
-            
+
             // 获取数据
             $data = M($model['name'])->where(wp_where($map))->find();
-            
+
             $pbid = get_pbid();
             if (isset($data['pbid']) && $pbid != $data['pbid']) {
                 $this->error('非法访问！');
             }
-            
+
             // 自动从微信接口获取用户信息
             empty($openid) || $info = getWeixinUserInfo($openid, $pbid);
             if (is_array($info)) {
@@ -432,12 +430,12 @@ class UserCenter extends WebBase
                 }
                 $data = array_merge($info, $data);
             }
-            
+
             $this->assign('fields', $fields);
             $this->assign('data', $data);
-            
+
             $this->assign('post_url', U('edit'));
-            
+
             return $this->fetch($html);
         }
     }
@@ -458,7 +456,7 @@ class UserCenter extends WebBase
             $pbid = get_pbid();
             D('common/Credit')->updateSubscribeCredit($pbid, $credit, 1);
         }
-        
+
         return parent::config();
     }
 
@@ -466,7 +464,7 @@ class UserCenter extends WebBase
     public function changeGroup()
     {
         $uids = array_unique((array) I('ids', 0));
-        
+
         if (empty($uids)) {
             $this->error('请选择用户!');
         }
@@ -485,7 +483,7 @@ class UserCenter extends WebBase
     public function changeTag()
     {
         $uids = array_unique((array) I('ids', 0));
-        
+
         if (empty($uids)) {
             $this->error('请选择用户!');
         }
@@ -493,7 +491,7 @@ class UserCenter extends WebBase
         if (empty($tags)) {
             $this->error('请选择用户标签!');
         }
-        
+
         M('user_tag_link')->whereIn('uid', $uids)->delete();
         foreach ($uids as $uid) {
             foreach ($tags as $tid) {
@@ -519,7 +517,7 @@ class UserCenter extends WebBase
     function syc_openid()
     {
         $map['pbid'] = $save['pbid'] = get_pbid();
-        
+
         $next_openid = I('next_openid');
         if (! $next_openid) {
             $res = M('public_follow')->where(wp_where($map))->setField('has_subscribe', 0);
@@ -528,12 +526,12 @@ class UserCenter extends WebBase
         $url = 'https://api.weixin.qq.com/cgi-bin/user/get?access_token=' . get_access_token() . '&next_openid=' . $next_openid;
         $data = wp_file_get_contents($url);
         $data = json_decode($data, true);
-        
+
         if (! isset($data['count']) || $data['count'] == 0) {
             // 拉取完毕
             return $this->jump(U('syc_user'), '同步用户数据中，请勿关闭');
         }
-        
+
         $map['openid'] = array(
             'in',
             $data['data']['openid']
@@ -556,7 +554,7 @@ class UserCenter extends WebBase
                 }
             }
         }
-        
+
         $param2['next_openid'] = $data['next_openid'];
         $url = U('syc_openid', $param2);
         return $this->jump($url, '同步用户OpenID中，请勿关闭');
@@ -572,11 +570,11 @@ class UserCenter extends WebBase
             ->field('uid,openid')
             ->limit(100)
             ->select();
-        
+
         if (empty($list)) {
             return $this->jump(U('syc_user_group'), '用户分组信息同步中');
         }
-        
+
         foreach ($list as $vo) {
             $param['user_list'][] = array(
                 'openid' => $vo['openid']
@@ -590,13 +588,13 @@ class UserCenter extends WebBase
             $openids
         );
         // M( 'public_follow' )->where ( wp_where( $map2 ) )->setField ( 'has_subscribe', 0 );
-        
+
         $url = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=' . get_access_token();
         $data = post_data($url, $param);
         $userDao = D('common/User');
         $config = getAddonConfig('UserCenter');
         isset($config['score']) || $config['score'] = 0;
-        
+
         $countdata['list_count'] = count($list);
         $countdata['wp_data_count'] = count($data['user_info_list']);
         if ($countdata['list_count'] != $countdata['wp_data_count']) {
@@ -612,7 +610,7 @@ class UserCenter extends WebBase
                     // addWeixinLog($tempArr,'syc_userlistscount5');
                 }
                 if (empty($tempArr)){
-                	continue;
+                    continue;
                 }
                 $uid = isset($uids[$tempArr['openid']])?intval($uids[$tempArr['openid']]):0;
                 if ($uid == 0) { // 新增加的用户
@@ -621,9 +619,9 @@ class UserCenter extends WebBase
                     $tempArr['status'] = 1;
                     $tempArr['is_init'] = 1;
                     $tempArr['is_audit'] = 1;
-                    
+
                     $uid = D('common/User')->addUser($tempArr);
-                    
+
                     $map5['openid'] = $tempArr['openid'];
                     $uid > 0 && M('public_follow')->where(wp_where($map5))->setField('uid', $uid);
                 } else { // 更新的用户
@@ -634,12 +632,12 @@ class UserCenter extends WebBase
             return $this->jump(U('syc_user'), '同步用户数据中，请勿关闭');
         }
         // addWeixinLog($countdata,'syc_userlistscount2');
-        
+
         foreach ($data['user_info_list'] as $u) {
             if ($u['subscribe'] == 0) {
                 continue;
             }
-            
+
             $uid = intval($uids[$u['openid']]);
             if ($uid == 0) { // 新增加的用户
                 $u['score'] = intval($config['score']);
@@ -648,19 +646,19 @@ class UserCenter extends WebBase
                 $u['is_init'] = 1;
                 $u['is_audit'] = 1;
                 unset($u['id']);
-                
+
                 $uid = D('common/User')->addUser($u);
-                
+
                 $map5['openid'] = $u['openid'];
                 $uid > 0 && M('public_follow')->where(wp_where($map5))->setField('uid', $uid);
             } else { // 更新的用户
                 $userDao->updateInfo($uid, $u);
             }
-            
+
             $openidArr[] = $u['openid'];
         }
         M('public_follow')->where(wp_where($map2))->setField('syc_status', 1);
-        
+
         return $this->jump(U('syc_user?uid=' . $uid), '同步用户数据中，请勿关闭');
     }
 
@@ -676,18 +674,18 @@ class UserCenter extends WebBase
         $uids = M('public_follow')->where(wp_where($map))
             ->limit(100)
             ->column('uid');
-        
+
         if (empty($uids)) {
             return $this->jump(U('lists'), '用户分组信息同步完毕');
         }
-        
+
         $list = M('user')->whereIn('uid', $uids)
             ->field('uid,groupid')
             ->select();
         foreach ($list as $vo) {
             $userArr[$vo['uid']] = $vo['groupid'];
         }
-        
+
 //         $auth_map['manager_id'] = $this->mid;
         $auth_map['pbid'] = get_pbid();
         $groups = M('auth_group')->where(wp_where($auth_map))
@@ -697,21 +695,21 @@ class UserCenter extends WebBase
             $groupArr[$g['id']] = $g['wechat_group_id'];
             $wechatArr[$g['wechat_group_id']] = $g['id'];
         }
-        
+
         M('auth_group_access')->whereIn('uid', $uids)->delete();
-        
+
         $list = M('auth_group_access')->whereIn('uid', $uids)->select();
-        
+
         $access = [];
         foreach ($list as $vo) {
             $access[$vo['uid']] = $vo['group_id'];
         }
-        
+
         foreach ($uids as $uid) {
             $new_groupid = isset($userArr[$uid]) ? $userArr[$uid] : 0;
             $access_id = isset($access[$uid]) ? $access[$uid] : 0;
             $old_groupid = isset($groupArr[$access_id]) ? $groupArr[$access_id] : 0;
-            
+
             if (isset($access[$uid]) && $new_groupid == $old_groupid) {
                 continue;
             }
@@ -729,7 +727,7 @@ class UserCenter extends WebBase
         M('public_follow')->where(wp_where($map2))
             ->whereIn('uid', $uids)
             ->setField('syc_status', 2);
-        
+
         return $this->jump(U('syc_user_group?uid=' . $uid), '用户分组信息同步中，请勿关闭');
     }
 
@@ -739,19 +737,19 @@ class UserCenter extends WebBase
         if (empty($map['uid'])) {
             $this->error('用户信息出错');
         }
-        
+
         $param['remark'] = I('remark');
         if (empty($param['remark'])) {
             $this->error('备注不能为空');
         }
-        
+
         $map['pbid'] = get_pbid();
-        
+
         $info = M('public_follow')->where(wp_where($map))->find();
         if (! $info) {
             $this->error('用户信息出错啦');
         }
-        
+
         $res = M('public_follow')->where(wp_where($map))->update($param);
         if ($res !== false) { // 同步到微信端
             D('common/User')->getUserInfo($map['uid'], true);
@@ -763,7 +761,7 @@ class UserCenter extends WebBase
         } else {
             $this->error('保存数据库失败');
         }
-        
+
         $this->success('设置成功');
     }
 
@@ -798,25 +796,25 @@ class UserCenter extends WebBase
         M('credit_data')->where(wp_where($creditMap))->delete();
         // 会员卡设置等级
         if (is_install('card')){
-        	$firstlevel = M('card_level')->where(wp_where($map))
-        	->whereIn('uid', $uidArr)
-        	->order('score asc')
-        	->value('id');
-        	// 会员卡等级都设为体验卡
-        	$cardMap1[] = array(
-        			'uid',
-        			'in',
-        			$uidArr
-        	);
-        	$cardMap1[] = array(
-        			'level',
-        			'gt',
-        			0
-        	);
-        	$savecardlev['level'] = intval($firstlevel);
-        	M('card_member')->where(wp_where($cardMap1))->update($savecardlev);
+            $firstlevel = M('card_level')->where(wp_where($map))
+                ->whereIn('uid', $uidArr)
+                ->order('score asc')
+                ->value('id');
+            // 会员卡等级都设为体验卡
+            $cardMap1[] = array(
+                'uid',
+                'in',
+                $uidArr
+            );
+            $cardMap1[] = array(
+                'level',
+                'gt',
+                0
+            );
+            $savecardlev['level'] = intval($firstlevel);
+            M('card_member')->where(wp_where($cardMap1))->update($savecardlev);
         }
-       
+
         echo 1;
     }
 
