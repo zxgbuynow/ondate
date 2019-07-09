@@ -44,6 +44,8 @@ class UserCenter extends WebBase
         $model = $this->getModel('user');
         $isAjax == 0 && $isAjax = I('isAjax');
         $this->assign('isAjax', $isAjax);
+        $s='999998ssss';
+        dump($s);
         
         $isRadio = I('isRadio');
         $this->assign('isRadio', $isRadio);
