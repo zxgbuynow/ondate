@@ -13,13 +13,13 @@ return [
     // 数据库类型
     'type' => 'mysql',
     // 服务器地址
-    'hostname' => 'rm-bp130s0438hdc169l.mysql.rds.aliyuncs.com',
+    'hostname' => '127.0.0.1',
     // 数据库名
     'database' => 'weiphp',
     // 用户名
-    'username' => 'bull',
+    'username' => 'root',
     // 密码
-    'password' => 'Admin123456',
+    'password' => '123456',
     
     // 端口
     'hostport' => '3306',
@@ -38,5 +38,5 @@ return [
     'resultset_type' => 'array',
     
     // 用户密码加密的KEY
-    'data_auth_key' => 'aG@BWdLP}nRZ_b-H6v(MF"N|rCuw2%&A#.xh3]?q'
+    'data_auth_key' => '46>tEpUA#v?"CRHn*may=8[];$Vf0eI.Y`h2Zs@-'
 ];

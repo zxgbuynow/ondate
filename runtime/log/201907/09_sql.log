@@ -1,0 +1,1076 @@
+---------------------------------------------------------------
+[ 2019-07-09T15:59:02+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php?s=admin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000494s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001405s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000974s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000537s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000813s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000473s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000399s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:02+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/publics/login
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000502s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001084s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000280s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000787s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000761s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000383s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:09+08:00 ] 60.12.218.186 POST 47.111.119.90/index.php/admin/publics/login/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000475s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001009s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000768s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000422s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user` [ RunTime:0.000860s ]
+[ sql ] [ SQL ] SELECT `uid`,`nickname`,`password`,`truename`,`mobile`,`email`,`sex`,`headimgurl`,`city`,`province`,`country`,`language`,`score`,`unionid`,`login_count`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status`,`is_init`,`is_audit`,`subscribe_time`,`remark`,`groupid`,`come_from`,`login_name`,`login_password`,`manager_id`,`level`,`membership`,`bind_openid`,`audit_time`,`grade`,`wpid` FROM `wp_user` WHERE  `nickname` = 'admin' LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_action` [ RunTime:0.000675s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_action` WHERE  `name` = 'admin_login' LIMIT 1 [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000871s ]
+[ sql ] [ SQL ] SELECT `openid`,`uid`,`has_subscribe`,`syc_status`,`remark`,`unionid`,`pbid` FROM `wp_public_follow` WHERE  ( uid='1' ) [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag_link` [ RunTime:0.000808s ]
+[ sql ] [ SQL ] SELECT `tag_id` FROM `wp_user_tag_link` WHERE  `uid` = 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group_access` [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group_access` `a` INNER JOIN `wp_auth_group` `s` ON `a`.`group_id`=`s`.`id` WHERE  `uid` = 1 [ RunTime:0.000346s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_action_log` [ RunTime:0.000816s ]
+[ sql ] [ SQL ] INSERT INTO `wp_action_log` (`action_id` , `user_id` , `action_ip` , `model` , `record_id` , `create_time` , `remark`) VALUES (12 , 1 , 1007475386 , 'user' , 1 , 1562659149 , 'admin在2019-07-09 15:59登录了后台') [ RunTime:0.003067s ]
+[ sql ] [ SQL ] UPDATE `wp_user`  SET `uid` = 1 , `login_count` = login_count+1 , `last_login_time` = 1562659149 , `last_login_ip` = '1007475386'  WHERE  `uid` = 1 [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:09+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/index/index/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000485s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001005s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000771s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000725s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000362s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:09+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/Admin/config/group/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000492s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000994s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000754s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000402s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000720s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000736s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 1 ORDER BY `sort` [ RunTime:0.000355s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:10+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000513s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001009s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000769s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000752s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000390s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000379s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:15+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/3/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000498s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001016s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000738s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000703s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 3 ORDER BY `sort` [ RunTime:0.000322s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:15+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000491s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000987s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000745s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000422s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000720s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000360s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:16+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/6/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000483s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001017s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000279s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000437s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000753s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000426s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000700s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 6 ORDER BY `sort` [ RunTime:0.000341s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:16+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000486s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000410s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000439s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000406s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:16+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/99/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000467s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001007s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000752s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000715s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000368s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000734s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 99 ORDER BY `sort` [ RunTime:0.000322s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:16+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000490s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000992s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000281s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000760s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000724s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:16+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/6/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000484s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001005s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000790s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000430s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000738s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000368s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000749s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 6 ORDER BY `sort` [ RunTime:0.000362s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:17+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000515s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001016s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000803s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000386s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:17+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/3/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000485s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001021s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000808s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000445s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000735s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000738s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 3 ORDER BY `sort` [ RunTime:0.000320s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:17+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000494s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001003s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000711s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000372s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000358s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:19+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/99/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000490s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001009s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000773s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000731s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000746s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 99 ORDER BY `sort` [ RunTime:0.000321s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:20+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000514s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001015s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000787s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000387s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000381s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:20+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/6/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000409s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001025s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000277s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000434s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000719s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000356s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000736s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 6 ORDER BY `sort` [ RunTime:0.000334s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:20+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000358s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000989s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000281s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000435s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000362s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:21+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/1/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000528s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001004s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000281s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000423s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000735s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000704s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 1 ORDER BY `sort` [ RunTime:0.000346s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:21+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000402s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000995s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000768s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000366s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:21+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/3/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000378s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000995s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000800s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000752s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000735s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 3 ORDER BY `sort` [ RunTime:0.000343s ]
+---------------------------------------------------------------
+[ 2019-07-09T15:59:22+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000410s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000984s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000417s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000731s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000402s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000363s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:12:27+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/1/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000443s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001046s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000294s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000427s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000690s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 1 ORDER BY `sort` [ RunTime:0.000344s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:12:27+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000356s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000964s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000766s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000422s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000372s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:12:28+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/3/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000378s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000954s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000782s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000727s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000368s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000723s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 3 ORDER BY `sort` [ RunTime:0.000325s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:12:28+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000359s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000977s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000281s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000769s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000726s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000375s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000356s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:12:28+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/6/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000344s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000965s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000781s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000758s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000379s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000379s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000721s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 6 ORDER BY `sort` [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:12:29+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000366s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000965s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000277s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000742s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000718s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000360s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:12:29+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/99/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000378s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000981s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000373s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000704s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 99 ORDER BY `sort` [ RunTime:0.000336s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:12:29+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000363s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000953s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000391s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000741s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000377s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000374s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:02+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/6/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000419s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000997s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000735s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000385s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000699s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 6 ORDER BY `sort` [ RunTime:0.000338s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:02+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000385s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000966s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000768s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000427s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000733s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000378s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:03+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/3/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000337s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000966s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000766s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000720s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000353s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000738s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 3 ORDER BY `sort` [ RunTime:0.000317s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:03+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000352s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000988s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000723s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000703s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000347s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:03+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/1/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000337s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000963s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000736s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000717s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000345s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000714s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 1 ORDER BY `sort` [ RunTime:0.000338s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:03+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000383s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000973s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000422s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000356s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:08+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/6/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000377s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001029s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000440s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000789s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000387s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000717s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 6 ORDER BY `sort` [ RunTime:0.000333s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:08+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000367s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000939s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000747s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000706s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000378s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000358s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:09+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/config/group/id/3/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000375s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000970s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000752s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000720s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000730s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `wp_config` WHERE  `status` = 1  AND `group` = 3 ORDER BY `sort` [ RunTime:0.000319s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:09+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/admin/update/getremoteversion/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000376s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000998s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000277s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000402s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000739s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000380s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:10+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/Admin/config/index/pbid/0?&mdm=367_372
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000399s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001004s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000410s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000750s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000686s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_config` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.000313s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_config` WHERE  `status` = 1 ORDER BY `id` LIMIT 0,20 [ RunTime:0.000317s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:12+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/Admin/update/index/pbid/0?&mdm=367_374
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000378s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000957s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000791s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000719s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000390s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:12+08:00 ] 60.12.218.186 POST 47.111.119.90/index.php/admin/update/step01_checkversionbyajax/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000352s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000964s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000391s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:14+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/Admin/menu/lists/pbid/0?&mdm=368_369
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000410s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000978s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000788s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000391s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_menu` WHERE  `place` = 0 LIMIT 1 [ RunTime:0.000347s ]
+[ sql ] [ SQL ] SELECT `title`,`menu_type`,`addon_name`,`url`,`target`,`is_hide`,`sort`,`id` FROM `wp_menu` WHERE  `place` = 0 ORDER BY `id` DESC LIMIT 0,10000 [ RunTime:0.000377s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = 'sms' LIMIT 1 [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = 'wei_site' LIMIT 1 [ RunTime:0.000270s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = 'wei_site' LIMIT 1 [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = 'shop' LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SELECT `id`,`menu_type`,`pid`,`title`,`url_type`,`addon_name`,`url`,`target`,`is_hide`,`sort`,`place` FROM `wp_menu` WHERE  `place` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = 'wei_site' LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000277s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = 'shop' LIMIT 1 [ RunTime:0.000295s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = 'sms' LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = 'wei_site' LIMIT 1 [ RunTime:0.000287s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000250s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:20+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/database_dictionary/database_dictionary/lists/pbid/0?&mdm=803
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000367s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000971s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000734s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000391s ]
+[ sql ] [ SQL ] SELECT TABLE_NAME,COLUMN_NAME,IS_NULLABLE,COLUMN_TYPE,COLUMN_DEFAULT,COLUMN_COMMENT FROM information_schema.`COLUMNS` WHERE TABLE_SCHEMA='weiphp' [ RunTime:0.014216s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000863s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT `name`,`title`,`addon` FROM `wp_model` [ RunTime:0.000370s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:25+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/weixin/publics/lists/pbid/0?&mdm=792_793
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000364s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000984s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000420s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000714s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000364s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000771s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'publics' LIMIT 1 [ RunTime:0.000342s ]
+[ sql ] [ SQL ] SELECT `id`,`uid`,`public_name`,`public_id`,`wechat`,`interface_url`,`headface_url`,`area`,`addon_status`,`is_use`,`type`,`appid`,`secret`,`encodingaeskey`,`tips_url`,`domain`,`is_bind`,`mch_id`,`partner_key`,`cert_pem`,`key_pem`,`authorizer_refresh_token`,`check_file`,`app_type`,`wpid`,`order_payok_messageid` FROM `wp_publics` WHERE  `uid` = 1 [ RunTime:0.000301s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:30+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/sms/sms/config/pbid/0?&mdm=792_798
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000439s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000963s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000755s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000717s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_config` [ RunTime:0.000695s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_public_config` WHERE  `pkey` = 'sms_sms'  AND `pbid` = 0 LIMIT 1 [ RunTime:0.000302s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:31+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/weixin/publics/lists/pbid/0?&mdm=792_793
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000362s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000973s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000757s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000423s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000771s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'publics' LIMIT 1 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SELECT `id`,`uid`,`public_name`,`public_id`,`wechat`,`interface_url`,`headface_url`,`area`,`addon_status`,`is_use`,`type`,`appid`,`secret`,`encodingaeskey`,`tips_url`,`domain`,`is_bind`,`mch_id`,`partner_key`,`cert_pem`,`key_pem`,`authorizer_refresh_token`,`check_file`,`app_type`,`wpid`,`order_payok_messageid` FROM `wp_publics` WHERE  `uid` = 1 [ RunTime:0.000303s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:48+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/shop/shop/lists/pbid/0?&mdm=761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000385s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000990s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000423s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000721s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000430s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000863s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000304s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:13:51+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/weixin/publics/lists/pbid/0?&mdm=792_793
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000378s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000983s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000764s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000745s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000764s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'publics' LIMIT 1 [ RunTime:0.000357s ]
+[ sql ] [ SQL ] SELECT `id`,`uid`,`public_name`,`public_id`,`wechat`,`interface_url`,`headface_url`,`area`,`addon_status`,`is_use`,`type`,`appid`,`secret`,`encodingaeskey`,`tips_url`,`domain`,`is_bind`,`mch_id`,`partner_key`,`cert_pem`,`key_pem`,`authorizer_refresh_token`,`check_file`,`app_type`,`wpid`,`order_payok_messageid` FROM `wp_publics` WHERE  `uid` = 1 [ RunTime:0.000303s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:14:32+08:00 ] 60.12.218.186 GET 47.111.119.90/index.php/Admin/menu/lists/place/1/pbid/0?&mdm=368_370
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000373s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000980s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000279s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000755s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000718s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_menu` WHERE  `place` = 1 LIMIT 1 [ RunTime:0.000309s ]
+[ sql ] [ SQL ] SELECT `title`,`menu_type`,`addon_name`,`url`,`target`,`is_hide`,`sort`,`id` FROM `wp_menu` WHERE  `place` = 1 ORDER BY `id` DESC LIMIT 0,10000 [ RunTime:0.000307s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = 'database_dictionary' LIMIT 1 [ RunTime:0.000296s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000279s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SELECT `id`,`menu_type`,`pid`,`title`,`url_type`,`addon_name`,`url`,`target`,`is_hide`,`sort`,`place` FROM `wp_menu` WHERE  `place` = 1 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000378s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = '' LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SELECT `title` FROM `wp_apps` WHERE  `name` = 'database_dictionary' LIMIT 1 [ RunTime:0.000280s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:27:55+08:00 ] 89.248.169.12 GET 80/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000436s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001048s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000791s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000446s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000749s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000436s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000394s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:36:41+08:00 ] 60.12.218.186 GET 47.111.119.90/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000386s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000973s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000753s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000706s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000371s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:36:41+08:00 ] 60.12.218.186 GET 47.111.119.90/home/user/login
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000368s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000983s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000750s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000722s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_qr_code` [ RunTime:0.000851s ]
+[ sql ] [ SQL ] SELECT `id`,`qr_code`,`addon`,`aim_id`,`cTime`,`action_name`,`extra_text`,`extra_int`,`request_count`,`scene_id`,`expire_seconds`,`pbid` FROM `wp_qr_code` WHERE  `addon` = 'ScanLogin'  AND `extra_text` = '5d2452197b7ca' LIMIT 1 [ RunTime:0.000292s ]
+[ sql ] [ SQL ] SELECT `scene_id` FROM `wp_qr_code` WHERE  ( action_name='QR_SCENE' ) ORDER BY `scene_id` DESC LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_debug_log` [ RunTime:0.001130s ]
+[ sql ] [ SQL ] INSERT INTO `wp_debug_log` (`cTime` , `cTime_format` , `data` , `data_post`) VALUES (1562661401 , '2019-07-09 16:36:41' , 'a:2:{s:7:\"errcode\";i:41001;s:6:\"errmsg\";s:44:\"access_token missing hint: [N7Lega04018675!]\";}' , 'qrcode_error') [ RunTime:0.003205s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:36:50+08:00 ] 60.12.218.186 POST 47.111.119.90/home/user/login/wpid/0/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000387s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001002s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000751s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user` [ RunTime:0.000835s ]
+[ sql ] [ SQL ] SELECT `uid`,`nickname`,`password`,`truename`,`mobile`,`email`,`sex`,`headimgurl`,`city`,`province`,`country`,`language`,`score`,`unionid`,`login_count`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status`,`is_init`,`is_audit`,`subscribe_time`,`remark`,`groupid`,`come_from`,`login_name`,`login_password`,`manager_id`,`level`,`membership`,`bind_openid`,`audit_time`,`grade`,`wpid` FROM `wp_user` WHERE  `nickname` = 'admin' LIMIT 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_action` [ RunTime:0.000673s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_action` WHERE  `name` = 'user_login' LIMIT 1 [ RunTime:0.000270s ]
+[ sql ] [ SQL ] UPDATE `wp_user`  SET `uid` = 1 , `login_count` = login_count+1 , `last_login_time` = 1562661410 , `last_login_ip` = '1007475386'  WHERE  `uid` = 1 [ RunTime:0.000351s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:36:50+08:00 ] 60.12.218.186 GET 47.111.119.90/weixin/publics/lists/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000358s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000946s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000779s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000717s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000410s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000761s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'publics' LIMIT 1 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SELECT `id`,`uid`,`public_name`,`public_id`,`wechat`,`interface_url`,`headface_url`,`area`,`addon_status`,`is_use`,`type`,`appid`,`secret`,`encodingaeskey`,`tips_url`,`domain`,`is_bind`,`mch_id`,`partner_key`,`cert_pem`,`key_pem`,`authorizer_refresh_token`,`check_file`,`app_type`,`wpid`,`order_payok_messageid` FROM `wp_publics` WHERE  `uid` = 1 [ RunTime:0.000299s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:36:54+08:00 ] 60.12.218.186 GET 47.111.119.90/shop/shop/lists/pbid/0?&mdm=761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000375s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000987s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000797s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000422s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000735s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000426s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000760s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000295s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:36:57+08:00 ] 60.12.218.186 GET 47.111.119.90/Shop/shop/add/pbid/0/mdm/761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000359s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000974s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000390s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000740s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000387s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000753s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000284s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000444s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000365s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:37:04+08:00 ] 60.12.218.186 GET 47.111.119.90/weixin/user_center/lists/pbid/0?&mdm=758_794
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000390s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000998s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000778s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000750s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000714s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_public_follow` `f` INNER JOIN `wp_user` `u` ON `f`.`uid`=`u`.`uid` WHERE  `u`.`status` > '0'  AND `f`.`pbid` = '0'  AND `reg_time` BETWEEN '0' AND '1562661424'   AND `f`.`has_subscribe` = '1' LIMIT 1 [ RunTime:0.000353s ]
+[ sql ] [ SQL ] SELECT `u`.`uid`,`f`.`openid` FROM `wp_public_follow` `f` INNER JOIN `wp_user` `u` ON `f`.`uid`=`u`.`uid` WHERE  `u`.`status` > '0'  AND `f`.`pbid` = '0'  AND `reg_time` BETWEEN '0' AND '1562661424'   AND `f`.`has_subscribe` = '1' ORDER BY `u`.`uid` DESC LIMIT 0,20 [ RunTime:0.000338s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group` [ RunTime:0.000714s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group` WHERE  `pbid` = '0' [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag` [ RunTime:0.000643s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user_tag` WHERE  `pbid` = 0 [ RunTime:0.000259s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:51:53+08:00 ] 95.174.101.34 GET 47.111.119.90:80/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000384s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000972s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000769s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000712s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000362s ]
+---------------------------------------------------------------
+[ 2019-07-09T16:53:42+08:00 ] 101.251.242.238 GET 47.111.119.90:80/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000396s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000979s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000761s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000718s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000390s ]
+---------------------------------------------------------------
+[ 2019-07-09T17:30:24+08:00 ] 5.198.241.100 GET /
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000396s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000964s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000699s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000383s ]
+---------------------------------------------------------------
+[ 2019-07-09T18:51:56+08:00 ] 187.195.131.67 GET 47.111.119.90:80/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000413s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000979s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000784s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000403s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000731s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000381s ]
+---------------------------------------------------------------
+[ 2019-07-09T19:14:57+08:00 ] 92.255.185.182 GET 47.111.119.90:80/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000381s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000991s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000270s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000781s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000364s ]
+---------------------------------------------------------------
+[ 2019-07-09T19:30:07+08:00 ] 115.215.223.109 GET 47.111.119.90/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000422s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000982s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000296s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000778s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000439s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000401s ]
+---------------------------------------------------------------
+[ 2019-07-09T19:30:07+08:00 ] 115.215.223.109 GET 47.111.119.90/home/user/login
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000442s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000973s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000782s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000387s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000697s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000367s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_qr_code` [ RunTime:0.000730s ]
+[ sql ] [ SQL ] SELECT `id`,`qr_code`,`addon`,`aim_id`,`cTime`,`action_name`,`extra_text`,`extra_int`,`request_count`,`scene_id`,`expire_seconds`,`pbid` FROM `wp_qr_code` WHERE  `addon` = 'ScanLogin'  AND `extra_text` = '5d247abf57281' LIMIT 1 [ RunTime:0.000295s ]
+[ sql ] [ SQL ] SELECT `scene_id` FROM `wp_qr_code` WHERE  ( action_name='QR_SCENE' ) ORDER BY `scene_id` DESC LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_debug_log` [ RunTime:0.001014s ]
+[ sql ] [ SQL ] INSERT INTO `wp_debug_log` (`cTime` , `cTime_format` , `data` , `data_post`) VALUES (1562671807 , '2019-07-09 19:30:07' , 'a:2:{s:7:\"errcode\";i:41001;s:6:\"errmsg\";s:44:\"access_token missing hint: [lhYY1a08078621!]\";}' , 'qrcode_error') [ RunTime:0.003157s ]
+---------------------------------------------------------------
+[ 2019-07-09T19:30:22+08:00 ] 115.215.223.109 POST 47.111.119.90/home/user/login/wpid/0/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000388s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000968s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user` [ RunTime:0.000870s ]
+[ sql ] [ SQL ] SELECT `uid`,`nickname`,`password`,`truename`,`mobile`,`email`,`sex`,`headimgurl`,`city`,`province`,`country`,`language`,`score`,`unionid`,`login_count`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status`,`is_init`,`is_audit`,`subscribe_time`,`remark`,`groupid`,`come_from`,`login_name`,`login_password`,`manager_id`,`level`,`membership`,`bind_openid`,`audit_time`,`grade`,`wpid` FROM `wp_user` WHERE  `nickname` = 'admin' LIMIT 1 [ RunTime:0.000385s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_action` [ RunTime:0.000678s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_action` WHERE  `name` = 'user_login' LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] UPDATE `wp_user`  SET `uid` = 1 , `login_count` = login_count+1 , `last_login_time` = 1562671822 , `last_login_ip` = '1943527277'  WHERE  `uid` = 1 [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT `openid`,`uid`,`has_subscribe`,`syc_status`,`remark`,`unionid`,`pbid` FROM `wp_public_follow` WHERE  ( uid='1' ) [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag_link` [ RunTime:0.000606s ]
+[ sql ] [ SQL ] SELECT `tag_id` FROM `wp_user_tag_link` WHERE  `uid` = 1 [ RunTime:0.000221s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group_access` [ RunTime:0.000611s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group_access` `a` INNER JOIN `wp_auth_group` `s` ON `a`.`group_id`=`s`.`id` WHERE  `uid` = 1 [ RunTime:0.000311s ]
+---------------------------------------------------------------
+[ 2019-07-09T19:30:22+08:00 ] 115.215.223.109 GET 47.111.119.90/weixin/publics/lists/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000365s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000965s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000728s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000365s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000772s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'publics' LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SELECT `id`,`uid`,`public_name`,`public_id`,`wechat`,`interface_url`,`headface_url`,`area`,`addon_status`,`is_use`,`type`,`appid`,`secret`,`encodingaeskey`,`tips_url`,`domain`,`is_bind`,`mch_id`,`partner_key`,`cert_pem`,`key_pem`,`authorizer_refresh_token`,`check_file`,`app_type`,`wpid`,`order_payok_messageid` FROM `wp_publics` WHERE  `uid` = 1 [ RunTime:0.000302s ]
+---------------------------------------------------------------
+[ 2019-07-09T19:30:25+08:00 ] 115.215.223.109 GET 47.111.119.90/shop/shop/lists/pbid/0?&mdm=761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000386s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000960s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000791s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000731s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000391s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000361s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000270s ]
+---------------------------------------------------------------
+[ 2019-07-09T19:30:28+08:00 ] 115.215.223.109 GET 47.111.119.90/Shop/shop/add/pbid/0/mdm/761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000368s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000990s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000700s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000357s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000338s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000379s ]
+---------------------------------------------------------------
+[ 2019-07-09T19:30:56+08:00 ] 115.215.223.109 GET 47.111.119.90/shop/shop/edit/pbid/0?&mdm=761_776
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000389s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000974s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000775s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000725s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000416s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000273s ]
+---------------------------------------------------------------
+[ 2019-07-09T19:30:59+08:00 ] 115.215.223.109 GET 47.111.119.90/Shop/shop/add/pbid/0/mdm/761_776
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000382s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000980s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000760s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000719s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000412s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000375s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000750s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000282s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000399s ]
+---------------------------------------------------------------
+[ 2019-07-09T19:31:01+08:00 ] 115.215.223.109 GET 47.111.119.90/weixin/user_center/lists/pbid/0?&mdm=758_794
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000371s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001005s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000795s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000402s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000760s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000754s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_public_follow` `f` INNER JOIN `wp_user` `u` ON `f`.`uid`=`u`.`uid` WHERE  `u`.`status` > '0'  AND `f`.`pbid` = '0'  AND `reg_time` BETWEEN '0' AND '1562671861'   AND `f`.`has_subscribe` = '1' LIMIT 1 [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SELECT `u`.`uid`,`f`.`openid` FROM `wp_public_follow` `f` INNER JOIN `wp_user` `u` ON `f`.`uid`=`u`.`uid` WHERE  `u`.`status` > '0'  AND `f`.`pbid` = '0'  AND `reg_time` BETWEEN '0' AND '1562671861'   AND `f`.`has_subscribe` = '1' ORDER BY `u`.`uid` DESC LIMIT 0,20 [ RunTime:0.000338s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group` [ RunTime:0.000735s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group` WHERE  `pbid` = '0' [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag` [ RunTime:0.000667s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user_tag` WHERE  `pbid` = 0 [ RunTime:0.000260s ]
+---------------------------------------------------------------
+[ 2019-07-09T20:06:57+08:00 ] 115.215.223.109 GET 47.111.119.90/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000380s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001004s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000810s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000701s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000388s ]
+---------------------------------------------------------------
+[ 2019-07-09T20:06:57+08:00 ] 115.215.223.109 GET 47.111.119.90/home/user/login
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000382s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000978s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000791s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000752s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000422s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000376s ]
+---------------------------------------------------------------
+[ 2019-07-09T20:06:57+08:00 ] 115.215.223.109 GET 47.111.119.90/weixin/publics/lists/pbid/0
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000368s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000977s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000789s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000741s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'publics' LIMIT 1 [ RunTime:0.000365s ]
+[ sql ] [ SQL ] SELECT `id`,`uid`,`public_name`,`public_id`,`wechat`,`interface_url`,`headface_url`,`area`,`addon_status`,`is_use`,`type`,`appid`,`secret`,`encodingaeskey`,`tips_url`,`domain`,`is_bind`,`mch_id`,`partner_key`,`cert_pem`,`key_pem`,`authorizer_refresh_token`,`check_file`,`app_type`,`wpid`,`order_payok_messageid` FROM `wp_publics` WHERE  `uid` = 1 [ RunTime:0.000305s ]
+---------------------------------------------------------------
+[ 2019-07-09T20:07:00+08:00 ] 115.215.223.109 GET 47.111.119.90/shop/shop/lists/pbid/0?&mdm=761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000366s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000962s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000768s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000422s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000377s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000762s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000287s ]
+---------------------------------------------------------------
+[ 2019-07-09T20:07:03+08:00 ] 115.215.223.109 GET 47.111.119.90/Shop/shop/add/pbid/0/mdm/761
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000369s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000981s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000309s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000349s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000378s ]
+---------------------------------------------------------------
+[ 2019-07-09T20:07:04+08:00 ] 115.215.223.109 GET 47.111.119.90/weixin/user_center/lists/pbid/0?&mdm=758_794
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000367s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000958s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.002080s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000793s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000782s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_public_follow` `f` INNER JOIN `wp_user` `u` ON `f`.`uid`=`u`.`uid` WHERE  `u`.`status` > '0'  AND `f`.`pbid` = '0'  AND `reg_time` BETWEEN '0' AND '1562674024'   AND `f`.`has_subscribe` = '1' LIMIT 1 [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SELECT `u`.`uid`,`f`.`openid` FROM `wp_public_follow` `f` INNER JOIN `wp_user` `u` ON `f`.`uid`=`u`.`uid` WHERE  `u`.`status` > '0'  AND `f`.`pbid` = '0'  AND `reg_time` BETWEEN '0' AND '1562674024'   AND `f`.`has_subscribe` = '1' ORDER BY `u`.`uid` DESC LIMIT 0,20 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group` [ RunTime:0.000712s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group` WHERE  `pbid` = '0' [ RunTime:0.000280s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag` [ RunTime:0.000665s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user_tag` WHERE  `pbid` = 0 [ RunTime:0.000237s ]
+---------------------------------------------------------------
+[ 2019-07-09T20:07:09+08:00 ] 115.215.223.109 GET 47.111.119.90/weixin/user_center/lists/pbid/0?&mdm=758_794
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000377s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000992s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000300s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000749s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000427s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000735s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_public_follow` `f` INNER JOIN `wp_user` `u` ON `f`.`uid`=`u`.`uid` WHERE  `u`.`status` > '0'  AND `f`.`pbid` = '0'  AND `reg_time` BETWEEN '0' AND '1562674029'   AND `f`.`has_subscribe` = '1' LIMIT 1 [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SELECT `u`.`uid`,`f`.`openid` FROM `wp_public_follow` `f` INNER JOIN `wp_user` `u` ON `f`.`uid`=`u`.`uid` WHERE  `u`.`status` > '0'  AND `f`.`pbid` = '0'  AND `reg_time` BETWEEN '0' AND '1562674029'   AND `f`.`has_subscribe` = '1' ORDER BY `u`.`uid` DESC LIMIT 0,20 [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group` [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group` WHERE  `pbid` = '0' [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag` [ RunTime:0.000649s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user_tag` WHERE  `pbid` = 0 [ RunTime:0.000234s ]
