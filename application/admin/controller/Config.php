@@ -7,7 +7,7 @@
 // | Author: 凡星 <weiphp@weiphp.cn> <QQ:203163051>
 // +----------------------------------------------------------------------
 namespace app\admin\controller;
-
+use app\common\controller\ApiBase;
 /**
  * 后台配置控制器
  */
@@ -16,6 +16,10 @@ class Config extends Admin
 
     function test()
     {
+        $this->push_wm_msg('1','test');
+        echo 'msg';
+        exit;
+        print_r($this->error('test'));exit;
         $dirname = 'E:\htdocs\onlineshop\Addons';
         $dir = dir($dirname);
         while (false !== $entry = $dir->read()) {
