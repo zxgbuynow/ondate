@@ -16,3 +16,12 @@
 ---------------------------------------------------------------
 [ 2019-07-13T12:53:34+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
 [ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'COMMENT ''' at line 1[/data/httpd/ondate/thinkphp/library/think/db/Connection.php:764]
+---------------------------------------------------------------
+[ 2019-07-13T15:06:57+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1067 Invalid default value for 'type'[/data/httpd/ondate/thinkphp/library/think/db/Connection.php:764]
+---------------------------------------------------------------
+[ 2019-07-13T15:08:25+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1413/pbid/1
+[ error ] [8]未定义数组索引: title[/data/httpd/ondate/runtime/temp/7b8863198bcf2ab19ef3bf024baf1901.php:140]
+---------------------------------------------------------------
+[ 2019-07-13T15:09:22+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1413/pbid/1
+[ error ] [8]未定义数组索引: title[/data/httpd/ondate/runtime/temp/7b8863198bcf2ab19ef3bf024baf1901.php:140]

@@ -59,8 +59,9 @@ class CallsTable {
       ],
       'status' => [
           'title' => '状态',
-          'type' => 'string',
-          'field' => 'varchar(5) NULL',
+          'type' => 'bool',
+          'field' => 'tinyint(2) NULL',
+          'remark' => '0等待 1上钟 2退单 3完成 4注销',
           'is_show' => 1,
           'placeholder' => '请输入内容'
       ],
@@ -124,11 +125,18 @@ class CallsTable {
       ],
       'type' => [
           'title' => '类型',
-          'type' => 'string',
-          'field' => 'varchar(5) NULL',
+          'type' => 'bool',
+          'field' => 'tinyint(2) NULL',
           'remark' => '0实物1服务',
           'is_show' => 1,
           'is_must' => 0
+      ],
+      'room_id' => [
+          'title' => '房间id',
+          'type' => 'num',
+          'field' => 'int(10) NULL',
+          'is_show' => 1,
+          'placeholder' => '请输入内容'
       ]
   ];
 }
