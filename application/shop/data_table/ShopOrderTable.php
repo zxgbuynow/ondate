@@ -403,6 +403,11 @@ class ShopOrderTable {
           'is_show' => 0,
           'extra' => '0:实物 1:服务',
       ],
+        'room' => [
+            'title' => '房间编号',
+            'field' => 'varchar(10) NULL',
+            'type' => 'string'
+        ],
       
   ];
 }
