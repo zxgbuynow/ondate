@@ -361,12 +361,48 @@ class ShopOrderTable {
           'is_show' => 1,
           'placeholder' => '请输入内容'
       ],
-      'room' => [
-          'title' => '房间编号',
-          'type' => 'string',
-          'field' => 'varchar(10) NULL',
+      'begin_time' => [
+          'title' => '开始时间',
+          'field' => 'int(10) NULL',
+          'type' => 'datetime',
           'is_show' => 1,
-          'is_must' => 0
-      ]
+          'placeholder' => '请输入内容'
+      ],
+      'end_time' => [
+          'title' => '结束时间',
+          'field' => 'int(10) NULL',
+          'type' => 'datetime',
+          'is_show' => 1,
+          'placeholder' => '请输入内容'
+      ],
+      'art_id' => [
+          'title' => '技师ID',
+          'type' => 'num',
+          'field' => 'int(10) NULL',
+          'is_show' => 1,
+          'placeholder' => '请输入内容'
+      ],
+      'service_type' => [
+          'title' => '服务类型',
+          'field' => 'tinyint(2) NULL',
+          'type' => 'radio',
+          'is_show' => 0,
+          'extra' => '0:足浴 1:SPA',
+      ],
+      'way' => [
+          'title' => '方式',
+          'field' => 'tinyint(2) NULL',
+          'type' => 'radio',
+          'is_show' => 0,
+          'extra' => '0:排 1:点',
+      ],
+      'type' => [
+          'title' => '商品类型',
+          'field' => 'tinyint(2) NULL',
+          'type' => 'radio',
+          'is_show' => 0,
+          'extra' => '0:实物 1:服务',
+      ],
+      
   ];
 }
