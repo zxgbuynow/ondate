@@ -1,0 +1,1252 @@
+---------------------------------------------------------------
+[ 2019-07-13T10:24:25+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/Admin/update/delcache/pbid/1?&mdm=367_375
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000378s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000895s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000430s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000736s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000368s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_cache_keys` [ RunTime:0.000681s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_cache_keys` WHERE  `table_name` = 'wp_user' [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user` [ RunTime:0.000829s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000352s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000668s ]
+[ sql ] [ SQL ] SELECT `openid`,`uid`,`has_subscribe`,`syc_status`,`remark`,`unionid`,`pbid` FROM `wp_public_follow` WHERE  ( uid='1' ) [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag_link` [ RunTime:0.000642s ]
+[ sql ] [ SQL ] SELECT `tag_id` FROM `wp_user_tag_link` WHERE  `uid` = 1 [ RunTime:0.000214s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group_access` [ RunTime:0.000625s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group_access` `a` INNER JOIN `wp_auth_group` `s` ON `a`.`group_id`=`s`.`id` WHERE  `uid` = 1 [ RunTime:0.000314s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:24:28+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/Admin/model/index/pbid/1?&mdm=366
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000385s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_cache_keys` [ RunTime:0.000847s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_cache_keys` WHERE  `table_name` = 'wp_publics' [ RunTime:0.000342s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.000803s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_publics` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_config` [ RunTime:0.000712s ]
+[ sql ] [ SQL ] SELECT `type`,`name`,`value` FROM `wp_config` WHERE  `status` = 1 [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_cache_keys` WHERE  `table_name` = 'wp_menu' [ RunTime:0.000281s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_cache_keys` WHERE  `table_name` = 'wp_apps' [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000689s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000338s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000685s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000355s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_auth` [ RunTime:0.000655s ]
+[ sql ] [ SQL ] SELECT `name`,type_0 as val FROM `wp_public_auth` [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000336s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000739s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000301s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` LIMIT 1 [ RunTime:0.000296s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000562s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000506s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000513s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlog' [ RunTime:0.000507s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_cardlog [ RunTime:0.000624s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_signin_log' [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_signin_log [ RunTime:0.000616s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000644s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_content' [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_content [ RunTime:0.000611s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_stock' [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_stock [ RunTime:0.000689s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_param_temp' [ RunTime:0.000543s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_param_temp [ RunTime:0.000621s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_template_messages' [ RunTime:0.000543s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_template_messages [ RunTime:0.000679s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_event_prizes' [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_event_prizes [ RunTime:0.000650s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_track' [ RunTime:0.000546s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_track [ RunTime:0.000642s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_stores_user' [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_stores_user [ RunTime:0.000640s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_chat' [ RunTime:0.000538s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_chat [ RunTime:0.000635s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_membership' [ RunTime:0.000537s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_membership [ RunTime:0.000650s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_reward' [ RunTime:0.000536s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_reward [ RunTime:0.000649s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_cashout_account' [ RunTime:0.000531s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_cashout_account [ RunTime:0.000658s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_reward_condition' [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_reward_condition [ RunTime:0.000654s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_prize_list' [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_lottery_prize_list [ RunTime:0.000671s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lzwg_activities' [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_lzwg_activities [ RunTime:0.000672s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:24:34+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/index/pbid/1/title/order
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000455s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000912s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000457s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.001137s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000327s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` WHERE  `name` LIKE '%order%' LIMIT 1 [ RunTime:0.000365s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` LIKE '%order%' ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000235s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000510s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000534s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000659s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_log' [ RunTime:0.000791s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_log [ RunTime:0.000640s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order' [ RunTime:0.000537s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order [ RunTime:0.000839s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:24:38+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/edit/id/1408/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000347s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000895s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000450s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000742s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000381s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000345s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000779s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1408 LIMIT 1 [ RunTime:0.000329s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000240s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:26:31+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/edit/id/1408/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000373s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000929s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000472s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000779s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000800s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1408 LIMIT 1 [ RunTime:0.000327s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000239s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:26:54+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/index/pbid/1/title/order
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000352s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000899s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000762s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000379s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000363s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000312s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` WHERE  `name` LIKE '%order%' LIMIT 1 [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` LIKE '%order%' ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000499s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000558s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000515s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000521s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000508s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000659s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_log' [ RunTime:0.000541s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_log [ RunTime:0.000635s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order' [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order [ RunTime:0.000842s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:27:07+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1408/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000358s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000919s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000464s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000793s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000355s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1408 LIMIT 1 [ RunTime:0.000310s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:27:59+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/index/pbid/1/title/order
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000370s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000920s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000456s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000760s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000345s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000778s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000333s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` WHERE  `name` LIKE '%order%' LIMIT 1 [ RunTime:0.000361s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` LIKE '%order%' ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000536s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000537s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000503s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000546s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000643s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_log' [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_log [ RunTime:0.000657s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order' [ RunTime:0.000551s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order [ RunTime:0.000851s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:31:04+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/index/pbid/1/title/goods
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000389s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000904s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000436s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000758s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000392s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000765s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` WHERE  `name` LIKE '%goods%' LIMIT 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` LIKE '%goods%' ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000543s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000560s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000510s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000515s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000508s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000526s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000504s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000671s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_content' [ RunTime:0.000541s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_content [ RunTime:0.000622s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_stock' [ RunTime:0.000521s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_stock [ RunTime:0.000685s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_param_temp' [ RunTime:0.000540s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_param_temp [ RunTime:0.000620s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods' [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods [ RunTime:0.000783s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_category' [ RunTime:0.000553s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_category [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_score' [ RunTime:0.000540s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_score [ RunTime:0.000628s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_sku_data' [ RunTime:0.000543s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_sku_data [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_sku_config' [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_sku_config [ RunTime:0.000627s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_comment' [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_comment [ RunTime:0.000661s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_store_link' [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_store_link [ RunTime:0.000659s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_param_link' [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_param_link [ RunTime:0.000622s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_category_link' [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_category_link [ RunTime:0.000652s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:31:12+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/edit/id/1413/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000386s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000902s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000762s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000390s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000793s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1413 LIMIT 1 [ RunTime:0.000338s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000235s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:31:56+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/index/pbid/1/title/goods
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000375s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000975s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000448s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000763s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000775s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000316s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` WHERE  `name` LIKE '%goods%' LIMIT 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` LIKE '%goods%' ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000591s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000549s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000518s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000510s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000505s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000680s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_content' [ RunTime:0.000518s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_content [ RunTime:0.000638s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_stock' [ RunTime:0.000541s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_stock [ RunTime:0.000685s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_param_temp' [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_param_temp [ RunTime:0.000646s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods' [ RunTime:0.000543s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_category' [ RunTime:0.000554s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_category [ RunTime:0.000645s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_score' [ RunTime:0.000531s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_score [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_sku_data' [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_sku_data [ RunTime:0.000678s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_sku_config' [ RunTime:0.000536s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_sku_config [ RunTime:0.000650s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_comment' [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_comment [ RunTime:0.000649s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_store_link' [ RunTime:0.000546s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_store_link [ RunTime:0.000668s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_param_link' [ RunTime:0.000536s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_param_link [ RunTime:0.000636s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_category_link' [ RunTime:0.000543s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_category_link [ RunTime:0.000649s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:32:01+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/index/pbid/1/title/order
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000382s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000935s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000361s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000816s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000334s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` WHERE  `name` LIKE '%order%' LIMIT 1 [ RunTime:0.000415s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` LIKE '%order%' ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000568s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000504s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000509s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000511s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000507s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000693s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_log' [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_log [ RunTime:0.000674s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order' [ RunTime:0.000546s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order [ RunTime:0.000858s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:32:02+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/edit/id/1409/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000389s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000928s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000784s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000355s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000778s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1409 LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000258s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:32:08+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/index/pbid/1/title/order
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000396s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000898s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000451s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000774s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000829s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000314s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` WHERE  `name` LIKE '%order%' LIMIT 1 [ RunTime:0.000376s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` LIKE '%order%' ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000507s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000559s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000506s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000521s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000663s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_log' [ RunTime:0.000537s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_log [ RunTime:0.000645s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order' [ RunTime:0.000531s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order [ RunTime:0.000847s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:32:12+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/edit/id/1408/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000373s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000903s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000438s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000754s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000385s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1408 LIMIT 1 [ RunTime:0.000334s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000240s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:52:21+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/shop/order/lists/pbid/1?&mdm=761_778
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000374s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_cache_keys` [ RunTime:0.000864s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_cache_keys` WHERE  `table_name` = 'wp_model' [ RunTime:0.000361s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000811s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'shop_order' LIMIT 1 [ RunTime:0.000413s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000731s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000333s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000679s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000375s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000724s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000296s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_order` [ RunTime:0.000823s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_shop_order` WHERE  `wpid` = 1  AND `pay_status` = 0  AND ( is_lock=1 or (is_lock=0 and refund>0) ) LIMIT 1 [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SELECT `id`,`goods_datas`,`uid`,`remark`,`order_number`,`cTime`,`total_price`,`openid`,`pay_status`,`pay_type`,`address_id`,`is_send`,`send_code`,`send_number`,`send_type`,`is_new`,`wpid`,`status_code`,`event_type`,`is_lock`,`erp_lock_code`,`mail_money`,`stores_id`,`pay_time`,`send_time`,`extra`,`order_state`,`out_trade_no`,`event_id`,`is_original`,`update_at`,`notice_erp`,`refund`,`refund_content`,`pay_money`,`dec_money`,`begin_time`,`end_time`,`art_id`,`service_type`,`way`,`type` FROM `wp_shop_order` WHERE  `wpid` = 1  AND `pay_status` = 0  AND ( is_lock=1 or (is_lock=0 and refund>0) ) ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000400s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:52:26+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/shop/goods/lists/pbid/1?&mdm=761_777
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000376s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000992s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` = 'shop_goods' LIMIT 1 [ RunTime:0.000561s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000341s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000734s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000757s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000294s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods` [ RunTime:0.000796s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_shop_goods` `g` INNER JOIN `wp_shop_goods_stock` `s` ON `s`.`goods_id`=g.id and s.event_type=0 WHERE  `wpid` = 1  AND `is_delete` = 0  AND `is_show` = 1  AND `stock_active` > '0' LIMIT 1 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop_goods` `g` INNER JOIN `wp_shop_goods_stock` `s` ON `s`.`goods_id`=g.id and s.event_type=0 WHERE  `wpid` = 1  AND `is_delete` = 0  AND `is_show` = 1  AND `stock_active` > '0' ORDER BY `g`.`id` DESC LIMIT 0,20 [ RunTime:0.000765s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods_category` [ RunTime:0.000690s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `wp_shop_goods_category` WHERE  `wpid` = 1  AND `is_show` = 1 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_cache_keys` [ RunTime:0.000633s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_cache_keys` WHERE  `table_name` = 'wp_picture' [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_picture` [ RunTime:0.000685s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_picture` WHERE  `status` = 1  AND `id` = 3247 LIMIT 1 [ RunTime:0.000270s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_picture` WHERE  `status` = 1  AND `id` = 3246 LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_picture` WHERE  `status` = 1  AND `id` = 3116 LIMIT 1 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_picture` WHERE  `status` = 1  AND `id` = 3117 LIMIT 1 [ RunTime:0.000269s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:52:32+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/shop/goods/lists/pbid/1/cid/102
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000370s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000920s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000436s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_goods_category_link` [ RunTime:0.000687s ]
+[ sql ] [ SQL ] SELECT `goods_id` FROM `wp_goods_category_link` WHERE  ( `category_second` = 102 OR `category_first` = 102 ) [ RunTime:0.000243s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods` [ RunTime:0.000815s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_shop_goods` `g` INNER JOIN `wp_shop_goods_stock` `s` ON `s`.`goods_id`=g.id and s.event_type=0 WHERE  `wpid` = 1  AND `is_delete` = 0  AND `is_show` = 1  AND `stock_active` > '0'  AND `id` IN (158,160) LIMIT 1 [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop_goods` `g` INNER JOIN `wp_shop_goods_stock` `s` ON `s`.`goods_id`=g.id and s.event_type=0 WHERE  `wpid` = 1  AND `is_delete` = 0  AND `is_show` = 1  AND `stock_active` > '0'  AND `id` IN (158,160) ORDER BY `g`.`id` DESC LIMIT 0,20 [ RunTime:0.000478s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods_category` [ RunTime:0.000663s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `wp_shop_goods_category` WHERE  `wpid` = 1  AND `is_show` = 1 [ RunTime:0.000264s ]
+---------------------------------------------------------------
+[ 2019-07-13T10:52:35+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/shop/goods/lists/pbid/1?&mdm=761_777
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000365s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000919s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000463s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000777s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000418s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000375s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop` [ RunTime:0.000773s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000291s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods` [ RunTime:0.000818s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_shop_goods` `g` INNER JOIN `wp_shop_goods_stock` `s` ON `s`.`goods_id`=g.id and s.event_type=0 WHERE  `wpid` = 1  AND `is_delete` = 0  AND `is_show` = 1  AND `stock_active` > '0' LIMIT 1 [ RunTime:0.002387s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_shop_goods` `g` INNER JOIN `wp_shop_goods_stock` `s` ON `s`.`goods_id`=g.id and s.event_type=0 WHERE  `wpid` = 1  AND `is_delete` = 0  AND `is_show` = 1  AND `stock_active` > '0' ORDER BY `g`.`id` DESC LIMIT 0,20 [ RunTime:0.000805s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_shop_goods_category` [ RunTime:0.000706s ]
+[ sql ] [ SQL ] SELECT `id`,`title` FROM `wp_shop_goods_category` WHERE  `wpid` = 1  AND `is_show` = 1 [ RunTime:0.000256s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:48:35+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/index/pbid/1/title/order
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000358s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user` [ RunTime:0.001036s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_user` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000491s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_public_follow` [ RunTime:0.000729s ]
+[ sql ] [ SQL ] SELECT `openid`,`uid`,`has_subscribe`,`syc_status`,`remark`,`unionid`,`pbid` FROM `wp_public_follow` WHERE  ( uid='1' ) [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_user_tag_link` [ RunTime:0.000660s ]
+[ sql ] [ SQL ] SELECT `tag_id` FROM `wp_user_tag_link` WHERE  `uid` = 1 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_auth_group_access` [ RunTime:0.000637s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_auth_group_access` `a` INNER JOIN `wp_auth_group` `s` ON `a`.`group_id`=`s`.`id` WHERE  `uid` = 1 [ RunTime:0.000333s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000700s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000331s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000709s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000341s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000301s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` WHERE  `name` LIKE '%order%' LIMIT 1 [ RunTime:0.000368s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` LIKE '%order%' ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000535s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000558s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000530s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000506s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000502s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000501s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000508s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000641s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_log' [ RunTime:0.000536s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_log [ RunTime:0.000660s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order' [ RunTime:0.000521s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order [ RunTime:0.000874s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:48:39+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/Admin/model/index/pbid/1?&mdm=366
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000375s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000915s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000454s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000391s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000813s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000326s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000567s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000553s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000507s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000516s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000509s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlog' [ RunTime:0.000530s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_cardlog [ RunTime:0.000675s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_signin_log' [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_signin_log [ RunTime:0.000684s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000616s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_content' [ RunTime:0.000549s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_content [ RunTime:0.000657s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_stock' [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_stock [ RunTime:0.000685s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_param_temp' [ RunTime:0.000555s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_param_temp [ RunTime:0.000655s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_template_messages' [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_template_messages [ RunTime:0.000684s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_event_prizes' [ RunTime:0.000553s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_event_prizes [ RunTime:0.000663s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_track' [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_track [ RunTime:0.000658s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_stores_user' [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_stores_user [ RunTime:0.000628s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_chat' [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_chat [ RunTime:0.000667s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_membership' [ RunTime:0.000548s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_membership [ RunTime:0.000626s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_reward' [ RunTime:0.000536s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_reward [ RunTime:0.000676s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_cashout_account' [ RunTime:0.000554s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_cashout_account [ RunTime:0.000627s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_reward_condition' [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_reward_condition [ RunTime:0.000681s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_prize_list' [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_lottery_prize_list [ RunTime:0.000626s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lzwg_activities' [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_lzwg_activities [ RunTime:0.000696s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:48:41+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/add/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000366s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000899s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000439s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000736s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000385s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000781s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title` FROM `wp_model` [ RunTime:0.000370s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000249s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:49:35+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/model/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000355s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000925s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000476s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000819s ]
+[ sql ] [ SQL ] INSERT INTO `wp_model` (`name` , `title` , `search_key` , `list_row` , `addon`) VALUES ('calls' , '叫钟表' , '' , 20 , '') [ RunTime:0.003295s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:49:37+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/index/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000349s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000931s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000456s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000768s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000364s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000773s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000302s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` LIMIT 1 [ RunTime:0.000312s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000269s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000574s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000512s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000510s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000517s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000502s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000530s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000502s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlog' [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_cardlog [ RunTime:0.000675s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_signin_log' [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_signin_log [ RunTime:0.000667s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_order_goods' [ RunTime:0.000557s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_order_goods [ RunTime:0.000613s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_content' [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_content [ RunTime:0.000642s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_goods_stock' [ RunTime:0.000538s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_goods_stock [ RunTime:0.000653s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_goods_param_temp' [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_goods_param_temp [ RunTime:0.000646s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_template_messages' [ RunTime:0.000537s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_template_messages [ RunTime:0.000659s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_event_prizes' [ RunTime:0.000529s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_event_prizes [ RunTime:0.000659s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_track' [ RunTime:0.000539s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_track [ RunTime:0.000628s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_stores_user' [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_stores_user [ RunTime:0.000634s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_chat' [ RunTime:0.000520s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_chat [ RunTime:0.000671s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_membership' [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_membership [ RunTime:0.000639s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_reward' [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_reward [ RunTime:0.000674s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_cashout_account' [ RunTime:0.000549s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_cashout_account [ RunTime:0.000642s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_reward_condition' [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_shop_reward_condition [ RunTime:0.000669s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_prize_list' [ RunTime:0.000550s ]
+[ sql ] [ SQL ] SHOW FULL COLUMNS FROM wp_lottery_prize_list [ RunTime:0.000622s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:49:44+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/index/pbid/1/title/calls
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000390s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000922s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000490s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000781s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000806s ]
+[ sql ] [ SQL ] SELECT `name`,`id` FROM `wp_model` [ RunTime:0.000346s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `wp_model` WHERE  `name` LIKE '%calls%' LIMIT 1 [ RunTime:0.000373s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `name` LIKE '%calls%' ORDER BY `id` DESC LIMIT 0,20 [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SELECT `name`,`title` FROM `wp_apps` [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_addon_category' [ RunTime:0.000546s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_exam' [ RunTime:0.000534s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_card_member' [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_test' [ RunTime:0.000510s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_cardlist' [ RunTime:0.000506s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_shop_card_member' [ RunTime:0.000532s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games_award_link' [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_lottery_games' [ RunTime:0.000519s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000528s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:49:47+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000362s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000918s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000476s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000343s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000783s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000317s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:49:49+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000395s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000918s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000781s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000387s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000784s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000270s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:51:31+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000381s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000923s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000472s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000845s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000353s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000549s ]
+[ sql ] [ SQL ] SELECT `engine_type`,`need_pk` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000228s ]
+[ sql ] [ SQL ]                 CREATE TABLE IF NOT EXISTS `wp_calls` (
+                `id`  int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键' ,
+                `jsbn`  varchar(10) NULL  COMMENT '技师编号' ,
+                PRIMARY KEY (`id`)
+                )ENGINE=MyISAM DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci CHECKSUM=0 ROW_FORMAT=DYNAMIC DELAY_KEY_WRITE=0; [ RunTime:0.003957s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000290s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000293s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:51:33+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000403s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000900s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000444s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000757s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000839s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000332s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:51:54+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000373s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000933s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000457s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000816s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000262s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:52:31+08:00 ] 187.110.210.205 GET 47.111.119.90:80/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000389s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_publics` [ RunTime:0.001005s ]
+[ sql ] [ SQL ] SELECT `id` FROM `wp_publics` LIMIT 1 [ RunTime:0.000270s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000807s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000392s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000769s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 0  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000392s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000387s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:52:51+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000380s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000928s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000473s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000840s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000552s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `sex`  int(1) NULL  DEFAULT 0 COMMENT '性别'; [ RunTime:0.004381s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000313s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000295s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:52:52+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000415s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000914s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000457s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000779s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000407s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000302s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:52:53+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000359s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000921s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000463s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000356s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000254s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:53:22+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000372s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000940s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000451s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000827s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000541s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `room`  varchar(10) NULL  COMMENT '房间号'; [ RunTime:0.003663s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000311s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:53:24+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000371s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000924s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000466s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000364s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000829s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000310s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:53:25+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000408s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000921s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000452s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000793s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000352s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000256s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:53:34+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000365s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000922s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000483s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000858s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000346s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000568s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:55:00+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000404s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000940s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000470s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000879s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000421s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000396s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000804s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000312s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:55:03+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000422s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000912s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000475s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000815s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000410s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000810s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000265s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:55:37+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000378s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000941s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000463s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000837s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000560s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `calltime`  int(10) NULL  COMMENT '呼叫时间'; [ RunTime:0.003368s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000317s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000295s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:55:38+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000363s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000940s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000457s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000349s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000814s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000307s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:55:39+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000381s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000901s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000435s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000758s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000392s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000830s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000282s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:56:21+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000383s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000932s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000454s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000826s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000353s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000282s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000577s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `retime`  int(10) NULL  COMMENT '响应时间'; [ RunTime:0.003489s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000305s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000281s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:56:23+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000368s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000936s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000459s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000788s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000793s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000320s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:56:44+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000397s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000935s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000796s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000386s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000381s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000774s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000255s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:57:55+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000375s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000926s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000465s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000837s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000345s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000545s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `status`  varchar(5) NULL  COMMENT '状态'; [ RunTime:0.003274s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000294s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000302s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:57:56+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000361s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000932s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000478s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000795s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000820s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000314s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:57:57+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000394s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000919s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000443s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000813s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000391s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000373s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000783s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000258s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:58:51+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000403s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000951s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000852s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000570s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `begin_time`  int(10) NULL  COMMENT '开始时间'; [ RunTime:0.004026s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000336s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000332s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:58:52+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000376s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000927s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000446s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000783s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000399s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000302s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:58:53+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000388s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000934s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000449s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000807s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000385s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000797s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000261s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:59:49+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000416s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000931s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000524s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000877s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000341s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000576s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `end_time`  int(10) NULL  COMMENT '结束时间'; [ RunTime:0.004038s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000319s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000338s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:59:50+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000395s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000932s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000455s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000752s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000376s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000814s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000307s ]
+---------------------------------------------------------------
+[ 2019-07-13T12:59:52+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000364s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000942s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000470s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000801s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000419s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000379s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000841s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000273s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:00:22+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000382s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000944s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000462s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000859s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000369s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000542s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `art_id`  int(10) NULL  COMMENT '用户id'; [ RunTime:0.003668s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000314s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000322s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:00:24+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000383s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000936s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000463s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000787s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000408s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000353s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000797s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000309s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:00:25+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000382s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000923s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000758s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000815s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000287s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:01:22+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000402s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000960s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000451s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000841s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000325s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000560s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `service_type`  int(2) NULL  COMMENT '服务类型'; [ RunTime:0.003579s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000309s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000284s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:01:24+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000383s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000937s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000464s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000781s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000387s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000348s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000773s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000300s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:01:25+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000377s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000928s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000441s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000746s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000372s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000808s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000255s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:02:00+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000378s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000925s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000449s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000811s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000317s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000541s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `num`  int(10) NULL  COMMENT '数量'; [ RunTime:0.003212s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000303s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000285s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:02:01+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000387s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000986s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000454s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000846s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000426s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000372s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000818s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000311s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:02:05+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000367s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000932s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000442s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000768s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000414s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000387s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000812s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000281s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:03:25+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000383s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000925s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000452s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000823s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000329s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000541s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `price`  varchar(255) NULL  COMMENT '消费金额'; [ RunTime:0.003747s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000291s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:03:27+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000412s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000950s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000454s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000845s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000405s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000873s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000327s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:03:28+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000367s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.001031s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000395s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000805s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000286s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:03:50+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000377s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000932s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000441s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000838s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000325s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000560s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `total`  varchar(255) NULL  COMMENT '总价'; [ RunTime:0.003114s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000302s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000310s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:03:52+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000373s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000950s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000457s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000790s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000341s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000305s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:03:53+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000361s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000931s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000437s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000809s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000406s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000363s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000840s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000268s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:04:54+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000374s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000936s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000447s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000814s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000335s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000547s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `way`  varchar(5) NULL  COMMENT '叫钟类型'; [ RunTime:0.003236s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000309s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000312s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:04:56+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000376s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000932s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000803s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000378s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000792s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000314s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:04:58+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000365s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000939s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000437s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000768s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000358s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000816s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000257s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:05:48+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000369s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000935s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000465s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000830s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000344s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000548s ]
+[ sql ] [ SQL ]                 ALTER TABLE `wp_calls` ADD COLUMN `type`  varchar(5) NULL  COMMENT '类型'; [ RunTime:0.003363s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000298s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000302s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:05:50+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000381s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000952s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000477s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000369s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000306s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:05:51+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000363s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000936s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000467s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000793s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000355s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000777s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000256s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:06:01+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000392s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000967s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000445s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000782s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000425s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000839s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000340s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:06:06+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/edit/name/type/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000377s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000922s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000435s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000786s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000379s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000376s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000883s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000327s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000252s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:06:23+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000359s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000927s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000458s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000842s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000352s ]
+[ sql ] [ SQL ] SELECT `name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SHOW TABLES LIKE 'wp_calls' [ RunTime:0.000548s ]
+[ sql ] [ SQL ]             ALTER TABLE `wp_calls` CHANGE COLUMN `type` `type`  varchar(5) NULL  COMMENT '类型' ; [ RunTime:0.002740s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000296s ]
+[ sql ] [ SQL ] UPDATE `wp_model`  SET `name` = 'calls' , `title` = '叫钟表' , `search_key` = '' , `list_row` = 20 , `addon` = ''  WHERE  `id` = 1486 [ RunTime:0.000318s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:06:25+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000381s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000918s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000444s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000794s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000403s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000349s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000800s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000302s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:06:27+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/edit/name/way/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000401s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000935s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000790s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000377s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000381s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000806s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000321s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000285s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:06:30+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000373s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000942s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000465s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000795s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000347s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000782s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000303s ]
+---------------------------------------------------------------
+[ 2019-07-13T13:06:31+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/add/model_id/1486/pbid/1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000379s ] mysql:host=127.0.0.1;port=3306;dbname=weiphp;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_apps` [ RunTime:0.000920s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000439s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_menu` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_menu` WHERE  `place` = 1  AND `is_hide` = 0 ORDER BY `sort` ASC,`id` ASC [ RunTime:0.000416s ]
+[ sql ] [ SQL ] SELECT * FROM `wp_apps` WHERE  `status` = 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `wp_model` [ RunTime:0.000824s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`name` FROM `wp_model` WHERE  `id` = 1486 LIMIT 1 [ RunTime:0.000287s ]

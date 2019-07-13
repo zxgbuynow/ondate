@@ -1,0 +1,18 @@
+---------------------------------------------------------------
+[ 2019-07-13T10:24:25+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/Admin/update/delcache/pbid/1?&mdm=367_375
+[ error ] [2]mkdir(): File exists[/data/httpd/ondate/application/admin/controller/Update.php:63]
+---------------------------------------------------------------
+[ 2019-07-13T10:24:38+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/edit/id/1408/pbid/1
+[ error ] [8]未定义数组索引: title[/data/httpd/ondate/runtime/temp/25bbe7faffb506c74d2abedf6d1b8c5b.php:214]
+---------------------------------------------------------------
+[ 2019-07-13T10:26:31+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/edit/id/1408/pbid/1
+[ error ] [8]未定义数组索引: title[/data/httpd/ondate/runtime/temp/25bbe7faffb506c74d2abedf6d1b8c5b.php:214]
+---------------------------------------------------------------
+[ 2019-07-13T10:27:07+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/attribute/index/model_id/1408/pbid/1
+[ error ] [8]未定义数组索引: title[/data/httpd/ondate/runtime/temp/7b8863198bcf2ab19ef3bf024baf1901.php:140]
+---------------------------------------------------------------
+[ 2019-07-13T10:32:12+08:00 ] 115.215.219.218 GET 47.111.119.90/index.php/admin/model/edit/id/1408/pbid/1
+[ error ] [8]未定义数组索引: title[/data/httpd/ondate/runtime/temp/25bbe7faffb506c74d2abedf6d1b8c5b.php:214]
+---------------------------------------------------------------
+[ 2019-07-13T12:53:34+08:00 ] 115.215.219.218 POST 47.111.119.90/index.php/admin/attribute/update/pbid/1
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'COMMENT ''' at line 1[/data/httpd/ondate/thinkphp/library/think/db/Connection.php:764]

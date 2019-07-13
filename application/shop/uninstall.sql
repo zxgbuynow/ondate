@@ -30,10 +30,6 @@ DELETE FROM `wp_model` WHERE `name`='shop_goods_comment' ORDER BY id DESC LIMIT 
 DROP TABLE IF EXISTS `wp_shop_goods_comment`;
 
 
-DELETE FROM `wp_model` WHERE `name`='shop_card_member' ORDER BY id DESC LIMIT 1;
-DROP TABLE IF EXISTS `wp_shop_card_member`;
-
-
 DELETE FROM `wp_model` WHERE `name`='shop_statistics_follow' ORDER BY id DESC LIMIT 1;
 DROP TABLE IF EXISTS `wp_shop_statistics_follow`;
 
@@ -126,9 +122,6 @@ DELETE FROM `wp_model` WHERE `name`='shop_membership' ORDER BY id DESC LIMIT 1;
 DROP TABLE IF EXISTS `wp_shop_membership`;
 
 
-
-
-
 DELETE FROM `wp_model` WHERE `name`='stores_user' ORDER BY id DESC LIMIT 1;
 DROP TABLE IF EXISTS `wp_stores_user`;
 
@@ -143,10 +136,6 @@ DROP TABLE IF EXISTS `wp_goods_param_temp`;
 
 DELETE FROM `wp_model` WHERE `name`='shop_goods_stock' ORDER BY id DESC LIMIT 1;
 DROP TABLE IF EXISTS `wp_shop_goods_stock`;
-
-
-DELETE FROM `wp_model` WHERE `name`='test' ORDER BY id DESC LIMIT 1;
-DROP TABLE IF EXISTS `wp_test`;
 
 
 DELETE FROM `wp_model` WHERE `name`='shop_goods_content' ORDER BY id DESC LIMIT 1;

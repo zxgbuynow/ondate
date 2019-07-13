@@ -8,4 +8,4 @@ total_price:7%总价
 cTime|time_format:17%下单时间
 common|get_name_by_status:10%支付类型
 status_code|get_name_by_status:10%订单跟踪
-action:11%操作";s:8:"list_row";i:20;s:10:"search_key";s:40:"key:请输入订单编号或客户昵称";s:11:"search_list";s:0:"";s:11:"create_time";i:1420269240;s:11:"update_time";i:1440147136;s:6:"status";i:1;s:11:"engine_type";s:6:"MyISAM";s:5:"addon";s:4:"shop";}
+action:11%操作";s:8:"list_row";i:20;s:10:"search_key";s:42:"key:请输入订单编号 或 客户昵称";s:11:"search_list";s:0:"";s:11:"create_time";i:1420269240;s:11:"update_time";i:1440147136;s:6:"status";i:1;s:11:"engine_type";s:6:"MyISAM";s:5:"addon";s:4:"shop";}
