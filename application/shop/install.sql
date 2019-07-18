@@ -1,17 +1,14 @@
 CREATE TABLE IF NOT EXISTS `wp_stores` (
 `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
 `name`  varchar(100) NULL  COMMENT '店名',
-`address`  varchar(255) NULL  COMMENT '详细地址',
+`opt`  varchar(25) NULL  COMMENT '创建者',
 `phone`  varchar(30) NULL  COMMENT '联系电话',
-`gps`  varchar(50) NULL  COMMENT 'GPS经纬度',
-`coupon_id`  int(10) NULL  COMMENT '所属优惠券编号',
-`wpid`  int(10) NULL  COMMENT 'token',
-`open_time`  varchar(50) NULL  COMMENT '营业时间',
-`img`  int(10) unsigned NULL  COMMENT '门店展示图',
-`auth_group`  int(10) NULL  COMMENT '门店用户组',
-`shop_code`  varchar(255) NULL  COMMENT '地点编码',
-`password`  varchar(255) NULL  COMMENT '确认收款密码',
-`img_url`  varchar(255) NULL  COMMENT 'erp门店图片链接',
+`card_no`  varchar(50) NOT NULL  COMMENT '卡号',
+`open_time`  varchar(50) NULL  COMMENT '创建时间',
+`card_type`  varchar(25) NULL  COMMENT '会员卡类型',
+`password`  varchar(255) NULL  COMMENT '会员卡密码',
+`last_time`  varchar(25) NULL  COMMENT '最后消费时间',
+`money`  varchar(25) NOT NULL  COMMENT '余额',
 PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci CHECKSUM=0 ROW_FORMAT=DYNAMIC DELAY_KEY_WRITE=0;
 INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon`) VALUES ('stores','门店','0','','1','["name","address","gps","phone"]','1:基础','','','','','name:店名\r\nphone:联系电话\r\naddress:详细地址\r\nids:操作:[EDIT]|编辑,[DELETE]|删除','20','name:店名搜索','','1427164604','1439465222','1','MyISAM','shop');
@@ -107,25 +104,6 @@ CREATE TABLE IF NOT EXISTS `wp_shop_goods_comment` (
 PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci CHECKSUM=0 ROW_FORMAT=DYNAMIC DELAY_KEY_WRITE=0;
 INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon`) VALUES ('shop_goods_comment','商品评论信息','0','','1','["goods_id","score","content","order_id","uid","cTime","shop_id","is_show"]','1:基础','','','','','id:10%编号\r\nuid|get_username:15%用户昵称\r\ncTime|time_format:15%评论时间\r\nscore:15%星星数\r\ncontent:25%评论内容\r\nis_show|get_name_by_status:10%是否显示\r\nids:编辑:changeShow?id=[id]&is_show=[is_show]&goods_id=[goods_id]|设置显示状态','10','','','1457430858','1458901414','1','MyISAM','shop');
-
-
-
-CREATE TABLE IF NOT EXISTS `wp_shop_card_member` (
-`id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-`username`  varchar(255) NULL  COMMENT '姓名',
-`phone`  varchar(255) NULL  COMMENT '手机号',
-`sex`  varchar(10) NULL  COMMENT '性别',
-`birthday`  int(10) NULL  COMMENT '生日',
-`address`  varchar(255) NULL  COMMENT '地址',
-`ctime`  int(10) NULL  COMMENT '导入时间',
-`is_get`  tinyint(2) NULL  COMMENT '是否领取',
-`wpid`  int(10) NULL  COMMENT 'wpid',
-`shop_code`  varchar(255) NULL  COMMENT '地址编码',
-`score`  int(10) NULL  COMMENT '积分余额',
-`card_number`  varchar(255) NULL  COMMENT '会员卡号',
-PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci CHECKSUM=0 ROW_FORMAT=DYNAMIC DELAY_KEY_WRITE=0;
-INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon`) VALUES ('shop_card_member','实体店会员卡','0','','1','["username","phone","sex","birthday","address","ctime","is_get","token","shop_code","score","card_number"]','1:基础','','','','','username:姓名\r\nphone:手机号\r\nsex:性别\r\nbirthday|time_format:生日\r\naddress:地址\r\nscore:导入积分\r\ncard_number:绑定会员卡号\r\nctime|time_format:导入时间\r\nis_get|get_name_by_status:是否领取\r\nid:操作:changeGet&id=[id]&is_get=[is_get]|改变领取状态','10','username:请输入姓名','','1444362335','1453951928','1','MyISAM','shop');
 
 
 
@@ -348,36 +326,47 @@ INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort
 
 CREATE TABLE IF NOT EXISTS `wp_shop_order` (
 `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-`uid`  int(10) UNSIGNED NOT NULL  COMMENT '用户id',
+`uid`  int(10) unsigned NOT NULL  COMMENT '用户id',
 `order_number`  varchar(255) NOT NULL  COMMENT '订单编号',
 `goods_datas`  text NOT NULL  COMMENT '商品序列化数据',
 `remark`  text NOT NULL  COMMENT '备注',
 `cTime`  int(10) NOT NULL  COMMENT '订单时间',
 `total_price`  decimal(10,2) NULL  COMMENT '总价',
 `address_id`  int(10) NULL  COMMENT '配送信息',
-`is_send`  int(10) NULL  COMMENT '是否发货',
+`is_send`  int(10) NULL  DEFAULT 0 COMMENT '是否发货',
 `send_code`  varchar(255) NULL  COMMENT '快递公司编号',
 `send_number`  varchar(255) NULL  COMMENT '快递单号',
 `send_type`  char(10) NULL  COMMENT '发货类型',
 `wpid`  int(10) NULL  COMMENT 'wpid',
 `openid`  varchar(255) NOT NULL  COMMENT 'OpenID',
-`pay_status`  int(10)  NULL  COMMENT '支付状态',
-`pay_type`  tinyint(2) NULL  COMMENT '支付类型',
-`is_new`  tinyint(2) NULL  COMMENT '是否为新订单',
-`status_code`  char(50) NULL  COMMENT '订单跟踪状态码',
-`is_lock`  int(10) NULL  COMMENT '数量是否锁定',
+`pay_status`  int(10) NULL  COMMENT '支付状态',
+`pay_type`  tinyint(2) NULL  DEFAULT 0 COMMENT '支付类型',
+`is_new`  tinyint(2) NULL  DEFAULT 1 COMMENT '是否为新订单',
+`status_code`  char(50) NULL  DEFAULT 0 COMMENT '订单跟踪状态码',
+`is_lock`  int(10) NULL  DEFAULT 1 COMMENT '数量是否锁定',
 `erp_lock_code`  text NULL  COMMENT 'ERP锁定商品编号',
-`mail_money`  float(10) NULL  COMMENT '邮费金额',
+`mail_money`  float NULL  DEFAULT 0 COMMENT '邮费金额',
 `stores_id`  int(10) NULL  COMMENT '门店编号',
 `pay_time`  int(10) NULL  COMMENT '支付时间',
 `send_time`  int(10) NULL  COMMENT '发货时间',
 `extra`  text NULL  COMMENT '扩展参数',
-`order_state`  int(10) NULL  COMMENT '订单状态',
+`order_state`  int(10) NULL  DEFAULT 1 COMMENT '订单状态',
 `out_trade_no`  varchar(100) NULL  COMMENT '支付的订单号',
-`event_type`  tinyint(2) NULL  COMMENT '订单来源',
+`event_type`  tinyint(2) NULL  DEFAULT 0 COMMENT '订单来源',
 `event_id`  int(10) NULL  COMMENT '活动ID',
 `is_original`  tinyint(2) NULL  DEFAULT 0 COMMENT '活动中是否原价购买',
-`refund`  tinyint(2) NULL  COMMENT '退款状态',
+`refund`  tinyint(1) NULL  DEFAULT 0 COMMENT '技术师ID',
+`update_at`  timestamp NOT NULL  DEFAULT 'CURRENT_TIMESTAMP' COMMENT '',
+`notice_erp`  int(11) NULL  DEFAULT 0 COMMENT '为0时不需要推送，大于0时需要推送',
+`refund_content`  varchar(255) NULL  COMMENT '',
+`pay_money`  decimal(10,2) NULL  COMMENT '实付价格',
+`dec_money`  decimal(10,2) NULL  COMMENT '优惠价格',
+`begin_time`  int(11) NULL  COMMENT '开始时间',
+`end_time`  int(11) NULL  COMMENT '结束时间',
+`art_id`  int(10) NULL  COMMENT '技师ID',
+`service_type`  tinyint(2) NULL  DEFAULT 0 COMMENT '0足浴 1SPA',
+`way`  tinyint(4) NULL  DEFAULT 0 COMMENT '0 排 1 点',
+`type`  varchar(255) NULL  DEFAULT 0 COMMENT '类型 0实物  1服务',
 PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci CHECKSUM=0 ROW_FORMAT=DYNAMIC DELAY_KEY_WRITE=0;
 INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon`) VALUES ('shop_order','订单记录','0','','1','["uid","goods_datas","remark","order_number","cTime","total_price","address_id","is_send","send_code","send_number","send_type","shop_id"]','1:基础','','','','','order_number:15%订单编号\r\ngoods:20%下单商品\r\nuid:10%客户\r\ntotal_price:7%总价\r\ncTime|time_format:17%下单时间\r\ncommon|get_name_by_status:10%支付类型\r\nstatus_code|get_name_by_status:10%订单跟踪\r\naction:11%操作','20','key:请输入订单编号 或 客户昵称','','1420269240','1440147136','1','MyISAM','shop');
@@ -528,9 +517,6 @@ INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort
 
 
 
-
-
-
 CREATE TABLE IF NOT EXISTS `wp_stores_user` (
 `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
 `wpid`  int(10) NULL  COMMENT 'wpid',
@@ -581,22 +567,6 @@ PRIMARY KEY (`id`),
 KEY `goods_id` (`goods_id`,event_type)
 ) ENGINE=MyISAM DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci CHECKSUM=0 ROW_FORMAT=DYNAMIC DELAY_KEY_WRITE=0;
 INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon`) VALUES ('shop_goods_stock','商品库存','0','','1','','1:基础','','','','','','20','','','0','0','0','MyISAM','shop');
-
-
-
-CREATE TABLE IF NOT EXISTS `wp_test` (
-`id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-`keyword`  varchar(100) NOT NULL  COMMENT '关键词',
-`keyword_type`  tinyint(2) NOT NULL  DEFAULT 0 COMMENT '关键词匹配类型',
-`title`  varchar(255) NOT NULL  COMMENT '问卷标题',
-`intro`  text NOT NULL  COMMENT '封面简介',
-`mTime`  int(10) NOT NULL  COMMENT '修改时间',
-`cover`  int(10) unsigned NOT NULL  COMMENT '封面图片',
-`finish_tip`  text NOT NULL  COMMENT '评论语',
-`wpid`  int(10) NOT NULL  DEFAULT 0 COMMENT 'wpid',
-PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci CHECKSUM=0 ROW_FORMAT=DYNAMIC DELAY_KEY_WRITE=0;
-INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon`) VALUES ('test','test-modelname','0','','1','','1:基础','','','','','','10','','','0','0','0','MyISAM','shop');
 
 
 

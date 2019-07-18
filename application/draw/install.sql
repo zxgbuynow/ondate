@@ -59,60 +59,6 @@ INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort
 
 
 
-CREATE TABLE IF NOT EXISTS `wp_lottery_games` (
-`id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-`title`  varchar(255) NULL  COMMENT '活动名称',
-`keyword`  varchar(255) NULL  COMMENT '微信关键词',
-`game_type`  char(10) NULL  COMMENT '游戏类型',
-`start_time`  int(10) NULL  COMMENT '开始时间',
-`end_time`  int(10) NULL  COMMENT '结束时间',
-`status`  char(10) NULL  COMMENT '状态',
-`day_attend_limit`  int(10) NULL  COMMENT '每人每天抽奖次数',
-`attend_limit`  int(10) NULL  COMMENT '每人总共抽奖次数',
-`day_win_limit`  int(10) NULL  COMMENT '每人每天中奖次数',
-`win_limit`  int(10) NULL  COMMENT '每人总共中奖次数',
-`day_winners_count`  int(10) NULL  COMMENT '每天最多中奖人数',
-`remark`  text NULL  COMMENT '活动说明',
-`cover`  int(10) UNSIGNED NULL  COMMENT '封面图片',
-`wpid`  int(10) NOT NULL  COMMENT 'wpid',
-`manager_id`  int(10) NULL  COMMENT '管理员id',
-`url`  varchar(300) NULL  COMMENT '关注链接',
-`attend_num`  int(10) NULL  COMMENT '参与总人数',
-`template`  char(10) NULL  COMMENT '模板',
-`need_subscribe`  tinyint(2) NULL  COMMENT '关注公众号才能参与',
-`need_member`  tinyint(2) NULL  COMMENT '成为会员才能参与',
-`show_prize_num`  tinyint(2) NULL  COMMENT '是否显示奖品数量',
-`show_winner`  tinyint(2) NULL  COMMENT '是否显示中奖记录',
-`show_prize_details`  tinyint(2) NULL  COMMENT '是否显示奖品详情',
-`winning_mess_img`  int(10) UNSIGNED NULL  COMMENT '中奖推送消息封面图片',
-`winning_mess_text`  varchar(255) NULL  COMMENT '中奖推送消息封面描述',
-`winning_money_text`  text NULL  COMMENT '抽中现金红包推送消息',
-`winning_score_text`  text NULL  COMMENT '抽中积分推送消息',
-`current_draw_num`  int(10) NULL  COMMENT '当前抽奖次数',
-`draw_count`  int(10) NULL  COMMENT '活动抽奖总次数',
-`win_num_list`  longtext NULL  COMMENT '抽中奖品对应次数列表',
-PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci CHECKSUM=0 ROW_FORMAT=DYNAMIC DELAY_KEY_WRITE=0;
-INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon`) VALUES ('lottery_games','抽奖游戏','0','','1','["title","keyword","game_type","start_time","end_time","status","day_attend_limit","attend_limit","day_win_limit","win_limit","day_winners_count","remark","cover"]','1:基础','','','','','id:序号\r\ntitle:活动名称\r\ngame_type|get_name_by_status:游戏类型\r\nkeyword:关键词\r\nstart_time|time_format:开始时间\r\nend_time|time_format:结束时间\r\nstatus:活动状态\r\nattend_num:参与人次\r\nwinners_list:中奖人列表\r\nids:操作:[EDIT]|编辑,[DELETE]|删除,preview&games_id=[id]|预览,draw/Wap/index&games_id=[id]|复制链接,statistics&games_id=[id]|统计分析','10','title:请输入活动名称搜索','','1444877287','1491375194','1','MyISAM','draw');
-
-
-
-CREATE TABLE IF NOT EXISTS `wp_lottery_games_award_link` (
-`id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-`award_id`  int(10) NULL  COMMENT '奖品id',
-`games_id`  int(10) NULL  COMMENT '抽奖游戏id',
-`grade`  varchar(255) NULL  COMMENT '中奖等级',
-`num`  int(10) NULL  COMMENT '奖品数量',
-`max_count`  int(10) NULL  COMMENT '最多抽奖',
-`wpid`  int(10) NOT NULL  COMMENT 'wpid',
-`sort`  int(10) NULL  COMMENT '排序',
-`unreal_num`  int(10) NULL  DEFAULT 0 COMMENT '假的数量',
-PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci CHECKSUM=0 ROW_FORMAT=DYNAMIC DELAY_KEY_WRITE=0;
-INSERT INTO `wp_model` (`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type`,`addon`) VALUES ('lottery_games_award_link','抽奖游戏奖品设置','0','','1','["award_id","games_id","grade","num","max_count"]','1:基础','','','','','','10','','','1444900969','1491373787','1','MyISAM','draw');
-
-
-
 CREATE TABLE IF NOT EXISTS `wp_draw_pv_log` (
 `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
 `cTime`  int(10) NULL  COMMENT '访问时间',

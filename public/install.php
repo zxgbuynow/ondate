@@ -13,8 +13,8 @@
 namespace think;
 
 if (is_file(__DIR__.'/uploads/install.lock')) {
-    //header('Location: index.php');
-    //exit ();
+    header('Location: index.php');
+    exit ();
 }
 
 // 加载基础文件
