@@ -111,6 +111,13 @@
                 <div class="fr">V{:config('SYSTEM_UPDATRE_VERSION')}</div>
             </div>
         </div>
+
+        <div id="bdtts_div_id" style="display: none;">
+            <audio id="tts_autio_id" autoplay="autoplay">
+              <source id="tts_source_id" src="http://tts.baidu.com/text2audio?lan=zh&amp;ie=UTF-8&amp;spd=5&amp;per=1&amp;text=请输入文字" type="audio/mpeg">
+              <embed id="tts_embed_id" height="0" width="0" src="">
+            </audio>
+        </div>
     </div>
     <!-- /内容区 -->
     <script type="text/javascript">
@@ -210,11 +217,29 @@
         // 后端推送来消息时
         socket.on('new_msg', function(msg){
             console.log("收到消息："+msg);
+            dotts(msg)
         });
         // 后端推送来在线数据时
         socket.on('update_online_count', function(online_stat){
             console.log(online_stat);
         });
+        function dotts(msg){
+            var ttsDiv = document.getElementById('bdtts_div_id');
+            var ttsAudio = document.getElementById('tts_autio_id');
+
+              // 文字转语音
+            ttsDiv.removeChild(ttsAudio);
+            var au1 = '<audio id="tts_autio_id" autoplay="autoplay">';
+            var sss = '<source id="tts_source_id" src="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&per=3&spd=5&text=' + msg + '" type="audio/mpeg">';
+            var eee = '<embed id="tts_embed_id" height="0" width="0" src="">';
+            var au2 = '</audio>';
+            ttsDiv.innerHTML = au1 + sss + eee + au2;
+
+            ttsAudio = document.getElementById('tts_autio_id');
+
+            ttsAudio.play();
+            console.log('play');
+        }
     </script>
     {block name="script"}{/block}
 </body>

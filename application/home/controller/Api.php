@@ -43,6 +43,7 @@ class Api extends ApiBase
     }
 
     /**
+     * 数据初始化
      * @param  [type]
      * @return [type]
      */
@@ -50,7 +51,30 @@ class Api extends ApiBase
     {
     	$user = M('user')->find();
     	session('userinfo',$user);
-    	return api_success($user);
+
+        //查找用户并插入队列
+        $user = M('art')->count();
+        $userInfo = M('art')->select();
+        $queue = M('user_queue')->count();
+        $queueInfo = M('user_queue')->column('user_id','postion');
+        if ($user>$queue) {
+            foreach ($userInfo as $key => $value) {
+                if (!isset($queueInfo[$value['id']])) {
+                    $current = M('user_queue')->count();
+                    $save['created_time'] = time();
+                    $save['user_id'] = $value['id'];
+                    $save['sex'] = $value['sex'];
+                    $save['status'] = 1;
+                    $save['type'] = 0;
+                    $save['postion'] = $current+1;
+                    $save['service_type'] = $value['type'];
+                    $save['jsbn'] = $value['jsbn'];
+                    M('user_queue')->insert($save);
+                }
+            }
+        }
+        return true;
+    	// return api_success($user);
     }
     /**
      * 楼层 + 房间 + 房间（服务中人数）
