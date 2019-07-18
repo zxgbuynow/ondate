@@ -639,8 +639,7 @@ class Api extends ApiBase
     {	
     	//上 ， 空， 请假
     	$statement['free'] = M('user_queue')->where(['type'=>0])->count();
-    	$p['type'] = array('in','1,2');
-    	$statement['work'] = M('user_queue')->where($p)->count();
+    	$statement['work'] = M('user_queue')->where('type','in','1,2')->count();
 
     	$statement['unline'] = M('user_queue')->where(['type'=>3])->count();
 
