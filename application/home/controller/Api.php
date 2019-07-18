@@ -434,6 +434,9 @@ class Api extends ApiBase
     		return api_success('操作成功');
     	}
     	try {
+            if (!M('user_queue')->where(['user_id'=>$params['id'],'type']=>0)->find()) {
+                return  api_error('当前技师非空闲');
+            }
             M('room')->where(['id'=>$room])->update(['status'=>2]);
     		//主动选择
 	    	M('user_queue')->where(['user_id'=>$params['id']])->update(['type'=>1]);
