@@ -638,11 +638,11 @@ class Api extends ApiBase
     public function artStatement($params)
     {	
     	//上 ， 空， 请假
-    	$statement['free'] = M('user_queue')->where(['status'=>0])->count();
-    	$p['status'] = array('in','1,2');
+    	$statement['free'] = M('user_queue')->where(['type'=>0])->count();
+    	$p['type'] = array('in','1,2');
     	$statement['work'] = M('user_queue')->where($p)->count();
 
-    	$statement['unline'] = M('user_queue')->where(['status'=>3])->count();
+    	$statement['unline'] = M('user_queue')->where(['type'=>3])->count();
 
     	return api_success($statement);
     }
