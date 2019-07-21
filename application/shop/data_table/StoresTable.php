@@ -6,7 +6,7 @@ class StoresTable {
     // 数据表模型配置
     public $config = [
       'name' => 'stores',
-      'title' => '店内会员卡信息',
+      'title' => '会员卡信息',
       'search_key' => 'phone:按手机号搜索',
       'add_button' => 1,
       'del_button' => 1,
