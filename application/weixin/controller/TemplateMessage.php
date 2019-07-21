@@ -61,6 +61,51 @@ class TemplateMessage extends WebBase {
 	    }
 	   
 	}
+	//模板消息发给指定用户
+    function sendmy(){
+
+        // 	    $this->assign ( 'normal_tips', '温馨提示<br/>客服群发接口是指：管理者可以给 在48小时内主动发消息给公众号的用户群发消息 ，发送次数没有限制；如果没有成功接收到消息的用户，则在他主动发消息给公众号时，再重新发给该用户。' );
+        $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
+        $sendOpenid='olpE21i9Hr2bpYT4P9jmjZoC_E-4';
+        $send_type=1;//指定openid
+        $group_id=0;//用户组
+        $content='测试内容';
+        $title='测试标题';
+        $sender='华鼎会所';//发起人
+        $data ['send_openids'] = $sendOpenid;
+        if (input('send_type') == 1 && $sendOpenid == '') {
+            $this->error ( '指定的Openid值不能为空' );
+        }
+        $pbid=get_pbid();
+
+        $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_template_message', $pbid);
+        //发消息给指定人
+        $count=0;
+        $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
+        $templateDao = D('common/TemplateMessage');
+        foreach ($openidArr as $openid){
+            $tRes = $templateDao->replyMessage($openid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
+            //addWeixinLog($tRes,'templatemesaadf');
+            if (isset($tRes['status']) && $tRes['status']==1){
+                $count++;
+            }
+        }
+        if ($count>0){
+            $model = $this->getModel ( 'template_messages' );
+            // 获取模型的字段信息
+            $data = I('post.');
+            $data['pbid']=$pbid;
+            $data['cTime']=time();
+            $data['send_count']=$count;
+            $id = M ('template_messages' )->insertGetId($data);
+// 	    		M('template_messages')->where('id',$id)->setField('send_count',$count);
+            $this->success ( '添加' . $model ['title'] . '成功！' );
+        }else{
+            $this->error('群发失败');
+        }
+
+
+    }
 	/////////////模板消息群发给用户/////////////////////
 	function send_template_message(){
 	// 	    $this->assign ( 'normal_tips', '温馨提示<br/>客服群发接口是指：管理者可以给 在48小时内主动发消息给公众号的用户群发消息 ，发送次数没有限制；如果没有成功接收到消息的用户，则在他主动发消息给公众号时，再重新发给该用户。' );
