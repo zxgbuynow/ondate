@@ -11,28 +11,52 @@ class Count extends Base
 
     protected $table = DB_PREFIX . 'goods_count';
 
+    public function getCharts_order($param)
+    {
+        // $where['cTime']=array();
+        $listAll = M('shop_order')->where('wpid', WPID)
+            //->whereBetween('cTime', $param['stime'] . ',' . $param['etime'])
+            ->where('cTime','>',$param['stime'])
+            ->where('cTime','<',$param['etime'])
+            ->field("FROM_UNIXTIME(cTime,'%Y%m%d') as date,sum(total_price) as num")
+            ->group('date')
+            ->select();
+
+        $re = [];
+        foreach ($listAll as $v) {
+            $re[$v['date']] = (int)$v['num'];
+        }
+        // dump($listAll);exit;
+        $xtime = $param['stime'];
+        while ($xtime <= $param['etime']) {
+            $key_time = time_format($xtime, 'Ymd'); // echo $key_time.'/';
+            $res[] = isset($re[$key_time]) && $re[$key_time] > 0 ? $re[$key_time] : 0;
+            $xtime = $xtime + 86400;
+        }  //dump(WPID);exit;
+        return $res;
+    }
     /*
      * 分条件获取统计信息
      */
     public function getCharts($param)
     {
         $listAll = M('shop_track')->where('wpid', WPID)
-        ->whereBetween('create_at', $param['stime'] . ',' . $param['etime'])
+            ->whereBetween('create_at', $param['stime'] . ',' . $param['etime'])
             ->field("FROM_UNIXTIME(create_at,'%Y%m%d') as date,count(1) as num")
             ->group('date')
             ->select();
-        
+
+
         $re = [];
         foreach ($listAll as $v) {
             $re[$v['date']] = $v['num'];
         }
-        // dump($re);
         $xtime = $param['stime'];
         while ($xtime <= $param['etime']) {
             $key_time = time_format($xtime, 'Ymd'); // echo $key_time.'/';
-            $res[] = isset($re[$key_time]) && $re[$key_time] > 0 ? $re[$key_time] : 0;
+            $res[] = isset($re[$key_time]) && $re[$key_time] > 0 ? $re[$key_time] : 10;
             $xtime = $xtime + 86400;
-        } // dump($res);exit;
+        }  //dump($res);exit;
         return $res;
     }
 

@@ -192,9 +192,9 @@ class Count extends Base
     {
         // dump(input('stime'));
         $param['stime'] = strtotime(I('stime', 0, 'string'));
-        $param['etime'] = strtotime(I('etime', 0, 'string'));
+        $param['etime'] = strtotime(I('etime', 0, 'string'))+86400;
         // dump($param);
-        $res = D('Count')->getCharts($param);
+        $res = D('Count')->getCharts_order($param);
 
         $timeList = $this->getTimeList2($param['stime'], $param['etime']);
         // dump($res);
@@ -202,7 +202,7 @@ class Count extends Base
         // exit();
         $dataArr[] = array(
             '日期',
-            '商品流量总数'
+            '营业额'
         );
 
         foreach ($timeList as $k => $v) {
@@ -211,7 +211,7 @@ class Count extends Base
                 'count' => $res[$k]
             );
         }
-        outExcel($dataArr, '商品流量统计');
+        outExcel($dataArr, '营业额统计');
     }
 
     public function getTimeList2($startTime, $endTime)
@@ -451,7 +451,7 @@ class Count extends Base
         $Category = D('Category')->getShopCategory('', 1); // dump($Category);
         $this->assign('category', $Category);
 
-        $goods = D('ShopGoods')->getList(); // dump($goods);
+        $goods = D('ShopGoods')->getList(); //dump($goods);
         $this->assign('goods', $goods);
 
         return $this->fetch();
@@ -468,9 +468,10 @@ class Count extends Base
     public function setCharts()
     {
         $param['stime'] = strtotime(I('stime', 0, 'string'));
-        $param['etime'] = strtotime(I('etime', 0, 'string'));
+        $param['etime'] = strtotime(I('etime', 0, 'string'))+86400;
 
         $res = D('Count')->getCharts($param);
+        $res = D('Count')->getCharts_order($param);
         $return['time'] = $this->getTimeList($param['stime'], $param['etime']);
         $return['data'] = $res;
         $this->ajaxReturn($return);
