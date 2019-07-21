@@ -125,13 +125,17 @@ class Stores extends WebBase
             $Model = D($model['name']);
             // 获取模型的字段信息
             $data = input('post.');
-            $data = $this->checkData($data, $model);
+            //$data = $this->checkData($data, $model);
             $data['wpid'] = WPID;
+            $data['opt']=$this->mid;
+            $data['open_time'] = time();
+            $card_no = date('md') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
+            $data['card_no']=$card_no;
             $id = $Model->insertGetId($data);
             if ($id) {
                 // 清空缓存
                 method_exists($Model, 'clearCache') && $Model->clearCache($id, 'add');
-                
+
                 $this->success('添加' . $model['title'] . '成功！', U('lists', $this->get_param));
             } else {
                 $this->error($Model->getError());
@@ -139,7 +143,7 @@ class Stores extends WebBase
         } else {
             $fields = get_model_attribute($model);
             $this->assign('fields', $fields);
-            
+
             return $this->fetch();
         }
     }
