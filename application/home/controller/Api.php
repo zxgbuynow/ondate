@@ -82,7 +82,7 @@ class Api extends ApiBase
      */
     public function homeIndex($params)
     {
-    	$cate = M('cate')->order('order ASC')->select();
+    	$cate = M('room_cate')->order('order ASC')->select();
     	$rooms = M('room')->order('order ASC')->select();
 
     	//组数据
