@@ -243,6 +243,8 @@ class Api extends ApiBase
     	$params['user_id'] = session('userinfo')['uid'];
     	unset($params['method']);
     	if (M('waite')->insert($params)) {
+            //房间状态
+            M('room')->where(['id'=>$params['room_id']])->update('status'=>1);
     		return api_success('添加成功');
     	}
 
@@ -594,7 +596,7 @@ class Api extends ApiBase
             M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
             M('user_queue')->where(['user_id'=>$call['art_id']])->update(['type'=>0]);
             // if ($call['way']==0) {//如果是排
-                
+
             // }
     		return api_success('下钟成功');
     	}
