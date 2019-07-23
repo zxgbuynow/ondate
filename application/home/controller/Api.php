@@ -439,7 +439,7 @@ class Api extends ApiBase
             }
             M('room')->where(['id'=>$room])->update(['status'=>2]);
     		//主动选择
-	    	M('user_queue')->where(['user_id'=>$params['id']])->update(['type'=>1]);
+	    	M('user_queue')->where(['user_id'=>$params['id']])->update(['type'=>2]);
 	    	//生成服务信息
 	    	$save['jsbn'] = $userinfo['jsbn'];
 	    	$save['sex'] = $userinfo['sex'];

@@ -264,9 +264,9 @@
 		<Modal v-model="modal_artificerStatus" class-name="vertical-center-modal modal-artificerStatus-modal">
 			<div slot="header" class="modal-header modal-vipwait-header">
 				<div class="vipwait-title title-big">技师状况</div>
-				<div class="vipwait-title">上钟人数：1</div>
-				<div class="vipwait-title">空闲人数：2</div>
-				<div class="vipwait-title">请假人数：2</div>
+				<div class="vipwait-title">上钟人数：{{artStatements.work}}</div>
+				<div class="vipwait-title">空闲人数：{{artStatements.free}}</div>
+				<div class="vipwait-title">请假人数：{{artStatements.unline}}</div>
 			</div>
 			<div class="vipwait-content">				
 				<Table :columns="artificerStatusTable" :data="artificerStatusData"></Table>
@@ -599,7 +599,7 @@ export default {
 											_this.$Message.success(data.msg);
 										}).catch(function(data){
 											console.log(data);
-											// _this.$Message.success(data.msg);
+											_this.$Message.error(data.msg);
 										})
 										// alert("向上按钮被点击")
 									}
@@ -1668,7 +1668,7 @@ export default {
   	font-weight: 600;
   }
   .vipwait-content{
-  	padding: 0 35px;
+  	padding: 0 35px 35px 35px;
   	width: 100%;
   	min-height: 200px;
   	max-height: 550px;
@@ -1681,6 +1681,10 @@ export default {
   	padding-left: 50px;
   	padding-right: 50px;
 
+  }
+  .vipwait-content .ivu-table-body{
+  	max-height: 480px;
+	overflow-y: scroll;
   }
   .vipwait-reload-btn{
   	background-color: #80c269;
@@ -1837,7 +1841,18 @@ export default {
   .modal-artificerStatus-modal .ivu-modal{
 	width: 1020px!important;
   }
+  ::-webkit-scrollbar {
+    width: 0.15rem;
+    height: 0.15rem;
+    background-color: #f1f1f1;
+  }
 
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0; 
+    background-color: #c1c1c1;
+    transition: all .2s;
+    border-radius: 0.15rem;
+  }
 
 </style>
 

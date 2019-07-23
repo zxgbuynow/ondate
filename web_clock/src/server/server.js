@@ -32,116 +32,116 @@ const getRoomList = (params) => {
 }
 //homeIndex
 const homeIndex = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 
 //queue
 const homeQueue = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //waitList
 const waitList = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //waitList
 const roomList = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //goodslist
 const goodslist = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //queueList
 const queueList = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //orderList
 const orderList = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //artList
 const artList = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //artStatement
 const artStatement = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //orderFinsh
 const orderFinsh = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //orderRefund
 const orderRefund = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //orderExRoom
 const orderExRoom = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //waitAdd
 const waitAdd = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //waitDel
 const waitDel = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //waitEdit
 const waitEdit = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //queueLogout
 const queueLogout = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //queueCall
 const queueCall = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //queueOrder
 const queueOrder = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
 //makeArt
 const makeArt = (params) => {
-	return axios.get('http://localhost:8080/index.php/home/Api', {
+	return axios.get('http://47.111.119.90/index.php/home/Api', {
 		params
 	})
 }
