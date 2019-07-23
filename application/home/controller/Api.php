@@ -607,6 +607,9 @@ class Api extends ApiBase
     	}
 
     	if (M('calls')->where(['id'=>$params['id']])->update(['status'=>2])) {
+            $call = M('calls')->where(['id'=>$params['id']])->find();
+            M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
+            M('user_queue')->where(['user_id'=>$call['art_id']])->update(['type'=>0]);
     		return api_success('退单成功');
     	}
     	return api_error('退单失败');
