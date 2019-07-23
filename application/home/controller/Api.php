@@ -568,7 +568,7 @@ class Api extends ApiBase
     		$value['artificerNumber'] = $value['jsbn'];
     		$value['beginTime'] = $value['begin_time'];
     		$value['endTime'] = $value['end_time'];
-    		$value['way'] = $value['way']==0?'排':'点';
+    		$value['way'] = $value['way']==0?'排钟':'点钟';
     		$value['status'] = $value['status']==0?'等待上钟':'上钟';
     		$value['time']  = date('m/d H:i',$value['calltime']);
     		$value['operator'] = M('user')->where(['uid'=>$value['operator']])->value('nickname');
