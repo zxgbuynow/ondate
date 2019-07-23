@@ -244,7 +244,8 @@ class Api extends ApiBase
     	unset($params['method']);
     	if (M('waite')->insert($params)) {
             //房间状态
-            M('room')->where(['id'=>$params['room_id']])->update('status'=>1);
+            $p['id'] = $params['room_id'];
+            M('room')->where($p)->update(['status'=>1]);
     		return api_success('添加成功');
     	}
 
