@@ -368,7 +368,7 @@ class Api extends ApiBase
     		try {
                 M('room')->where(['id'=>$room])->update(['status'=>2]);
     			if ($woman) {
-    				$makew = M('user_queue')->where(['type'=>0,'sex'=>0])->order('position ASC')->limit($woman)->cloumn('id');
+    				$makew = M('user_queue')->where(['type'=>0,'sex'=>0])->order('position ASC')->limit($woman)->column('id');
     				M('user_queue')->where(['id','in',$makew])->update(['type'=>1]);
     				foreach ($makew as $key => $value) {
     					$userinfo = M('art')->where(['id'=>$value])->find();
@@ -387,7 +387,7 @@ class Api extends ApiBase
     				}
     			}
     			if ($man) {
-    				$makem = M('user_queue')->where(['type'=>0,'sex'=>1])->order('position ASC')->limit($man)->cloumn('id');
+    				$makem = M('user_queue')->where(['type'=>0,'sex'=>1])->order('position ASC')->limit($man)->column('id');
     				M('user_queue')->where(['id','in',$makem])->update(['type'=>1]);
     				foreach ($makem as $key => $value) {
     					$userinfo = M('art')->where(['id'=>$value])->find();
@@ -408,7 +408,7 @@ class Api extends ApiBase
     			
     			//不限制
     			if ($secret) {
-    				$makes = M('user_queue')->where(['type'=>0])->order('position ASC')->limit($secret)->cloumn('id');
+    				$makes = M('user_queue')->where(['type'=>0])->order('position ASC')->limit($secret)->column('id');
     				M('user_queue')->where(['id','in',$secret])->update(['type'=>1]);
     				foreach ($secret as $key => $value) {
     					$userinfo = M('art')->where(['id'=>$value])->find();
