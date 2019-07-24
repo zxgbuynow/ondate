@@ -172,8 +172,8 @@ class Api extends ApiBase
     			$param['art_id'] = $value['user_id'];
     			$goodid = M('calls')->where($param)->value('goods_id');
     			$value['serviceType'] = $goodid?M('shop_goods')->where(['id'=>$goodid])->value('title'):'';
-				$value['callTime'] = M('calls')->where($param)->value('calltime');;
-				$value['beginTime'] = M('calls')->where($param)->value('begin_time');;
+				$value['callTime'] = date('M/d H:i', M('calls')->where($param)->value('calltime'));
+				$value['beginTime'] =date('M/d H:i', M('calls')->where($param)->value('begin_time'));
     		}
     	}
     	$ret['data'] = $queue;
