@@ -377,9 +377,10 @@ class Api extends ApiBase
             if ($rooms['seats']<($woman+$man+$secret)) {
                 return api_error('房间座位数'.$rooms['seats']);
             }
-            $msg = '';
+            
     		//安排
     		try {
+                $msg = '';
                 M('room')->where(['id'=>$room])->update(['status'=>2]);
     			if ($woman) {
                     //优化处理SPA和足浴分开安排
@@ -408,7 +409,7 @@ class Api extends ApiBase
                         $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
                         
     				}
-                    $this->push_wm_msg('1',$msg);
+                    
     			}
     			if ($man) {
     				$makem = M('user_queue')->where(['type'=>0,'sex'=>1])->order('postion ASC')->limit($man)->column('id');
@@ -434,7 +435,7 @@ class Api extends ApiBase
                         $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
                         
     				}
-                    $this->push_wm_msg('1',$msg);
+                    // $this->push_wm_msg('1',$msg);
     			}
     			
     			//不限制
@@ -462,11 +463,12 @@ class Api extends ApiBase
                         $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
                         
     				}
-                    $this->push_wm_msg('1',$msg);
+                    // $this->push_wm_msg('1',$msg);
     			}
                 //删除等待信息
                 M('waite')->where(['room_id'=>$room])->delete();
-    			
+    			$this->push_wm_msg('1',$msg);
+
     		} catch (Exception $e) {
     			return api_error('操作失败，请稍后重试');
     		}
