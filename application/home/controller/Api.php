@@ -377,6 +377,7 @@ class Api extends ApiBase
             if ($rooms['seats']<($woman+$man+$secret)) {
                 return api_error('房间座位数'.$rooms['seats']);
             }
+            $msg = '';
     		//安排
     		try {
                 M('room')->where(['id'=>$room])->update(['status'=>2]);
@@ -385,6 +386,7 @@ class Api extends ApiBase
                     
     				$makew = M('user_queue')->where(['type'=>0,'sex'=>0])->order('postion ASC')->limit($woman)->column('id');
     				M('user_queue')->where('id','in',$makew)->update(['type'=>1]);
+
     				foreach ($makew as $key => $value) {
     					$userinfo = M('art')->where(['id'=>$value])->find();
     					$save['jsbn'] = $userinfo['jsbn'];
