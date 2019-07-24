@@ -223,6 +223,9 @@ class Api extends ApiBase
     {
     	$art['data']  = Db::table('wp_art')->alias('a')->join('user_queue b','a.id = b.user_id')->where(['a.status'=>1,'b.type'=>0])->select();
 
+        foreach ($art['data'] as $key => &$value) {
+            $value['username'] = $value['jsbn'];
+        }
     	return api_success($art);
     }
 
@@ -378,6 +381,8 @@ class Api extends ApiBase
     		try {
                 M('room')->where(['id'=>$room])->update(['status'=>2]);
     			if ($woman) {
+                    //优化处理SPA和足浴分开安排
+                    
     				$makew = M('user_queue')->where(['type'=>0,'sex'=>0])->order('postion ASC')->limit($woman)->column('id');
     				M('user_queue')->where('id','in',$makew)->update(['type'=>1]);
     				foreach ($makew as $key => $value) {
