@@ -268,8 +268,10 @@ class Api extends ApiBase
     	if (!$params['id']) {
     		return api_error('参数缺少');
     	}
-
+        $waite = M('waite')->where(['id'=>$params['id']])->find();
     	if (M('waite')->where(['id'=>$params['id']])->delete()) {
+
+            M('room')->where(['id'=>$waite['room_id']])->update(['status'=>0]);
     		return api_success('删除成功');
     	}
     	return api_error('删除失败');
