@@ -205,6 +205,10 @@ class Api extends ApiBase
     {
     	if (isset($params['free'])) {
     		$ret['data'] = M('room')->where(['status'=>0])->order('order ASC')->select();
+            if (isset($params['room_id'])) {
+                $room[] = M('room')->where(['id'=>$params['room_id']])->find();
+                $ret['data'] = array_merge($ret['data'],$room);
+            }
     		return api_success($ret);
     	}
     	$ret['data'] = M('room')->order('order ASC')->select();
