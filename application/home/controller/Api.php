@@ -14,6 +14,7 @@ class Api extends ApiBase
     {
         parent::initialize();
         $this->autoLogin();
+
     }
 
 
@@ -26,7 +27,6 @@ class Api extends ApiBase
         $params = input();
         //获得定义接口
         $api =  array_flip(config()['apis']['api']);
-
         if (isset($params['method'])) {
             //判断是否存在该方法
             $func = $api[$params['method']];
@@ -39,6 +39,7 @@ class Api extends ApiBase
         }else{
             return api_error('method参数缺失');
         }
+
 
     }
 
@@ -487,12 +488,14 @@ class Api extends ApiBase
     	$cp['postion'] = $params['positionid']-1;
     	$preid = M('user_queue')->where($cp)->value('id');
     	try {
+            add_debug_log(M('user_queue')->select(),'queueOrder');
     		//降1
     		M('user_queue')->where(['id'=>$preid])->update(['pre_postion',$cp['postion']]);
     		M('user_queue')->where(['id'=>$preid])->setInc('postion',1);
     		//升1
     		M('user_queue')->where(['id'=>$params['id']])->update(['pre_postion',$params['positionid']]);
     		M('user_queue')->where(['id'=>$params['id']])->setDec('postion',1);
+            add_debug_log(M('user_queue')->select(),'queueOrder');
     	} catch (Exception $e) {
     		return api_error('操作失败');
     	}
@@ -596,9 +599,25 @@ class Api extends ApiBase
             $call = M('calls')->where(['id'=>$params['id']])->find();
             M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
             M('user_queue')->where(['user_id'=>$call['art_id']])->update(['type'=>0]);
-            // if ($call['way']==0) {//如果是排
 
-            // }
+            if ($call['way']==0) {//如果是排
+                //查看当前排钟人数
+                if (M('user_queue')->where(['type'=>1])->count()>1) {
+                    return api_success('下钟成功');
+                }
+                add_debug_log(M('user_queue')->select(),'queueOrder');
+                //更新位置
+                $queue = M('user_queue')->where(['user_id'=>$call['art_id']])->find();
+                $postion = $queue['postion'];
+                $queuecount = M('user_queue')->count();
+                //更新当前技师位置
+                M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$queuecount,'pre_postion'=>$postion]);
+                $start = $queue+1;
+                for ($i=$queuecount; $i <= $start; $i--) { 
+                    M('user_queue')->where(['postion'=>$i])->update(['postion'=>$i-1,'pre_postion'=>$i]);
+                }
+                add_debug_log(M('user_queue')->select(),'queueOrder');
+            }
     		return api_success('下钟成功');
     	}
     	return api_error('下钟失败');
@@ -619,6 +638,7 @@ class Api extends ApiBase
             $call = M('calls')->where(['id'=>$params['id']])->find();
             M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
             M('user_queue')->where(['user_id'=>$call['art_id']])->update(['type'=>0]);
+            
     		return api_success('退单成功');
     	}
     	return api_error('退单失败');
