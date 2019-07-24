@@ -125,7 +125,7 @@ class Api extends ApiBase
     	$queue =  M('user_queue')->field('service_type,type,id,sex as gender,jsbn as number,status')->order('postion ASC')->select();
     	$ret = [];
     	foreach ($queue as $key => $value) {
-    		$value['gender'] = $value['gender']==0?'男':'女';
+    		$value['gender'] = $value['gender']==0?'女':'男';
     		$value['statusDesc'] = $value['type']==0?'空闲':($value['type']==1?'点':($value['type']==2?'排':'注销'));
     		$ret[$value['service_type']]['list'][] = $value;
     		if ($value['type']==0) {
