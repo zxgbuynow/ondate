@@ -396,11 +396,12 @@ class Api extends ApiBase
 				    	M('calls')->insert($save);
 
                         //语音推送
-                        sleep(1);
+                        // sleep(1);
                         $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                        $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
-                        $this->push_wm_msg('1',$msg);
+                        $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                        
     				}
+                    $this->push_wm_msg('1',$msg);
     			}
     			if ($man) {
     				$makem = M('user_queue')->where(['type'=>0,'sex'=>1])->order('postion ASC')->limit($man)->column('id');
@@ -421,11 +422,12 @@ class Api extends ApiBase
 				    	M('calls')->insert($save);
 
                         //语音推送
-                        sleep(1);
+                        // sleep(1);
                         $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                        $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
-                        $this->push_wm_msg('1',$msg);
+                        $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                        
     				}
+                    $this->push_wm_msg('1',$msg);
     			}
     			
     			//不限制
@@ -448,11 +450,12 @@ class Api extends ApiBase
 				    	M('calls')->insert($save);
 
                         //语音推送
-                        sleep(1);
+                        // sleep(1);
                         $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                        $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
-                        $this->push_wm_msg('1',$msg);
+                        $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                        
     				}
+                    $this->push_wm_msg('1',$msg);
     			}
                 //删除等待信息
                 M('waite')->where(['room_id'=>$room])->delete();
