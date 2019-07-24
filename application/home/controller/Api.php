@@ -436,7 +436,8 @@ class Api extends ApiBase
 				    	M('calls')->insert($save);
     				}
     			}
-    			//生成服务信息 
+                //删除等待信息
+                M('waite')->where(['room_id'=>$room])->delete();
     			
     		} catch (Exception $e) {
     			return api_error('操作失败，请稍后重试');
@@ -463,6 +464,8 @@ class Api extends ApiBase
 	    	$save['room'] = $rooms['room_name'];
 	    	$save['room_id'] = $rooms['id'];
 	    	M('calls')->insert($save);
+            //删除等待信息
+            M('waite')->where(['room_id'=>$room])->delete();
     	} catch (Exception $e) {
     		return api_error('操作失败，请稍后重试');
     	}
