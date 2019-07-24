@@ -172,8 +172,8 @@ class Api extends ApiBase
     			$param['art_id'] = $value['user_id'];
     			$goodid = M('calls')->where($param)->value('goods_id');
     			$value['serviceType'] = $goodid?M('shop_goods')->where(['id'=>$goodid])->value('title'):'';
-				$value['callTime'] = M('calls')->where($param)->value('calltime') ?date('M/d H:i', M('calls')->where($param)->value('calltime')):'';
-				$value['beginTime'] =  M('calls')->where($param)->value('begin_time')? date('M/d H:i', M('calls')->where($param)->value('begin_time')):'';
+				$value['callTime'] = M('calls')->where($param)->value('calltime') ?date('H:i', M('calls')->where($param)->value('calltime')):'';
+				$value['beginTime'] =  M('calls')->where($param)->value('begin_time')? date(' H:i', M('calls')->where($param)->value('begin_time')):'';
     		}
     	}
     	$ret['data'] = $queue;
@@ -620,8 +620,8 @@ class Api extends ApiBase
     		$value['endTime'] = $value['end_time'];
     		$value['way'] = $value['way']==0?'排钟':'点钟';
     		$value['status'] = $value['status']==0?'等待上钟':'上钟';
-    		$value['time']  = date('m/d H:i',$value['calltime']);
-            $value['callTime']  = date('m/d H:i',$value['calltime']);
+    		$value['time']  = $value['calltime'] ?date(' H:i',$value['calltime']):'';
+            $value['callTime']  = $value['calltime']?date(' H:i',$value['calltime']):'';
     		$value['operator'] = M('user')->where(['uid'=>$value['operator']])->value('nickname');
     		$index ++;
     	}
