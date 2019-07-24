@@ -394,6 +394,12 @@ class Api extends ApiBase
 				    	$save['room'] = $rooms['room_name'];
 				    	$save['room_id'] = $rooms['id'];
 				    	M('calls')->insert($save);
+
+                        //语音推送
+                        sleep(1);
+                        $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+                        $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                        $this->push_wm_msg('1',$msg);
     				}
     			}
     			if ($man) {
@@ -413,6 +419,12 @@ class Api extends ApiBase
 				    	$save['room'] = $rooms['room_name'];
 				    	$save['room_id'] = $rooms['id'];
 				    	M('calls')->insert($save);
+
+                        //语音推送
+                        sleep(1);
+                        $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+                        $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                        $this->push_wm_msg('1',$msg);
     				}
     			}
     			
@@ -434,6 +446,12 @@ class Api extends ApiBase
 				    	$save['room'] = $rooms['room_name'];
 				    	$save['room_id'] = $rooms['id'];
 				    	M('calls')->insert($save);
+
+                        //语音推送
+                        sleep(1);
+                        $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+                        $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                        $this->push_wm_msg('1',$msg);
     				}
     			}
                 //删除等待信息
@@ -466,6 +484,11 @@ class Api extends ApiBase
 	    	M('calls')->insert($save);
             //删除等待信息
             M('waite')->where(['room_id'=>$room])->delete();
+            //语音推送
+            $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+            $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+            $this->push_wm_msg('1',$msg);
+            M('calls')->where(['id'=>$calls['id']])->update(['calltime'=>time()]);
     	} catch (Exception $e) {
     		return api_error('操作失败，请稍后重试');
     	}
