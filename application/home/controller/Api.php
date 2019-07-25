@@ -14,7 +14,12 @@ class Api extends ApiBase
     {
         parent::initialize();
         $this->autoLogin();
-
+        //init sql
+        // update wp_user_queue set type = 0;
+        // update wp_art set `status` = 1;
+        // update wp_room set `status` = 0;
+        // truncate wp_waite ;
+        // truncate wp_calls;
     }
 
 
@@ -221,11 +226,22 @@ class Api extends ApiBase
      */
     public function artList($params)
     {
-    	$art['data']  = Db::table('wp_art')->alias('a')->join('user_queue b','a.id = b.user_id')->where(['a.status'=>1,'b.type'=>0])->select();
+        //过滤数据
+        if (isset($params['room_id'])) {
+            $cate = M('room')->where(['id'=>$params['room_id']])->find();
+            $p['a.type'] = 0;
+            if ($cate==4) {//spa
+                $p['a.type'] = 1;
+            }
+            $p['a.status'] = 1;
+            $p['b.type'] = 0;
+        }
+    	$art['data']  = Db::table('wp_art')->alias('a')->join('user_queue b','a.id = b.user_id')->where($p)->select();
 
         foreach ($art['data'] as $key => &$value) {
             $value['username'] = $value['jsbn'];
         }
+
     	return api_success($art);
     }
 
