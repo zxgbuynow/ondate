@@ -157,8 +157,8 @@ class Api extends ApiBase
 
     	$queue =  M('user_queue')->field('service_type,type,id,sex as artificerGender,jsbn as artificerNumber,status,postion,user_id')->order('service_type ASC,postion ASC')->select();
     	foreach ($queue as $key => &$value) {
-    		$value['artificerGender'] = $value['service_type']==0?'足浴':'SPA';
-    		$value['artificerType'] = $value['artificerGender']==0?'男':'女';
+    		$value['artificerGender'] = $value['artificerGender']==0?'男':'女';
+    		$value['artificerType'] = $value['service_type']==0?'足浴':'SPA';
     		$value['status'] = $value['type']==0?'空闲':($value['type']==1?'排钟':($value['type']==2?'点钟':'注销'));
     		$value['onClock'] = $value['type']==0?'空闲':($value['type']==1?'排钟':($value['type']==2?'点钟':'注销'));
     		$value['order'] = $value['postion'];
