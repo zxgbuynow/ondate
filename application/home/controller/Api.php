@@ -155,7 +155,7 @@ class Api extends ApiBase
     public function queueList($params)
     {
 
-    	$queue =  M('user_queue')->field('service_type,type,id,sex as artificerGender,jsbn as artificerNumber,status,postion,user_id')->order('postion ASC')->select();
+    	$queue =  M('user_queue')->field('service_type,type,id,sex as artificerGender,jsbn as artificerNumber,status,postion,user_id')->order('service_type ASC,postion ASC')->select();
     	foreach ($queue as $key => &$value) {
     		$value['artificerGender'] = $value['service_type']==0?'足浴':'SPA';
     		$value['artificerType'] = $value['artificerGender']==0?'男':'女';
