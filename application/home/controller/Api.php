@@ -363,7 +363,15 @@ class Api extends ApiBase
     	$room  = $params['roomid'];
     	$service_type  = $params['goodid'];
 
-    	$userinfo = M('art')->where(['id'=>$params['id']])->find();
+        //房间类型
+        $rcate = M('room')->where(['id'=>$params['roomid']])->find();
+        $roomtype = 0;
+        if ($rcate==4) {//spa
+            $roomtype = 1;
+        }
+
+
+    	$userinfo = M('art')->where(['id'=>$params['id'],'type'=>$roomtype])->find();
     	$goods  = M('shop_goods')->where(['id'=>$service_type])->find();
     	$rooms  = M('room')->where(['id'=>$room])->find();
 
@@ -373,9 +381,9 @@ class Api extends ApiBase
     		$man = intval($params['man']);
     		$secret = intval($params['secret']);
     		$wantTot = $woman+$man+$secret;
-    		$total = M('user_queue')->where(['type'=>0])->count();
-    		$freeman = M('user_queue')->where(['type'=>0,'sex'=>1])->count();
-    		$freewoman = M('user_queue')->where(['type'=>0,'sex'=>0])->count();
+    		$total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->count();
+    		$freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->count();
+    		$freewoman = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->count();
     		//先算总人数
     		// $difw = $freewoman>$woman?0:($freewoman-$woman);
     		if ($wantTot>$total) {
@@ -397,11 +405,10 @@ class Api extends ApiBase
     		//安排
     		try {
                 $msg = '';
-                M('room')->where(['id'=>$room])->update(['status'=>2]);
+                
     			if ($woman) {
                     //优化处理SPA和足浴分开安排
-                    
-    				$makew = M('user_queue')->where(['type'=>0,'sex'=>0])->order('postion ASC')->limit($woman)->column('id');
+    				$makew = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($woman)->column('id');
     				M('user_queue')->where('id','in',$makew)->update(['type'=>1]);
 
     				foreach ($makew as $key => $value) {
@@ -428,7 +435,7 @@ class Api extends ApiBase
                     
     			}
     			if ($man) {
-    				$makem = M('user_queue')->where(['type'=>0,'sex'=>1])->order('postion ASC')->limit($man)->column('id');
+    				$makem = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->order('postion ASC')->limit($man)->column('id');
     				M('user_queue')->where('id','in',$makem)->update(['type'=>1]);
     				foreach ($makem as $key => $value) {
     					$userinfo = M('art')->where(['id'=>$value])->find();
@@ -456,7 +463,7 @@ class Api extends ApiBase
     			
     			//不限制
     			if ($secret) {
-    				$secret = M('user_queue')->where(['type'=>0])->order('postion ASC')->limit($secret)->column('id');
+    				$secret = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('id');
     				M('user_queue')->where('id','in',$secret)->update(['type'=>1]);
     				foreach ($secret as $key => $value) {
     					$userinfo = M('art')->where(['id'=>$value])->find();
@@ -481,6 +488,8 @@ class Api extends ApiBase
     				}
                     // $this->push_wm_msg('1',$msg);
     			}
+                //更新房间信息
+                M('room')->where(['id'=>$room])->update(['status'=>2]);
                 //删除等待信息
                 M('waite')->where(['room_id'=>$room])->delete();
     			$this->push_wm_msg('1',$msg);
