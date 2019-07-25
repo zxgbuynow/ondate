@@ -608,7 +608,13 @@ class Api extends ApiBase
 
     	try {
     		M('art')->where(['id'=>$params['id']])->update(['status'=>0]);
-    		M('user_queue')->where(['user_id'=>$params['id']])->update(['type'=>3]);
+            if (M('user_queue')->where(['user_id'=>$params['id'],'type'=>3])->find()) {
+                M('user_queue')->where(['user_id'=>$params['id']])->update(['type'=>0]);
+                return api_success('上线成功');
+            }else{
+                M('user_queue')->where(['user_id'=>$params['id']])->update(['type'=>3]);
+            }
+    		
     	} catch (Exception $e) {
     		return api_error('注销失败');
     	}
