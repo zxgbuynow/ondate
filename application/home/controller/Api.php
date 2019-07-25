@@ -233,9 +233,10 @@ class Api extends ApiBase
             if ($cate==4) {//spa
                 $p['a.type'] = 1;
             }
-            $p['a.status'] = 1;
-            $p['b.type'] = 0;
+            
         }
+        $p['a.status'] = 1;
+        $p['b.type'] = 0;
     	$art['data']  = Db::table('wp_art')->alias('a')->join('user_queue b','a.id = b.user_id')->where($p)->select();
 
         foreach ($art['data'] as $key => &$value) {
