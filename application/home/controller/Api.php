@@ -228,7 +228,7 @@ class Api extends ApiBase
     {
         //过滤数据
         if (isset($params['room_id'])) {
-            $cate = M('room')->where(['id'=>$params['room_id']])->find();
+            $cate = M('room')->where(['id'=>$params['room_id']])->value('cate_id');
             $p['a.type'] = 0;
             if ($cate==4) {//spa
                 $p['a.type'] = 1;
@@ -364,12 +364,11 @@ class Api extends ApiBase
     	$service_type  = $params['goodid'];
 
         //房间类型
-        $rcate = M('room')->where(['id'=>$params['roomid']])->find();
+        $rcate = M('room')->where(['id'=>$params['roomid']])->value('cate_id');
         $roomtype = 0;
         if ($rcate==4) {//spa
             $roomtype = 1;
         }
-
 
     	$userinfo = M('art')->where(['id'=>$params['id'],'type'=>$roomtype])->find();
     	$goods  = M('shop_goods')->where(['id'=>$service_type])->find();
