@@ -103,6 +103,7 @@ class Api extends ApiBase
     		$calls = M('calls')->where($cparams)->limit(3)->select();
     		array_walk($calls,function(&$v,$k){
     			$v['sex'] = $v['sex']==0?'女':'男';
+                $v['num'] = $v['jsbn'];
     			$v['time'] = $v['calltime']?date('H:i',$v['calltime']):'waiting';
     		});
     		$value['calls'] = $calls;
