@@ -693,7 +693,7 @@ class Api extends ApiBase
                 //更新当前技师位置
                 M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$queuecount,'pre_postion'=>$postion]);
                 $start = intval($queue['postion']+1);
-                for ($i=$start; $i <= $queuecount; $i++) { 
+                for ($i=$start; $i < $queuecount; $i++) { 
                     $setdec = intval($i-1);
 
                     M('user_queue')->where(['postion'=>$i])->update(['postion'=>$setdec,'pre_postion'=>$i]);
