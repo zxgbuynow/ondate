@@ -25,7 +25,7 @@ class Api extends ApiBase
 
     function index()
     {
-        // for ($i=5; $i <= 20; $i++) {
+        // for ($i=2; $i <= 20; $i++) {
         //     echo $i;
         // }
         // exit;
@@ -690,14 +690,15 @@ class Api extends ApiBase
                 $queue = M('user_queue')->where(['user_id'=>$call['art_id']])->find();
                 $postion = $queue['postion'];
                 $queuecount = M('user_queue')->count();
-                //更新当前技师位置
-                M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$queuecount,'pre_postion'=>$postion]);
+                
                 $start = intval($queue['postion']+1);
-                for ($i=$start; $i < $queuecount; $i++) { 
+                for ($i=$start; $i <= $queuecount; $i++) { 
                     $setdec = intval($i-1);
 
                     M('user_queue')->where(['postion'=>$i])->update(['postion'=>$setdec,'pre_postion'=>$i]);
                 }
+                //更新当前技师位置
+                M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$queuecount,'pre_postion'=>$postion]);
                 add_debug_log(M('user_queue')->select(),'queueOrder');
             }
     		return api_success('下钟成功');
