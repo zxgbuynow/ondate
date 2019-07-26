@@ -677,18 +677,18 @@ class Api extends ApiBase
             M('user_queue')->where(['user_id'=>$call['art_id']])->update(['type'=>0]);
 
             if ($call['way']==0) {//如果是排
-                //查看当前排钟人数
-                if (M('user_queue')->where(['type'=>1])->count()>1) {
-                    return api_success('下钟成功');
-                }
+                // //查看当前排钟人数
+                // if (M('user_queue')->where(['type'=>1])->count()>1) {
+                //     return api_success('下钟成功');
+                // }
                 add_debug_log(M('user_queue')->select(),'queueOrder');
-                //更新位置
+                // //更新位置
                 $queue = M('user_queue')->where(['user_id'=>$call['art_id']])->find();
                 $postion = $queue['postion'];
                 $queuecount = M('user_queue')->count();
                 //更新当前技师位置
                 M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$queuecount,'pre_postion'=>$postion]);
-                $start = intval($queue+1);
+                $start = intval($queue['postion']+1);
                 for ($i=$queuecount; $i <= $start; $i--) { 
                     $setdec = intval($i-1);
                     M('user_queue')->where(['postion'=>$i])->update(['postion'=>$setdec,'pre_postion'=>$i]);
