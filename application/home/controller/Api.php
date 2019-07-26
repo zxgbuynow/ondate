@@ -25,6 +25,10 @@ class Api extends ApiBase
 
     function index()
     {
+        // for ($i=5; $i <= 20; $i++) {
+        //     echo $i;
+        // }
+        // exit;
     	header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: token, Origin, X-Requested-With, Content-Type, Accept, Authorization");
         header('Access-Control-Allow-Methods: POST,GET,PUT,DELETE');
@@ -689,8 +693,9 @@ class Api extends ApiBase
                 //更新当前技师位置
                 M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$queuecount,'pre_postion'=>$postion]);
                 $start = intval($queue['postion']+1);
-                for ($i=$queuecount; $i <= $start; $i--) { 
+                for ($i=$start; $i <= $queuecount; $i++) { 
                     $setdec = intval($i-1);
+
                     M('user_queue')->where(['postion'=>$i])->update(['postion'=>$setdec,'pre_postion'=>$i]);
                 }
                 add_debug_log(M('user_queue')->select(),'queueOrder');
