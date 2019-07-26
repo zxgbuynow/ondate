@@ -697,7 +697,7 @@ class Api extends ApiBase
             }
     		return api_success('下钟成功');
     	}
-    	return api_error('下钟失败');
+    	return api_error('下钟失败！');
     }
 
     /**
