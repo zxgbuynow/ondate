@@ -678,7 +678,13 @@ class Api extends ApiBase
 
     	if (M('calls')->where(['id'=>$params['id']])->update(['status'=>3])) {
             $call = M('calls')->where(['id'=>$params['id']])->find();
-            M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
+            $map['status']=[0,1];
+            $map['room_id']=$call['room_id'];
+            $ask=M('calls')->where($map)->count();
+            if($ask<1){
+                M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
+            }
+           // M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
             M('user_queue')->where(['user_id'=>$call['art_id']])->update(['type'=>0]);
 
             if ($call['way']==0) {//如果是排
