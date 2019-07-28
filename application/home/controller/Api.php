@@ -584,7 +584,11 @@ class Api extends ApiBase
             //安排
             try {
                 $msg = '';
-                $max = M('user_queue')->max('postion');//获取当前最大排序位置
+                //获取当前最大排序位置
+                $tot = M('user_queue')->max('postion');
+                $map['type']=['<>',0];
+                $free =M('user_queue')->where($map)->count();
+                $max=$tot+$free;
 
                 if ($woman) {
                     //优化处理SPA和足浴分开安排
