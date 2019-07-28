@@ -469,6 +469,8 @@ class Api extends ApiBase
     			//不限制
     			if ($secret) {
     				$secret = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('id');
+    				dump($secret);
+    				exit;
     				M('user_queue')->where('id','in',$secret)->update(['type'=>1]);
     				foreach ($secret as $key => $value) {
     					$userinfo = M('art')->where(['id'=>$value])->find();
@@ -670,7 +672,7 @@ class Api extends ApiBase
      * @param  [type]
      * @return [type]
      */
-    public function orderFinsh($params)
+    public function orderFinsh_back($params)
     {
     	if (!$params['id']) {
     		return api_error('参数缺少');
@@ -711,6 +713,48 @@ class Api extends ApiBase
     		return api_success('下钟成功');
     	}
     	return api_error('下钟失败！');
+    }
+    //下钟优化，测试
+    public function orderFinsh($params){
+        if (!$params['id']) {
+            return api_error('参数缺少');
+        }
+
+        if (M('calls')->where(['id'=>$params['id']])->update(['status'=>3])) {
+            $call = M('calls')->where(['id'=>$params['id']])->find();
+            $map['status']=[0,1];
+            $map['room_id']=$call['room_id'];
+            $ask=M('calls')->where($map)->count();
+            if($ask<1){
+                M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);//更新房间状态
+            }
+            // M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
+            M('user_queue')->where(['user_id'=>$call['art_id']])->update(['type'=>0]);
+
+            if ($call['way']==0) {//如果是排
+                // //查看当前排钟人数
+                // if (M('user_queue')->where(['type'=>1])->count()>1) {
+                //     return api_success('下钟成功');
+                // }
+                add_debug_log(M('user_queue')->select(),'queueOrder');
+                // //更新位置
+                $queue = M('user_queue')->where(['user_id'=>$call['art_id']])->find();
+                $postion = $queue['postion'];
+                $queuecount = M('user_queue')->count();
+
+                $start = intval($queue['postion']+1);
+                for ($i=$start; $i <= $queuecount; $i++) {
+                    $setdec = intval($i-1);
+
+                    M('user_queue')->where(['postion'=>$i])->update(['postion'=>$setdec,'pre_postion'=>$i]);
+                }
+                //更新当前技师位置
+                M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$queuecount,'pre_postion'=>$postion]);
+                add_debug_log(M('user_queue')->select(),'queueOrder');
+            }
+            return api_success('下钟成功');
+        }
+        return api_error('下钟失败！');
     }
 
     /**
