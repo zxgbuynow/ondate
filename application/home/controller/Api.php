@@ -584,6 +584,7 @@ class Api extends ApiBase
             //安排
             try {
                 $msg = '';
+                $max = M('user_queue')->max('postion');//获取当前最大排序位置
 
                 if ($woman) {
                     //优化处理SPA和足浴分开安排
@@ -603,6 +604,7 @@ class Api extends ApiBase
                         $save['total'] = $goods['cost_price'];
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
+                        $save['next_pos'] = $key+1+$max;
                         M('calls')->insert($save);
 
                         //语音推送
@@ -629,6 +631,7 @@ class Api extends ApiBase
                         $save['total'] = $goods['cost_price'];
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
+                        $save['next_pos'] = $key+1+$max;
                         M('calls')->insert($save);
 
                         //语音推送
@@ -644,7 +647,6 @@ class Api extends ApiBase
                 if ($secret) {
                     $secret = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('id');
                     M('user_queue')->where('id','in',$secret)->update(['type'=>1]);
-                    $sum = M('user_queue')->count();
                     foreach ($secret as $key => $value) {
                         $userinfo = M('art')->where(['id'=>$value])->find();
                         $save['jsbn'] = $userinfo['jsbn'];
@@ -658,7 +660,7 @@ class Api extends ApiBase
                         $save['total'] = $goods['cost_price'];
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
-                        $save['next_pos'] = $key+1+$sum;
+                        $save['next_pos'] = $key+1+$max;
                         M('calls')->insert($save);
 
                         //语音推送
