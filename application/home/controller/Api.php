@@ -589,6 +589,10 @@ class Api extends ApiBase
                 $map['type']=['>',0];
                 $free =M('user_queue')->where($map)->count();
                 $max=$tot+$free;
+                dump($tot);
+                dump($free);
+                dump($max);
+                exit;
 
                 if ($woman) {
                     //优化处理SPA和足浴分开安排
