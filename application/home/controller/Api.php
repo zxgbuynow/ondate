@@ -586,8 +586,8 @@ class Api extends ApiBase
                 $msg = '';
                 //获取当前最大排序位置
                 $tot = M('user_queue')->max('postion');
-                $map['type']=['<>',0];
-                $free =M('user_queue')->where($map)->count();
+                //$map['type']=['in',1,2,3];
+                $free =M('user_queue')->where('type','>',0)->count();
                 $max=$tot+$free;
                 dump($tot);
                 dump($free);
