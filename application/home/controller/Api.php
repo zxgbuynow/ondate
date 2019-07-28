@@ -364,7 +364,7 @@ class Api extends ApiBase
      * @param  [type]
      * @return [type]
      */
-    public function makeArt($params)
+    public function makeArt_back($params)
     {
     	$room  = $params['roomid'];
     	$service_type  = $params['goodid'];
@@ -469,8 +469,6 @@ class Api extends ApiBase
     			//不限制
     			if ($secret) {
     				$secret = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('id');
-    				dump($secret);
-    				exit;
     				M('user_queue')->where('id','in',$secret)->update(['type'=>1]);
     				foreach ($secret as $key => $value) {
     					$userinfo = M('art')->where(['id'=>$value])->find();
@@ -539,7 +537,182 @@ class Api extends ApiBase
     	
     	return api_success('操作成功');
     }
+    //安排技师优化，测试
+    public function makeArt($params)
+    {
+        $room  = $params['roomid'];
+        $service_type  = $params['goodid'];
 
+        //房间类型
+        $rcate = M('room')->where(['id'=>$params['roomid']])->value('cate_id');
+        $roomtype = 0;
+        if ($rcate==4) {//spa
+            $roomtype = 1;
+        }
+
+        $userinfo = M('art')->where(['id'=>$params['id'],'type'=>$roomtype])->find();
+        $goods  = M('shop_goods')->where(['id'=>$service_type])->find();
+        $rooms  = M('room')->where(['id'=>$room])->find();
+
+        //参数处理
+        if ($params['system']=='systemChange') {
+            $woman = intval($params['woman']);
+            $man = intval($params['man']);
+            $secret = intval($params['secret']);
+            $wantTot = $woman+$man+$secret;
+            $total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->count();
+            $freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->count();
+            $freewoman = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->count();
+            //先算总人数
+            // $difw = $freewoman>$woman?0:($freewoman-$woman);
+            if ($wantTot>$total) {
+                return api_error('需求技师不够，当前技师：女'.$freewoman.'男'.$freeman);
+            }
+            //男
+            if ($man>$freeman) {
+                return api_error('需求技师不够，当前技师：男'.$freeman);
+            }
+            //女
+            if ($woman>$freewoman) {
+                return api_error('需求技师不够，当前技师：女'.$freewoman);
+            }
+            //算房间座位
+            if ($rooms['seats']<($woman+$man+$secret)) {
+                return api_error('房间座位数'.$rooms['seats']);
+            }
+
+            //安排
+            try {
+                $msg = '';
+
+                if ($woman) {
+                    //优化处理SPA和足浴分开安排
+                    $makew = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($woman)->column('id');
+                    M('user_queue')->where('id','in',$makew)->update(['type'=>1]);
+
+                    foreach ($makew as $key => $value) {
+                        $userinfo = M('art')->where(['id'=>$value])->find();
+                        $save['jsbn'] = $userinfo['jsbn'];
+                        $save['sex'] = $userinfo['sex'];
+                        $save['art_id'] = $userinfo['id'];
+                        $save['service_type'] = $service_type;
+                        $save['way'] = 0;
+                        $save['status'] = 0;
+                        $save['num'] = 1;
+                        $save['price'] = $goods['cost_price'];
+                        $save['total'] = $goods['cost_price'];
+                        $save['room'] = $rooms['room_name'];
+                        $save['room_id'] = $rooms['id'];
+                        M('calls')->insert($save);
+
+                        //语音推送
+                        // sleep(1);
+                        $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+                        $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+
+                    }
+
+                }
+                if ($man) {
+                    $makem = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->order('postion ASC')->limit($man)->column('id');
+                    M('user_queue')->where('id','in',$makem)->update(['type'=>1]);
+                    foreach ($makem as $key => $value) {
+                        $userinfo = M('art')->where(['id'=>$value])->find();
+                        $save['jsbn'] = $userinfo['jsbn'];
+                        $save['sex'] = $userinfo['sex'];
+                        $save['art_id'] = $userinfo['id'];
+                        $save['service_type'] = $service_type;
+                        $save['way'] = 0;
+                        $save['status'] = 0;
+                        $save['num'] = 1;
+                        $save['price'] = $goods['cost_price'];
+                        $save['total'] = $goods['cost_price'];
+                        $save['room'] = $rooms['room_name'];
+                        $save['room_id'] = $rooms['id'];
+                        M('calls')->insert($save);
+
+                        //语音推送
+                        // sleep(1);
+                        $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+                        $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+
+                    }
+                    // $this->push_wm_msg('1',$msg);
+                }
+
+                //不限制
+                if ($secret) {
+                    $secret = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('id');
+                    M('user_queue')->where('id','in',$secret)->update(['type'=>1]);
+                    $sum = M('user_queue')->count();
+                    foreach ($secret as $key => $value) {
+                        $userinfo = M('art')->where(['id'=>$value])->find();
+                        $save['jsbn'] = $userinfo['jsbn'];
+                        $save['sex'] = $userinfo['sex'];
+                        $save['art_id'] = $userinfo['id'];
+                        $save['service_type'] = $service_type;
+                        $save['way'] = 0;
+                        $save['status'] = 0;
+                        $save['num'] = 1;
+                        $save['price'] = $goods['cost_price'];
+                        $save['total'] = $goods['cost_price'];
+                        $save['room'] = $rooms['room_name'];
+                        $save['room_id'] = $rooms['id'];
+                        $save['next_pos'] = $key+1+$sum;
+                        M('calls')->insert($save);
+
+                        //语音推送
+                        // sleep(1);
+                        $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+                        $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+
+                    }
+                    // $this->push_wm_msg('1',$msg);
+                }
+                //更新房间信息
+                M('room')->where(['id'=>$room])->update(['status'=>2]);
+                //删除等待信息
+                M('waite')->where(['room_id'=>$room])->delete();
+                $this->push_wm_msg('1',$msg);
+
+            } catch (Exception $e) {
+                return api_error('操作失败，请稍后重试');
+            }
+            return api_success('操作成功');
+        }
+        try {
+            if (!M('user_queue')->where(['user_id'=>$params['id'],'type'=>0])->find()) {
+                return  api_error('当前技师非空闲');
+            }
+            M('room')->where(['id'=>$room])->update(['status'=>2]);
+            //主动选择
+            M('user_queue')->where(['user_id'=>$params['id']])->update(['type'=>2]);
+            //生成服务信息
+            $save['jsbn'] = $userinfo['jsbn'];
+            $save['sex'] = $userinfo['sex'];
+            $save['art_id'] = $userinfo['id'];
+            $save['service_type'] = $service_type;
+            $save['way'] = 1;
+            $save['status'] = 0;
+            $save['num'] = 1;
+            $save['price'] = $goods['cost_price'];
+            $save['total'] = $goods['cost_price'];
+            $save['room'] = $rooms['room_name'];
+            $save['room_id'] = $rooms['id'];
+            M('calls')->insert($save);
+            //删除等待信息
+            M('waite')->where(['room_id'=>$room])->delete();
+            //语音推送
+            $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+            $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+            $this->push_wm_msg('1',$msg);
+            M('calls')->where(['id'=>$calls['id']])->update(['calltime'=>time()]);
+        } catch (Exception $e) {
+            return api_error('操作失败，请稍后重试');
+        }
+
+        return api_success('操作成功');
+    }
     /**
      * 修改排序
      * @param  [type]
@@ -740,16 +913,16 @@ class Api extends ApiBase
                 // //更新位置
                 $queue = M('user_queue')->where(['user_id'=>$call['art_id']])->find();
                 $postion = $queue['postion'];
-                $queuecount = M('user_queue')->count();
+                /*      $queuecount = M('user_queue')->count();
 
-                $start = intval($queue['postion']+1);
-                for ($i=$start; $i <= $queuecount; $i++) {
-                    $setdec = intval($i-1);
+                      $start = intval($queue['postion']+1);
+                      for ($i=$start; $i <= $queuecount; $i++) {
+                          $setdec = intval($i-1);
 
-                    M('user_queue')->where(['postion'=>$i])->update(['postion'=>$setdec,'pre_postion'=>$i]);
-                }
+                          M('user_queue')->where(['postion'=>$i])->update(['postion'=>$setdec,'pre_postion'=>$i]);
+                      }*/
                 //更新当前技师位置
-                M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$queuecount,'pre_postion'=>$postion]);
+                M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$call['next_pos'],'pre_postion'=>$postion]);
                 add_debug_log(M('user_queue')->select(),'queueOrder');
             }
             return api_success('下钟成功');
