@@ -685,7 +685,7 @@ export default {
 					'key':'serviceName',
 					'width':60
 				},
-/*				{
+				{
 					'title':'单价',
 					'key':'fee',
 					'width':80
@@ -699,7 +699,7 @@ export default {
 					'title':'退单量',
 					'key':'cancelTotal',
 					'width':80
-				},*/
+				},
 				{
 					'title':'小计',
 					'key':'tatalFee',
