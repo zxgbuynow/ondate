@@ -655,6 +655,7 @@ class Api extends ApiBase
                         $save['sex'] = $userinfo['sex'];
                         $save['art_id'] = $userinfo['id'];
                         $save['service_type'] = $service_type;
+                        $save['goods_id'] = $roomtype;
                         $save['way'] = 0;
                         $save['status'] = 0;
                         $save['num'] = 1;
@@ -831,8 +832,8 @@ class Api extends ApiBase
     		$value['cancelTotal'] = 0;
     		$value['tatalFee'] =  number_format($goodsinfo['cost_price'],2);
     		$value['artificerNumber'] = $value['jsbn'];
-    		$value['beginTime'] = $value['begin_time'];
-    		$value['endTime'] = $value['end_time'];
+    		$value['beginTime'] = $value['begin_time']?date(' H:i',$value['begin_time']):'';
+    		$value['endTime'] = $value['end_time']?date(' H:i',$value['end_time']):'';
     		$value['way'] = $value['way']==0?'排钟':'点钟';
     		$value['status'] = $value['status']==0?'等待上钟':'上钟';
     		$value['time']  = $value['calltime'] ?date(' H:i',$value['calltime']):'';
