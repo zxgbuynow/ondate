@@ -98,7 +98,7 @@ class Api extends ApiBase
     	//组数据
     	$roomsarr = [];
     	foreach ($rooms as $key => &$value) {
-    		$cparams['status'] = ['in','0,1'];
+    		$cparams['status'] = [0,1];
     		$cparams['room_id'] = $value['id'];
     		$calls = M('calls')->where($cparams)->limit(3)->select();
     		array_walk($calls,function(&$v,$k){
