@@ -12,7 +12,7 @@ class Goods extends Base
     {
         $this->model = $this->getModel('shop_goods');
         parent::initialize();
-        
+
         $type = I('type/d', 0);
         $param['mdm'] = isset($_GET['mdm']) ? input('mdm') : '';
         $param['type'] = 0;
@@ -20,25 +20,25 @@ class Goods extends Base
         $res['url'] = U('Shop/Goods/lists', $param);
         $res['class'] = ACTION_NAME == 'lists' && $type == 0 ? 'current' : '';
         $nav[] = $res;
-        
+
         $param['type'] = 4;
         $res['title'] = '待上架的商品';
         $res['url'] = U('Shop/Goods/lists', $param);
         $res['class'] = ACTION_NAME == 'lists' && $type == 4 ? 'current' : '';
         $nav[] = $res;
-        
+
         $param['type'] = 1;
         $res['title'] = '已售罄的商品';
         $res['url'] = U('Shop/Goods/lists', $param);
         $res['class'] = ACTION_NAME == 'lists' && $type == 1 ? 'current' : '';
         $nav[] = $res;
-        
+
         $param['type'] = 2;
         $res['title'] = '下架的商品';
         $res['url'] = U('Shop/Goods/lists', $param);
         $res['class'] = ACTION_NAME == 'lists' && $type == 2 ? 'current' : '';
         $nav[] = $res;
-        
+
         $param['type'] = 3;
         $res['title'] = '商品回收站';
         $res['url'] = U('Shop/Goods/lists', $param);
@@ -128,7 +128,7 @@ class Goods extends Base
             $list = M('goods_category_link')->where('goods_id', $id)->select();
             $this->assign('cate_list', $list);
             $this->assign('category_id', $list[0]['category_first']);//商品分类
-             //dump($list);
+            //dump($list);
             // 获取商品参数
             $param_lists = M('goods_param_link')->where('goods_id', $id)
                 ->order('id asc')
@@ -207,7 +207,7 @@ class Goods extends Base
             $res['url'] = U('Shop/Goods/set_down?val=1', $this->get_param);
             $res['class'] = 'btn ajax-post confirm';
             $top_more_button[] = $res;
-            
+
             $res['title'] = '批量删除';
             $res['is_buttion'] = 1;
             $res['url'] = U('Shop/Goods/del?val=0', $this->get_param);
@@ -219,7 +219,7 @@ class Goods extends Base
             $res['url'] = U('Shop/Goods/set_down?val=2', $this->get_param);
             $res['class'] = 'btn ajax-post confirm';
             $top_more_button[] = $res;
-            
+
             $res['title'] = '彻底删除';
             $res['is_buttion'] = 1;
             $res['url'] = U('Shop/Goods/del?val=1&type=3', $this->get_param);
@@ -231,7 +231,7 @@ class Goods extends Base
             $res['url'] = U('Shop/Goods/set_down?val=1', $this->get_param);
             $res['class'] = 'btn ajax-post confirm';
             $top_more_button[] = $res;
-            
+
             $res['title'] = '批量删除';
             $res['is_buttion'] = 1;
             $res['url'] = U('Shop/Goods/del?val=0', $this->get_param);
@@ -264,11 +264,11 @@ class Goods extends Base
             $map['is_show'] = 2;
         }
         $map2['wpid'] = $map1['wpid'] = $map['wpid'] = get_wpid();
-        
+
         $cid = I('cid/d', 0);
         //dump($cid);
         $this->assign('cid', $cid);
-        
+
         if ($cid) {
             $goodsIdArr = M('goods_category_link')->where('category_second|category_first', $cid)->column('goods_id');
             $goodsDao = D('shop/ShopGoods');
@@ -281,7 +281,7 @@ class Goods extends Base
                 $map['id'] = 0;
             }
         }
-        
+
         session('common_condition', $map);
         $model = $this->model;
         if (empty($model)) {
@@ -290,23 +290,23 @@ class Goods extends Base
         // 解析列表规则
         $list_data = $this->_list_grid($model);
         $fields = $list_data['fields'];
-        
+
         // 搜索条件
         $map = $this->_search_map($model, $list_data['db_fields']);
-        
+
         $row = empty($model['list_row']) ? 20 : $model['list_row'];
-        
+
         // 读取模型数据列表
-        
+
         empty($fields) || in_array('id', $fields) || array_push($fields, 'id');
         $name = parse_name($model['name'], true);
-        
+
         $data = M($name)->alias('g')
             ->join('shop_goods_stock s', 's.goods_id = g.id and s.event_type=' . SHOP_EVENT_TYPE)
             ->where(wp_where($map))
             ->order('g.id desc')
             ->paginate($row);
-        
+
         // 分类数据
         $map2['is_show'] = 1;
         $list = M('shop_goods_category')->where(wp_where($map2))
@@ -316,14 +316,14 @@ class Goods extends Base
         foreach ($list as $vo) {
             $cate[$vo['id']] = $vo['title'];
         }
-        
+
         $this->assign('goods_category', $list);
         $list_data = $this->parsePageData($data, $model, $list_data, false);
         if ($isAjax) {
             unset($list_data['list_grids']['sale_count']);
             unset($list_data['list_grids']['is_show']);
             unset($list_data['list_grids']['urls']);
-            
+
             $this->assign($list_data);
             $this->assign('isRadio', I('isRadio/d', 0));
             return $this->fetch('lists_data');
@@ -350,7 +350,7 @@ class Goods extends Base
         if (empty($data['cate_first'])) {
             $this->error('请填写添加商品分类', '', true);
         }
-        
+
         // 无规格、删除所配置的规格信息
         unset($data['spec']);
         unset($data['market_price_arr']);
@@ -359,7 +359,7 @@ class Goods extends Base
         if ($data['is_show'] == 1 && $data['stock'] <= 0) {
             $this->error('直接上架，库存必须大于0', '', true);
         }
-        
+
         // 没有规格
         $markPrice = floatval($data['market_price']); // 市场价格
         $salePrice = floatval($data['sale_price']); // 促销价格
@@ -369,7 +369,7 @@ class Goods extends Base
         if ($salePrice > $markPrice) {
             $this->error('促销价应小于原价', '', true);
         }
-        
+
         if (empty($data['title'])) {
             $this->error('请填写商品名称', '', true);
         }
@@ -380,11 +380,11 @@ class Goods extends Base
             $this->error('请上传商品图片', '', true);
         }
         //指定门店时必须选择门店
-        if (isset($data['is_all_store']) && $data['is_all_store']==1 && empty($data['goods_store_title'])){
-        	$this->error('请添加指定门店','',true);
-        }
-        
-        
+        /*        if (isset($data['is_all_store']) && $data['is_all_store']==1 && empty($data['goods_store_title'])){
+                    $this->error('请添加指定门店','',true);
+                }*/
+
+
         return $data;
     }
 
@@ -393,14 +393,15 @@ class Goods extends Base
     {
         $model = $this->model;
         $id = I('id');
-        
+
         if (request()->isPost()) {
             $data = input('post.');
-            
+
             $data = $this->_check_post_data($data);
-            
+            $data['cost_price']=$data['market_price'];
+
             $Model = D($model['name']);
-            
+
             $data = $this->checkData($data, $model);
             // 获取模型的字段信息
             $res = false;
@@ -410,19 +411,19 @@ class Goods extends Base
                 $this->set_category($id, input('post.'));
                 // 保存商品参数
                 $this->set_param($id, input('post.'));
-                
+
                 // 保存详情
                 $this->set_content($id, input('post.content'));
-                
+
                 // 保存库存
                 D('Stock')->saveStock($id, input('post.'));
-                
+
                 // 保存商品所在门店
                 D('shop/GoodsStoreLink')->set_store($id, SHOP_EVENT_TYPE, $data);
-                
+
                 // 更新缓存
                 $goodsInfo = D('ShopGoods')->getInfo($id, true);
-                
+
                 $nextUrl = U('lists');
                 $this->success('保存' . $model['title'] . '成功！', $nextUrl, true);
             } else {
@@ -431,22 +432,23 @@ class Goods extends Base
         } else {
             // 获取数据
             $data = D($model['name'])->getInfo($id, true);
+
             $data || $this->error('数据不存在！');
-            
+
             if (isset($data['wpid']) && WPID != $data['wpid']) {
                 $this->error('非法访问！');
             }
-            
+
             $data['imgs'] = explode(',', $data['imgs']);
             $data['stores_ids']=D('shop/GoodsStoreLink')->get_store($id,$data['event_type']);
 //             dump($data);
-            
+
             $this->assign('data', $data);
             // 商品分类
             $catelists = D('shop/Category')->getCateDatalists();
             // dump($catelists);
             $this->assign('cate_data', $catelists);
-            
+
             $list = M('goods_category_link')->where('goods_id', $id)->select();
             // dump($list);
             $this->assign('cate_list', $list);
@@ -456,7 +458,7 @@ class Goods extends Base
                 ->order('id asc')
                 ->select();
             $this->assign('param_lists', $param_lists);
-            
+
             return $this->fetch();
         }
     }
@@ -467,31 +469,32 @@ class Goods extends Base
         $model = $this->model;
         $Model = D($model['name']);
         // dump($Model);
-        
+
         if (request()->isPost()) {
             $data = input('post.');
-            
+
             $data = $this->_check_post_data($data);
             $data = $this->checkData($data, $model);
-            
+            $data['cost_price']=$data['market_price'];
+
             $id = $Model->insertGetId($data);
             if ($id) {
                 // 保存商品分类信息
                 $this->set_category($id, input('post.'));
                 // 保存商品参数
                 $this->set_param($id, input('post.'));
-                
+
                 // 保存详情
                 $this->set_content($id, input('post.content'));
-                
+
                 // 保存库存
                 D('Stock')->saveStock($id, input('post.'));
-                
+
                 // 保存商品所在门店
                 D('shop/GoodsStoreLink')->set_store($id, SHOP_EVENT_TYPE, $data);
-                
+
                 $data['is_show'] = input('?post.is_show') ? input('post.is_show') : '';
-                
+
                 $nextUrl = U('lists');
                 $this->success('保存' . $model['title'] . '成功！', $nextUrl, true);
             } else {
@@ -502,7 +505,7 @@ class Goods extends Base
             $this->assign('cate_data', $catelists);
             // dump($fields);
             $this->assign('post_url', U('add'));
-            
+
             $this->assign('data', []);
             return $this->fetch('edit');
         }
@@ -514,7 +517,7 @@ class Goods extends Base
         $id = I('id');
         $ids = I('ids');
         if (empty($id) && empty($ids)){
-        	$this->error('请选择要操作的数据!');
+            $this->error('请选择要操作的数据!');
         }
         $type = I('type');
         if (! empty($id)) {
@@ -539,14 +542,14 @@ class Goods extends Base
             $save['is_delete'] = 1;
             $save['is_show'] = 0;
         }
-        
+
         $res = D('ShopGoods')->where(wp_where($map))->update($save);
         if ($res !== false && $type == 3) {
             $this->success('删除成功');
         } else if ($res) {
             $this->success('商品已加入回收站');
         }
-        
+
         // return parent::common_del ( $this->model );
     }
 
@@ -608,7 +611,7 @@ class Goods extends Base
             if (empty($opt)) {
                 continue;
             }
-            
+
             $opt_data['goods_id'] = $goods_id;
             $opt_data['wpid'] = get_wpid();
             $opt_data['title'] = $opt;
@@ -643,7 +646,7 @@ class Goods extends Base
         $isShow = I('is_show');
         $save['is_show'] = 1 - $isShow;
         $map['id'] = I('id');
-        
+
         $map['wpid'] = WPID;
         $type = I('type');
         if ($type == 3 || $type == 4) {
@@ -651,7 +654,7 @@ class Goods extends Base
             $save['is_delete'] = 0;
         }
         $res = M('shop_goods')->where(wp_where($map))->update($save);
-        
+
         $this->success('操作成功', U('lists'));
     }
 
@@ -660,7 +663,7 @@ class Goods extends Base
         $val = I('val');
         $ids = I('ids');
         if (empty($ids)){
-        	$this->error('请选择要操作的数据!');
+            $this->error('请选择要操作的数据!');
         }
         // dump($ids);exit;
         if ($val == 0 || $val == 2) {
@@ -692,7 +695,7 @@ class Goods extends Base
         $search = input('title');
         if ($search) {
             $this->assign('search', $search);
-            
+
             $map1['nickname'] = array(
                 'like',
                 '%' . htmlspecialchars($search) . '%'
@@ -707,20 +710,20 @@ class Goods extends Base
             } else {
                 $map['id'] = 0;
             }
-            
+
             unset($_REQUEST['title']);
         }
-        
+
         $map['goods_id'] = $goodsId = I('goods_id/d', 0);
         $model = $this->getModel('shop_goods_comment');
         session('common_condition', $map);
         $list_data = $this->_get_model_list($model, 'id desc');
         $goodsTitle = M('shop_goods')->where('id',$goodsId)->value('title');
         foreach ($list_data['list_data'] as &$vo){
-			$vo ['uid'] = empty ( $vo ['uid'] ) ? '匿名' : $vo ['uid'];
-			$vo ['goods_title'] = empty ( $vo ['goods_title'] ) ? $goodsTitle : $vo ['goods_title'];
+            $vo ['uid'] = empty ( $vo ['uid'] ) ? '匿名' : $vo ['uid'];
+            $vo ['goods_title'] = empty ( $vo ['goods_title'] ) ? $goodsTitle : $vo ['goods_title'];
         }
-        
+
         $this->assign($list_data);
         $this->assign('search_url', U('Shop/Goods/goodsCommentLists', array(
             'mdm' => input('mdm'),

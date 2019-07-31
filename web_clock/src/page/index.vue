@@ -5,7 +5,7 @@
 				<div class="header-btn btn-reload" @click="reload()">刷新</div>
 				<div class="header-btn btn-vip" @click="modal_vipwait=true">贵宾等待</div>
 				<div class="header-btn btn-artificer" @click="modal_artificerStatus=true">技师状况</div>
-				<div class="header-btn btn-appointment">预约</div>
+				<div class="header-btn btn-appointment">客户预约</div>
 				<div class="header-btn btn-goback" @click="pageBack()">返回</div>
 			</Header>
 			<Layout class="index-content">
