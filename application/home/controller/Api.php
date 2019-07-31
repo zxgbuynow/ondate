@@ -178,7 +178,7 @@ class Api extends ApiBase
 				$value['callTime']='';
 				$value['beginTime']='';
     		}else{
-    			$param['status'] = array('in','0,1');
+    			$param['status'] = [0,1];
     			$param['art_id'] = $value['user_id'];
     			$goodid = M('calls')->where($param)->value('goods_id');
     			$value['serviceType'] = $goodid?M('shop_goods')->where(['id'=>$goodid])->value('title'):'';
