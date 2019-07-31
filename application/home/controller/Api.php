@@ -173,7 +173,7 @@ class Api extends ApiBase
     		$value['onClock'] = $value['type']==0?'空闲':($value['type']==1?'排钟':($value['type']==2?'点钟':'注销'));
     		$value['order'] = $value['postion'];
     		$value['index'] = $value['postion'];
-    		if ($value['type']==0||$value['type']==2) {
+    		if ($value['type']==0||$value['type']==3) {
     			$value['serviceType']='';
 				$value['callTime']='';
 				$value['beginTime']='';
