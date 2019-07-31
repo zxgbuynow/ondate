@@ -820,9 +820,8 @@ class Api extends ApiBase
     	}
 
     	$cparams['room_id'] = $params['roomid'];
-    	$cparams['status'] = ['in','0,1'];
+    	$cparams['status'] = [0,1];
     	$calls = M('calls')->where($cparams)->select();
-
 		$index = 1;
     	foreach ($calls as $key => &$value) {
     		$value['index'] = $index;
