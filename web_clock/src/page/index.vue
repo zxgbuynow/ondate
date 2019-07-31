@@ -27,12 +27,17 @@
 						<div class="room-order" v-bind:class="{active:roomIdToShowOrder==room.id}" @mouseover="roomShowOrder(room.id)" @mouseout="roomShowOrder('-1')">
 							<div class="order-item" @click="makeRoomArt(room.id,room.room_name)">安排技师</div>
 							<div class="order-item" @click="showRoomInfo(room.id,room.room_name)">详细信息</div>
-							<div class="order-item">刷新房间</div>
+							<div class="order-item" @click="reload()">刷新房间</div>
 							<div class="order-item">预约</div>
 						</div>
 						<!-- 空闲 -->
 						<div class="room-content spare" v-bind:class="{active:room.status=='0'}">
 							<div class="spare-text1">空闲</div>
+							<div class="spare-text2">{{room.seats}}座</div>
+						</div>
+						<!-- 等待 -->
+						<div class="room-content spare" v-bind:class="{active:room.status=='1'}">
+							<div class="spare-text1">等待</div>
 							<div class="spare-text2">{{room.seats}}座</div>
 						</div>
 						<!-- 清洁中 -->
@@ -442,9 +447,18 @@ export default {
 								style:{},
 								on:{
 									click:() =>{
+										var _this  = this;
+										//空闲房间除当前房间外
+										var roomFree = {'method':'room.list','free':true,'room_id':params.row.room_id};
+										roomList(roomFree).then(function(data){
+											if (data) {_this.roomFreeList=data.data}
+										}).catch(function(data){
+											// alert(data); 
+										})	
+										console.log(params.row)
 										var waitid = params.row.id;
 										var waitdp = {'method':'wait.list','id':waitid};
-										var _this  = this;
+										
 										waitList(waitdp).then(function(data){		
 											if (data) {
 												_this.waitAddInfo.id = waitid;
@@ -455,6 +469,7 @@ export default {
 												_this.waitAddInfo.artificerNumber = data.data.artificerNumber;
 												_this.modal_vipwait_add = true;
 												// console.log(_this.waitAddInfo)
+												
 											}
 											// _this.changeStorey(0);
 											
@@ -479,7 +494,7 @@ export default {
 										waitDel(waitdp).then(function(data){
 											console.log(data);		
 											_this.$Message.success(data.msg);	
-											_this.changeStorey(0);
+											_this.initStorey(0);
 										}).catch(function(data){
 											_this.$Message.error(data.msg);
 											// alert(data);
@@ -595,7 +610,7 @@ export default {
 										var queueop = {'method':'queue.order','id':queueid,'positionid':postion};
 										queueOrder(queueop).then(function(data){
 											console.log(data);
-											_this.changeStorey(0);
+											_this.initStorey(0);
 											_this.$Message.success(data.msg);
 										}).catch(function(data){
 											console.log(data);
@@ -611,7 +626,7 @@ export default {
 									class:"table-icon-btn table-btn-cel"
 								},
 								style:{
-									display:(params.row.status=='空闲')?"none":"inline-block"
+									display:(params.row.status=='空闲'||params.row.status=='注销')?"none":"inline-block"
 								},
 								on:{
 									click:() =>{
@@ -634,7 +649,9 @@ export default {
 								attrs:{
 									class:"table-icon-btn table-btn-off"
 								},
-								style:{},
+								style:{
+									display:(params.row.status=='空闲'||params.row.status=='注销')?"inline-block":"none"
+								},
 								on:{
 									click:() =>{
 										var queueid = params.row.id
@@ -643,6 +660,7 @@ export default {
 										var queuelp = {'method':'queue.logout','artid':userid,'id':queueid};
 										queueLogout(queuelp).then(function(data){
 											_this.$Message.success(data.msg);
+											_this.initStorey(0);
 										}).catch(function(data){
 											alert(data);
 										})
@@ -764,6 +782,7 @@ export default {
 											if (data) {
 												_this.showRoomInfo(roomid);
 												_this.$Message.success(data.msg);
+												_this.initStorey(0);
 											}
 										}).catch(function(data){
 											// alert(data);
@@ -791,6 +810,7 @@ export default {
 										orderRefund(refundp).then(function(data){				
 											if (data) {
 												_this.showRoomInfo(roomid);
+												_this.initStorey(0);
 												_this.$Message.success(data.msg);
 											}
 										}).catch(function(data){
@@ -818,6 +838,7 @@ export default {
 										orderFinsh(refundp).then(function(data){				
 											if (data) {
 												_this.showRoomInfo(roomid);
+												_this.initStorey(0);
 												_this.$Message.success(data.msg);
 											}
 										}).catch(function(data){
@@ -907,7 +928,7 @@ export default {
 			window.history.go(-1);
 		},
 		reload: function () {
-			this.changeStorey(0);
+			this.initStorey();
 			this.$Message.success('reload success');
 		},
 		initStorey: function (){
@@ -972,13 +993,20 @@ export default {
 			}).catch(function(data){
 				alert(data);
 			})
+			//统计
+			var statementp = {'method':'art.statement'};
+			artStatement(statementp).then(function(data){
+				if (data) {_this.artStatements = data}
+			}).catch(function(data){
+				_this.$Message.error(data.msg);
+			})
 		},
 		makeRoomArt: function (roomId,name){
 			var _this = this;
 			_this.currenRoomId = roomId;
 			_this.currenRoom = name;
 			//技师状况
-			var artp = {'method':'art.list'};
+			var artp = {'method':'art.list','room_id':roomId};
 			artList(artp).then(function(data){
 				_this.modal_arrange = true;
 				if (data) {_this.artList = data.data}
@@ -1015,7 +1043,7 @@ export default {
 			// 换房间
 			var exroomp = {'method':'order.exRoom','roomid':roomid,'id':name};
 			orderExRoom(exroomp).then(function(data){
-				_this.changeStorey(0);
+				_this.initStorey(0);
 				_this.$Message.success(data.msg);
 			}).catch(function(data){
 				_this.$Message.error(data.msg);
@@ -1029,13 +1057,13 @@ export default {
 			waitAdd(waitAddp).then(function(data){
 				_this.modal_vipwait_affirm = false;
 				_this.modal_vipwait_add = false;
-				_this.changeStorey(0);
+				_this.initStorey(0);
 				_this.$Message.success(data.msg);
 			}).catch(function(data){
 				_this.$Message.error(data.msg);
 				// alert(data);
 			})
-			console.log(_this.waitAddInfo);
+			// console.log(_this.waitAddInfo);
 		},
 		arrange: function(tag) {
 			var _this = this;
@@ -1051,7 +1079,7 @@ export default {
 			
 			makeArt(makeArtp).then(function(data){
 				_this.$Message.success(data.msg);
-				_this.changeStorey(0);
+				_this.initStorey(0);
 			}).catch(function(data){
 				_this.$Message.error(data.msg);
 			})
