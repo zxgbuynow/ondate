@@ -625,7 +625,8 @@ class Api extends ApiBase
                         $save['jsbn'] = $userinfo['jsbn'];
                         $save['sex'] = $userinfo['sex'];
                         $save['art_id'] = $userinfo['id'];
-                        $save['service_type'] = $service_type;
+                        $save['service_type'] = $roomtype;
+                        $save['goods_id'] = $service_type;
                         $save['way'] = 0;
                         $save['status'] = 0;
                         $save['num'] = 1;
@@ -654,8 +655,8 @@ class Api extends ApiBase
                         $save['jsbn'] = $userinfo['jsbn'];
                         $save['sex'] = $userinfo['sex'];
                         $save['art_id'] = $userinfo['id'];
-                        $save['service_type'] = $service_type;
-                        $save['goods_id'] = $roomtype;
+                        $save['service_type'] = $roomtype;
+                        $save['goods_id'] = $service_type;
                         $save['way'] = 0;
                         $save['status'] = 0;
                         $save['num'] = 1;
@@ -696,7 +697,8 @@ class Api extends ApiBase
             $save['jsbn'] = $userinfo['jsbn'];
             $save['sex'] = $userinfo['sex'];
             $save['art_id'] = $userinfo['id'];
-            $save['service_type'] = $service_type;
+            $save['service_type'] = $roomtype;
+            $save['goods_id'] = $service_type;
             $save['way'] = 1;
             $save['status'] = 0;
             $save['num'] = 1;
