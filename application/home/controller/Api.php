@@ -984,6 +984,8 @@ class Api extends ApiBase
     	//取得房间编号
     	$room = M('room')->where(['id'=>$params['id']])->value('room_name');
     	if (M('calls')->where(['id'=>$calls['id']])->update(['room_id'=>$params['id'],'room'=>$room])) {
+            M('room')->where(['id'=>$calls['room_id']])->update(['status'=>0]);
+            M('room')->where(['id'=>$params['id']])->update(['status'=>2]);
     		return api_success('换房成功');
     	}
     	return api_error('换房失败');
