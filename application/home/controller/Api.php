@@ -93,7 +93,7 @@ class Api extends ApiBase
     public function homeIndex($params)
     {
     	$cate = M('room_cate')->order('order ASC')->select();
-    	$rooms = M('room')->order('status,order ASC')->select();
+    	$rooms = M('room')->order('status DESC,order ASC')->select();
 
     	//组数据
     	$roomsarr = [];
