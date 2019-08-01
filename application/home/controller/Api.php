@@ -698,7 +698,7 @@ class Api extends ApiBase
             //主动选择
             M('user_queue')->where(['jsbn'=>$params['id']])->update(['type'=>2]);
             //生成服务信息
-            $save['jsbn'] = $userinfo['jsbn'];
+            $save['jsbn'] = $params['id'];
             $save['sex'] = $userinfo['sex'];
             $save['art_id'] = $userinfo['id'];
             $save['service_type'] = $roomtype;
