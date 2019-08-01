@@ -550,7 +550,7 @@ class Api extends ApiBase
             $roomtype = 1;
         }
 
-        $userinfo = M('art')->where(['id'=>$params['id'],'type'=>$roomtype])->find();
+        //$userinfo = M('art')->where(['id'=>$params['id'],'type'=>$roomtype])->find();
         $goods  = M('shop_goods')->where(['id'=>$service_type])->find();
         $rooms  = M('room')->where(['id'=>$room])->find();
 
@@ -694,6 +694,7 @@ class Api extends ApiBase
             if (!M('user_queue')->where(['jsbn'=>$params['id'],'type'=>0])->find()) {
                 return  api_error('当前技师非空闲');
             }
+            $userinfo = M('art')->where(['jsbn'=>$params['id'],'type'=>$roomtype])->find();
             M('room')->where(['id'=>$room])->update(['status'=>2]);
             //主动选择
             M('user_queue')->where(['jsbn'=>$params['id']])->update(['type'=>2]);
