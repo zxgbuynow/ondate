@@ -13,6 +13,10 @@ class Api extends ApiBase
 	function initialize()
     {
         parent::initialize();
+        if(empty($_GET['acc'])){
+            echo '<script language="JavaScript">;alert("请登录";location.href="http://47.111.119.90";</script>;';
+            exit;
+        }
         $this->autoLogin();
         //init sql
         // update wp_user_queue set type = 0;
