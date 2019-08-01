@@ -20,7 +20,7 @@ class Api extends ApiBase
         // update wp_room set `status` = 0;
         // truncate wp_waite ;
         // truncate wp_calls;
-        echo '请登录';
+        dump($_SESSION);
         exit;
     }
 
