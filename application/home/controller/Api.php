@@ -13,6 +13,8 @@ class Api extends ApiBase
 	function initialize()
     {
         parent::initialize();
+        dump($_SESSION);
+        exit;
         $this->autoLogin();
         //init sql
         // update wp_user_queue set type = 0;
@@ -20,8 +22,6 @@ class Api extends ApiBase
         // update wp_room set `status` = 0;
         // truncate wp_waite ;
         // truncate wp_calls;
-        dump($_SESSION);
-        exit;
     }
 
 
