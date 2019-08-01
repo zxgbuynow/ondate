@@ -835,6 +835,7 @@ class Api extends ApiBase
     		$value['fee'] = number_format($goodsinfo['cost_price'],2);
     		$value['total'] = 1;
     		$value['cancelTotal'] = 0;
+            $value['seats'] =  M('room')->where(['id'=>$params['roomid']])->value('seats');
     		$value['tatalFee'] =  number_format($goodsinfo['cost_price'],2);
     		$value['artificerNumber'] = $value['jsbn'];
     		$value['beginTime'] = $value['begin_time']?date(' H:i',$value['begin_time']):'';
