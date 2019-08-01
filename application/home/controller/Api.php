@@ -13,8 +13,6 @@ class Api extends ApiBase
 	function initialize()
     {
         parent::initialize();
-        dump($_SESSION);
-        exit;
         $this->autoLogin();
         //init sql
         // update wp_user_queue set type = 0;
