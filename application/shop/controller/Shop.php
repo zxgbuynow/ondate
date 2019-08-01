@@ -123,6 +123,7 @@ class Shop extends Base
     public function summary()
     {
         $publicid = get_pbid();
+        dump($_SESSION);
         $time = NOW_TIME - 86400 * 30;
         $px = DB_PREFIX;
 
