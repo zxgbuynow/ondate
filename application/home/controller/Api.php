@@ -687,12 +687,16 @@ class Api extends ApiBase
             return api_success('操作成功');
         }
         try {
-            if (!M('user_queue')->where(['user_id'=>$params['id'],'type'=>0])->find()) {
+            //$params['id'] 编号
+            if (!M('user_queue')->where(['jsbn'=>$params['id']])->find()) {
+                return  api_error('技师编号错误');
+            }
+            if (!M('user_queue')->where(['jsbn'=>$params['id'],'type'=>0])->find()) {
                 return  api_error('当前技师非空闲');
             }
             M('room')->where(['id'=>$room])->update(['status'=>2]);
             //主动选择
-            M('user_queue')->where(['user_id'=>$params['id']])->update(['type'=>2]);
+            M('user_queue')->where(['jsbn'=>$params['id']])->update(['type'=>2]);
             //生成服务信息
             $save['jsbn'] = $userinfo['jsbn'];
             $save['sex'] = $userinfo['sex'];
@@ -973,9 +977,13 @@ class Api extends ApiBase
     	if (!$params['id']||!$params['roomid']) {
     		return api_error('参数缺少');
     	}
+        $cparams['room_id'] = $params['roomid'];
+        $cparams['status'] = [0,1];
+        $calls = M('calls')->where($cparams)->find();
+
     	//取得房间编号
-    	$room = M('room')->where(['id'=>$params['roomid']])->value('room_name');
-    	if (M('calls')->where(['id'=>$params['id']])->update(['room_id'=>$params['roomid'],'room'=>$room])) {
+    	$room = M('room')->where(['id'=>$params['id']])->value('room_name');
+    	if (M('calls')->where(['id'=>$calls['id']])->update(['room_id'=>$params['id'],'room'=>$room])) {
     		return api_success('换房成功');
     	}
     	return api_error('换房失败');
