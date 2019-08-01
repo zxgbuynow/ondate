@@ -93,7 +93,7 @@ class Api extends ApiBase
     public function homeIndex($params)
     {
     	$cate = M('room_cate')->order('order ASC')->select();
-    	$rooms = M('room')->order('order ASC')->select();
+    	$rooms = M('room')->order('status DESC,order ASC')->select();
 
     	//组数据
     	$roomsarr = [];
@@ -132,7 +132,7 @@ class Api extends ApiBase
      */
     public function homeQueue($params)
     {
-    	$queue =  M('user_queue')->field('service_type,type,id,sex as gender,jsbn as number,status')->order('postion ASC')->select();
+    	$queue =  M('user_queue')->field('service_type,type,id,sex as gender,jsbn as number,status')->order('type,postion ASC')->select();
     	$ret = [];
     	foreach ($queue as $key => $value) {
     		$value['gender'] = $value['gender']==0?'女':'男';
@@ -550,7 +550,7 @@ class Api extends ApiBase
             $roomtype = 1;
         }
 
-        $userinfo = M('art')->where(['id'=>$params['id'],'type'=>$roomtype])->find();
+        //$userinfo = M('art')->where(['id'=>$params['id'],'type'=>$roomtype])->find();
         $goods  = M('shop_goods')->where(['id'=>$service_type])->find();
         $rooms  = M('room')->where(['id'=>$room])->find();
 
@@ -694,11 +694,12 @@ class Api extends ApiBase
             if (!M('user_queue')->where(['jsbn'=>$params['id'],'type'=>0])->find()) {
                 return  api_error('当前技师非空闲');
             }
+            $userinfo = M('art')->where(['jsbn'=>$params['id'],'type'=>$roomtype])->find();
             M('room')->where(['id'=>$room])->update(['status'=>2]);
             //主动选择
             M('user_queue')->where(['jsbn'=>$params['id']])->update(['type'=>2]);
             //生成服务信息
-            $save['jsbn'] = $userinfo['jsbn'];
+            $save['jsbn'] = $params['id'];
             $save['sex'] = $userinfo['sex'];
             $save['art_id'] = $userinfo['id'];
             $save['service_type'] = $roomtype;
