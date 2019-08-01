@@ -132,7 +132,7 @@ class Api extends ApiBase
      */
     public function homeQueue($params)
     {
-    	$queue =  M('user_queue')->field('service_type,type,id,sex as gender,jsbn as number,status')->order('postion ASC')->select();
+    	$queue =  M('user_queue')->field('service_type,type,id,sex as gender,jsbn as number,status')->order('type,postion ASC')->select();
     	$ret = [];
     	foreach ($queue as $key => $value) {
     		$value['gender'] = $value['gender']==0?'女':'男';
