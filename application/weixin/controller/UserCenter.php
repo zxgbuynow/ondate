@@ -487,7 +487,7 @@ class UserCenter extends WebBase
                 $info1= M('user')->where(['uid'=>$v])->value('sex');
                 $info2= M('art')->max('jsbn');
                 $info3= M('user_queue')->max('postion');
-                $sex=$info1>1?'1':'0';//0女技师1男技师
+                $sex=$info1>1?'0':'1';//0女技师1男技师
                 $new_jsbn=$info2+1;
                 $art['user_id'] = $v;
                 $art['sex']=$sex;
