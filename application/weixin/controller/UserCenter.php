@@ -472,6 +472,32 @@ class UserCenter extends WebBase
         if (empty($group_id)) {
             $this->error('请选择用户组!');
         }
+        $jss=['376','377'];
+        if(in_array($group_id,$jss)){//技师
+            foreach ($uids as $v) {
+                 $info=M('art')->where(array('user_id'=>$v))->find('id');
+                 M('art')->where(array('user_id'=>$v))->delete();
+                 M('user_queue')->where(array('user_id'=>$info['id']))->delete();
+                $info1= M('user')->where(['uid'=>$v])->find('sex');
+                $info2= M('user')->max('jsbn');
+                $info3= M('user_queue')->max('postion');
+                $sex=$info1['sex']==1?'1':'0';//0女技师1男技师
+                $art['user_id'] = $v;
+                $art['sex']=$sex;
+                $art['type']=0;
+                $art['jsbn']=$info2+1;
+                $art['modify_time']=time();
+                $user_id=M('art')->insertGetId($art);
+                $user_queue['user_id']=$user_id;
+                $user_queue['created_time']=time();
+                $user_queue['sex']=$sex;
+                $user_queue['status']=1;
+                $user_queue['type']=0;//0空闲1排2点3注销
+                $user_queue['service_type']=$group_id==376?0:1;//0足浴1spa
+                $user_queue['postion']=$info3;
+                M('user_queue')->insert($user_queue);
+            }
+        }
         D('home/AuthGroup')->move_group($uids, $group_id);
         foreach ($uids as $uid) {
             D('common/User')->getUserInfo($uid, true);
