@@ -475,9 +475,9 @@ class UserCenter extends WebBase
         $jss=['376','377'];
         if(in_array($group_id,$jss)){//技师
             foreach ($uids as $v) {
-                 $info=M('art')->where(array('user_id'=>$v))->find('id');
+                 $info=M('art')->where(array('user_id'=>$v))->find('jsbn');
                  M('art')->where(array('user_id'=>$v))->delete();
-                 M('user_queue')->where(array('user_id'=>$info['id']))->delete();
+                 M('user_queue')->where(array('jsbn'=>$info['jsbn']))->delete();
                 $info1= M('user')->where(['uid'=>$v])->find('sex');
                 $info2= M('art')->max('jsbn');
                 $info3= M('user_queue')->max('postion');
