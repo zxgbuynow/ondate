@@ -484,6 +484,8 @@ class UserCenter extends WebBase
                 $sex=$info1['sex']==1?'1':'0';//0女技师1男技师
                 $art['user_id'] = $v;
                 $art['sex']=$sex;
+                $art['username'] = $v;
+                $art['mobile'] = $v;
                 $art['type']=0;
                 $art['jsbn']=$info2+1;
                 $art['modify_time']=time();
