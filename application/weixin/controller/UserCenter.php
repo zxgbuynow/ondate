@@ -219,7 +219,7 @@ class UserCenter extends WebBase
         $up['mobile']=$data['mobile'];
         $up['remark']=$data['remark'];
         $up['truename']=$data['truename'];
-        $up['number']=$data['number'];
+        $up['jsbn']=$data['jsbn'];
         $where['uid']=$data['uid'];
         $flag = M('user')->where($where)->update($up);
         if ($flag !== false) {
