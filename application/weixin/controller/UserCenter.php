@@ -481,7 +481,7 @@ class UserCenter extends WebBase
                 $info1= M('user')->where(['uid'=>$v])->find('sex');
                 $info2= M('user')->max('jsbn');
                 $info3= M('user_queue')->max('postion');
-                $sex=$info1['sex']==1?'1':'0';//0女技师1男技师
+                $sex=$info1['sex']>1?'1':'0';//0女技师1男技师
                 $art['user_id'] = $v;
                 $art['sex']=$sex;
                 $art['username'] = $v;
@@ -497,6 +497,7 @@ class UserCenter extends WebBase
                 $user_queue['type']=0;//0空闲1排2点3注销
                 $user_queue['service_type']=$group_id==376?0:1;//0足浴1spa
                 $user_queue['postion']=$info3;
+                $user_queue['jsbn']=$info2+1;
                 M('user_queue')->insert($user_queue);
             }
         }
