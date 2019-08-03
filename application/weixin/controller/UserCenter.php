@@ -475,6 +475,12 @@ class UserCenter extends WebBase
         $jss=['376','377'];
         if(in_array($group_id,$jss)){//技师
             foreach ($uids as $v) {
+                $jsbn=M('art')->where(array('user_id'=>$v))->value('jsbn');
+                if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0])->find()) {
+                    $this->error('技师:'.$jsbn.'非空闲');
+                }
+            }
+            foreach ($uids as $v) {
                  $info=M('art')->where(array('user_id'=>$v))->value('jsbn');
                  M('art')->where(array('user_id'=>$v))->delete();
                  M('user_queue')->where(array('jsbn'=>$info))->delete();
@@ -482,12 +488,13 @@ class UserCenter extends WebBase
                 $info2= M('art')->max('jsbn');
                 $info3= M('user_queue')->max('postion');
                 $sex=$info1>1?'1':'0';//0女技师1男技师
+                $new_jsbn=$info2+1;
                 $art['user_id'] = $v;
                 $art['sex']=$sex;
                 $art['username'] = $v;
                 $art['mobile'] = $v;
                 $art['type']=0;
-                $art['jsbn']=$info2+1;
+                $art['jsbn']=$new_jsbn;
                 $art['modify_time']=time();
                 $user_id=M('art')->insertGetId($art);
                 $user_queue['user_id']=$user_id;
@@ -497,8 +504,9 @@ class UserCenter extends WebBase
                 $user_queue['type']=0;//0空闲1排2点3注销
                 $user_queue['service_type']=$group_id==376?0:1;//0足浴1spa
                 $user_queue['postion']=$info3;
-                $user_queue['jsbn']=$info2+1;
+                $user_queue['jsbn']=$new_jsbn;
                 M('user_queue')->insert($user_queue);
+                M('user')->where(['uid'=>$v])->update(array('jsbn'=>$new_jsbn));
             }
         }
         D('home/AuthGroup')->move_group($uids, $group_id);
