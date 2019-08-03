@@ -479,7 +479,7 @@ class UserCenter extends WebBase
                  M('art')->where(array('user_id'=>$v))->delete();
                  M('user_queue')->where(array('user_id'=>$info['id']))->delete();
                 $info1= M('user')->where(['uid'=>$v])->find('sex');
-                $info2= M('user')->max('jsbn');
+                $info2= M('art')->max('jsbn');
                 $info3= M('user_queue')->max('postion');
                 $sex=$info1['sex']>1?'1':'0';//0女技师1男技师
                 $art['user_id'] = $v;
