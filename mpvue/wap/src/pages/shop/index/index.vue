@@ -30,7 +30,7 @@
       </div>
 
       <!-- 推荐商品 -->
-      <p class="page-title">猜你喜欢</p>
+      <p class="page-title">猜你喜欢s</p>
       <goodsList v-if="goods" :goodsData="goods"></goodsList>
     </scroller>
 
