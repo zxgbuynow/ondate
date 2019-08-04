@@ -221,13 +221,18 @@ class UserCenter extends WebBase
         $up['truename']=$data['truename'];
         $up['jsbn']=trim($data['jsbn']);
         $map['jsbn']=trim($data['jsbn']);
-        $con=M('user')->where($map)->where('uid','<>',$data['uid'])->cout();
+        $con=M('user')->where($map)->where('uid','<>',$data['uid'])->count();
         if($con>0){
             $this->error('技师编号：',$data['jsbn'].'已存在，保存失败');
         }
         $where['uid']=$data['uid'];
         $flag = M('user')->where($where)->update($up);
-        if ($flag !== false) {
+        $jsbn=M('user')->where(array('uid'=>$data['uid']))->value('jsbn');
+        $where1['jsbn']=$jsbn;
+        $up1['jsbn']=trim($data['jsbn']);
+        $flag1 =M('art')->where($where1)->update($up1);
+        $flag2 =M('user_queue')->where($where1)->update($up1);
+        if ($flag !== false && $flag1 !== false && $flag2 !== false) {
             // D('common/User')->getUserInfo($data['uid'], true);
             $this->success('保存成功！', U('edit_page',array('uid'=>$data['uid'])));
         } else {
