@@ -23,7 +23,8 @@ class Wap extends WapBase
             'category' => '',
             'service' => '',
             'cart' => '',
-            'center' => ''
+            'center' => '',
+            'lists' => ''
         ];
         $act = strtolower(ACTION_NAME);
         if (isset($highlight[$act])) {
