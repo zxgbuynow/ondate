@@ -28,10 +28,11 @@ body{
 }
 
 .picture{
-    width: 200px;
-    height: 200px;
+    width: 132px;
+    height: 132px;
     border-radius: 50%;
     background: pink;
+    margin: 0 auto;
 }
 
 .head_text{
