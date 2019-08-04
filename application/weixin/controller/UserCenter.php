@@ -219,7 +219,12 @@ class UserCenter extends WebBase
         $up['mobile']=$data['mobile'];
         $up['remark']=$data['remark'];
         $up['truename']=$data['truename'];
-        $up['jsbn']=$data['jsbn'];
+        $up['jsbn']=trim($data['jsbn']);
+        $map['jsbn']=trim($data['jsbn']);
+        $con=M('user')->where($map)->where('uid','<>',$data['uid'])->cout();
+        if($con>0){
+            $this->error('技师编号：',$data['jsbn'].'已存在，保存失败');
+        }
         $where['uid']=$data['uid'];
         $flag = M('user')->where($where)->update($up);
         if ($flag !== false) {
