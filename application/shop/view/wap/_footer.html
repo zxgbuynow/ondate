@@ -1,6 +1,6 @@
 <!-- 底部导航 -->
 <div class="bottom-nav ui-border-t">
-  <a href="{:U('shop/wap/index')}" class="bottom-nav-item">
+  <a href="{:U('shop/wap/index')}" class="bottom-nav-item" style="width: 25%">
     <!-- icon -->
     <slot name="b-icon1">
       <div class="bottom-nav-item-img icon_index_{$highlight.index}">
@@ -9,13 +9,13 @@
     </slot>
   </a>
 
-  <a href="{:U('shop/wap/category')}" class="bottom-nav-item">
+  <a href="{:U('shop/wap/lists')}" class="bottom-nav-item" style="width: 25%">
     <!-- icon -->
     <slot name="b-icon2">
     <div class="bottom-nav-item-img icon_category_{$highlight.category}">
       
     </div>
-    <small class="{$highlight.category}">分类</small>
+    <small class="{$highlight.category}">商品</small>
   </slot>
   </a>
 <!--
@@ -35,14 +35,14 @@
     </slot>
   </a>-->
 
-  <a href="{:U('shop/wap/cart')}" class="bottom-nav-item">
+  <a href="{:U('shop/wap/cart')}" class="bottom-nav-item" style="width: 25%">
     <div class="bottom-nav-item-img icon_car_{$highlight.cart}">
     </div>
     <small class="{$highlight.cart}">购物车</small>
     <span class="weui-badge {gt name="cart_count" value="0"}active{/gt}" style="position: absolute;top: 0em;right: .4rem;">{$cart_count|default='0'}</span>
   </a>
 
-  <a href="{:U('shop/wap/center')}" class="bottom-nav-item">
+  <a href="{:U('shop/wap/center')}" class="bottom-nav-item" style="width: 25%">
     <!-- icon -->
     <slot name="b-icon5">
     <div class="bottom-nav-item-img icon_center_{$highlight.center}">
