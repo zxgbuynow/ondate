@@ -225,9 +225,9 @@ class UserCenter extends WebBase
         if($con>0){
             $this->error('技师编号：'.$data['jsbn'].'已存在，保存失败');
         }
+        $jsbn=M('user')->where(array('uid'=>$data['uid']))->value('jsbn');
         $where['uid']=$data['uid'];
         $flag = M('user')->where($where)->update($up);
-        $jsbn=M('user')->where(array('uid'=>$data['uid']))->value('jsbn');
         $where1['jsbn']=$jsbn;
         $up1['jsbn']=trim($data['jsbn']);
         $flag1 =M('art')->where($where1)->update($up1);
