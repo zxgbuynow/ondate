@@ -1,0 +1,83 @@
+{extend name="shop@wap/common_file" /}
+
+{block name="common_body"}
+<script type="text/javascript" src='__STATIC__/supu/js.js'></script>
+<script>
+    $(function () {
+        $(".submit").click(function () {
+            fade_out_pull();
+        });
+
+        $(".frame_no").click(function(){
+            fade_out_hide();
+        });
+        $(".frame_yes").click(function(){
+            location.href = "{:U('start')}";
+        });
+
+    });
+
+</script>
+<body>
+<div id="head">
+    <div class="goback"></div>
+    <div class="head_body">
+        <div class="picture"></div>
+        <div class="head_text">{$myinfo.nickname}</div>
+    </div>
+</div>
+
+<div id="body">
+    <div class="list1" style="margin-top: 100px;">
+        <div class="label">房间号</div>
+        <div class="list_text">
+            <input style="background: none" type="text" name="text1" size="12" maxlength="20">
+        </div>
+    </div>
+
+    <div class="list1">
+        <div class="label">人 数</div>
+        <div class="list_text">
+            <input style="background: none" type="text" name="text2" size="12" maxlength="20">
+        </div>
+    </div>
+
+    <div class="list1">
+        <div class="label">技师号</div>
+        <div class="list_text">
+            <input style="background: none" type="text" name="text3" size="12" maxlength="20">
+        </div>
+    </div>
+
+    <div class="list1" style="border-bottom: 1px solid #333;">
+        <div class="label">性 别</div>
+        <div class="list_text">
+            <div class="choose_radio">
+                <input class="radio" name="sex" type="radio" value="1"/><label>男</label>
+            </div>
+            <div class="choose_radio">
+                <input class="radio" name="sex" type="radio" value="0"  /><label>女</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--遮罩层-->
+<div class="outside_pull fade_out"></div>
+<div class="frame fade_out">
+    <div class="frame_title">确认提交？</div>
+    <div class="frame_list">
+        <div class="frame_cho frame_yes" style="border-right: 2px solid #ddd">确 认</div>
+        <!--<div class="frame_border">|</div>-->
+        <div class="frame_cho frame_no">取 消</div>
+    </div>
+</div>
+
+<div class="submit">
+    <img src="__STATIC__/supu/img/tijiao.png" />
+</div>
+</body>
+
+
+
+{/block}

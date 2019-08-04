@@ -1327,6 +1327,11 @@ class ApiData extends Base
         $data['myCollect'] = D('Collect')->getMyCollect($follow_id, true);
         return $data;
     }
+    function make_call()
+    {
+        $data['track'] = D('Track')->getMyTrack($this->mid);
+        return $data;
+    }
 
     function my_track()
     {
