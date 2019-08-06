@@ -1435,7 +1435,7 @@ class ApiData extends Base
 		return $data;
     }
     //安排技师优化，测试
-     function makeArt($params)
+     function makeArt()
     {
         return [
             'code' => 0,
