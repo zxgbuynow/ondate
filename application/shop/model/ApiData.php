@@ -2,6 +2,7 @@
 
 namespace app\shop\model;
 
+use app\common\controller\ApiBase;
 use app\common\model\Base;
 use think\Db;
 
