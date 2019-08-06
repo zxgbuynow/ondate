@@ -1437,10 +1437,10 @@ class ApiData extends Base
     //微信端安排技师
      function makeArt()
     {
-        $openid = get_openid();
+/*        $openid = get_openid();
         if (empty($openid) || $openid == -1) {
             return $this->error('获取openid失败,请在微信里打开!');
-        }
+        }*/
         $roomname  = input('roomname');
         $jsbn=input('jsbn');
         $sex=input('sex');
