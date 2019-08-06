@@ -1434,53 +1434,67 @@ class ApiData extends Base
 		$data ['end'] = $end;
 		return $data;
     }
-    //安排技师优化，测试
+    //微信端安排技师
      function makeArt()
     {
-/*        $params = input();
-        $roomname  = $params['roomname'];
-        $sex=$params['sex'];
-        $rs  = $params['rs'];*/
-        $data['code']=0;
-        $data['msg']='输入的房间号不存在';
-        return $data;
+        $openid = get_openid();
+        if (empty($openid) || $openid == -1) {
+            return $this->error('获取openid失败,请在微信里打开!');
+        }
+        $roomname  = input('roomname');
+        $jsbn=input('jsbn');
+        $sex=input('sex');
+        $rs  = input('rs');
 
         //房间类型
-        $rcate = M('room')->where(['id'=>$params['roomid']])->value('cate_id');
+        $rcate = M('room')->where(['roomname'=>$roomname])->value('cate_id');
         $roomtype = 0;
         if ($rcate==4) {//spa
             $roomtype = 1;
         }
 
         //$userinfo = M('art')->where(['id'=>$params['id'],'type'=>$roomtype])->find();
-        $goods  = M('shop_goods')->where(['id'=>$service_type])->find();
-        $rooms  = M('room')->where(['id'=>$room])->find();
-
+       // $goods  = M('shop_goods')->where(['id'=>$service_type])->find();
+        $rooms  = M('room')->where(['roomname'=>$roomname])->find();
+        $system=empty($jsbn)?'systemChange':'';
         //参数处理
-        if ($params['system']=='systemChange') {
-            $woman = intval($params['woman']);
+        if ($system=='systemChange') {
+/*            $woman = intval($params['woman']);
             $man = intval($params['man']);
             $secret = intval($params['secret']);
-            $wantTot = $woman+$man+$secret;
+            $wantTot = $woman+$man+$secret;*/
+            if(empty($sex)){
+                $secret=$rs;
+            }
+            if($sex=0){
+                $woman=$rs;
+            }
+            if($sex=1){
+                $man=$rs;
+            }
             $total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->count();
             $freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->count();
             $freewoman = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->count();
             //先算总人数
             // $difw = $freewoman>$woman?0:($freewoman-$woman);
-            if ($wantTot>$total) {
-                return api_error('需求技师不够，当前技师：女'.$freewoman.'男'.$freeman);
+            if ($rs>$total) {
+                $msg='需求技师不够，当前技师：女'.$freewoman.'男'.$freeman;
+                return ['code'=>0,'msg'=>$msg];
             }
             //男
             if ($man>$freeman) {
-                return api_error('需求技师不够，当前技师：男'.$freeman);
+                $msg='需求技师不够，当前技师：男'.$freeman;
+                return ['code'=>0,'msg'=>$msg];
             }
             //女
             if ($woman>$freewoman) {
-                return api_error('需求技师不够，当前技师：女'.$freewoman);
+                $msg='需求技师不够，当前技师：女'.$freewoman;
+                return ['code'=>0,'msg'=>$msg];
             }
             //算房间座位
-            if ($rooms['seats']<($woman+$man+$secret)) {
-                return api_error('房间座位数'.$rooms['seats']);
+            if ($rooms['seats']<$rs) {
+                $msg='房间座位数'.$rooms['seats'];
+                return ['code'=>0,'msg'=>$msg];
             }
 
             //安排
@@ -1500,12 +1514,12 @@ class ApiData extends Base
                         $save['jsbn'] = $userinfo['jsbn'];
                         $save['sex'] = $userinfo['sex'];
                         $save['art_id'] = $userinfo['id'];
-                        $save['service_type'] = $service_type;
+                      //  $save['service_type'] = $service_type;
                         $save['way'] = 0;
                         $save['status'] = 0;
                         $save['num'] = 1;
-                        $save['price'] = $goods['cost_price'];
-                        $save['total'] = $goods['cost_price'];
+                        //$save['price'] = $goods['cost_price'];
+                        //$save['total'] = $goods['cost_price'];
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
                         $save['next_pos'] = $key+1+$max;
@@ -1528,12 +1542,12 @@ class ApiData extends Base
                         $save['sex'] = $userinfo['sex'];
                         $save['art_id'] = $userinfo['id'];
                         $save['service_type'] = $roomtype;
-                        $save['goods_id'] = $service_type;
+                       // $save['goods_id'] = $service_type;
                         $save['way'] = 0;
                         $save['status'] = 0;
                         $save['num'] = 1;
-                        $save['price'] = $goods['cost_price'];
-                        $save['total'] = $goods['cost_price'];
+                        //$save['price'] = $goods['cost_price'];
+                        //$save['total'] = $goods['cost_price'];
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
                         $save['next_pos'] = $key+1+$max;
@@ -1558,12 +1572,12 @@ class ApiData extends Base
                         $save['sex'] = $userinfo['sex'];
                         $save['art_id'] = $userinfo['id'];
                         $save['service_type'] = $roomtype;
-                        $save['goods_id'] = $service_type;
+                       // $save['goods_id'] = $service_type;
                         $save['way'] = 0;
                         $save['status'] = 0;
                         $save['num'] = 1;
-                        $save['price'] = $goods['cost_price'];
-                        $save['total'] = $goods['cost_price'];
+                        //$save['price'] = $goods['cost_price'];
+                        //$save['total'] = $goods['cost_price'];
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
                         $save['next_pos'] = $key+1+$max;
@@ -1578,26 +1592,30 @@ class ApiData extends Base
                     // $this->push_wm_msg('1',$msg);
                 }
                 //更新房间信息
-                M('room')->where(['id'=>$room])->update(['status'=>2]);
+                M('room')->where(['roomname'=>$roomname])->update(['status'=>2]);
                 //删除等待信息
-                M('waite')->where(['room_id'=>$room])->delete();
+                M('waite')->where(['roomname'=>$roomname])->delete();
                 $this->push_wm_msg('1',$msg);
 
             } catch (Exception $e) {
-                return api_error('操作失败，请稍后重试');
+                $msg='操作失败，请稍后重试';
+                return ['code'=>0,'msg'=>$msg];
             }
-            return api_success('操作成功');
+            $msg='操作成功';
+            return ['code'=>1,'msg'=>$msg];
         }
         try {
             //$params['id'] 编号
-            if (!M('user_queue')->where(['jsbn'=>$params['id']])->find()) {
-                return  api_error('技师编号错误');
+            if (!M('user_queue')->where(['jsbn'=>$jsbn])->find()) {
+                $msg='技师编号错误';
+                return ['code'=>0,'msg'=>$msg];
             }
-            if (!M('user_queue')->where(['jsbn'=>$params['id'],'type'=>0])->find()) {
-                return  api_error('当前技师非空闲');
+            if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0])->find()) {
+                $msg='当前技师非空闲';
+                return ['code'=>0,'msg'=>$msg];
             }
-            $userinfo = M('art')->where(['jsbn'=>$params['id'],'type'=>$roomtype])->find();
-            M('room')->where(['id'=>$room])->update(['status'=>2]);
+            $userinfo = M('art')->where(['jsbn'=>$jsbn,'type'=>$roomtype])->find();
+            M('room')->where(['roomname'=>$roomname])->update(['status'=>2]);
             //主动选择
             M('user_queue')->where(['jsbn'=>$params['id']])->update(['type'=>2]);
             //生成服务信息
@@ -1605,27 +1623,28 @@ class ApiData extends Base
             $save['sex'] = $userinfo['sex'];
             $save['art_id'] = $userinfo['id'];
             $save['service_type'] = $roomtype;
-            $save['goods_id'] = $service_type;
+            //$save['goods_id'] = $service_type;
             $save['way'] = 1;
             $save['status'] = 0;
             $save['num'] = 1;
-            $save['price'] = $goods['cost_price'];
-            $save['total'] = $goods['cost_price'];
+            //$save['price'] = $goods['cost_price'];
+            //$save['total'] = $goods['cost_price'];
             $save['room'] = $rooms['room_name'];
             $save['room_id'] = $rooms['id'];
             M('calls')->insert($save);
             //删除等待信息
-            M('waite')->where(['room_id'=>$room])->delete();
+            M('waite')->where(['room_id'=>$rooms['id']])->delete();
             //语音推送
             $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
             $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
             $this->push_wm_msg('1',$msg);
             M('calls')->where(['id'=>$calls['id']])->update(['calltime'=>time()]);
         } catch (Exception $e) {
-            return api_error('操作失败，请稍后重试');
+            $msg='操作失败，请稍后重试';
+            return ['code'=>0,'msg'=>$msg];
         }
-
-        return api_success('操作成功');
+        $msg='操作成功';
+        return ['code'=>1,'msg'=>$msg];
     }
 
 }

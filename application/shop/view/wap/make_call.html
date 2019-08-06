@@ -11,14 +11,13 @@
             fade_out_hide();
         });
         $(".frame_yes").click(function(){
-           // location.href = "{:U('makeArt')}";
+            fade_out_hide();
             var url = "{:U('makeArt')}";
             var roomname=$('input[name="roomname"]').val();
             var rs=$('input[name="rs"]').val();
+            var jsbn=$('input[name="jsbn"]').val();
             var sex=$('input[name="sex"]:checked').val()
-            $.showLoading();
-
-            $.post(url, {'roomname': roomname, 'rs': rs,'sex':sex}, function(res) {
+            $.post(url, {'roomname': roomname, 'rs': rs,'sex':sex,'jsbn':jsbn}, function(res) {
                 //console.log(res); return false;
 
                // if (res) $.hideLoading();
@@ -26,8 +25,9 @@
                 if (res.code == 0) {
                     alert((res.msg));
                 } else {
-                    var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
-                    window.location.href = url;
+                    alert((res.msg));
+                   // var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
+                    //window.location.href = url;
 
                 }
             });
@@ -63,7 +63,7 @@
     <div class="list1">
         <div class="label">技师号</div>
         <div class="list_text">
-            <input style="background: none" type="text" name="text3" size="12" maxlength="20">
+            <input style="background: none" type="text" name="jsbn" size="12" maxlength="20">
         </div>
     </div>
 
