@@ -8,7 +8,7 @@ use think\Db;
 /**
  * DiyPage模型
  */
-class ApiData extends Base
+class ApiData extends ApiBase
 {
 
     function initialize()
