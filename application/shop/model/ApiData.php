@@ -1447,7 +1447,7 @@ class ApiData extends Base
         $rs  = input('rs');
 
         //房间类型
-        $rcate = M('room')->where(['roomname'=>$roomname])->value('cate_id');
+        $rcate = M('room')->where(['room_name'=>$roomname])->value('cate_id');
         $roomtype = 0;
         if ($rcate==4) {//spa
             $roomtype = 1;
@@ -1455,7 +1455,7 @@ class ApiData extends Base
 
         //$userinfo = M('art')->where(['id'=>$params['id'],'type'=>$roomtype])->find();
        // $goods  = M('shop_goods')->where(['id'=>$service_type])->find();
-        $rooms  = M('room')->where(['roomname'=>$roomname])->find();
+        $rooms  = M('room')->where(['room_name'=>$roomname])->find();
         $system=empty($jsbn)?'systemChange':'';
         //参数处理
         if ($system=='systemChange') {
@@ -1592,9 +1592,9 @@ class ApiData extends Base
                     // $this->push_wm_msg('1',$msg);
                 }
                 //更新房间信息
-                M('room')->where(['roomname'=>$roomname])->update(['status'=>2]);
+                M('room')->where(['room_name'=>$roomname])->update(['status'=>2]);
                 //删除等待信息
-                M('waite')->where(['roomname'=>$roomname])->delete();
+                M('waite')->where(['room_id'=>$roomname])->delete();
                 $this->push_wm_msg('1',$msg);
 
             } catch (Exception $e) {
@@ -1615,11 +1615,11 @@ class ApiData extends Base
                 return ['code'=>0,'msg'=>$msg];
             }
             $userinfo = M('art')->where(['jsbn'=>$jsbn,'type'=>$roomtype])->find();
-            M('room')->where(['roomname'=>$roomname])->update(['status'=>2]);
+            M('room')->where(['room_name'=>$roomname])->update(['status'=>2]);
             //主动选择
-            M('user_queue')->where(['jsbn'=>$params['id']])->update(['type'=>2]);
+            M('user_queue')->where(['jsbn'=>$jsbn])->update(['type'=>2]);
             //生成服务信息
-            $save['jsbn'] = $params['id'];
+            $save['jsbn'] = $jsbn['id'];
             $save['sex'] = $userinfo['sex'];
             $save['art_id'] = $userinfo['id'];
             $save['service_type'] = $roomtype;
