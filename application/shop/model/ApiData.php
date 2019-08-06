@@ -1437,10 +1437,10 @@ class ApiData extends Base
     //安排技师优化，测试
      function makeArt()
     {
-        $params = input();
+/*        $params = input();
         $roomname  = $params['roomname'];
         $sex=$params['sex'];
-        $rs  = $params['rs'];
+        $rs  = $params['rs'];*/
         $data['code']=0;
         $data['msg']='失败了';
         return $data;
