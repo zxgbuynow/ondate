@@ -3,8 +3,8 @@
 namespace app\shop\model;
 
 use app\common\model\Base;
-use think\Db;
 use decrypdata;
+use think\Db;
 use \think\Request;
 use think\Model;
 
