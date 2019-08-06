@@ -1595,9 +1595,9 @@ class ApiData extends Base
                     // $this->push_wm_msg('1',$msg);
                 }
                 //更新房间信息
-                M('room')->where(['room_name'=>$roomname])->update(['status'=>2]);
+                $s=M('room')->where(['room_name'=>$roomname])->update(['status'=>2]);
                 //删除等待信息
-                M('waite')->where(['room_id'=>$roomname])->delete();
+                $s=M('waite')->where(['room_id'=>$roomname])->delete();
                 $this->push_wm_msg('1',$msg);
 
             } catch (Exception $e) {
