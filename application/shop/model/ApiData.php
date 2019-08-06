@@ -1442,7 +1442,7 @@ class ApiData extends Base
         $sex=$params['sex'];
         $rs  = $params['rs'];*/
         $data['code']=0;
-        $data['msg']='失败了';
+        $data['msg']='输入的房间号不存在';
         return $data;
 
         //房间类型

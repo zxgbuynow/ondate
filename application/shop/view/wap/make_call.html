@@ -21,10 +21,10 @@
             $.post(url, {'roomname': roomname, 'rs': rs,'sex':sex}, function(res) {
                 //console.log(res); return false;
 
-                if (res) $.hideLoading();
+               // if (res) $.hideLoading();
 
                 if (res.code == 0) {
-                    $.Dialog.fail(res.msg);
+                    alert((res.msg));
                 } else {
                     var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
                     window.location.href = url;
