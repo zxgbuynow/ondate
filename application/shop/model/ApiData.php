@@ -2,14 +2,13 @@
 
 namespace app\shop\model;
 
-use app\common\controller\ApiBase;
 use app\common\model\Base;
 use think\Db;
 
 /**
  * DiyPage模型
  */
-class ApiData extends ApiBase
+class ApiData extends Base
 {
 
     function initialize()
