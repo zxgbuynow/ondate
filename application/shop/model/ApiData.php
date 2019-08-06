@@ -1463,6 +1463,9 @@ class ApiData extends Base
             $man = intval($params['man']);
             $secret = intval($params['secret']);
             $wantTot = $woman+$man+$secret;*/
+            $secret=0;
+            $woman=0;
+            $man=0;
             if(empty($sex)){
                 $secret=$rs;
             }
