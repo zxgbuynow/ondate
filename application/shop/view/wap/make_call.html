@@ -13,11 +13,12 @@
         $(".frame_yes").click(function(){
            // location.href = "{:U('makeArt')}";
             var url = "{:U('makeArt')}";
-             console.log(url);
-             return false;
+            var roomname=$('input[name="roomname"]').val();
+            var rs=$('input[name="rs"]').val();
+            var sex=$('input[name="sex"]:checked').val()
             $.showLoading();
 
-            $.post(url, {'roomname': 201, 'rs': 1}, function(res) {
+            $.post(url, {'roomname': roomname, 'rs': rs,'sex':sex}, function(res) {
                 //console.log(res); return false;
 
                 if (res) $.hideLoading();
@@ -48,14 +49,14 @@
     <div class="list1" style="margin-top: 100px;">
         <div class="label">房间号</div>
         <div class="list_text">
-            <input style="background: none" type="text" name="text1" size="12" maxlength="20">
+            <input style="background: none" type="text" name="roomname" size="12" maxlength="20">
         </div>
     </div>
 
     <div class="list1">
         <div class="label">人 数</div>
         <div class="list_text">
-            <input style="background: none" type="text" name="text2" size="12" maxlength="20">
+            <input style="background: none" type="text" name="rs" size="12" maxlength="20">
         </div>
     </div>
 

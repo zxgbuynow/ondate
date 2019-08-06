@@ -1329,8 +1329,8 @@ class ApiData extends Base
     }
     function make_call()
     {
-        $data['track'] = D('Track')->getMyTrack($this->mid);
-        return $data;
+        //$data['track'] = D('Track')->getMyTrack($this->mid);
+        //return $data;
     }
 
     function my_track()
@@ -1437,13 +1437,13 @@ class ApiData extends Base
     //安排技师优化，测试
      function makeArt()
     {
-        return [
-            'code' => 0,
-            'msg' => 'ok',
-            'out_trade_no' => 99989998
-        ];
-        $room  = $params['roomid'];
-        $service_type  = $params['goodid'];
+        $params = input();
+        $roomname  = $params['roomname'];
+        $sex=$params['sex'];
+        $rs  = $params['rs'];
+        $data['code']=0;
+        $data['msg']='失败了';
+        return $data;
 
         //房间类型
         $rcate = M('room')->where(['id'=>$params['roomid']])->value('cate_id');
