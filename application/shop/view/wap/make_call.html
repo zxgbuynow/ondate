@@ -13,7 +13,8 @@
         $(".frame_yes").click(function(){
            // location.href = "{:U('makeArt')}";
             var url = "{:U('makeArt')}";
-
+             console.log(url);
+             return false;
             $.showLoading();
 
             $.post(url, {'roomname': 201, 'rs': 1}, function(res) {
