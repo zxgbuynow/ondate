@@ -11,7 +11,24 @@
             fade_out_hide();
         });
         $(".frame_yes").click(function(){
-            location.href = "{:U('start')}";
+           // location.href = "{:U('makeArt')}";
+            var url = "{:U('makeArt')}";
+
+            $.showLoading();
+
+            $.post(url, {'address_id': address_id, 'remark': remark, 'sn_id': sn_id, 'send_type': sendType, 'stores_id': store}, function(res) {
+                //console.log(res); return false;
+
+                if (res) $.hideLoading();
+
+                if (res.code == 0) {
+                    $.Dialog.fail(res.msg);
+                } else {
+                    var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
+                    window.location.href = url;
+
+                }
+            });
         });
 
     });
