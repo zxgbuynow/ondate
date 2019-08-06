@@ -16,7 +16,7 @@
 
             $.showLoading();
 
-            $.post(url, {'address_id': address_id, 'remark': remark, 'sn_id': sn_id, 'send_type': sendType, 'stores_id': store}, function(res) {
+            $.post(url, {'roomname': 201, 'rs': 1}, function(res) {
                 //console.log(res); return false;
 
                 if (res) $.hideLoading();
