@@ -1512,8 +1512,8 @@ class ApiData extends Base
                 $max=$tot+$free;
                 if ($woman) {
                     //优化处理SPA和足浴分开安排
-                    $makew = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($woman)->column('id');
-                    M('user_queue')->where('id','in',$makew)->update(['type'=>1]);
+                    $makew = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($woman)->column('user_id');
+                    M('user_queue')->where('user_id','in',$makew)->update(['type'=>1]);
 
                     foreach ($makew as $key => $value) {
                         $userinfo = M('art')->where(['id'=>$value])->find();
@@ -1540,8 +1540,8 @@ class ApiData extends Base
 
                 }
                 if ($man) {
-                    $makem = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->order('postion ASC')->limit($man)->column('id');
-                    M('user_queue')->where('id','in',$makem)->update(['type'=>1]);
+                    $makem = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->order('postion ASC')->limit($man)->column('user_id');
+                    M('user_queue')->where('user_id','in',$makem)->update(['type'=>1]);
                     foreach ($makem as $key => $value) {
                         $userinfo = M('art')->where(['id'=>$value])->find();
                         $save['jsbn'] = $userinfo['jsbn'];
@@ -1570,8 +1570,8 @@ class ApiData extends Base
 
                 //不限制
                 if ($secret) {
-                    $secret = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('id');
-                    M('user_queue')->where('id','in',$secret)->update(['type'=>1]);
+                    $secret = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('user_id');
+                    M('user_queue')->where('user_id','in',$secret)->update(['type'=>1]);
                     foreach ($secret as $key => $value) {
                         $userinfo = M('art')->where(['id'=>$value])->find();
                         $save['jsbn'] = $userinfo['jsbn'];
