@@ -1585,7 +1585,7 @@ class ApiData extends ApiBase
                 //不限制
                 if ($secret>0) {
                     $se = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('user_id');
-                    M('user_queue')->where('user_id','in',$secret)->update(['type'=>1]);
+                    M('user_queue')->where('user_id','in',$se)->update(['type'=>1]);
                     foreach ($se as $key => $value) {
                         $userinfo = M('art')->where(['id'=>$value])->find();
                         $save['jsbn'] = $userinfo['jsbn'];
