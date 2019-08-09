@@ -1584,7 +1584,7 @@ class ApiData extends ApiBase
 
                 //不限制
                 if ($secret>0) {
-                    $se = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->select('user_id');
+                    $se = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('user_id');
                     dump($se);
                     exit;
                     M('user_queue')->where('user_id','in',$se)->update(['type'=>1]);
