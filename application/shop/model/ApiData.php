@@ -1448,6 +1448,16 @@ class ApiData extends ApiBase
         $jsbn=input('jsbn');
         $sex=input('sex');
         $rs  = input('rs');
+        if ($roomname>0 && is_numeric($roomname)) {
+            $msg='请输入正确房间号';
+            return ['code'=>0,'msg'=>$msg];
+            exit;
+        }
+        if ($rs>0 && is_numeric($rs)) {
+            $msg='请输入正确人数';
+            return ['code'=>0,'msg'=>$msg];
+            exit;
+        }
 
         //房间类型
         $rcate = M('room')->where(['room_name'=>$roomname])->value('cate_id');
@@ -1466,6 +1476,9 @@ class ApiData extends ApiBase
             $man = intval($params['man']);
             $secret = intval($params['secret']);
             $wantTot = $woman+$man+$secret;*/
+            $secret=0;
+            $woman=0;
+            $man=0;
             if(empty($sex)){
                 $secret=$rs;
             }
@@ -1511,7 +1524,7 @@ class ApiData extends ApiBase
                 $tot = M('user_queue')->max('postion');
                 $free =M('user_queue')->where('type','>',0)->count();
                 $max=$tot+$free;
-                if ($woman) {
+                if ($woman>0) {
                     //优化处理SPA和足浴分开安排
                     $makew = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($woman)->column('user_id');
                     M('user_queue')->where('user_id','in',$makew)->update(['type'=>1]);
@@ -1540,7 +1553,7 @@ class ApiData extends ApiBase
                     }
 
                 }
-                if ($man) {
+                if ($man>0) {
                     $makem = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->order('postion ASC')->limit($man)->column('user_id');
                     M('user_queue')->where('user_id','in',$makem)->update(['type'=>1]);
                     foreach ($makem as $key => $value) {
@@ -1570,7 +1583,7 @@ class ApiData extends ApiBase
                 }
 
                 //不限制
-                if ($secret) {
+                if ($secret>0) {
                     $secret = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('user_id');
                     M('user_queue')->where('user_id','in',$secret)->update(['type'=>1]);
                     foreach ($secret as $key => $value) {
