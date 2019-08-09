@@ -648,7 +648,7 @@ class Api extends ApiBase
 
                 //不限制
                 if ($secret) {
-                    $secret = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('id');
+                    $secret = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('user_id');
                     M('user_queue')->where('id','in',$secret)->update(['type'=>1]);
                     foreach ($secret as $key => $value) {
                         $userinfo = M('art')->where(['id'=>$value])->find();
