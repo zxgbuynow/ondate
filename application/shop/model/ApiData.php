@@ -2,7 +2,7 @@
 
 namespace app\shop\model;
 
-use app\common\model\ApiBase;
+use app\common\controller\ApiBase;
 use decrypdata;
 use think\Db;
 use \think\Request;
