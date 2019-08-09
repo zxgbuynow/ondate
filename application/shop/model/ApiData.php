@@ -1466,9 +1466,6 @@ class ApiData extends ApiBase
             $man = intval($params['man']);
             $secret = intval($params['secret']);
             $wantTot = $woman+$man+$secret;*/
-            $secret=0;
-            $woman=0;
-            $man=0;
             if(empty($sex)){
                 $secret=$rs;
             }
@@ -1502,7 +1499,7 @@ class ApiData extends ApiBase
             }
             //算房间座位
             if ($rooms['seats']<$rs) {
-                $msg=$roomname.'房间座位数不够';
+                $msg=$roomname.'房间座位数:'.$rooms['seats'];
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
