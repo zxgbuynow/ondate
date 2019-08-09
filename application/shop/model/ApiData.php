@@ -1625,7 +1625,7 @@ class ApiData extends ApiBase
             //主动选择
             M('user_queue')->where(['jsbn'=>$jsbn])->update(['type'=>2]);
             //生成服务信息
-            $save['jsbn'] = $jsbn['jsbn'];
+            $save['jsbn'] = $jsbn;
             $save['sex'] = $userinfo['sex'];
             $save['art_id'] = $userinfo['id'];
             $save['service_type'] = $roomtype;
