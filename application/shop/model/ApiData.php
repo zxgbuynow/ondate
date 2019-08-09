@@ -1486,21 +1486,25 @@ class ApiData extends ApiBase
             if ($rs>$total) {
                 $msg='需求技师不够，当前技师：女'.$freewoman.'男'.$freeman;
                 return ['code'=>0,'msg'=>$msg];
+                exit;
             }
             //男
-            if ($man>$freeman) {
+            if ($man>$freeman &&$man>0) {
                 $msg='需求技师不够，当前技师：男'.$freeman;
                 return ['code'=>0,'msg'=>$msg];
+                exit;
             }
             //女
             if ($woman>$freewoman) {
                 $msg='需求技师不够，当前技师：女'.$freewoman;
                 return ['code'=>0,'msg'=>$msg];
+                exit;
             }
             //算房间座位
             if ($rooms['seats']<$rs) {
-                $msg='房间座位数'.$rooms['seats'];
+                $msg=$roomname.'房间座位数不够';
                 return ['code'=>0,'msg'=>$msg];
+                exit;
             }
 
             //安排
@@ -1606,9 +1610,11 @@ class ApiData extends ApiBase
             } catch (Exception $e) {
                 $msg='操作失败，请稍后重试';
                 return ['code'=>0,'msg'=>$msg];
+                exit;
             }
             $msg='操作成功';
             return ['code'=>1,'msg'=>$msg];
+            exit;
         }
         try {
             //$params['id'] 编号
@@ -1648,9 +1654,11 @@ class ApiData extends ApiBase
         } catch (Exception $e) {
             $msg='操作失败，请稍后重试';
             return ['code'=>0,'msg'=>$msg];
+            exit;
         }
         $msg='操作成功';
         return ['code'=>1,'msg'=>$msg];
+        exit;
     }
 
 }
