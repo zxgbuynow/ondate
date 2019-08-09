@@ -1526,7 +1526,7 @@ class ApiData extends ApiBase
                 $max=$tot+$free;
                 if ($woman>0) {
                     //优化处理SPA和足浴分开安排
-                    $makew = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($woman)->select('user_id');
+                    $makew = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($woman)->column('user_id');
                     M('user_queue')->where('user_id','in',$makew)->update(['type'=>1]);
 
                     foreach ($makew as $key => $value) {
@@ -1554,7 +1554,7 @@ class ApiData extends ApiBase
 
                 }
                 if ($man>0) {
-                    $makem = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->order('postion ASC')->limit($man)->select('user_id');
+                    $makem = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->order('postion ASC')->limit($man)->column('user_id');
                     M('user_queue')->where('user_id','in',$makem)->update(['type'=>1]);
                     foreach ($makem as $key => $value) {
                         $userinfo = M('art')->where(['id'=>$value])->find();
