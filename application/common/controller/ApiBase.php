@@ -162,7 +162,7 @@ class ApiBase extends Base {
 	public function _empty($name) {
 		$mid = session ( 'mid_' . get_pbid () );
 		
-		$this->apiModel->setMid ( $mid );
+		//$this->apiModel->setMid ( $mid );
 		$data = $this->apiModel->$name ();
 		
 		$debug = input ( 'debug' );
