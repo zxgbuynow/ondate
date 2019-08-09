@@ -2,7 +2,7 @@
 
 namespace app\shop\model;
 
-use app\common\model\Base;
+use app\common\model\ApiBase;
 use decrypdata;
 use think\Db;
 use \think\Request;
@@ -1598,9 +1598,9 @@ class ApiData extends Base
                     // $this->push_wm_msg('1',$msg);
                 }
                 //更新房间信息
-                $s=M('room')->where(['room_name'=>$roomname])->update(['status'=>2]);
+                M('room')->where(['room_name'=>$roomname])->update(['status'=>2]);
                 //删除等待信息
-                $s=M('waite')->where(['room_id'=>$roomname])->delete();
+                M('waite')->where(['room_id'=>$roomname])->delete();
                 $this->push_wm_msg('1',$msg);
 
             } catch (Exception $e) {
