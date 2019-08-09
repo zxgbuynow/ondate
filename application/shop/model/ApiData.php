@@ -1453,7 +1453,7 @@ class ApiData extends ApiBase
             return ['code'=>0,'msg'=>$msg];
             exit;
         }
-        if ($rs>0 && is_numeric($rs)) {
+        if (!empty($rs) && !is_numeric($rs)) {
             $msg='请输入正确人数';
             return ['code'=>0,'msg'=>$msg];
             exit;
