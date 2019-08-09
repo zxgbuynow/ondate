@@ -36,8 +36,7 @@ class WapBase extends Base
     {
         $mid = session('mid_' . get_pbid());
         //$this->apiModel->setMid($mid);
-        //$data = $this->apiModel->$name();
-        $data = 200;
+        $data = $this->apiModel->$name();
         
         $debug = input('debug');
         if ($debug == 1) {
