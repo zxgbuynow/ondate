@@ -1609,6 +1609,7 @@ class ApiData extends ApiBase
                         $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
 
                     }
+                    $secret=0;
                     // $this->push_wm_msg('1',$msg);
                 }
                 //更新房间信息
@@ -1631,10 +1632,12 @@ class ApiData extends ApiBase
             if (!M('user_queue')->where(['jsbn'=>$jsbn])->find()) {
                 $msg='技师编号错误';
                 return ['code'=>0,'msg'=>$msg];
+                exit;
             }
             if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0])->find()) {
                 $msg='当前技师非空闲';
                 return ['code'=>0,'msg'=>$msg];
+                exit;
             }
             $userinfo = M('art')->where(['jsbn'=>$jsbn,'type'=>$roomtype])->find();
             M('room')->where(['room_name'=>$roomname])->update(['status'=>2]);
