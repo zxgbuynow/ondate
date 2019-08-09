@@ -1448,8 +1448,8 @@ class ApiData extends ApiBase
         $jsbn=input('jsbn');
         $sex=input('sex');
         $rs  = input('rs');
-        if ($roomname>0 && is_numeric($roomname)) {
-            $msg='请输入正确房间号';
+        if (empty($roomname)) {
+            $msg='请输入房间号';
             return ['code'=>0,'msg'=>$msg];
             exit;
         }
