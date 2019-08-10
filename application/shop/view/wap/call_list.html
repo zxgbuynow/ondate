@@ -41,7 +41,7 @@
 
     });
     function go_back() {
-        location.href = "./time.html";
+        location.href = "{:U('make_call')}";
     }
 
 </script>
@@ -49,8 +49,8 @@
 <div id="head">
     <div class="goback" onclick="go_back()"><img src="__STATIC__/supu/img/fanhui.png"></div>
     <div class="head_body">
-        <div class="picture"></div>
-        <div class="head_text">马小跳</div>
+        <div class="picture"><img src="{$myinfo.headimgurl}"></div>
+        <div class="head_text">{$myinfo.nickname}</div>
     </div>
 </div>
 
