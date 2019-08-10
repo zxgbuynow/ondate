@@ -1332,7 +1332,7 @@ class ApiData extends ApiBase
     }
     function make_call()
     {
-        $pz=[378.379];//经理或者排钟人员有权限
+        $pz=[378,379];//经理或者排钟人员有权限
         $openid = get_openid();
         if (empty($this->mid)){
             $this->mid=get_uid_by_openid(true,$openid);
@@ -1342,7 +1342,7 @@ class ApiData extends ApiBase
         $data['mid']=$this->mid;
         $group_id=M('auth_group_access')->where(['uid'=>$data['mid']])->value('group_id');
         if(!in_array($group_id,$pz)){
-            return $this->error('你没有排钟权限!'); 
+            return $this->error('你没有排钟权限!');
         }
         $data['openid']=$openid;
         return $data;
