@@ -1687,6 +1687,8 @@ class ApiData extends ApiBase
        $map['operator']=$this->mid;
        $map['status']=0;
        $calls=M('calls')->where($map)->select();
+       $data['calls']=$calls;
+       return $data;
 
 
   }
