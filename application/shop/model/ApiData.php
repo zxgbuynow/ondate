@@ -1476,18 +1476,6 @@ class ApiData extends ApiBase
             $man = intval(input('man'));
             $secret = intval(input('secret'));
             $wantTot = $woman+$man+$secret;
-/*            $secret=0;
-            $woman=0;
-            $man=0;
-            if(empty($sex)){
-                $secret=$rs;
-            }
-            if($sex=0){
-                $woman=$rs;
-            }
-            if($sex=1){
-                $man=$rs;
-            }*/
             $total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->count();
             $freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->count();
             $freewoman = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->count();
@@ -1673,5 +1661,8 @@ class ApiData extends ApiBase
         return ['code'=>1,'msg'=>$msg];
         exit;
     }
+    //呼叫列表
+   function  call_list(){
 
+  }
 }

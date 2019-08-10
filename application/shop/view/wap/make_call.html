@@ -29,15 +29,15 @@
                     alert((res.msg));
                 } else {
                     alert((res.msg));
-                   // var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
-                    //window.location.href = url;
+                    //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
+                    var url = "{:U('call_list')}";
+                    window.location.href = url;
 
                 }
             });
         });
         $("#type").change(function(){
             var set= $("#type").val();
-           alert(set);
             if(set==1){
                 $("#pz").show();
                 $("#dz").hide();
