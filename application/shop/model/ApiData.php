@@ -1506,7 +1506,7 @@ class ApiData extends ApiBase
                 exit;
             }
             //算房间座位
-            if ($rooms['seats']<$rs) {
+            if ($rooms['seats']<($woman+$man+$secret)) {
                 $msg=$roomname.'房间座位数:'.$rooms['seats'];
                 return ['code'=>0,'msg'=>$msg];
                 exit;
