@@ -1332,8 +1332,10 @@ class ApiData extends ApiBase
     }
     function make_call()
     {
+        $openid = get_openid();
+        $data['openid']=$openid;
         //$data['track'] = D('Track')->getMyTrack($this->mid);
-        //return $data;
+        return $data;
     }
 
     function my_track()
