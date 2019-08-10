@@ -14,10 +14,13 @@
             fade_out_hide();
             var url = "{:U('makeArt')}";
             var roomname=$('input[name="roomname"]').val();
-            var rs=$('input[name="rs"]').val();
+            //var rs=$('input[name="rs"]').val();
             var jsbn=$('input[name="jsbn"]').val();
-            var sex=$('input[name="sex"]:checked').val()
-            $.post(url, {'roomname': roomname, 'rs': rs,'sex':sex,'jsbn':jsbn}, function(res) {
+            var secret=$('input[name="secret"]').val();
+            var woman=$('input[name="woman"]').val();
+            var man=$('input[name="man"]').val();
+            //var sex=$('input[name="sex"]:checked').val()
+            $.post(url, {'roomname': roomname, 'woman': woman,'man':man,'jsbn':jsbn,'secret':secret}, function(res) {
                 //console.log(res); return false;
 
                // if (res) $.hideLoading();
