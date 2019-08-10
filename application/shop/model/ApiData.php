@@ -1690,6 +1690,33 @@ class ApiData extends ApiBase
        $data['calls']=$calls;
        return $data;
 
-
   }
+    /**
+     * 呼叫
+     * @param  [type]
+     * @return [type]
+     */
+    public function queueCall($params)
+    {
+        $art_id=input('art_id');
+        if (empty($art_id)) {
+            $msg='操作失败，请稍后重试';
+            return ['code'=>0,'msg'=>$msg];
+        }
+        try {
+            //取数据
+            $callp['art_id'] = $art_id;
+            $callp['status'] = 0;
+            $calls = M('calls')->where($callp)->find();
+            $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+            $this->push_wm_msg('1',$msg);
+            M('calls')->where(['id'=>$calls['id']])->update(['calltime'=>time()]);
+        } catch (Exception $e) {
+            $msg='操作失败，请稍后重试';
+            return ['code'=>0,'msg'=>$msg];
+        }
+
+        $msg='呼叫成功！';
+        return ['code'=>1,'msg'=>$msg];
+    }
 }
