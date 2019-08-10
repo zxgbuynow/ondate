@@ -29,8 +29,23 @@
             fade_out_hide()
         });
         $(".frame_hj").click(function () {
-            alert('呼叫成功');
-            fade_out_hide()
+            fade_out_hide();
+            var url = "{:U('makeCall')}";
+            var art_id=$('.bgcolor2').attr('data-id');
+            alert(art_id);
+            return;
+            $.post(url, {'roomname': roomname, 'woman': woman,'man':man,'jsbn':jsbn,'secret':secret,'mid':mid}, function(res) {
+
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
+                    var url = "{:U('call_list')}";
+                    window.location.href = url;
+
+                }
+            });
         });
         $(".frame_ch").click(function () {
             alert('撤回成功');
@@ -56,7 +71,7 @@
 
 <div id="body" style="overflow: auto;">
     {volist name="calls" id="call"}
-    <div class="list2 bgcolor1" >
+    <div class="list2 bgcolor1"  data-id="{$call.art_id}">
         <div class="list2_tp">
             <div class="list2_tp_picture"></div>
         </div>
@@ -72,81 +87,6 @@
         </div>
     </div>
     {/volist}
-<!--    <div class="list2 bgcolor1">
-        <div class="list2_tp">
-            <div class="list2_tp_picture"></div>
-        </div>
-        <div class="list2_body">
-            <div class="list2_body_top">
-                <div class="list2_body_top_label">马小跳</div>
-                <div class="list2_body_top_text">1209号</div>
-            </div>
-            <div class="list2_body_top">
-                <div class="list2_body_top_label2">856号房间</div>
-                <div class="list2_body_top_text2">呼叫时间：2019-06-05 20:00</div>
-            </div>
-        </div>
-    </div>
-    <div class="list2 bgcolor1">
-        <div class="list2_tp">
-            <div class="list2_tp_picture"></div>
-        </div>
-        <div class="list2_body">
-            <div class="list2_body_top">
-                <div class="list2_body_top_label">马小跳</div>
-                <div class="list2_body_top_text">1208号</div>
-            </div>
-            <div class="list2_body_top">
-                <div class="list2_body_top_label2">856号房间</div>
-                <div class="list2_body_top_text2">呼叫时间：2019-06-05 20:00</div>
-            </div>
-        </div>
-    </div>
-    <div class="list2 bgcolor1">
-        <div class="list2_tp">
-            <div class="list2_tp_picture"></div>
-        </div>
-        <div class="list2_body">
-            <div class="list2_body_top">
-                <div class="list2_body_top_label">马小跳</div>
-                <div class="list2_body_top_text">1208号</div>
-            </div>
-            <div class="list2_body_top">
-                <div class="list2_body_top_label2">856号房间</div>
-                <div class="list2_body_top_text2">呼叫时间：2019-06-05 20:00</div>
-            </div>
-        </div>
-    </div>
-    <div class="list2 bgcolor1">
-        <div class="list2_tp">
-            <div class="list2_tp_picture"></div>
-        </div>
-        <div class="list2_body">
-            <div class="list2_body_top">
-                <div class="list2_body_top_label">马小跳</div>
-                <div class="list2_body_top_text">1208号</div>
-            </div>
-            <div class="list2_body_top">
-                <div class="list2_body_top_label2">856号房间</div>
-                <div class="list2_body_top_text2">呼叫时间：2019-06-05 20:00</div>
-            </div>
-        </div>
-    </div>
-    <div class="list2 bgcolor1">
-        <div class="list2_tp">
-            <div class="list2_tp_picture"></div>
-        </div>
-        <div class="list2_body">
-            <div class="list2_body_top">
-                <div class="list2_body_top_label">马小跳</div>
-                <div class="list2_body_top_text">1208号</div>
-            </div>
-            <div class="list2_body_top">
-                <div class="list2_body_top_label2">856号房间</div>
-                <div class="list2_body_top_text2">呼叫时间：2019-06-05 20:00</div>
-            </div>
-        </div>
-    </div>-->
 </div>
 
 <!--遮罩层-->
