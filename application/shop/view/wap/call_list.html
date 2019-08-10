@@ -13,24 +13,35 @@
         });
 
         $(".but_hujiao").click(function () {
+            var art_id=$('.bgcolor2').attr('data-id');
+            if(!art_id){
+                alert(('请选择技师'));
+                return;
+            }
             fade_out_pull("is_hujiao");
         });
 
         $(".but_chehui").click(function () {
+            var art_id=$('.bgcolor2').attr('data-id');
+            if(!art_id){
+                alert(('请选择技师'));
+                return;
+            }
             fade_out_pull("is_chehui");
         });
 
         $(".but_zhuxiao").click(function () {
+            var art_id=$('.bgcolor2').attr('data-id');
+            if(!art_id){
+                alert(('请选择技师'));
+                return;
+            }
             fade_out_pull("is_zhuxiao");
         });
-
+         //注销
         $(".frame_zx").click(function () {
-            alert('注销成功');
-            fade_out_hide()
-        });
-        $(".frame_hj").click(function () {
             fade_out_hide();
-            var url = "{:U('queueCall')}";
+            var url = "{:U('queueLogout')}";
             var art_id=$('.bgcolor2').attr('data-id');
             $.post(url, {'art_id': art_id}, function(res) {
                 if (res.code == 0) {
@@ -44,9 +55,37 @@
                 }
             });
         });
+        //呼叫
+        $(".frame_hj").click(function () {
+            fade_out_hide();
+            var url = "{:U('queueCall')}";
+            var art_id=$('.bgcolor2').attr('data-id');
+            $.post(url, {'art_id': art_id}, function(res) {
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    var url = "{:U('call_list')}";
+                    window.location.href = url;
+
+                }
+            });
+        });
+        //撤销
         $(".frame_ch").click(function () {
-            alert('撤回成功');
-            fade_out_hide()
+            fade_out_hide();
+            var url = "{:U('orderRefund')}";
+            var id=$('.bgcolor2').attr('data-cid');
+            $.post(url, {'id': id}, function(res) {
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    var url = "{:U('call_list')}";
+                    window.location.href = url;
+
+                }
+            });
         });
 
 
@@ -68,7 +107,7 @@
 
 <div id="body" style="overflow: auto;">
     {volist name="calls" id="call"}
-    <div class="list2 bgcolor1"  data-id="{$call.art_id}">
+    <div class="list2 bgcolor1"  data-id="{$call.art_id}" data-cid="{$call.id}">
         <div class="list2_tp">
             <div class="list2_tp_picture"></div>
         </div>

@@ -1719,4 +1719,64 @@ class ApiData extends ApiBase
         $msg='呼叫成功！';
         return ['code'=>1,'msg'=>$msg];
     }
+    /**
+     * 注销
+     * @param  [type]
+     * @return [type]
+     */
+    public function queueLogout()
+    {
+        $art_id=input('art_id');
+        if (empty($art_id)) {
+            $msg='操作失败，请稍后重试';
+            return ['code'=>0,'msg'=>$msg];
+        }
+
+        try {
+            M('art')->where(['id'=>$art_id])->update(['status'=>0]);
+            if (M('user_queue')->where(['user_id'=>$art_id,'type'=>3])->find()) {
+                M('user_queue')->where(['user_id'=>$art_id])->update(['type'=>0]);
+                return api_success('上线成功');
+            }else{
+                M('user_queue')->where(['user_id'=>$art_id])->update(['type'=>3]);
+            }
+
+        } catch (Exception $e) {
+            $msg='操作失败，请稍后重试';
+            return ['code'=>0,'msg'=>$msg];
+        }
+
+        $msg='注销成功！';
+        return ['code'=>1,'msg'=>$msg];
+    }
+    /**
+     * 撤钟
+     * @param  [type]
+     * @return [type]
+     */
+    public function orderRefund()
+    {
+        $id=input('id');
+        if (empty($id)) {
+            $msg='操作失败，请稍后重试';
+            return ['code'=>0,'msg'=>$msg];
+        }
+
+        if (M('calls')->where(['id'=>$id])->update(['status'=>2])) {
+            $call = M('calls')->where(['id'=>$id])->find();
+            $map['status']=[0,1];
+            $map['room_id']=$call['room_id'];
+            $ask=M('calls')->where($map)->count();
+            if($ask<1){
+                M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
+            }
+            //M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
+            M('user_queue')->where(['user_id'=>$call['art_id']])->update(['type'=>0]);
+
+            $msg='撤销成功！';
+            return ['code'=>1,'msg'=>$msg];
+        }
+        $msg='操作失败，请稍后重试';
+        return ['code'=>0,'msg'=>$msg];
+    }
 }
