@@ -3,6 +3,17 @@
 {block name="common_body"}
 <script>
     $(function () {
+        $("input,select").on("blur",function(){
+            setTimeout(function(){
+                window.scrollTo(0,0);
+            },100)
+        }).on('focus',function(){
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            var offsetTop = $(this).offset().top - (clientHeight / 4);
+            setTimeout(function(){
+                window.scrollTo(0,offsetTop);
+            },100)
+        })
         $(".submit").click(function () {
             fade_out_pull();
         });
@@ -26,6 +37,7 @@
                     alert((res.msg));
                 } else {
                     alert((res.msg));
+                    $('#makeart').reset()
                     //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
                     var url = "{:U('call_list')}";
                     window.location.href = url;
@@ -45,17 +57,7 @@
             }
         });
     });
-    $("input,select").on("blur",function(){
-        setTimeout(function(){
-            window.scrollTo(0,0);
-        },100)
-    }).on('focus',function(){
-        var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
-        var offsetTop = $(this).offset().top - (clientHeight / 4);
-        setTimeout(function(){
-            window.scrollTo(0,offsetTop);
-        },100)
-    })
+
 </script>
 <body>
 <div id="head">
@@ -66,6 +68,7 @@
     </div>
 </div>
 <div id="body">
+    <form action="post" id="makeart">
     <div class="list1" style="margin-top: 100px;">
         <div class="label">房间号</div>
         <div class="list_text">
@@ -107,6 +110,7 @@
             <input style="background: none" type="text" name="jsbn" size="12" maxlength="20">
         </div>
     </div>
+    </form>
 </div>
 
 <!--遮罩层-->
