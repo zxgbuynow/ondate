@@ -37,7 +37,17 @@
         });
 
     });
-
+    $("#type").change(function(){
+        var set= $("#type").val();
+        if(set==1){
+            $(".pz").show();
+            $(".dz").hide();
+        }
+        if(set==2){
+            $(".pz").hide();
+            $(".dz").show();
+        }
+    });
 </script>
 <body>
 <div id="head">
@@ -47,41 +57,6 @@
         <div class="head_text">{$myinfo.nickname}</div>
     </div>
 </div>
-
-<!--<div id="body">
-    <div class="list1" style="margin-top: 100px;">
-        <div class="label">房间号</div>
-        <div class="list_text">
-            <input style="background: none" type="text" name="roomname" size="12" maxlength="20">
-        </div>
-    </div>
-
-    <div class="list1">
-        <div class="label">人 数</div>
-        <div class="list_text">
-            <input style="background: none" type="text" name="rs" size="12" maxlength="20">
-        </div>
-    </div>
-
-    <div class="list1">
-        <div class="label">技师号</div>
-        <div class="list_text">
-            <input style="background: none" type="text" name="jsbn" size="12" maxlength="20">
-        </div>
-    </div>
-
-    <div class="list1" style="border-bottom: 1px solid #333;">
-        <div class="label">性 别</div>
-        <div class="list_text">
-            <div class="choose_radio">
-                <input class="radio" name="sex" type="radio" value="1"/><label>男</label>
-            </div>
-            <div class="choose_radio">
-                <input class="radio" name="sex" type="radio" value="0"  /><label>女</label>
-            </div>
-        </div>
-    </div>
-</div>-->
 <div id="body">
     <div class="list1" style="margin-top: 100px;">
         <div class="label">房间号</div>
@@ -89,27 +64,35 @@
             <input style="background: none" type="text" name="roomname" size="12" maxlength="20">
         </div>
     </div>
-
-    <div class="list1">
+    <div class="list1" id="type">
+        <div class="label">方式</div>
+        <div class="list_text">
+            <select>
+                <option value="1" selected>排钟</option>
+                <option value="2">点钟</option>
+            </select>
+        </div>
+    </div>
+    <div class="list1 pz">
         <div class="label">不限性别</div>
         <div class="list_text">
             <input style="background: none" type="text" name="secret" size="12" maxlength="20">
         </div>
     </div>
-    <div class="list1">
+    <div class="list1 pz">
         <div class="label">女技师</div>
         <div class="list_text">
             <input style="background: none" type="text" name="woman" size="12" maxlength="20">
         </div>
     </div>
-    <div class="list1">
+    <div class="list1 pz">
         <div class="label">男技师</div>
         <div class="list_text">
             <input style="background: none" type="text" name="man" size="12" maxlength="20">
         </div>
     </div>
 
-    <div class="list1">
+    <div class="list1 dz" style="display: none">
         <div class="label">技师号</div>
         <div class="list_text">
             <input style="background: none" type="text" name="jsbn" size="12" maxlength="20">
