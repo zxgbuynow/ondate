@@ -1333,8 +1333,13 @@ class ApiData extends ApiBase
     function make_call()
     {
         $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $data['mid']=$this->mid;
         $data['openid']=$openid;
-        //$data['track'] = D('Track')->getMyTrack($this->mid);
         return $data;
     }
 
