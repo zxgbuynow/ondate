@@ -35,20 +35,20 @@
                 }
             });
         });
+        $("#type").change(function(){
+            var set= $("select[name=type] option[selected]").text();
+           alert(set);
+            if(set==1){
+                $("#pz").show();
+                $("#dz").hide();
+            }
+            if(set==2){
+                $("#pz").hide();
+                $("#dz").show();
+            }
+        });
+    });
 
-    });
-    $("#type").change(function(){
-        var set= $("select[name=type] option[selected]").text();
-        console.log(set);
-        if(set==1){
-            $("#pz").show();
-            $("#dz").hide();
-        }
-        if(set==2){
-            $("#pz").hide();
-            $("#dz").show();
-        }
-    });
 </script>
 <body>
 <div id="head">
