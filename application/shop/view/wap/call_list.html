@@ -32,7 +32,7 @@
             fade_out_hide();
             var url = "{:U('queueCall')}";
             var art_id=$('.bgcolor2').attr('data-id');
-            $.post(url, {'art_id': art_id, function(res) {
+            $.post(url, {'art_id': art_id}, function(res) {
                 if (res.code == 0) {
                     alert((res.msg));
                 } else {
