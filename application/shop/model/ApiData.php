@@ -1696,7 +1696,7 @@ class ApiData extends ApiBase
      * @param  [type]
      * @return [type]
      */
-    public function queueCall($params)
+    function queueCall()
     {
         $art_id=input('art_id');
         if (empty($art_id)) {
