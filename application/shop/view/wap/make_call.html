@@ -37,7 +37,6 @@
                     alert((res.msg));
                 } else {
                     alert((res.msg));
-                    $('#makeart').reset();
                     //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
                     var url = "{:U('call_list')}";
                     window.location.href = url;
@@ -64,7 +63,7 @@
     <div class="goback"></div>
     <div class="head_body">
         <div class="picture"><img src="{$myinfo.headimgurl}"></div>
-        <div class="head_text">{$myinfo.nickname}</div>
+        <div class="head_text">{$myinfo.nickname} <div style="float: right;display: block;"><a href="{:U('call_list')}">呼叫列表</a> </div></div>
     </div>
 </div>
 <div id="body">
