@@ -1734,12 +1734,8 @@ class ApiData extends ApiBase
 
         try {
             M('art')->where(['id'=>$art_id])->update(['status'=>0]);
-            if (M('user_queue')->where(['user_id'=>$art_id,'type'=>3])->find()) {
-                M('user_queue')->where(['user_id'=>$art_id])->update(['type'=>0]);
-                return api_success('上线成功');
-            }else{
-                M('user_queue')->where(['user_id'=>$art_id])->update(['type'=>3]);
-            }
+            M('user_queue')->where(['user_id'=>$art_id])->update(['type'=>3]);
+
 
         } catch (Exception $e) {
             $msg='操作失败，请稍后重试';
