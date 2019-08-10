@@ -1539,6 +1539,7 @@ class ApiData extends ApiBase
                         $save['room_id'] = $rooms['id'];
                         $save['next_pos'] = $key+1+$max;
                         $save['operator']=$mid;
+                        $save['calltime']=time();
                         M('calls')->insert($save);
 
                         //语音推送
@@ -1568,6 +1569,7 @@ class ApiData extends ApiBase
                         $save['room_id'] = $rooms['id'];
                         $save['next_pos'] = $key+1+$max;
                         $save['operator']=$mid;
+                        $save['calltime']=time();
                         M('calls')->insert($save);
 
                         //语音推送
@@ -1599,6 +1601,7 @@ class ApiData extends ApiBase
                         $save['room_id'] = $rooms['id'];
                         $save['next_pos'] = $key+1+$max;
                         $save['operator']=$mid;
+                        $save['calltime']=time();
                         M('calls')->insert($save);
 
                         //语音推送
@@ -1655,6 +1658,7 @@ class ApiData extends ApiBase
             $save['room'] = $rooms['room_name'];
             $save['room_id'] = $rooms['id'];
             $save['operator']=$mid;
+            $save['calltime']=time();
             M('calls')->insert($save);
             //删除等待信息
             M('waite')->where(['room_id'=>$rooms['id']])->delete();
@@ -1674,6 +1678,16 @@ class ApiData extends ApiBase
     }
     //呼叫列表
    function  call_list(){
+       $openid = get_openid();
+       if (empty($this->mid)){
+           $this->mid=get_uid_by_openid(true,$openid);
+           if (empty($this->mid))
+               return $this->error('获取不到当前用户，请在微信里打开!');
+       }
+       $map['operator']=$this->mid;
+       $map['status']=0;
+       $calls=M('calls')->where($map)->select();
+
 
   }
 }

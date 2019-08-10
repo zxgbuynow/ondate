@@ -55,22 +55,24 @@
 </div>
 
 <div id="body" style="overflow: auto;">
+    {volist name="calls" id="call"}
     <div class="list2 bgcolor1" >
         <div class="list2_tp">
             <div class="list2_tp_picture"></div>
         </div>
         <div class="list2_body">
             <div class="list2_body_top">
-                <div class="list2_body_top_label">马小跳</div>
-                <div class="list2_body_top_text">1208号</div>
+                <div class="list2_body_top_label">技师</div>
+                <div class="list2_body_top_text">{$call.jsbn}号</div>
             </div>
             <div class="list2_body_top">
-                <div class="list2_body_top_label2">856号房间</div>
-                <div class="list2_body_top_text2">呼叫时间:2019-06-05 20:00</div>
+                <div class="list2_body_top_label2">{$call.room}号房间</div>
+                <div class="list2_body_top_text2">呼叫时间:{$call.calltime|time_format}</div>
             </div>
         </div>
     </div>
-    <div class="list2 bgcolor1">
+    {/volist}
+<!--    <div class="list2 bgcolor1">
         <div class="list2_tp">
             <div class="list2_tp_picture"></div>
         </div>
@@ -144,7 +146,7 @@
                 <div class="list2_body_top_text2">呼叫时间：2019-06-05 20:00</div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 
 <!--遮罩层-->
