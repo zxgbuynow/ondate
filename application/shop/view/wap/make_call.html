@@ -40,12 +40,12 @@
     $("#type").change(function(){
         var set= $("#type").find("option:selected").text();
         if(set==1){
-            $(".pz").show();
-            $(".dz").hide();
+            $("#pz").show();
+            $("#dz").hide();
         }
         if(set==2){
-            $(".pz").hide();
-            $(".dz").show();
+            $("#pz").hide();
+            $("#dz").show();
         }
     });
 </script>
@@ -73,26 +73,27 @@
             </select>
         </div>
     </div>
-    <div class="list1 pz">
+    <div id="pz">
+    <div class="list1">
         <div class="label">不限性别</div>
         <div class="list_text">
             <input style="background: none" type="text" name="secret" size="12" maxlength="20">
         </div>
     </div>
-    <div class="list1 pz">
+    <div class="list1">
         <div class="label">女技师</div>
         <div class="list_text">
             <input style="background: none" type="text" name="woman" size="12" maxlength="20">
         </div>
     </div>
-    <div class="list1 pz">
+    <div class="list1">
         <div class="label">男技师</div>
         <div class="list_text">
             <input style="background: none" type="text" name="man" size="12" maxlength="20">
         </div>
     </div>
-
-    <div class="list1 dz" style="display: none">
+    </div>
+    <div class="list1" style="display: none" id="dz">
         <div class="label">技师号</div>
         <div class="list_text">
             <input style="background: none" type="text" name="jsbn" size="12" maxlength="20">
