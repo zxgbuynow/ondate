@@ -30,8 +30,9 @@
             var secret=$('input[name="secret"]').val();
             var woman=$('input[name="woman"]').val();
             var man=$('input[name="man"]').val();
+            var mid=$('input[name="mid"]').val();
             //var sex=$('input[name="sex"]:checked').val()
-            $.post(url, {'roomname': roomname, 'woman': woman,'man':man,'jsbn':jsbn,'secret':secret}, function(res) {
+            $.post(url, {'roomname': roomname, 'woman': woman,'man':man,'jsbn':jsbn,'secret':secret,'mid':mid}, function(res) {
 
                 if (res.code == 0) {
                     alert((res.msg));
