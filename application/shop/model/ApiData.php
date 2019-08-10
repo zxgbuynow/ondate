@@ -1342,7 +1342,7 @@ class ApiData extends ApiBase
         $data['mid']=$this->mid;
         $group_id=M('auth_group_access')->where(['uid'=>$data['mid']])->value('group_id');
         if(!in_array($group_id,$pz)){
-            return $this->error('你没有排钟权限!');
+            return $this->error('抱歉，您没有排钟权限!');
         }
         $data['openid']=$openid;
         return $data;
@@ -1458,15 +1458,10 @@ class ApiData extends ApiBase
         }*/
         $roomname  = input('roomname');
         $jsbn=input('jsbn');
-        $sex=input('sex');
-        $rs  = input('rs');
+        $mid=input('mid');
+
         if (empty($roomname)) {
             $msg='请输入房间号';
-            return ['code'=>0,'msg'=>$msg];
-            exit;
-        }
-        if (!empty($rs) && !is_numeric($rs)) {
-            $msg='请输入正确人数';
             return ['code'=>0,'msg'=>$msg];
             exit;
         }
@@ -1543,6 +1538,7 @@ class ApiData extends ApiBase
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
                         $save['next_pos'] = $key+1+$max;
+                        $save['operator']=$mid;
                         M('calls')->insert($save);
 
                         //语音推送
@@ -1571,6 +1567,7 @@ class ApiData extends ApiBase
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
                         $save['next_pos'] = $key+1+$max;
+                        $save['operator']=$mid;
                         M('calls')->insert($save);
 
                         //语音推送
@@ -1601,6 +1598,7 @@ class ApiData extends ApiBase
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
                         $save['next_pos'] = $key+1+$max;
+                        $save['operator']=$mid;
                         M('calls')->insert($save);
 
                         //语音推送
@@ -1656,6 +1654,7 @@ class ApiData extends ApiBase
             //$save['total'] = $goods['cost_price'];
             $save['room'] = $rooms['room_name'];
             $save['room_id'] = $rooms['id'];
+            $save['operator']=$mid;
             M('calls')->insert($save);
             //删除等待信息
             M('waite')->where(['room_id'=>$rooms['id']])->delete();
