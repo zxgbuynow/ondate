@@ -1472,11 +1472,11 @@ class ApiData extends ApiBase
         $system=empty($jsbn)?'systemChange':'';
         //参数处理
         if ($system=='systemChange') {
-/*            $woman = intval($params['woman']);
-            $man = intval($params['man']);
-            $secret = intval($params['secret']);
-            $wantTot = $woman+$man+$secret;*/
-            $secret=0;
+            $woman = intval(input('woman'));
+            $man = intval(input('man'));
+            $secret = intval(input('secret'));
+            $wantTot = $woman+$man+$secret;
+/*            $secret=0;
             $woman=0;
             $man=0;
             if(empty($sex)){
@@ -1487,13 +1487,13 @@ class ApiData extends ApiBase
             }
             if($sex=1){
                 $man=$rs;
-            }
+            }*/
             $total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->count();
             $freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->count();
             $freewoman = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->count();
             //先算总人数
             // $difw = $freewoman>$woman?0:($freewoman-$woman);
-            if ($rs>$total) {
+            if ($wantTot>$total) {
                 $msg='需求技师不够，当前技师：女'.$freewoman.'男'.$freeman;
                 return ['code'=>0,'msg'=>$msg];
                 exit;
