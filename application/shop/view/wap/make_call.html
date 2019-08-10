@@ -36,7 +36,7 @@
             });
         });
         $("#type").change(function(){
-            var set= $("select[name=type] option[selected]").val();
+            var set= $("#type").val();
            alert(set);
             if(set==1){
                 $("#pz").show();
