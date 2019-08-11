@@ -1734,6 +1734,7 @@ class ApiData extends ApiBase
 
         try {
             M('art')->where(['id'=>$art_id])->update(['status'=>0]);
+            M('calls')->where(['status'=>0,'art_id'=>$art_id])->update(['status'=>3]);
             M('user_queue')->where(['user_id'=>$art_id])->update(['type'=>3]);
 
 
