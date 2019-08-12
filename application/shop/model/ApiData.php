@@ -1705,7 +1705,7 @@ class ApiData extends ApiBase
         $map['type']=0;
         $goods_id=M('goods_category_link')->where($map)->column('goods_id');
         $map1['goods_id']=$goods_id;
-        $ask=M('shop_goods')->where($goods_id)->field('goods_id,title')->select();
+        $ask=M('shop_goods')->where($goods_id)->fields('goods_id,title')->select();
         $arr=array_column($ask,'title');
         $ser=implode(",",$arr);
         $data['ser']=$ser;
