@@ -1702,7 +1702,8 @@ class ApiData extends ApiBase
         $room=I('room');
         $data['room']=$room;
         $arr=['122','888','999'];
-        $data['ser']=json_encode($arr);
+        $ser=implode(",",$arr);
+        $data['ser']=$ser;
         return $data;
 
     }
