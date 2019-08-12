@@ -1691,6 +1691,19 @@ class ApiData extends ApiBase
        return $data;
 
   }
+    //技师扫码上钟
+    function  start_work(){
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $room=I('room');
+        $data['room']=$room;
+        return $data;
+
+    }
     /**
      * 呼叫
      * @param  [type]

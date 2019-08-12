@@ -1,0 +1,88 @@
+{extend name="shop@wap/supu_file" /}
+{block name="common_body"}
+<script>
+    $(function () {
+
+        $(".submit").click(function () {
+            fade_out_pull();
+        });
+
+        $(".frame_no").click(function () {
+            fade_out_hide();
+        });
+        $(".frame_yes").click(function () {
+            location.href = "{:U('time')}";
+        });
+
+        //选择栏内容
+        var data = [1, 2, 3];
+
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            var pickerView = new PickerView({
+                bindElem: btn, // 绑定的元素
+                data: data, // 说明：该参数必须符合json格式 且最里层是个数组，如上面的data变量所展示的[3,4]。
+                title: '选择', // 顶部标题文本 默认为“标题”
+                leftText: '取消', // 头部左侧按钮文本 默认为‘取消’
+                rightText: '确定', // 头部右侧按钮文本 默认为“确定”
+                rightFn: function (selectArr) {  // 点击头部右侧按钮的回调函数，参数为一个数组，数组对应滚轮中每项对应的值
+//                  console.log(selectArr,'selectarr');
+                    document.querySelector(".choose_list").innerText = selectArr.join("-");
+                }
+            });
+        }
+
+//                $(".choose").click(function(){
+//                    var pickerView = new PickerView({
+////                        bindElem: btn, // 绑定的元素
+//                        data: data, // 说明：该参数必须符合json格式 且最里层是个数组，如上面的data变量所展示的[3,4]。
+//                        title: '选择', // 顶部标题文本 默认为“标题”
+//                        leftText: '取消', // 头部左侧按钮文本 默认为‘取消’
+//                        rightText: '确定', // 头部右侧按钮文本 默认为“确定”
+//                        rightFn: function( selectArr ){  // 点击头部右侧按钮的回调函数，参数为一个数组，数组对应滚轮中每项对应的值
+//                            alert(selectArr)
+////                              document.querySelector(".showText").innerText = selectArr.join("-");
+//                        }
+//                    });
+//                });
+
+
+    })
+    function go_back() {
+        location.href = "__STATIC__/supu/submit.html";
+    }
+</script>
+<body>
+<div id="head">
+    <div class="goback" onclick="go_back()"><img src="__STATIC__/supu/img/fanhui.png"></div>
+    <div class="head_body">
+        <div class="picture"><img src="{$myinfo.headimgurl}"></div>
+        <div class="head_text">{$myinfo.nickname}</div>
+    </div>
+</div>
+<div id="body">
+    <div class="house">
+        <div class="house_label">房间号</div>
+        <div class="house_text">{$room}</div>
+    </div>
+    <div class="choose" id="btn">
+        <div class="choose_list">请选择</div>
+    </div>
+</div>
+
+<!--遮罩层-->
+<div class="outside_pull fade_out"></div>
+<div class="frame fade_out">
+    <div class="frame_title">确认开始？</div>
+    <div class="frame_list">
+        <div class="frame_cho frame_yes" style="border-right: 2px solid #ddd">确 认</div>
+        <!--<div class="frame_border">|</div>-->
+        <div class="frame_cho frame_no">取 消</div>
+    </div>
+</div>
+
+<div class="submit">
+    <img src="__STATIC__/supu/img/kaishi.png" />
+</div>
+</body>
+{/block}
