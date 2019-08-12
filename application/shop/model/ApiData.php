@@ -1701,7 +1701,12 @@ class ApiData extends ApiBase
         }
         $room=I('room');
         $data['room']=$room;
-        $arr=['122','888','999'];
+        //查询服务项目
+        $map['type']=0;
+        $goods_id=M('goods_category_link')->where($map)->column('goods_id');
+        $map1['goods_id']=$goods_id;
+        $ask=M('shop_goods')->where($goods_id)->field('goods_id,title')->select();
+        $arr=array_column($ask,'title');
         $ser=implode(",",$arr);
         $data['ser']=$ser;
         return $data;
