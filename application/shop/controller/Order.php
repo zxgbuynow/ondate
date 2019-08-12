@@ -21,22 +21,30 @@ class Order extends Base
         $res['url'] = U('Shop/Order/lists');
         $res['class'] = CONTROLLER_NAME == 'Order' ? 'current' : '';
         $nav[] = $res;
-        
+
         $this->assign('nav', $nav);
-        
+
         $map = [];
         $orderId = I('order_id/d', 0);
         if ($orderId) {
             $map['id'] = $orderId;
         }
-        
+        $room = I('room/d');
+        $jsbn = I('jsbn/d');
+        $mutif=false;
+        if($room || $jsbn){
+            $mutif=true;
+        }
+        $this->assign('room', $room);
+        $this->assign('jsbn', $jsbn);
+        $this->assign('mutif', $mutif);
         $search = input('key', '');
         $search=trim($search,'+');
         if ($search) {
             $this->assign('search', $search);
-            
+
             $nickname_follow_ids = D('common/User')->searchUser($search);
-            
+
             if (! empty($nickname_follow_ids)) {
                 $map['uid'] = array(
                     'exp',
@@ -49,7 +57,7 @@ class Order extends Base
                 );
             }
         }
-        
+
         $status = I('status/d', 1);
         $this->assign('status', $status);
         if ($status == 1) { // 待支付
@@ -72,36 +80,36 @@ class Order extends Base
                 0
             ];
         }
-        
+
         $event_type = I('event_type/d', - 1);
         $this->assign('event_type', $event_type);
         if ($event_type != - 1) {
             $map['event_type'] = $event_type;
         }
-        
+
         $map = $this->muti_search($map);
-        
+
         session('common_condition', $map);
-        
+
         $model = $this->model;
         $dataTable = D('common/Models')->getFileInfo($model);
         if ($dataTable === false) {
             $this->error($model['name'] . ' 的模型文件不存在');
         }
-        
+
         $this->assign('add_button', $dataTable->config['add_button']);
         $this->assign('del_button', $dataTable->config['del_button']);
         $this->assign('search_button', $dataTable->config['search_button']);
         $this->assign('check_all', $dataTable->config['check_all']);
-        
+
         // 解析列表规则
         $list_data = $this->_list_grid($model);
         $fields = $list_data['fields'];
-        
+
         // 搜索条件
         $map = $this->_search_map($model, $list_data['db_fields']);
         $row = empty($model['list_row']) ? 20 : $model['list_row'];
-        
+
         // 读取模型数据列表
         $_REQUEST = input('param.');
         if (empty($order) && isset($_REQUEST['order'])) {
@@ -117,42 +125,42 @@ class Order extends Base
         // dump ( $order );
         $name = $dataTable->config['name'];
         $db_field = true;
-        
+
         $wp_where = wp_where($map);
         $data = M($name)->field($db_field)
             ->where($wp_where)
             ->where('is_lock=1 or (is_lock=0 and refund>0)')
             ->order($order)
             ->paginate($row);
-        
+
         $list_data = $this->parsePageData($data, $dataTable, $list_data);
-        
+
         $orderDao = D('shop/Order');
         $type = 1;
         $goodsDao = D('shop/ShopGoods');
         foreach ($list_data['list_data'] as &$vo) {
             $param['id'] = $vo['id'];
-            
+
             $order = $orderDao->getInfo($vo['id']);
             // dump($order);
             $vo = array_merge($vo, $order);
             $follow = getUserInfo($vo['uid']);
             isset($follow['uid']) && $param2['uid'] = $follow['uid'];
-            
+
             $vo['headimgurl'] = $follow['headimgurl'];
             $vo['uid'] = isset($param2) ? '<a href="' . U('weixin/UserCenter/detail', $param2) . '">' . $follow['nickname'] . '</a>' : '';
-            
+
             $vo['goods_title'] = '';
             $vo['num'] = 0;
             foreach ($vo['goods'] as &$vv) {
                 $vo['num'] += $vv['num'];
                 $vv['goods_title'] = '<div><img src="' . $vv['cover'] . '"/><span title="' . $vv['title'] . '">' . $vv['title'] . '</span></div>';
             }
-            
+
             $vo['goods_title'] = isset($vo['goods_title']) ? $vo['goods_title'] : '';
-            
+
             $vo['order_number'] = '<a href="' . U('Shop/Order/detail', $param) . '">' . $vo['order_number'] . '</a>';
-            
+
             $vo['action'] = '<a href="' . U('Shop/Order/detail', $param) . '">订单详情</a>';
             if ($vo['status_code'] == 1 && $vo['send_type'] == 1) {
                 $vo['action'] .= '<button class="border-btn btn-small ajax-get" data-ostate=' . $vo['order_state'] . ' data-href="' . U('Shop/Order/set_confirm', $param) . '">商家确认</button>';
@@ -165,9 +173,9 @@ class Order extends Base
                 $vo['action'] .= '       拒绝退款';
             }
         }
-       // dump($list_data);
+        // dump($list_data);
         $this->assign($list_data);
-        
+
         return $this->fetch();
     }
 
