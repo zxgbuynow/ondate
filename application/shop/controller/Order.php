@@ -132,6 +132,7 @@ class Order extends Base
             ->where('is_lock=1 or (is_lock=0 and refund>0)')
             ->order($order)
             ->paginate($row);
+        dump($wp_where);
 
         $list_data = $this->parsePageData($data, $dataTable, $list_data);
 
