@@ -184,10 +184,10 @@ class Order extends Base
         $map = [];
         $start_price = input('start_price/d');
         $this->assign('start_price', $start_price);
-        
+
         $end_price = input('end_price/d');
         $this->assign('end_price', $end_price);
-        
+
         $field = 'sale_price';
         if ($start_price > 0 && $end_price > 0) {
             $map[$field] = [
@@ -205,10 +205,10 @@ class Order extends Base
                 $end_price
             ];
         }
-        
+
         $title = input('title');
         $this->assign('title', $title);
-        
+
         if (! empty($title)) {
             $field = 'title';
             $map[$field] = [
@@ -216,11 +216,11 @@ class Order extends Base
                 "%{$title}%"
             ];
         }
-        
+
         if (empty($map)) {
             return $result;
         }
-        
+
         $map['wpid'] = get_wpid();
         $goods_ids = M('shop_goods')->alias('g')
             ->join('shop_goods_stock s', 's.goods_id = g.id and s.event_type=' . SHOP_EVENT_TYPE)
@@ -231,7 +231,7 @@ class Order extends Base
                 'id' => 0
             ];
         }
-        
+
         $order_ids = M('shop_order_goods')->whereIn('goods_id', $goods_ids)->column('order_id');
         if (empty($order_ids)) {
             return [
@@ -243,10 +243,33 @@ class Order extends Base
                 $order_ids
             ];
         }
-        
+
         return $result;
     }
-    //订单支付信息
+    //订单支付信息（批量）
+    public function pay_all_info(){
+        $order_ids = I('order_ids', 0);
+        $map['id']=explode(',',$order_ids);
+        $info=M('shop_order')->where($map)->field('id,room,jsbn,total_price')->select();
+        $ids=[];
+        $jsbns=[];
+        $room=[];
+        $total=0;
+        foreach ($info as $k=>$v){
+            $ids[]=$v['id'];
+            $jsbns[]=$v['jsbn'];
+            $room[]=$v['room'];
+            $total+=$v['total_price'];
+        }
+        $jsbns=array_unique($jsbns);
+        $room=array_unique($room);
+        $data['ids']=implode(',',$ids);
+        $data['jsbn']=implode(',',$jsbns);
+        $data['total_price']=$total;
+        $data['room']=implode(',',$room);
+        echo json_encode($data);
+    }
+    //订单支付信息（单笔）
     public function pay_info(){
         $order_id = I('order_id', 0);
         $map['id']=$order_id;
@@ -258,8 +281,11 @@ class Order extends Base
         $data=I('post.');
         $info['type']='1';
         $orderModel=M('shop_order');
-        $where['id']=$data['id'];
+        $ids=explode(',',$data['ids']);
+        $where['id']=$ids;
+        $where['pay_status']=0;
         $orderData['pay_status']=1;
+        $orderData['pay_type']=$data['pay_type'];
         $orderData['pay_time']=time();
         if($data['pay_type']==0){
             $info['type']='2';
@@ -290,7 +316,6 @@ class Order extends Base
                 echo json_encode($info);
                 exit;
             }
-            $orderData['pay_type']=4;
             $flag1=$cardModel->where($map)->setDec('money', $data['total_price']);
             $flag2=$orderModel->where($where)->update($orderData);
             if($flag1&&$flag2){
@@ -301,6 +326,9 @@ class Order extends Base
             }
 
 
+        }else{
+            $flag2=$orderModel->where($where)->update($orderData);
+            $info['msg']='操作成功！';
         }
 
         echo json_encode($info);
@@ -326,10 +354,10 @@ class Order extends Base
         // 返回代金券
         $wpid = get_wpid();
         $orderDao->giveBackExtr($id, $wpid);
-        
+
         // 退款
         $orderDao->rebackPay($order);
-        
+
         // 设置活动的订单状态
         if ($order['event_type'] == HAGGLE_EVENT_TYPE) {
             D('haggle/Order')->where('order_id', $id)->setField('is_pay', 3);
@@ -338,7 +366,7 @@ class Order extends Base
         } elseif ($order['event_type'] == SECKILL_EVENT_TYPE) {
             D('seckill/Order')->where('order_id', $id)->setField('is_pay', 3);
         }
-        
+
         if ($orderDao->where('id', $id)->delete()) {
             // 清空缓存
             $this->success('删除成功');
@@ -359,17 +387,17 @@ class Order extends Base
             $orderInfo['order_state_msg'] = $extArr['order_state_msg'];
         }
         $this->assign('info', $orderInfo);
-        
+
         if ($orderInfo['stores_id']) {
             $storeInfo = M('stores')->where('id', $orderInfo['stores_id'])->find();
         } else {
             $storeInfo = [];
         }
         $this->assign('store_info', $storeInfo);
-        
+
         $addressInfo = D('shop/Address')->getInfo($orderInfo['address_id']);
         $this->assign('addressInfo', $addressInfo);
-        
+
         $log_msg = '';
         $log_list = [];
         if ($orderInfo['send_type'] == 1 && $orderInfo['is_send']) {
@@ -382,15 +410,15 @@ class Order extends Base
         }
         $this->assign('log_list', $log_list);
         $this->assign('log_msg', $log_msg);
-        
+
         if ($orderInfo['pay_type'] == 90) {
             $title = empty($orderInfo['event_type']) ? '单个积分' : $orderInfo['event_type'] . '积分';
         } else {
             $title = empty($orderInfo['event_type']) ? '购买单价' : $orderInfo['event_type'] . '价格';
         }
-        
+
         $this->assign('sale_price_title', $title);
-        
+
         return $this->fetch();
     }
 
@@ -399,20 +427,20 @@ class Order extends Base
         $orderDao = D('Shop/Order');
         $order_id = I('order_id');
         $orderInfo = $orderDao->getInfo($order_id);
-        
+
         $save['send_code'] = I('send_code');
         if (empty($save['send_code'])) {
             $this->error('请选择物流公司');
         }
-        
+
         $save['send_number'] = I('send_number');
         if (empty($save['send_number'])) {
             $this->error('请填写快递号');
         }
-        
+
         $save['is_send'] = 1;
         $save['send_time'] = time();
-        
+
         $res = $orderDao->where('id', $order_id)->update($save);
         if ($res !== false) {
             $orderDao->setStatusCode($order_id, 3);
@@ -436,7 +464,7 @@ class Order extends Base
         $save['is_send'] = 1;
         $save['status_code'] = 6;
         D('Shop/Order')->updateId($id, $save);
-        
+
         $res = D('Shop/Order')->setStatusCode($id, $save['status_code'], true);
         if ($res) {
             $this->success('设置成功');
@@ -462,9 +490,9 @@ class Order extends Base
             return $this->error('错误操作，请重试！');
         }
         $status = input('status/d', 3);
-        
+
         $refund = $status == 2 ? 2 : 3;
-        
+
         // 启动事务
         Db::startTrans();
         try {
@@ -475,7 +503,7 @@ class Order extends Base
                 $order = $orderDao->where('id', $id)->find();
                 if ($order['is_lock'] == 1) {
                     $save['is_lock'] = 0;
-                    
+
                     $stockDao = D('shop/Stock');
                     $sec = NOW_TIME - $order['cTime'];
                     $goods = json_decode($order['goods_datas'], true);
@@ -483,7 +511,7 @@ class Order extends Base
                         $orderRes = $stockDao->canelOrder($g['num'], $g['id'], $order['event_type']);
                     }
                 }
-                
+
                 // 设置活动的订单状态
                 if ($order['event_type'] == HAGGLE_EVENT_TYPE) {
                     D('haggle/Order')->where('order_id', $id)->setField('is_pay', 3);
@@ -492,15 +520,15 @@ class Order extends Base
                 } elseif ($order['event_type'] == SECKILL_EVENT_TYPE) {
                     D('seckill/Order')->where('order_id', $id)->setField('is_pay', 3);
                 }
-				// 退款
-				$rrrr = $orderDao->rebackPay($order);
-				addWeixinLog($rrrr,'rebackPaymoney_'.$id);
-				if (isset($rrrr['status']) && $rrrr['status']==0 && !empty($rrrr['msg'])){
-					exception($rrrr['msg']);
-				}
-				
+                // 退款
+                $rrrr = $orderDao->rebackPay($order);
+                addWeixinLog($rrrr,'rebackPaymoney_'.$id);
+                if (isset($rrrr['status']) && $rrrr['status']==0 && !empty($rrrr['msg'])){
+                    exception($rrrr['msg']);
+                }
+
             }
-            
+
             $res = D('shop/Order')->updateId($id, $save);
             if ($res === false) {
                 exception('审核操作失败，请稍等重试');
