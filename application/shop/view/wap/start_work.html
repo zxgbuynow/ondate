@@ -19,7 +19,8 @@
 
         //选择栏内容
        // var data = [1, 2, 3];
-        var data = "{$ser}";
+        var info = "{$ser}";
+        var data=JSON.parse(info);
         var btn = document.getElementById("btn");
         btn.onclick = function () {
             var pickerView = new PickerView({
