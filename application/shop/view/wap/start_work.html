@@ -12,12 +12,14 @@
             fade_out_hide();
         });
         $(".frame_yes").click(function () {
-            location.href = "{:U('time')}";
+            var x=22444442;
+            alert(x);
+            //location.href = "{:U('time')}";
         });
 
         //选择栏内容
-        var data = [1, 2, 3];
-
+       // var data = [1, 2, 3];
+        var data = '{$ser}';
         var btn = document.getElementById("btn");
         btn.onclick = function () {
             var pickerView = new PickerView({

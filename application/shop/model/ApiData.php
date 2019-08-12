@@ -1701,6 +1701,7 @@ class ApiData extends ApiBase
         }
         $room=I('room');
         $data['room']=$room;
+        $data['ser']=['122','888','999'];
         return $data;
 
     }
