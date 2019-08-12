@@ -20,9 +20,9 @@
         //选择栏内容
        // var data = [1, 2, 3];
         var data = "{$ser}";
-        console.log(data);
         var btn = document.getElementById("btn");
         btn.onclick = function () {
+            console.log(data);
             var pickerView = new PickerView({
                 bindElem: btn, // 绑定的元素
                 data: data, // 说明：该参数必须符合json格式 且最里层是个数组，如上面的data变量所展示的[3,4]。
