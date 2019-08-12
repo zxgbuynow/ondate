@@ -1704,8 +1704,8 @@ class ApiData extends ApiBase
         //查询服务项目
         $map['type']=0;
         $goods_id=M('goods_category_link')->where($map)->column('goods_id');
-        $map1['goods_id']=$goods_id;
-        $ask=M('shop_goods')->where($map1)->field('goods_id,title')->select();
+        $map1['id']=$goods_id;
+        $ask=M('shop_goods')->where($map1)->field('id,title')->select();
         $arr=array_column($ask,'title');
         $ser=implode(",",$arr);
         $data['ser']=$ser;
