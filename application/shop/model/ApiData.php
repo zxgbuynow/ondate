@@ -1691,7 +1691,7 @@ class ApiData extends ApiBase
        return $data;
 
   }
-    //技师扫码上钟
+    //技师扫码上钟页面
     function  start_work(){
         $openid = get_openid();
         if (empty($this->mid)){
@@ -1701,6 +1701,7 @@ class ApiData extends ApiBase
         }
         $room=I('room');
         $data['room']=$room;
+        //TODO
         //查询服务项目
         $map['type']=0;
         $goods_id=M('goods_category_link')->where($map)->column('goods_id');
@@ -1710,6 +1711,60 @@ class ApiData extends ApiBase
         $ser=implode(",",$arr);
         $data['ser']=$ser;
         return $data;
+
+    }
+    //技师开始上钟
+    function  startAction(){
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+
+        try {
+            $data['uid']=$this->mid;
+            $id = I('id');
+            // 获取数据
+            $data = D('shop_goods')->getInfo($id, true);
+            $data || $this->error('数据不存在！');
+            $goods_datas['id']=$data['id'];
+            $goods_datas['cover']=$data['cover'];
+            $goods_datas['title']=$data['title'];
+            $goods_datas['market_price']=$data['market_price'];
+            $goods_datas['sale_price']=$data['sale_price'];
+            $goods_datas['num']=$postdata['num'];
+            $goods_datas['send_type']=$data['send_type'];
+            $go[]=$goods_datas;
+            $kdata['goods_datas'] = json_encode($go);
+            $kdata['order_number'] = date('YmdHis') . substr(uniqid(), 4);
+            $kdata['remark'] = I('remark');
+            $kdata['uid'] = $this->mid;
+            $kdata['out_trade_no'] = 'no' . date('ymdHis') . substr(uniqid(), 4);
+            $kdata['cTime'] = NOW_TIME;
+            $kdata['pay_status'] = 0;
+            $kdata['wpid'] = get_wpid();
+            $kdata['stores_id'] = 1;
+            $kdata['jsbn'] = $postdata['jsbn'];
+            $kdata['room'] = $postdata['room'];
+            $kdata['category_id'] = $postdata['category_id'];
+            $kdata['total_price'] = $kdata['pay_money']= $postdata['num']*$data['market_price']*1;
+            $kdata['event_type'] = 2;//PC手动下单
+
+
+            $order_id = M('shop_order')->insertGetId($kdata);
+            $gdata['order_id']= $order_id;
+            $gdata['goods_id']= $id;
+            $flag= M('shop_order_goods')->insert($gdata);
+
+
+        } catch (Exception $e) {
+            $msg='操作失败，请稍后重试';
+            return ['code'=>0,'msg'=>$msg];
+        }
+
+        $msg='注销成功！';
+        return ['code'=>1,'msg'=>$msg];
 
     }
     /**
