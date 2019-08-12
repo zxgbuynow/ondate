@@ -1721,10 +1721,14 @@ class ApiData extends ApiBase
             if (empty($this->mid))
                 return $this->error('获取不到当前用户，请在微信里打开!');
         }
-
+         $room=input('room');
+        if (empty($room)){
+            return $this->error('房间号不能为空!');
+        }
         try {
             $data['uid']=$this->mid;
-            $id = I('id');
+            $map['title']=input('title');
+            $id = M('shop_goods')->where($map)->value('id');
             // 获取数据
             $data = D('shop_goods')->getInfo($id, true);
             $data || $this->error('数据不存在！');
@@ -1733,7 +1737,7 @@ class ApiData extends ApiBase
             $goods_datas['title']=$data['title'];
             $goods_datas['market_price']=$data['market_price'];
             $goods_datas['sale_price']=$data['sale_price'];
-            $goods_datas['num']=$postdata['num'];
+            $goods_datas['num']=1;
             $goods_datas['send_type']=$data['send_type'];
             $go[]=$goods_datas;
             $kdata['goods_datas'] = json_encode($go);
@@ -1745,11 +1749,14 @@ class ApiData extends ApiBase
             $kdata['pay_status'] = 0;
             $kdata['wpid'] = get_wpid();
             $kdata['stores_id'] = 1;
-            $kdata['jsbn'] = $postdata['jsbn'];
-            $kdata['room'] = $postdata['room'];
-            $kdata['category_id'] = $postdata['category_id'];
-            $kdata['total_price'] = $kdata['pay_money']= $postdata['num']*$data['market_price']*1;
-            $kdata['event_type'] = 2;//PC手动下单
+            $map1['uid']=$this->mid;
+            $jsbn=M('user')->where($map1)->value('jsbn');
+            $kdata['jsbn'] = $jsbn;
+            $kdata['room'] = $room;
+            $kdata['category_id'] = 0;
+            $kdata['total_price'] = $kdata['pay_money']= 1*$data['market_price']*1;
+            $kdata['event_type'] = 3;//微信下单
+            $kdata['openid'] = $openid;
 
 
             $order_id = M('shop_order')->insertGetId($kdata);
@@ -1763,7 +1770,7 @@ class ApiData extends ApiBase
             return ['code'=>0,'msg'=>$msg];
         }
 
-        $msg='注销成功！';
+        $msg='操作成功！';
         return ['code'=>1,'msg'=>$msg];
 
     }
