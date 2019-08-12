@@ -88,6 +88,7 @@ class Order extends Base
         }
 
         $map = $this->muti_search($map);
+        dump($map);
 
         session('common_condition', $map);
 
@@ -108,6 +109,7 @@ class Order extends Base
 
         // 搜索条件
         $map = $this->_search_map($model, $list_data['db_fields']);
+        dump($map);
         $row = empty($model['list_row']) ? 20 : $model['list_row'];
 
         // 读取模型数据列表
@@ -132,7 +134,6 @@ class Order extends Base
             ->where('is_lock=1 or (is_lock=0 and refund>0)')
             ->order($order)
             ->paginate($row);
-        dump($wp_where);
 
         $list_data = $this->parsePageData($data, $dataTable, $list_data);
 
