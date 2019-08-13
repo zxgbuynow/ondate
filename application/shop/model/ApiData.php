@@ -1815,8 +1815,8 @@ class ApiData extends ApiBase
         }
         $room=I('room');
        try{
-           $map1['uid']=$this->mid;
-           $jsbn=M('user')->where($map1)->value('jsbn');
+           $con['uid']=$this->mid;
+           $jsbn=M('user')->where($con)->value('jsbn');
            $map['room']=$room;
            $map['status']=1;
            $map['type']=0;//未下钟
