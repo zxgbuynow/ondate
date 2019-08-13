@@ -1793,14 +1793,6 @@ class ApiData extends ApiBase
         $room=I('room');
         $data['room']=$room;
         //TODO
-        //查询服务项目
-        $map['type']=0;
-        $goods_id=M('goods_category_link')->where($map)->column('goods_id');
-        $map1['id']=$goods_id;
-        $ask=M('shop_goods')->where($map1)->field('id,title')->select();
-        $arr=array_column($ask,'title');
-        $ser=implode(",",$arr);
-        $data['ser']=$ser;
         return $data;
 
     }
