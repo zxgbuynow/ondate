@@ -1791,9 +1791,66 @@ class ApiData extends ApiBase
                 return $this->error('获取不到当前用户，请在微信里打开!');
         }
         $room=I('room');
+        $map1['uid']=$this->mid;
+        $jsbn=M('user')->where($map1)->value('jsbn');
+        $map['room']=$room;
+        $map['staus']=1;
+        $map['type']=0;
+        $map['jsbn']=$jsbn;
+        $end=M('calls')->where($map)->value('end_time');
+        $timea=$end-time();
+        $times=$timea>0?$timea:0;
+        $data['times']=$times;
         $data['room']=$room;
-        //TODO
         return $data;
+
+    }
+    //技师操作下钟
+    function  end_clock(){
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $room=I('room');
+       try{
+           $map1['uid']=$this->mid;
+           $jsbn=M('user')->where($map1)->value('jsbn');
+           $map['room']=$room;
+           $map['staus']=1;
+           $map['type']=0;//未下钟
+           $map['jsbn']=$jsbn;
+           $upcall['type']=1;//1已下钟未结账2已下钟已结账0未下钟
+           $upcall['retime']=time();//实际下钟时间
+           //更新叫钟表数据-----------------
+           if (M('calls')->where($map)->update($upcall)) {
+               $call = M('calls')->where($map)->find();
+               $map1['type']=[0,1];;
+               $map1['room']=$call['room'];
+               $ask=M('calls')->where($map1)->count();
+               if($ask<1){
+                   M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);//更新房间状态
+               }
+               M('user_queue')->where(['user_id'=>$call['art_id']])->update(['type'=>0]);
+
+               if ($call['way']==0) {//如果是排
+                   // //更新位置
+                   $queue = M('user_queue')->where(['user_id'=>$call['art_id']])->find();
+                   $postion = $queue['postion'];
+                   //更新当前技师位置
+                   M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$call['next_pos'],'pre_postion'=>$postion]);
+               }
+           }
+       }catch (Exception $e) {
+           $msg='操作失败，请稍后重试';
+           return ['code'=>0,'msg'=>$msg];
+       }
+
+        $msg='操作成功！';
+        return ['code'=>1,'msg'=>$msg];
+
+
 
     }
     /**

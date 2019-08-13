@@ -2,15 +2,13 @@
 {block name="common_body"}
 <script>
     $(function () {
-        var second = '4000';//4000秒
+        var second = "{$times}";//剩余秒数
         blogtime(second);
-
         function blogtime(cha) {
             //一天=24小时 一小时=60分钟 一分钟=60秒 一秒=1000毫秒
             var xs = parseInt(cha / (60 * 60) % 24);
             var fz = parseInt(cha / 60 % 60);
             var miao = parseInt(cha % 60);
-
             if (parseInt(xs) < 10) {
                 var xs = '0' + parseInt(xs);
             } else {
@@ -28,7 +26,6 @@
             }
             var time = xs + ':' + fz + ':' + miao;
             $("#data").text(time);
-//                document.getElementById('blog_data').innerHTML=xs + ':' + fz + ':' + miao;
             cha = cha - 1;
             setTimeout(function () {
                 blogtime(cha);
@@ -43,7 +40,18 @@
             fade_out_hide();
         });
         $(".frame_yes").click(function () {
-            location.href = "{:U('info')}";
+            var url = "{:U('end_clock')}";
+            var room="{$room}";
+            $.post(url, {'room':room}, function(res) {
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    var hurl = "{:U('work_clock')}";
+                    window.location.href = hurl+'/room/{$room}';
+
+                }
+            });
         });
 
 
@@ -51,7 +59,8 @@
 
 
     function go_back() {
-        location.href = "__STATIC__/supu/start.html";
+        var hurl = "{:U('start_work')}";
+        window.location.href = hurl+'/room/{$room}';
     }
 
 
