@@ -27,9 +27,11 @@
             var time = xs + ':' + fz + ':' + miao;
             $("#data").text(time);
             cha = cha - 1;
-            setTimeout(function () {
-                blogtime(cha);
-            }, 1000);
+            if(cha>0){
+                setTimeout(function () {
+                    blogtime(cha);
+                }, 1000);
+            }
         }
 
         $(".submit").click(function () {
