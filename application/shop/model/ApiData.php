@@ -1825,7 +1825,11 @@ class ApiData extends ApiBase
            $upcall['retime']=time();//实际下钟时间
            //更新叫钟表数据-----------------
            if (M('calls')->where($map)->update($upcall)) {
-               $call = M('calls')->where($map)->find();
+               $mapc['room']=$room;
+               $mapc['status']=1;
+               $mapc['type']=1;//未下钟
+               $mapc['jsbn']=$jsbn;
+               $call = M('calls')->where($mapc)->find();
                $map1['type']=[0,1];;
                $map1['room']=$call['room'];
                $ask=M('calls')->where($map1)->count();
