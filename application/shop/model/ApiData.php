@@ -1794,7 +1794,7 @@ class ApiData extends ApiBase
         $map1['uid']=$this->mid;
         $jsbn=M('user')->where($map1)->value('jsbn');
         $map['room']=$room;
-        $map['staus']=1;
+        $map['status']=1;
         $map['type']=0;
         $map['jsbn']=$jsbn;
         $end=M('calls')->where($map)->value('end_time');
