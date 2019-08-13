@@ -1704,7 +1704,8 @@ class ApiData extends ApiBase
         $jsbn=M('user')->where($con)->value('jsbn');
         $where['jsbn']=$jsbn;
         $where['room']=$room;
-        $where['status']=0;
+        $where['status']=[0,1];
+        $where['type']=0;//1已下钟未结账2已下钟已结账0未下钟
         $re=M('calls')->where($where)->find();
         if(!$re){
             return $this->error('抱歉，房间号:'.$room.'没有你的叫钟安排！');
