@@ -36,7 +36,7 @@
                     alert((res.msg));
                 } else {
                     alert((res.msg));
-                    var hurl = "{:U('start_work')}";
+                    var hurl = "{:U('work_clock',['room'=>{$room}])}";
                     window.location.href = hurl;
 
                 }
@@ -68,7 +68,7 @@
 
     })
     function go_back() {
-        location.href = "__STATIC__/supu/submit.html";
+        location.href = "";
     }
 </script>
 <body>

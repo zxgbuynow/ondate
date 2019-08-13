@@ -1782,6 +1782,28 @@ class ApiData extends ApiBase
         return ['code'=>1,'msg'=>$msg];
 
     }
+    //技师上钟倒计时页面
+    function  work_clock(){
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $room=I('room');
+        $data['room']=$room;
+        //TODO
+        //查询服务项目
+        $map['type']=0;
+        $goods_id=M('goods_category_link')->where($map)->column('goods_id');
+        $map1['id']=$goods_id;
+        $ask=M('shop_goods')->where($map1)->field('id,title')->select();
+        $arr=array_column($ask,'title');
+        $ser=implode(",",$arr);
+        $data['ser']=$ser;
+        return $data;
+
+    }
     /**
      * 呼叫
      * @param  [type]
