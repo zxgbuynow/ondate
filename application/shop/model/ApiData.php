@@ -1700,6 +1700,15 @@ class ApiData extends ApiBase
                 return $this->error('获取不到当前用户，请在微信里打开!');
         }
         $room=I('room');
+        $con['uid']=$this->mid;
+        $jsbn=M('user')->where($con)->value('jsbn');
+        $where['jsbn']=$jsbn;
+        $where['room']=$room;
+        $where['status']=0;
+        $re=M('calls')->where($where)->find();
+        if(!$re){
+            return $this->error('抱歉，房间号：'.$room.'没有你的叫钟安排！');
+        }
         $data['room']=$room;
         //TODO
         //查询服务项目
