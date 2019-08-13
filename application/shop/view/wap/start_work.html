@@ -29,7 +29,7 @@
         });
         $(".frame_yes").click(function () {
             var title=$('.choose_list').text();
-            var url = "{:U('end_clock')}";
+            var url = "{:U('startAction')}";
             var room="{$room}";
             $.post(url, {'title': title,'room':room}, function(res) {
                 if (res.code == 0) {
