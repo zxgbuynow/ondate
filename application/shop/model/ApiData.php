@@ -1707,7 +1707,7 @@ class ApiData extends ApiBase
         $where['status']=0;
         $re=M('calls')->where($where)->find();
         if(!$re){
-            return $this->error('抱歉，房间号：'.$room.'没有你的叫钟安排！');
+            return $this->error('抱歉，房间号:'.$room.'没有你的叫钟安排！');
         }
         $data['room']=$room;
         //TODO
@@ -1799,18 +1799,21 @@ class ApiData extends ApiBase
             if (empty($this->mid))
                 return $this->error('获取不到当前用户，请在微信里打开!');
         }
-        $room=I('room');
+        //$room=I('room');
         $map1['uid']=$this->mid;
         $jsbn=M('user')->where($map1)->value('jsbn');
-        $map['room']=$room;
-        $map['status']=1;
-        $map['type']=0;
-        $map['jsbn']=$jsbn;
-        $end=M('calls')->where($map)->value('end_time');
-        $timea=$end-time();
+        $where['jsbn']=$jsbn;
+        //$where['room']=$room;
+        $where['status']=1;
+        $where['type']=0;
+        $re=M('calls')->where($where)->find();
+        if(!$re){
+            return $this->error('抱歉，没有你的工作安排！');
+        }
+        $timea=$re['end_time']-time();
         $times=$timea>0?$timea:0;
         $data['times']=$times;
-        $data['room']=$room;
+        $data['room']=$re['room'];
         return $data;
 
     }
