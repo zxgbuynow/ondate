@@ -1,5 +1,23 @@
 {extend name="shop@wap/supu_file" /}
 {block name="common_body"}
+<style>
+    .mbutton {
+        background: #4a2a2a;
+        -webkit-border-radius: 6;
+        -moz-border-radius: 6;
+        border-radius: 6px;
+        text-shadow: 0px -1px 0px #5b6178;
+        -webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+        -moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+        box-shadow: 0px 1px 0px 0px #f0f7fa;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 26px;
+        padding: 12px 30px 12px 30px;
+        border: solid #4a2a2a 1px;
+        text-decoration: none;
+    }
+</style>
 <script>
     $(function () {
         var second = "{$times}";//剩余秒数
