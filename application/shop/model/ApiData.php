@@ -1751,14 +1751,22 @@ class ApiData extends ApiBase
             $kdata['stores_id'] = 1;
             $map1['uid']=$this->mid;
             $jsbn=M('user')->where($map1)->value('jsbn');
+            $where['status']=0;
+            $where['jsbn']=$jsbn;
+            $where['room']=$room;
+            $calldata['status']=1;
+            $calldata['price']=$data['sale_price'];
+            $calldata['num']=1;
+            $calldata['total']=$data['sale_price'];
+            $calldata['begin_time']=time();
+            $calldata['end_time']=time()+70*60;//70分钟
+            M('calls')->where($where)->update($calldata);//更新叫钟数据
             $kdata['jsbn'] = $jsbn;
             $kdata['room'] = $room;
             $kdata['category_id'] = 0;
             $kdata['total_price'] = $kdata['pay_money']= 1*$data['market_price']*1;
             $kdata['event_type'] = 3;//微信下单
             $kdata['openid'] = $openid;
-
-
             $order_id = M('shop_order')->insertGetId($kdata);
             $gdata['order_id']= $order_id;
             $gdata['goods_id']= $id;
