@@ -36,8 +36,8 @@
                     alert((res.msg));
                 } else {
                     alert((res.msg));
-                    var hurl = "{:U('work_clock',['room'=>{$room}])}";
-                    window.location.href = hurl;
+                    var hurl = "{:U('work_clock')}";
+                    window.location.href = hurl+'/room/{$room}';
 
                 }
             });
