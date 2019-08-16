@@ -347,7 +347,7 @@ class Order extends Base
 
                 $map4['room']=$order_data['room'];
                 $map4['type']=[0,1];//1已下钟未结账2已下钟已结账0未下钟
-                $cc=M('calls')->where($map3)->count();
+                $cc=M('calls')->where($map4)->count();
                 if($cc<1){
                     M('room')->where(['room_name'=>$order_data['room']])->update(['status'=>0]);//更新房间状态
                 }
