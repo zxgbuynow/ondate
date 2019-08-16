@@ -1764,6 +1764,7 @@ class ApiData extends ApiBase
             $where['status']=0;
             $where['jsbn']=$jsbn;
             $where['room']=$room;
+            $call_id=M('calls')->where($where)->value('id');
             $calldata['status']=1;
             $calldata['price']=$data['sale_price'];
             $calldata['num']=1;
@@ -1771,6 +1772,7 @@ class ApiData extends ApiBase
             $calldata['begin_time']=time();
             $calldata['end_time']=time()+70*60;//70分钟
             M('calls')->where($where)->update($calldata);//更新叫钟数据
+            $kdata['call_id'] = $call_id;
             $kdata['jsbn'] = $jsbn;
             $kdata['room'] = $room;
             $kdata['category_id'] = 0;
