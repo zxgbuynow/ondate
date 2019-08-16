@@ -16,7 +16,7 @@
     .search-input{width: 100px}
 </style>
 <!-- 高级搜索 -->
-<form class="muti_search cf" action="{$search_url|default=''}" id="muth_search_form">
+<form class="muti_search cf" action="{:U('lists')}" id="muth_search_form">
     <div style="line-height: 30px;">
         <div class="condition">
             <span>技师编号：</span>
@@ -32,7 +32,7 @@
             </div>-->
         <div class="condition">
             <button type="button" class="sch-btn btn" href="javascript:;" id="muti_search" style="padding: 10px;">搜索</button>
-            <button type="button" class="sch-btn btn" data-toggle="modal"  onclick="return get_info()"  data-target="#addUserModal" id="pay_all2" style="padding: 10px;">批量支付</button>
+            <button type="button" class="sch-btn btn" data-toggle="modal"  onclick="return get_info()"  data-target="#addUserModal" id="pay_all" style="padding: 10px;">批量支付</button>
         </div>
     </div>
 </form>
@@ -49,7 +49,7 @@
                 }
             }
             //console.log(query)
-            var url = "{$search_url}"+query;
+            var url = "{:U('lists')}"+query;
             //console.log(url)
 
             url = url.replace(/[?&=]/g,'/');
@@ -120,4 +120,4 @@
 
     })
 
-</script> 
+</script>

@@ -1,3 +1,8 @@
+<style>
+    .form-group{
+        margin-bottom: 0;
+    }
+</style>
 <!-- 模态框示例（Modal） -->
 <form method="post" action="{:U('pay_action')}" class="form-horizontal" role="form" id="form_data" onsubmit="return check_form()" style="margin: 20px;">
     <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -8,7 +13,7 @@
                         ×
                     </button>
                     <h4 class="modal-title" id="myModalLabel">
-                       订单支付
+                        支付订单
                     </h4>
                 </div>
                 <div class="alert alert-success" id="msg" style="display: none;">
@@ -20,10 +25,17 @@
                 <div class="modal-body">
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
+                            <label for="user_id" class="col-sm-3 control-label">房间编号</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="room" name="room" value="{room}">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="user_id" class="col-sm-3 control-label">技师编号</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="jsbn" name="jsbn" value="{jsbn}">
                                 <input type="hidden" id="id" name="id" value="{id}">
+                                <input type="hidden" id="ids" name="ids" value="{ids}">
                                 <input type="hidden" id="romm" name="room" value="{room}">
                             </div>
                         </div>
@@ -38,15 +50,15 @@
                         <div class="form-group">
                             <label for="lastname" class="col-sm-3 control-label">支付方式</label>
                             <div class="col-sm-9">
-                             <select name="pay_type" id="pay_type">
-                                 <option value="0">请选择</option>
-                                 <option value="1">微信</option>
-                                 <option value="2">支付宝</option>
-                                 <option value="3">现金</option>
-                                 <option value="4">会员卡</option>
-                                 <option value="5">免单</option>
-                                 <option value="6">其他</option>
-                             </select>
+                                <select name="pay_type" id="pay_type">
+                                    <option value="0">请选择</option>
+                                    <option value="1">微信</option>
+                                    <option value="2">支付宝</option>
+                                    <option value="3">现金</option>
+                                    <option value="4">会员卡</option>
+                                    <option value="5">免单</option>
+                                    <option value="6">其他</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group" style="display: none" id="card">
@@ -84,16 +96,17 @@
             $("#card").hide();
         }
     });
-    //确认支付
+    //确认支付（单笔）
     $("#sub").click(function(){
-        var id=$('#id').val();
+        var ids=$('#ids').val();
         var total_price =$('#total_price').val();
         var jsbn=$('#jsbn').val();
         var pay_type=$("#pay_type option:selected").val();
+        var card_no=$('#card_no').val();
         $.ajax(
             {
                 url: "{:U('pay_action')}",
-                data:{"id":id,"total_price":total_price,"jsbn":jsbn,"pay_type":pay_type},
+                data:{"ids":ids,"total_price":total_price,"jsbn":jsbn,"pay_type":pay_type,"card_no":card_no},
                 type: "post",
                 beforeSend:function()
                 {
@@ -105,17 +118,17 @@
                     var data = data;
 
                     var data_obj = eval("("+data+")");
-                    if(data_obj.typ==2)
+                    if(data_obj.type==1)
                     {
-                     $('#msg2').hide();
-                     $('#msg').show();
-                     location.reload();
+                        $('#msg2').hide();
+                        $('#msg').show();
+                        location.reload();
                     }
 
-                   if(data_obj.typ==1) {
-                       $("#msg2").html("<strong>请选择支付方式！</strong>");
-                       $('#msg2').show();
-                      //  $("#tip").html("<span style='color:red'>请选择支付方式！</span>");
+                    if(data_obj.type==2) {
+                        $("#msg2").html("<strong>"+data_obj.msg+"</strong>");
+                        $('#msg2').show();
+                        //  $("#tip").html("<span style='color:red'>请选择支付方式！</span>");
                         //  alert('操作失败');
                     }
                 },
@@ -130,61 +143,128 @@
             });
     });
 
-     // 支付頁面
-     function get_edit_info(order_id)
-     {
-         if(!order_id)
-         {
-             alert('Error！');
-             return false;
-         }
-         // var form_data = new Array();
-         $.ajax(
-             {
-                 url: "{:U('pay_info')}",
-                 data:{"order_id":order_id},
-                 type: "post",
-                 beforeSend:function()
-                 {
-                     // $("#tip").html("<span style='color:blue'>正在处理...</span>");
-                     return true;
-                 },
-                 success:function(data)
-                 {
-                     if(data)
-                     {
-                         // 解析json数据
-                         var data = data;
+    // 支付单笔订单支付信息
+    function get_edit_info(order_id)
+    {
+        if(!order_id)
+        {
+            alert('Error！');
+            return false;
+        }
+        $.ajax(
+            {
+                url: "{:U('pay_info')}",
+                data:{"order_id":order_id},
+                type: "post",
+                beforeSend:function()
+                {
+                    // $("#tip").html("<span style='color:blue'>正在处理...</span>");
+                    return true;
+                },
+                success:function(data)
+                {
+                    if(data)
+                    {
+                        // 解析json数据
+                        var data = data;
 
-                         var data_obj = eval("("+data+")");
+                        var data_obj = eval("("+data+")");
 
-                         // 赋值
-                         $("#jsbn").val(data_obj.jsbn);
-                         $("#id").val(data_obj.id);
-                         $("#total_price").val(data_obj.total_price);
-                         $("#address").val(data_obj.address);
+                        // 赋值
+                        $("#jsbn").val(data_obj.jsbn);
+                        $("#ids").val(data_obj.id);
+                        $("#room").val(data_obj.room);
+                        $("#total_price").val(data_obj.total_price);
+                        $("#address").val(data_obj.address);
 
-                         // 将input元素设置为readonlyid
-                         $('#jsbn').attr("readonly","readonly")
-                         $('#total_price').attr("readonly","total_price")
-                         // location.reload();
-                     }
-                     else
-                     {
-                         $("#tip").html("<span style='color:red'>失败，请重试</span>");
-                         //  alert('操作失败');
-                     }
-                 },
-                 error:function()
-                 {
-                     alert('请求出错');
-                 },
-                 complete:function()
-                 {
-                     // $('#tips').hide();
-                 }
-             });
+                        // 将input元素设置为readonlyid
+                        $('#jsbn').attr("readonly","readonly");
+                        $('#room').attr("readonly","readonly");
+                        $('#total_price').attr("readonly","total_price");
+                        // location.reload();
+                    }
+                    else
+                    {
+                        $("#tip").html("<span style='color:red'>失败，请重试</span>");
+                        //  alert('操作失败');
+                    }
+                },
+                error:function()
+                {
+                    alert('请求出错');
+                },
+                complete:function()
+                {
+                    // $('#tips').hide();
+                }
+            });
 
-         return false;
-     }
+        return false;
+    }
+    // 订单支付批量支付信息
+    function get_info()
+    {
+        var ids=[];
+        $("input[name='ids[]']:checked").each(function() {
+            ids.push($(this).val());
+        });
+        order_ids=ids.join(',');
+        if(!ids)
+        {
+            alert('请选择订单！');
+            return false;
+        }
+        // var form_data = new Array();
+        $.ajax(
+            {
+                url: "{:U('pay_all_info')}",
+                data:{"order_ids":order_ids},
+                type: "post",
+                beforeSend:function()
+                {
+                    // $("#tip").html("<span style='color:blue'>正在处理...</span>");
+                    return true;
+                },
+                success:function(data)
+                {
+                    if(data)
+                    {
+                        $('#msg2').hide();
+                        var data = data;
+                        var data_obj = eval("("+data+")");
+                        if(data_obj.total_price==0){
+                            $("#msg2").html("<strong>请选择要支付的订单</strong>");
+                            $('#msg2').show();
+                        }
+                        // 赋值
+                        $("#jsbn").val(data_obj.jsbn);
+                        $("#ids").val(data_obj.ids);
+                        $("#room").val(data_obj.room);
+                        $("#total_price").val(data_obj.total_price);
+                        // $("#address").val(data_obj.address);
+
+                        // 将input元素设置为readonlyid
+                        $('#jsbn').attr("readonly","readonly");
+                        $('#room').attr("readonly","readonly");
+                        $('#total_price').attr("readonly","total_price");
+                        // location.reload();
+                    }
+                    else
+                    {
+                        $("#tip").html("<span style='color:red'>失败，请重试</span>");
+                        //  alert('操作失败');
+                    }
+                },
+                error:function()
+                {
+                    alert('请求出错');
+                },
+                complete:function()
+                {
+                    // $('#tips').hide();
+                }
+            });
+
+        return false;
+    }
 </script>

@@ -282,8 +282,10 @@ class Order extends Base
         $info['type']='1';
         $orderModel=M('shop_order');
         $ids=explode(',',$data['ids']);
+
         $where['id']=$ids;
         $where['pay_status']=0;
+        $orderData['opt']=$this->mid;
         $orderData['pay_status']=1;
         $orderData['pay_type']=$data['pay_type'];
         $orderData['pay_time']=time();
@@ -329,6 +331,30 @@ class Order extends Base
         }else{
             $flag2=$orderModel->where($where)->update($orderData);
             $info['msg']='操作成功！';
+        }
+        foreach ($ids as $k=>$v){
+            $map['id']=$v;
+            $order_data=$orderModel->where($map)->find();
+            $map1['call_id']=$order_data['call_id'];
+            $num1=$orderModel->where($map1)->count();
+            $map2['call_id']=$order_data['call_id'];
+            $map2['pay_status']=1;
+            $num2=$orderModel->where($map2)->count();
+            if($num1 == $num2){
+                $calldata['status']=3;
+                $map3['id']=$order_data['call_id'];
+                M('calls')->where($map3)->update($calldata);
+
+                $map4['room']=$order_data['room'];
+                $map4['type']=[0,1];//1已下钟未结账2已下钟已结账0未下钟
+                $cc=M('calls')->where($map3)->count();
+                if($cc<1){
+                    M('room')->where(['room_name'=>$order_data['room']])->update(['status'=>0]);//更新房间状态
+                }
+            }
+
+
+
         }
 
         echo json_encode($info);

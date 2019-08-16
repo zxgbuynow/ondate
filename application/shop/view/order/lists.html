@@ -40,18 +40,6 @@
                 </div>
             </div>
 
-            <!-- 高级搜索 -->
-
-<!--            <div class="search-form fr cf">
-
-                <div class="sleft">
-
-                    {php}empty($search_key) && $search_key=$model['search_key'];empty($search_key) && $search_key='title';unset($get_param[$search_key]);{/php}
-                    {php}if(isset( $get_param[$search_key]))unset( $get_param[$search_key]); $search_url = U('lists', $get_param); unset($get_param[$search_key]);{/php}
-
-                    <input type="text" name="{$search_key}" class="search-input" value="{:I($search_key)}" placeholder="{$placeholder}">
-                    <a class="sch-btn" href="javascript:;" id="search" url="{$search_url}"><i class="btn-search"></i></a> </div>
-            </div>-->
             {include file="goods/muti_search" /}
 
         </div>
@@ -96,34 +84,6 @@
                             {/volist}
                         </table>
                     </div>
-                    <!--                    <div class="li_bottom" style="overflow: hidden;line-height: 2.5em;padding-bottom: 10px;">
-                                            <div class="status"style="margin-right:1em"><a href="">订单失效</a>
-                                            </div>
-                                            <div class="status"style="margin-right:1em">{$data.action|raw}
-                                            </div>
-                    &lt;!&ndash;                        <div class="status"style="margin-right:1em"><a href="">订单支付</a>
-                                            </div>&ndash;&gt;
-                                            <button type="button" class="btn btn-info" style="float: right" data-toggle="modal" onclick="return get_edit_info({$data.id})" data-target="#addUserModal">支付</button>
-                                            <div class="total_price" style="=">{eq name="data.pay_type" value="90"}{$data.total_price}积分{else/}总金额：¥{:wp_money_format($data['pay_money'])}{//:wp_money_format($data['total_price']+$data['mail_money']-$data['dec_money'])}{/eq}
-                               &lt;!&ndash;                 {notempty name="data.event_type"}
-                                                <span class="red_text_bg" style="width: 10%">{$data.event_type}</span>
-                                                {/notempty}&ndash;&gt;
-                                            </div>
-                                            <div class="num">数量：x{$data.num}</div>
-
-                                            <div class="status_name" style="display:inline-flex">状态：
-                                                <span class="red_text_bg" >{$data.status_code_name}</span>
-                                                <span style="color: #A7A4A7; display: block; ">
-                    &lt;!&ndash;                      		{if condition="$data['order_state'] eq 1"}
-                                                      （正常）
-                                                  {elseif condition="$data['order_state'] eq 2" /}
-                                                      （支付异常）
-                                                  {else/}
-                                                      （关闭）
-                                                  {/if}&ndash;&gt;
-                                              </span>
-                                            </div>
-                                        </div>-->
                 </li>
                 <br>
                 {/volist}
