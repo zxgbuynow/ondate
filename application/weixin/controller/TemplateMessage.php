@@ -63,8 +63,10 @@ class TemplateMessage extends WebBase {
 	}
 	//模板消息发给指定用户
     function sendmy(){
-
-        // 	    $this->assign ( 'normal_tips', '温馨提示<br/>客服群发接口是指：管理者可以给 在48小时内主动发消息给公众号的用户群发消息 ，发送次数没有限制；如果没有成功接收到消息的用户，则在他主动发消息给公众号时，再重新发给该用户。' );
+	    $map['status']=1;
+	    $info=M('calls')->where($map)->field('jsbn,end_time')->select();
+	    dump($info);
+	    exit;
         $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
         //$sendOpenid='olpE21i9Hr2bpYT4P9jmjZoC_E-4';
         $send_type=1;//指定openid
@@ -99,9 +101,12 @@ class TemplateMessage extends WebBase {
             $data['send_count']=$count;
             $id = M ('template_messages' )->insertGetId($data);
 // 	    		M('template_messages')->where('id',$id)->setField('send_count',$count);
-            $this->success ( '添加' . $model ['title'] . '成功！' );
+           // $this->success ( '添加' . $model ['title'] . '成功！' );
+            echo 'OK';
+
         }else{
-            $this->error('群发失败');
+           // $this->error('群发失败');
+            echo 'ERROR';
         }
 
 
