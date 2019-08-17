@@ -1868,10 +1868,8 @@ class ApiData extends ApiBase
 
         $msg='操作成功！';
         return ['code'=>1,'msg'=>$msg];
-
-
-
     }
+
     /**
      * 呼叫
      * @param  [type]
@@ -1956,5 +1954,8 @@ class ApiData extends ApiBase
         }
         $msg='操作失败，请稍后重试';
         return ['code'=>0,'msg'=>$msg];
+    }
+    function  call_push (){
+        echo 999999;
     }
 }

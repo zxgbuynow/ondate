@@ -908,13 +908,13 @@ class Api extends ApiBase
         //if (M('calls')->where(['id'=>$params['id']])->update(['status'=>3])) {
         if (M('calls')->where(['id'=>$params['id']])->update(['type'=>1])) {
             $call = M('calls')->where(['id'=>$params['id']])->find();
-            $map['type']=[0,1];//1已下钟未结账2已下钟已结账0未下钟
-            $map['room_id']=$call['room_id'];
-            $ask=M('calls')->where($map)->count();
+/*            $map4['room'] = $call['room'];
+            $map4['type'] = [0, 1];//1已下钟未结账2已下钟已结账0未下钟
+            $ask = M('calls')->where($map4)->count();
             if($ask<1){
                 M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);//更新房间状态
-            }
-            // M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);
+            }*/
+
             M('user_queue')->where(['user_id'=>$call['art_id']])->update(['type'=>0]);
 
             if ($call['way']==0) {//如果是排
