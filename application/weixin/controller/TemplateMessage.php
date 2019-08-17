@@ -78,7 +78,7 @@ class TemplateMessage extends WebBase {
         }
         $pbid=get_pbid();
 
-        $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_template_message', $pbid);
+        $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
         //发消息给指定人
         $count=0;
         $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
