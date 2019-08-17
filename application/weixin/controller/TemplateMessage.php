@@ -65,49 +65,53 @@ class TemplateMessage extends WebBase {
     function sendmy(){
 	    $map['status']=1;
 	    $info=M('calls')->where($map)->field('jsbn,end_time')->select();
-	    dump($info);
-	    exit;
-        $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
-        //$sendOpenid='olpE21i9Hr2bpYT4P9jmjZoC_E-4';
-        $send_type=1;//指定openid
-        $group_id=0;//用户组
-        $content='测试内容';
-        $title='测试标题';
-        $sender='华鼎会所';//发起人
-        $data ['send_openids'] = $sendOpenid;
-        if (input('send_type') == 1 && $sendOpenid == '') {
-            $this->error ( '指定的Openid值不能为空' );
-        }
-        $pbid=get_pbid();
+	    foreach ($info as $k=>$v){
+	        if($v['end_time']<=time()-60){
+                $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
+                //$sendOpenid='olpE21i9Hr2bpYT4P9jmjZoC_E-4';
+                $send_type=1;//指定openid
+                $group_id=0;//用户组
+                $content='尊敬的技师';
+                $title=date('m-d h:i',$v['end_time']);
+                //$sender='华鼎会所';//发起人
+                $data ['send_openids'] = $sendOpenid;
+                if (input('send_type') == 1 && $sendOpenid == '') {
+                    $this->error ( '指定的Openid值不能为空' );
+                }
+                $pbid=get_pbid();
 
-        $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
-        //发消息给指定人
-        $count=0;
-        $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
-        $templateDao = D('common/TemplateMessage');
-        foreach ($openidArr as $openid){
-            $tRes = $templateDao->replyMessage($openid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
-            //addWeixinLog($tRes,'templatemesaadf');
-            if (isset($tRes['status']) && $tRes['status']==1){
-                $count++;
+                $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
+                //发消息给指定人
+                $count=0;
+                $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
+                $templateDao = D('common/TemplateMessage');
+                foreach ($openidArr as $openid){
+                    $tRes = $templateDao->replyMessage($openid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
+                    //addWeixinLog($tRes,'templatemesaadf');
+                    if (isset($tRes['status']) && $tRes['status']==1){
+                        $count++;
+                    }
+                }
+                if ($count>0){
+                    $model = $this->getModel ( 'template_messages' );
+                    // 获取模型的字段信息
+                    $data = I('post.');
+                    $data['pbid']=$pbid;
+                    $data['cTime']=time();
+                    $data['send_count']=$count;
+                    $id = M ('template_messages' )->insertGetId($data);
+// 	    		M('template_messages')->where('id',$id)->setField('send_count',$count);
+                    // $this->success ( '添加' . $model ['title'] . '成功！' );
+                    echo 'OK';
+
+                }else{
+                    // $this->error('群发失败');
+                    echo 'ERROR';
+                }
             }
         }
-        if ($count>0){
-            $model = $this->getModel ( 'template_messages' );
-            // 获取模型的字段信息
-            $data = I('post.');
-            $data['pbid']=$pbid;
-            $data['cTime']=time();
-            $data['send_count']=$count;
-            $id = M ('template_messages' )->insertGetId($data);
-// 	    		M('template_messages')->where('id',$id)->setField('send_count',$count);
-           // $this->success ( '添加' . $model ['title'] . '成功！' );
-            echo 'OK';
 
-        }else{
-           // $this->error('群发失败');
-            echo 'ERROR';
-        }
+
 
 
     }
