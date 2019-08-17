@@ -295,71 +295,75 @@ class Order extends Base
             echo json_encode($info);
             exit;
         }
-        //会员卡支付
-        if($data['pay_type']==4){
-            $cardModel=M('stores');
-            if(empty($data['card_no'])){
-                $info['type']='2';
-                $info['msg']='请输入卡号！';
-                echo json_encode($info);
-                exit;
-            }
-            $map['card_no']=$data['card_no'];
-            $m=$cardModel->where($map)->field('money')->find();
-            if(empty($m)){
-                $info['type']='2';
-                $info['msg']='卡号不存在！';
-                echo json_encode($info);
-                exit;
-            }
-            if($m['money']<$data['total_price']){
-                $info['type']='2';
-                $info['msg']='余额不足，卡内余额：'.$m['money'].'元';
-                echo json_encode($info);
-                exit;
-            }
-            $flag1=$cardModel->where($map)->setDec('money', $data['total_price']);
-            $flag2=$orderModel->where($where)->update($orderData);
-            if($flag1&&$flag2){
-                $info['msg']='操作成功！';
-            }else{
-                $info['type']='2';
-                $info['msg']='操作失败！';
-            }
-
-
-        }else{
-            $flag2=$orderModel->where($where)->update($orderData);
-            $info['msg']='操作成功！';
-        }
-        foreach ($ids as $k=>$v){
-            $map['id']=$v;
-            $order_data=$orderModel->where($map)->find();
-            $map1['call_id']=$order_data['call_id'];
-            $num1=$orderModel->where($map1)->count();
-            $map2['call_id']=$order_data['call_id'];
-            $map2['pay_status']=1;
-            $num2=$orderModel->where($map2)->count();
-            if($num1 == $num2){
-                $calldata['status']=3;
-                $map3['id']=$order_data['call_id'];
-                M('calls')->where($map3)->update($calldata);
-
-                $map4['room']=$order_data['room'];
-                $map4['type']=0 ;//1已下钟未结账2已下钟已结账0未下钟
-                $cc=M('calls')->where($map4)->count();
-                if($cc<1){
-                    M('room')->where(['room_name'=>$order_data['room']])->update(['status'=>0]);//更新房间状态
+        try {
+            //会员卡支付
+            if ($data['pay_type'] == 4) {
+                $cardModel = M('stores');
+                if (empty($data['card_no'])) {
+                    $info['type'] = '2';
+                    $info['msg'] = '请输入卡号！';
+                    echo json_encode($info);
+                    exit;
                 }
+                $map['card_no'] = $data['card_no'];
+                $m = $cardModel->where($map)->field('money')->find();
+                if (empty($m)) {
+                    $info['type'] = '2';
+                    $info['msg'] = '卡号不存在！';
+                    echo json_encode($info);
+                    exit;
+                }
+                if ($m['money'] < $data['total_price']) {
+                    $info['type'] = '2';
+                    $info['msg'] = '余额不足，卡内余额：' . $m['money'] . '元';
+                    echo json_encode($info);
+                    exit;
+                }
+                $flag1 = $cardModel->where($map)->setDec('money', $data['total_price']);
+                $flag2 = $orderModel->where($where)->update($orderData);
+                if ($flag1 && $flag2) {
+                    $info['msg'] = '操作成功！';
+                } else {
+                    $info['type'] = '2';
+                    $info['msg'] = '操作失败！';
+                }
+
+
+            } else {
+                $flag2 = $orderModel->where($where)->update($orderData);
+                $info['msg'] = '操作成功！';
             }
+            foreach ($ids as $k => $v) {
+                $maps['id'] = $v;
+                $order_data = M('shop_order')->where($maps)->find();
+                $map1['call_id'] = $order_data['call_id'];
+                $num1 = M('shop_order')->where($map1)->count();
+                $map2['call_id'] = $order_data['call_id'];
+                $map2['pay_status'] = 1;
+                $num2 = M('shop_order')->where($map2)->count();
+                if ($num1 == $num2) {
+                    $calldata['status'] = 3;
+                    $calldata['type'] = 2;
+                    $map3['id'] = $order_data['call_id'];
+                    M('calls')->where($map3)->update($calldata);
 
+                    $map4['room'] = $order_data['room'];
+                    $map4['type'] = [0, 1];//1已下钟未结账2已下钟已结账0未下钟
+                    $cc = M('calls')->where($map4)->count();
+                    if ($cc < 1) {
+                        M('room')->where(['room_name' => $order_data['room']])->update(['status' => 0]);//更新房间状态
+                    }
+                }
 
-
+            }
+        }catch (Exception $e) {
+            $info['type'] =2;
+            $info['msg'] = '操作失败,请稍后重试！';
+            echo json_encode($info);
         }
 
         echo json_encode($info);
     }
-
 
     // 通用插件的删除模型
     public function del()
