@@ -59,15 +59,15 @@ class User extends Home
                 $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
                 //发消息给指定人
                 $count=0;
-                $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
+               // $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
                 $templateDao = D('common/TemplateMessage');
-                foreach ($openidArr as $openid){
-                    $tRes = $templateDao->replyMessage($openid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
+              //  foreach ($openidArr as $openid){
+                    $tRes = $templateDao->replyMessage($sendOpenid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
                     //addWeixinLog($tRes,'templatemesaadf');
                     if (isset($tRes['status']) && $tRes['status']==1){
                         $count++;
                     }
-                }
+              //  }
                 if ($count>0){
                     $model = $this->getModel ( 'template_messages' );
                     // 获取模型的字段信息
