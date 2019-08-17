@@ -1811,7 +1811,7 @@ class ApiData extends ApiBase
         $where['type']=0;
         $re=M('calls')->where($where)->find();
         if(!$re){
-            return $this->error('抱歉，没有你的工作安排！');
+            return $this->error('亲，请扫码上钟！');
         }
         $timea=$re['end_time']-time();
         $times=$timea>0?$timea:0;

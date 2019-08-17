@@ -68,7 +68,8 @@
                 } else {
                     alert((res.msg));
                     var hurl = "{:U('work_clock')}";
-                    window.location.href = hurl+'/room/{$room}';
+                    //window.location.href = hurl+'/room/{$room}';
+                    window.location.href = hurl;
 
                 }
             });
@@ -92,7 +93,7 @@
     <div class="head_body">
         <div class="picture"><img src="{$myinfo.headimgurl}"></div>
        <!-- <div class="head_text">{$myinfo.nickname}</div>-->
-        <div class="head_text"><a class="mbutton" href="{:U('start_work',['room'=>$room])}">我要加钟</a> </div>
+        <div class="head_text"><a class="mbutton" href="{:U('start_work',['room'=>$room])}">我要加钟+</a> </div>
     </div>
 </div>
 <div id="body">
