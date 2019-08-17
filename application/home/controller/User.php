@@ -46,7 +46,6 @@ class User extends Home
                 $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
                 $content='尊敬的技师';
                 $title=$v['jsbn'];
-                $room=$v['room'];
                 $sender=date('m-d h:i',$v['end_time']);;//发起人
                 $data ['send_openids'] = $sendOpenid;
                 if (input('send_type') == 1 && $sendOpenid == '') {
@@ -60,7 +59,7 @@ class User extends Home
                // $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
                 $templateDao = D('common/TemplateMessage');
               //  foreach ($openidArr as $openid){
-                    $tRes = $templateDao->replyMessage($sendOpenid,$content,$title,$sender,$room,$config['template_id'],input('jamp_url'));
+                    $tRes = $templateDao->replyMessage($sendOpenid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
                     //addWeixinLog($tRes,'templatemesaadf');
                     if (isset($tRes['status']) && $tRes['status']==1){
                         $count++;
