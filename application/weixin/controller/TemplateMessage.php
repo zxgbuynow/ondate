@@ -73,7 +73,7 @@ class TemplateMessage extends WebBase {
                 $group_id=0;//用户组
                 $content='尊敬的技师';
                 $title=date('m-d h:i',$v['end_time']);
-                //$sender='华鼎会所';//发起人
+                $sender=date('m-d h:i',$v['end_time']);;//发起人
                 $data ['send_openids'] = $sendOpenid;
                 if (input('send_type') == 1 && $sendOpenid == '') {
                     $this->error ( '指定的Openid值不能为空' );
