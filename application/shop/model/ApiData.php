@@ -1955,7 +1955,5 @@ class ApiData extends ApiBase
         $msg='操作失败，请稍后重试';
         return ['code'=>0,'msg'=>$msg];
     }
-    function  call_push (){
-        echo 999999;
-    }
+
 }

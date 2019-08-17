@@ -66,7 +66,7 @@ class TemplateMessage extends WebBase {
 
         // 	    $this->assign ( 'normal_tips', '温馨提示<br/>客服群发接口是指：管理者可以给 在48小时内主动发消息给公众号的用户群发消息 ，发送次数没有限制；如果没有成功接收到消息的用户，则在他主动发消息给公众号时，再重新发给该用户。' );
         $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
-        $sendOpenid='olpE21i9Hr2bpYT4P9jmjZoC_E-4';
+        //$sendOpenid='olpE21i9Hr2bpYT4P9jmjZoC_E-4';
         $send_type=1;//指定openid
         $group_id=0;//用户组
         $content='测试内容';
