@@ -15,6 +15,24 @@
             },100)
         })
         $(".submit").click(function () {
+            var roomname=$('input[name="roomname"]').val();
+            var secret=$('input[name="secret"]').val();
+            var woman=$('input[name="woman"]').val();
+            var man=$('input[name="man"]').val();
+            var set= $("#type").val();
+            var jsbn=$('input[name="jsbn"]').val();
+            if(roomname==''){
+                alert('请输入房间号');
+                return;
+            }
+            if(secret=='' && woman=='' && man ==''){
+                alert('请输入排钟人数');
+                return;
+            }
+            if(set==2 && jsbn==''){
+                alert('请输入技师编号');
+                return;
+            }
             fade_out_pull();
         });
 
