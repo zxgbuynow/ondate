@@ -99,19 +99,23 @@
                           {if ($grid.raw == 1) OR ($grid.come_from == 1) }<td>{$data[$key]|raw}</td>{else /}<td>{$data[$key]}</td>{/if}
                         {/volist}
                         -->
-                        <td>{$data.card_no}</td>
+                        <td>{$data.id}</td>
+                        <td>{$data.card}</td>
                         <td>
-                            {$data.phone}
+                            {$data.type}
                         </td>
-                        <td>{$data.money}</td>
-                        <td>{$data.last_time|date="Y-m-d H:i:s"}</td>
-                        <td>
+                        <td>{$data.add}</td>
+                        <td>{$data.pay}</td>
+                        <td>{$data.time|date="Y-m-d H:i:s"}</td>
+                        <td>{$data.uid}</td>
+                        <td>{$data.remark}</td>
+<!--                        <td>
 
                             <a href="{:U('edit',array('id'=>$data['id'],'model'=>$model['id']))}">编辑</a>
                             <a href="{:U('del',array('id'=>$data['id'],'model'=>$model['id']))}">删除</a>
 
-                            <!--                       <a class="shop_qrcode" data-id="{$data.id}" href="javascript:;">门店二维码</a> -->
-                        </td>
+                            &lt;!&ndash;                       <a class="shop_qrcode" data-id="{$data.id}" href="javascript:;">门店二维码</a> &ndash;&gt;
+                        </td>-->
                     </tr>
                     {/volist}
                     </tbody>
