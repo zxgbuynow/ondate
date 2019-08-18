@@ -1456,9 +1456,17 @@ class ApiData extends ApiBase
         if (empty($openid) || $openid == -1) {
             return $this->error('获取openid失败,请在微信里打开!');
         }*/
-        $roomname  = input('roomname');
-        $jsbn=input('jsbn');
+        $roomname  = trim(input('roomname'));
+        $jsbn=trim(input('jsbn'));
         $mid=input('mid');
+        $woman = trim(input('woman'));
+        $man = trim(input('man'));
+        $secret = trim(input('secret'));
+        if(!is_numeric($secret) || !is_numeric($woman) || !is_numeric($man)){
+            $msg='请输入正确的排钟人数！';
+            return ['code'=>0,'msg'=>$msg];
+            exit;
+        }
 
         if (empty($roomname)) {
             $msg='请输入房间号';
@@ -1484,9 +1492,9 @@ class ApiData extends ApiBase
         $system=empty($jsbn)?'systemChange':'';
         //参数处理
         if ($system=='systemChange') {
-            $woman = intval(input('woman'));
+/*            $woman = intval(input('woman'));
             $man = intval(input('man'));
-            $secret = intval(input('secret'));
+            $secret = intval(input('secret'));*/
             $wantTot = $woman+$man+$secret;
             $total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->count();
             $freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->count();
