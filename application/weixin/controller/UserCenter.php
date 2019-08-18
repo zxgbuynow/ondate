@@ -226,10 +226,12 @@ class UserCenter extends WebBase
             $this->error('技师编号：'.$data['jsbn'].'已存在，保存失败');
         }
         $jsbn=M('user')->where(array('uid'=>$data['uid']))->value('jsbn');
+        $openid=M('public_follow')->where(array('uid'=>$data['uid']))->value('openid');
         $where['uid']=$data['uid'];
         $flag = M('user')->where($where)->update($up);
         $where1['jsbn']=$jsbn;
         $up1['jsbn']=trim($data['jsbn']);
+        $up1['openid']=$openid;
         $flag1 =M('art')->where($where1)->update($up1);
         $flag2 =M('user_queue')->where($where1)->update($up1);
         if ($flag !== false && $flag1 !== false && $flag2 !== false) {
@@ -238,7 +240,6 @@ class UserCenter extends WebBase
         } else {
             $this->error('保存失败');
         }
-        dump($data);
     }
     function getUserRemark()
     {
@@ -482,18 +483,19 @@ class UserCenter extends WebBase
         if (empty($group_id)) {
             $this->error('请选择用户组!');
         }
-        $jss=['376','377'];
-        if(in_array($group_id,$jss)){//技师
+        $jss=['376','377'];//技师分组
+        if(in_array($group_id,$jss)){
             foreach ($uids as $v) {
                 $jsbn=M('art')->where(array('user_id'=>$v))->value('jsbn');
                 if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0])->find()) {
-                    $this->error('技师:'.$jsbn.'非空闲');
+                    $this->error('技师:'.$jsbn.'非空闲，暂时无法操作');
                 }
             }
             foreach ($uids as $v) {
                  $info=M('art')->where(array('user_id'=>$v))->value('jsbn');
                  M('art')->where(array('user_id'=>$v))->delete();
                  M('user_queue')->where(array('jsbn'=>$info))->delete();
+                 $openid=M('public_follow')->where(['uid'=>$v])->value('openid');
                 $info1= M('user')->where(['uid'=>$v])->value('sex');
                 $info2= M('art')->max('jsbn');
                 $info3= M('user_queue')->max('postion');
@@ -505,6 +507,7 @@ class UserCenter extends WebBase
                 $art['mobile'] = $v;
                 $art['type']=0;
                 $art['jsbn']=$new_jsbn;
+                $art['openid']=$openid;
                 $art['modify_time']=time();
                 $user_id=M('art')->insertGetId($art);
                 $user_queue['user_id']=$user_id;

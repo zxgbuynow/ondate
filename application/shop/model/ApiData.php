@@ -1551,7 +1551,8 @@ class ApiData extends ApiBase
                         $save['jsbn'] = $userinfo['jsbn'];
                         $save['sex'] = $userinfo['sex'];
                         $save['art_id'] = $userinfo['id'];
-                      //  $save['service_type'] = $service_type;
+                        $save['openid'] = $userinfo['openid'];
+                        $save['service_type'] = $roomtype;
                         $save['way'] = 0;
                         $save['status'] = 0;
                         $save['num'] = 1;
@@ -1580,6 +1581,7 @@ class ApiData extends ApiBase
                         $save['jsbn'] = $userinfo['jsbn'];
                         $save['sex'] = $userinfo['sex'];
                         $save['art_id'] = $userinfo['id'];
+                        $save['openid'] = $userinfo['openid'];
                         $save['service_type'] = $roomtype;
                        // $save['goods_id'] = $service_type;
                         $save['way'] = 0;
@@ -1612,6 +1614,7 @@ class ApiData extends ApiBase
                         $save['jsbn'] = $userinfo['jsbn'];
                         $save['sex'] = $userinfo['sex'];
                         $save['art_id'] = $userinfo['id'];
+                        $save['openid'] = $userinfo['openid'];
                         $save['service_type'] = $roomtype;
                        // $save['goods_id'] = $service_type;
                         $save['way'] = 0;
@@ -1670,6 +1673,7 @@ class ApiData extends ApiBase
             $save['jsbn'] = $jsbn;
             $save['sex'] = $userinfo['sex'];
             $save['art_id'] = $userinfo['id'];
+            $save['openid'] = $userinfo['openid'];
             $save['service_type'] = $roomtype;
             //$save['goods_id'] = $service_type;
             $save['way'] = 1;
