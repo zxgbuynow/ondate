@@ -37,13 +37,18 @@ class User extends Home
     public function cs(){
         return $this->fetch();
     }
+    function mymsg(){
+        return $this->fetch();
+    }
     //模板消息发给指定用户
     function sendmy(){
         $map['status']=1;
+        $map['type']=0;
         $info=M('calls')->where($map)->field('jsbn,end_time')->select();
         foreach ($info as $k=>$v){
             if($v['end_time']<=time()-60){
-                $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
+                //$sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
+                $sendOpenid=$v['openid'];
                 $content='尊敬的技师';
                 $title=$v['jsbn'];
                 $sender=date('m-d h:i',$v['end_time']);;//发起人
