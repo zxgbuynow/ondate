@@ -14,7 +14,7 @@ class Vip extends WebBase
 
         $this->assign('nav', []);
 
-        $this->model = $this->getModel('vip');
+        $this->model = $this->getModel('vip_log');
     }
 
     function lists()
