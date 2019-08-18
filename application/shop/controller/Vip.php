@@ -37,7 +37,6 @@ class Vip extends WebBase
         $model = $this->model;
 
         $list_data = $this->_get_model_list($this->model,'id desc',true);
-        dump($list_data);
 
         unset($list_data['list_grids']['shop_code']);
 
