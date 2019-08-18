@@ -1468,6 +1468,11 @@ class ApiData extends ApiBase
 
         //房间类型
         $rcate = M('room')->where(['room_name'=>$roomname])->value('cate_id');
+        if (empty($rcate)) {
+            $msg='请输入正确的房间号';
+            return ['code'=>0,'msg'=>$msg];
+            exit;
+        }
         $roomtype = 0;
         if ($rcate==4) {//spa
             $roomtype = 1;
