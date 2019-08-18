@@ -1462,12 +1462,21 @@ class ApiData extends ApiBase
         $woman = trim(input('woman'));
         $man = trim(input('man'));
         $secret = trim(input('secret'));
-        if(!is_numeric($secret) || !is_numeric($woman) || !is_numeric($man)){
+        if(!is_numeric($secret)){
             $msg='请输入正确的排钟人数！';
             return ['code'=>0,'msg'=>$msg];
             exit;
         }
-
+        if(!is_numeric($woman)){
+            $msg='请输入正确的排钟人数！';
+            return ['code'=>0,'msg'=>$msg];
+            exit;
+        }
+        if(!is_numeric($man)){
+            $msg='请输入正确的排钟人数！';
+            return ['code'=>0,'msg'=>$msg];
+            exit;
+        }
         if (empty($roomname)) {
             $msg='请输入房间号';
             return ['code'=>0,'msg'=>$msg];
