@@ -44,7 +44,7 @@ class User extends Home
     function sendmy(){
         $map['status']=1;
         $map['type']=0;
-        $info=M('calls')->where($map)->field('jsbn,end_time')->select();
+        $info=M('calls')->where($map)->field('jsbn,end_time,openid')->select();
         foreach ($info as $k=>$v){
             if($v['end_time']<=time()-60){
                 //$sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
