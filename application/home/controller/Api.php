@@ -200,7 +200,7 @@ class Api extends ApiBase
     {
     	$goods['data']  = M('shop_goods')->where(['type'=>1])->select();
     	foreach ($goods['data'] as $key => &$value) {
-    		$value['duration'] = '60'; 
+    		$value['duration'] = '70';
     		$value['fee'] = intval($value['cost_price']); 
     	}
     	return api_success($goods);
@@ -835,6 +835,7 @@ class Api extends ApiBase
 
     	$cparams['room_id'] = $params['roomid'];
     	$cparams['status'] = [0,1];
+        $cparams['retime'] = null;
     	$calls = M('calls')->where($cparams)->select();
 		$index = 1;
     	foreach ($calls as $key => &$value) {
