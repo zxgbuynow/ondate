@@ -1840,7 +1840,7 @@ class ApiData extends ApiBase
         //$where['room']=$room;
         $where['status']=1;
         //$where['type']=0;
-        $where['retime']='';
+        $where['retime']=null;
         $re=M('calls')->where($where)->find();
         if(!$re){
             return $this->error('亲，请扫码上钟！');
