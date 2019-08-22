@@ -46,6 +46,7 @@ class Vip extends WebBase
             $this->assign($list_data);
             return $this->fetch('lists_data');
         } else {
+            dump($list_data);
             unset($list_data['list_grids']['urls']);
             $this->assign($list_data);
             return $this->fetch();
