@@ -178,7 +178,7 @@ class Api extends ApiBase
 				$value['callTime']='';
 				$value['beginTime']='';
     		}else{
-    			$param['status'] = [0,1];
+    			$param['status'] = [0,1,3];
     			$param['art_id'] = $value['user_id'];
     			$goodid = M('calls')->where($param)->value('goods_id');
     			$value['serviceType'] = $goodid?M('shop_goods')->where(['id'=>$goodid])->value('title'):'';
@@ -835,7 +835,6 @@ class Api extends ApiBase
 
     	$cparams['room_id'] = $params['roomid'];
     	$cparams['status'] = [0,1];
-        $cparams['retime'] = null;
     	$calls = M('calls')->where($cparams)->select();
 		$index = 1;
     	foreach ($calls as $key => &$value) {
