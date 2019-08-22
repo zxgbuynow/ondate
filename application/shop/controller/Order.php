@@ -320,6 +320,8 @@ class Order extends Base
                     exit;
                 }
                 $flag1 = $cardModel->where($map)->setDec('money', $data['total_price']);
+                $time['last_time']=time();
+                $cardModel->where($map)->update($time);
                 $vip['card']=$data['card_no'];
                 $vip['time']=time();
                 $vip['add']=0-$data['total_price'];
