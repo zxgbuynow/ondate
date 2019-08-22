@@ -8,7 +8,7 @@
             <div class="fl">
                 {empty name="model.extend"}
                 <div class="tools">
-                    
+
                     {volist name="top_more_button" id="vo"}
                     {notempty name="$vo['is_buttion']"}
                     <button class="btn {$vo.class}" target-form="ids" url="{$vo.url}">{$vo.title}</button>
