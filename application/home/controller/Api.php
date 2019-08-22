@@ -99,6 +99,7 @@ class Api extends ApiBase
     	$roomsarr = [];
     	foreach ($rooms as $key => &$value) {
     		$cparams['status'] = [0,1];
+            $cparams['retime'] = null;
     		$cparams['room_id'] = $value['id'];
     		$calls = M('calls')->where($cparams)->limit(3)->select();
     		array_walk($calls,function(&$v,$k){
@@ -179,7 +180,6 @@ class Api extends ApiBase
 				$value['beginTime']='';
     		}else{
     			$param['status'] = [0,1];
-                $param['retime']= null;
     			$param['art_id'] = $value['user_id'];
     			$goodid = M('calls')->where($param)->value('goods_id');
     			$value['serviceType'] = $goodid?M('shop_goods')->where(['id'=>$goodid])->value('title'):'';
