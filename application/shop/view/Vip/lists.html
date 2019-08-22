@@ -91,13 +91,7 @@
                     <!-- 列表 -->
                     <tbody>
                     {volist name="list_data" id="data"}
-                    <tr>
-                        {if condition="$check_all"}<td><input class="ids regular-checkbox" type="checkbox" value="{$data['id']}" name="ids[]" id="check_{$data['id']}"><label for="check_{$data['id']}"></label></td>{/if}
-                        <!--
-                        {volist name="list_grids" id="grid"}
-                          {if ($grid.raw == 1) OR ($grid.come_from == 1) }<td>{$data[$key]|raw}</td>{else /}<td>{$data[$key]}</td>{/if}
-                        {/volist}
-                        -->
+<!--                    <tr>
                         <td>{$data.id}</td>
                         <td>{$data.card}</td>
                         <td>
@@ -108,14 +102,7 @@
                         <td>{$data.time|date="Y-m-d H:i:s"}</td>
                         <td>{$data.uid}</td>
                         <td>{$data.remark}</td>
-<!--                        <td>
-
-                            <a href="{:U('edit',array('id'=>$data['id'],'model'=>$model['id']))}">编辑</a>
-                            <a href="{:U('del',array('id'=>$data['id'],'model'=>$model['id']))}">删除</a>
-
-                            &lt;!&ndash;                       <a class="shop_qrcode" data-id="{$data.id}" href="javascript:;">门店二维码</a> &ndash;&gt;
-                        </td>-->
-                    </tr>
+                    </tr>-->
                     {/volist}
                     </tbody>
                 </table>
