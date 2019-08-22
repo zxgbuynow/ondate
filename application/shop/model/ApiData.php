@@ -1865,7 +1865,7 @@ class ApiData extends ApiBase
            $jsbn=M('user')->where($con)->value('jsbn');
            $map['room']=$room;
            $map['status']=1;
-           $map['type']=0;//未下钟
+          // $map['type']=0;//未下钟
            $map['jsbn']=$jsbn;
            $upcall['type']=1;//1已下钟未结账2已下钟已结账0未下钟
            $upcall['retime']=time();//实际下钟时间
