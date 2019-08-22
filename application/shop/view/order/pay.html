@@ -103,10 +103,11 @@
         var jsbn=$('#jsbn').val();
         var pay_type=$("#pay_type option:selected").val();
         var card_no=$('#card_no').val();
+        var remark=$('#remark').val();
         $.ajax(
             {
                 url: "{:U('pay_action')}",
-                data:{"ids":ids,"total_price":total_price,"jsbn":jsbn,"pay_type":pay_type,"card_no":card_no},
+                data:{"ids":ids,"total_price":total_price,"jsbn":jsbn,"pay_type":pay_type,"card_no":card_no,"remark":remark},
                 type: "post",
                 beforeSend:function()
                 {

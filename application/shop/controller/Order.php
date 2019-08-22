@@ -320,6 +320,12 @@ class Order extends Base
                     exit;
                 }
                 $flag1 = $cardModel->where($map)->setDec('money', $data['total_price']);
+                $vip['card']=$data['card_no'];
+                $vip['time']=time();
+                $vip['add']=0-$data['total_price'];
+                $vip['remark']=$data['remark'];
+                $vip['opt']= $this->mid;
+                M('vip_log')->insert($vip);
                 $flag2 = $orderModel->where($where)->update($orderData);
                 if ($flag1 && $flag2) {
                     $info['msg'] = '操作成功！';
