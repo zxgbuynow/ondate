@@ -1685,6 +1685,7 @@ class ApiData extends ApiBase
             $save['room_id'] = $rooms['id'];
             $save['operator']=$mid;
             $save['calltime']=time();
+            $save['call_type']=1;//0排钟1点钟
             M('calls')->insert($save);
             //删除等待信息
             M('waite')->where(['room_id'=>$rooms['id']])->delete();
@@ -1790,7 +1791,7 @@ class ApiData extends ApiBase
             $where['status']=0;
             $where['jsbn']=$jsbn;
             $where['room']=$room;
-            $call_id=M('calls')->where($where)->value('id');
+            $call_info=M('calls')->where($where)->find();
             $calldata['status']=1;
             $calldata['price']=$data['sale_price'];
             $calldata['num']=1;
@@ -1798,13 +1799,17 @@ class ApiData extends ApiBase
             $calldata['begin_time']=time();
             $calldata['end_time']=time()+70*60;//70分钟
             M('calls')->where($where)->update($calldata);//更新叫钟数据
-            $kdata['call_id'] = $call_id;
+            $kdata['call_id'] = $call_info['id'];
             $kdata['jsbn'] = $jsbn;
             $kdata['room'] = $room;
             $kdata['category_id'] = 0;
             $kdata['total_price'] = $kdata['pay_money']= 1*$data['market_price']*1;
+            if($call_info['call_type']==1){
+                $kdata['total_price'] =$kdata['total_price'] +10;
+            }
             $kdata['event_type'] = 3;//微信下单
             $kdata['openid'] = $openid;
+            $kdata['call_type'] = $call_info['call_type'];
             $order_id = M('shop_order')->insertGetId($kdata);
             $gdata['order_id']= $order_id;
             $gdata['goods_id']= $id;

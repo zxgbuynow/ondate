@@ -59,6 +59,7 @@
                                 <td style="width:10%;">房间</td>
                                 <td style="width:10%;">技师号</td>
                                 <td style="width:10%;">单价</td>
+                                <td style="width:10%;">方式</td>
                                 <td style="width:10%;">数量</td>
                                 <td style="width:10%;">总金额</td>
                                 <td style="width:10%;">状态</td>
@@ -71,6 +72,10 @@
                                 <td>{$data.room}</td>
                                 <td>{$data.jsbn}</td>
                                 <td>{$g.market_price|raw}</td>
+                                <td>
+                                    {if $g.call_type == 0}排钟
+                                    {else /} 点钟+10
+                                    {/if}</td>
                                 <td>x{$g.num}</td>
                                 <td>{$data.total_price}</td>
                                 <td><span style="color: red;">{$data.status_code_name}</span></td>

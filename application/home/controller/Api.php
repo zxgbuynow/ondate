@@ -607,6 +607,7 @@ class Api extends ApiBase
                         $save['total'] = $goods['cost_price'];
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
+                        $save['calltime']=time();
                         $save['next_pos'] = $key+1+$max;
                         M('calls')->insert($save);
 
@@ -636,6 +637,7 @@ class Api extends ApiBase
                         $save['total'] = $goods['cost_price'];
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
+                        $save['calltime']=time();
                         $save['next_pos'] = $key+1+$max;
                         M('calls')->insert($save);
 
@@ -667,6 +669,7 @@ class Api extends ApiBase
                         $save['total'] = $goods['cost_price'];
                         $save['room'] = $rooms['room_name'];
                         $save['room_id'] = $rooms['id'];
+                        $save['calltime']=time();
                         $save['next_pos'] = $key+1+$max;
                         M('calls')->insert($save);
 
@@ -715,6 +718,8 @@ class Api extends ApiBase
             $save['total'] = $goods['cost_price'];
             $save['room'] = $rooms['room_name'];
             $save['room_id'] = $rooms['id'];
+            $save['calltime']=time();
+            $save['call_type']=1;//0排钟1点钟
             M('calls')->insert($save);
             //删除等待信息
             M('waite')->where(['room_id'=>$room])->delete();
