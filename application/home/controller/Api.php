@@ -99,6 +99,7 @@ class Api extends ApiBase
     	$roomsarr = [];
     	foreach ($rooms as $key => &$value) {
     		$cparams['status'] = [0,1];
+            $cparams['type'] = [0,1];
     		$cparams['room_id'] = $value['id'];
     		$calls = M('calls')->where($cparams)->limit(3)->select();
     		array_walk($calls,function(&$v,$k){
