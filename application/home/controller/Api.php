@@ -964,7 +964,7 @@ class Api extends ApiBase
     		return api_error('参数缺少');
     	}
 
-    	if (M('calls')->where(['id'=>$params['id']])->update(['status'=>2])) {
+    	if (M('calls')->where(['id'=>$params['id']])->update(['status'=>2,'type'=>3])) {
             $call = M('calls')->where(['id'=>$params['id']])->find();
             $map['status']=[0,1];
             $map['room_id']=$call['room_id'];
