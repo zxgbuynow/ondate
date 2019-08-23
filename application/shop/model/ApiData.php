@@ -1875,7 +1875,7 @@ class ApiData extends ApiBase
            if (M('calls')->where($map)->update($upcall)) {
                $mapc['room']=$room;
                $mapc['status']=1;
-               $mapc['type']=1;//未下钟
+               $mapc['type']=[0,2];//未下钟
                $mapc['jsbn']=$jsbn;
                $call = M('calls')->where($mapc)->find();
                $map1['type']=[0,1];;
