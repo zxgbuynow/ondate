@@ -107,7 +107,7 @@ class Api extends ApiBase
     			$v['time'] = $v['calltime']?date('H:i',$v['calltime']):'waiting';
     		});
     		$value['calls'] = $calls;
-    		$value['fee'] = number_format(M('calls')->where($cparams)->whereNull('retime')->sum('price'),2) ;
+    		$value['fee'] = number_format(M('calls')->where($cparams)->sum('price'),2) ;
     		$roomsarr[$value['cate_id']][] = $value; 
     	}
     	//全部
