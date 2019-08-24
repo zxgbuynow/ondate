@@ -963,7 +963,8 @@ class Api extends ApiBase
     	if (!$params['id']) {
     		return api_error('参数缺少');
     	}
-
+       //已产生订单的情况下
+        //TODO
     	if (M('calls')->where(['id'=>$params['id']])->update(['status'=>2,'type'=>3])) {
             $call = M('calls')->where(['id'=>$params['id']])->find();
             //$map['status']=[0,1];
