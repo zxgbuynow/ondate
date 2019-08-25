@@ -1882,7 +1882,7 @@ class ApiData extends ApiBase
             $kdata['total_price'] = $kdata['pay_money']= 1*$data['market_price']*1;
             $kdata['event_type'] = 3;//微信下单
             $kdata['openid'] = $openid;
-            $kdata['call_type'] = $call_info['call_type'];
+            $kdata['call_type'] = 2;//加钟
             $order_id = M('shop_order')->insertGetId($kdata);
             $gdata['order_id']= $order_id;
             $gdata['goods_id']= $goods_id;

@@ -73,9 +73,16 @@
                                 <td>{$data.jsbn}</td>
                                 <td>{$g.market_price|raw}</td>
                                 <td>
-                                    {if $data.call_type == 0}排钟
-                                    {else /} 点钟+10
-                                    {/if}</td>
+                                    {switch $data.call_type}
+                                    {case 0}排钟{/case}
+                                    {case 1}点钟{/case}
+                                    {case 2}加钟{/case}
+                                    {case 3}买钟{/case}
+                                    {default /}排钟
+                                    {/switch}
+                         <!--           {if $data.call_type == 0}排钟
+                                    {else /} 点钟
+                                    {/if}--></td>
                                 <td>x{$g.num}</td>
                                 <td>{$data.total_price}</td>
                                 <td><span style="color: red;">{$data.status_code_name}</span></td>
