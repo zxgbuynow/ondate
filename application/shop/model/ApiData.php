@@ -1567,8 +1567,9 @@ class ApiData extends ApiBase
 
                         //语音推送
                         // sleep(1);
-                        $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                        $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                       // $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+                        //$msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                        $msg .= '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
 
                     }
 
@@ -1598,8 +1599,9 @@ class ApiData extends ApiBase
 
                         //语音推送
                         // sleep(1);
-                        $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                        $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                       // $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+                       // $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                        $msg .= '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
 
                     }
                     // $this->push_wm_msg('1',$msg);
@@ -1631,8 +1633,9 @@ class ApiData extends ApiBase
 
                         //语音推送
                         // sleep(1);
-                        $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                        $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                        //$calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+                        //$msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+                        $msg .= '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
 
                     }
                     $secret=0;
@@ -1690,10 +1693,11 @@ class ApiData extends ApiBase
             //删除等待信息
             M('waite')->where(['room_id'=>$rooms['id']])->delete();
             //语音推送
-            $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-            $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+            //$calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
+            //$msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
+            $msg = '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
             $this->push_wm_msg('1',$msg);
-            M('calls')->where(['id'=>$calls['id']])->update(['calltime'=>time()]);
+           // M('calls')->where(['id'=>$calls['id']])->update(['calltime'=>time()]);
         } catch (Exception $e) {
             $msg='操作失败，请稍后重试';
             return ['code'=>0,'msg'=>$msg];

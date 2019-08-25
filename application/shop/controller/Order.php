@@ -271,6 +271,8 @@ class Order extends Base
         $data=M('shop_order')->where($map)->field('id,room,jsbn,total_price')->find();
         echo json_encode($data);
     }
+    //取消订单
+    //TODO
     public function cancelOrder(){
         $order_id = I('id', 0);
         $map['id']=$order_id;
