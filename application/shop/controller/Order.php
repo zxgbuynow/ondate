@@ -353,11 +353,13 @@ class Order extends Base
             }
             foreach ($ids as $k => $v) {
                 $maps['id'] = $v;
+                $maps['status_code'] =['<>',5];//被取消的订单不计算在内
                 $order_data = M('shop_order')->where($maps)->find();
                 $map1['call_id'] = $order_data['call_id'];
                 $num1 = M('shop_order')->where($map1)->count();
                 $map2['call_id'] = $order_data['call_id'];
                 $map2['pay_status'] = 1;
+                $map2['status_code'] =['<>',5];//被取消的订单不计算在内
                 $num2 = M('shop_order')->where($map2)->count();
                 if ($num1 == $num2) {
                     //$calldata['status'] = 3;
