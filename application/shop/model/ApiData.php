@@ -1876,8 +1876,8 @@ class ApiData extends ApiBase
             //$calldata['goods_id']=$data['id'];
             M('calls')->where($where)->update($calldata);//更新叫钟数据
             $kdata['call_id'] = $call_info['id'];
-            $kdata['jsbn'] = $calldata['jsbn'];
-            $kdata['room'] = $calldata['room'];
+            $kdata['jsbn'] = $call_info['jsbn'];
+            $kdata['room'] = $call_info['room'];
             $kdata['category_id'] = 0;
             $kdata['total_price'] = $kdata['pay_money']= 1*$data['market_price']*1;
             $kdata['event_type'] = 3;//微信下单
