@@ -62,6 +62,7 @@ class Order extends Base
         $this->assign('status', $status);
         if ($status == 1) { // 待支付
             $map['pay_status'] = 0;
+            $map['status_code'] =0;
         } else if ($status == 2) { // 已支付
             $map['status_code'] = [
                 'in',
