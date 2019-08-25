@@ -560,6 +560,9 @@ class Api extends ApiBase
             $woman = intval($params['woman']);
             $man = intval($params['man']);
             $secret = intval($params['secret']);
+            if(!$woman && !$man && ! $secret){
+                return api_error('失败：请输入安排人数！');
+            }
             $wantTot = $woman+$man+$secret;
             $total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->count();
             $freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->count();
