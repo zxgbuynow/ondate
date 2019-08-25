@@ -1826,7 +1826,7 @@ class ApiData extends ApiBase
         return ['code'=>1,'msg'=>$msg];
 
     }
-    //技师操作加钟
+    //技师操作 加钟
     function  addAction(){
         $openid = get_openid();
         if (empty($this->mid)){
@@ -1868,7 +1868,7 @@ class ApiData extends ApiBase
             $where['id']=$call_id;
             $call_info=M('calls')->where($where)->find();
             //$calldata['status']=1;
-            $calldata['price']=$data['sale_price'];
+            $calldata['price']=$call_info['price']+$data['sale_price'];
             $calldata['num']=$call_info['num']+1;
             $calldata['total']=$call_info['total']+$data['sale_price'];
             //$calldata['begin_time']=time();
