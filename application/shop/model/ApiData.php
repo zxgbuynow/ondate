@@ -1930,7 +1930,7 @@ class ApiData extends ApiBase
         $data['room']=$re['room'];
         $data['title']=$goodsdata['title'];
         $data['num']=$re['num'];
-        $data['strat']=date('h:i',$re['begin_time']);
+        $data['start']=date('h:i',$re['begin_time']);
         $data['end']=date('h:i',$re['end_time']);
         $data['id']=$id;
 
