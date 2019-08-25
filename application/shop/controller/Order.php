@@ -71,8 +71,8 @@ class Order extends Base
             $map['status_code'] =3;
         } else if ($status == 4) { // 已结单
             $map['status_code'] = 4;
-        } else if ($status == 9) { // 已取消
-            $map['status_code'] = 9;
+        } else if ($status == 5) { // 已取消
+            $map['status_code'] = 5;
         }
 
         $event_type = I('event_type/d', - 1);
