@@ -1845,7 +1845,8 @@ class ApiData extends ApiBase
         try {
             $data['uid']=$this->mid;
             // 获取数据
-            $data = D('shop_goods')->getInfo($goods_id, true);
+            //$data = D('shop_goods')->getInfo($goods_id, true);
+            $data =M('shop_goods')->where(['id'=>$goods_id])->find();
             $data || $this->error('数据不存在！');
             $goods_datas['id']=$data['id'];
             $goods_datas['cover']=$data['cover'];
@@ -1880,9 +1881,9 @@ class ApiData extends ApiBase
             $kdata['room'] = $calldata['room'];
             $kdata['category_id'] = 0;
             $kdata['total_price'] = $kdata['pay_money']= 1*$data['market_price']*1;
-            if($call_info['call_type']==1){
+/*            if($call_info['call_type']==1){//点钟加钱
                 $kdata['total_price'] =$kdata['total_price'] +10;
-            }
+            }*/
             $kdata['event_type'] = 3;//微信下单
             $kdata['openid'] = $openid;
             $kdata['call_type'] = $call_info['call_type'];
