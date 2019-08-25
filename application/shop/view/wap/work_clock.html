@@ -55,6 +55,13 @@
         $(".submit").click(function () {
             fade_out_pull();
         });
+        $(".mbutton").click(function () {
+            if(confirm("确定要加钟吗?")){
+               alert('OK');
+            }else{
+                alert('NO');
+            }
+        });
 
         $(".frame_no").click(function () {
             fade_out_hide();
@@ -93,7 +100,8 @@
     <div class="head_body">
         <div class="picture"><img src="{$myinfo.headimgurl}"></div>
        <!-- <div class="head_text">{$myinfo.nickname}</div>-->
-        <div class="head_text"><a class="mbutton" href="{:U('start_work',['room'=>$room])}">我要加钟+</a> </div>
+      <!--  <div class="head_text"><a class="mbutton" href="{:U('start_work',['room'=>$room])}">我要加钟+</a> </div>-->
+        <div class="head_text"><a class="mbutton" href="">我要加钟+</a> </div>
     </div>
 </div>
 <div id="body">
