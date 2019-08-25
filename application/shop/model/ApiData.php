@@ -1886,6 +1886,8 @@ class ApiData extends ApiBase
             $kdata['event_type'] = 3;//微信下单
             $kdata['openid'] = $openid;
             $kdata['call_type'] = $call_info['call_type'];
+            dump($kdata);
+            exit;
             $order_id = M('shop_order')->insertGetId($kdata);
             $gdata['order_id']= $order_id;
             $gdata['goods_id']= $goods_id;
