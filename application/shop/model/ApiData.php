@@ -1798,6 +1798,83 @@ class ApiData extends ApiBase
             $calldata['total']=$data['sale_price'];
             $calldata['begin_time']=time();
             $calldata['end_time']=time()+70*60;//70分钟
+            $calldata['goods_id']=$data['id'];
+            M('calls')->where($where)->update($calldata);//更新叫钟数据
+            $kdata['call_id'] = $call_info['id'];
+            $kdata['jsbn'] = $jsbn;
+            $kdata['room'] = $room;
+            $kdata['category_id'] = 0;
+            $kdata['total_price'] = $kdata['pay_money']= 1*$data['market_price']*1;
+            if($call_info['call_type']==1){
+                $kdata['total_price'] =$kdata['total_price'] +10;
+            }
+            $kdata['event_type'] = 3;//微信下单
+            $kdata['openid'] = $openid;
+            $kdata['call_type'] = $call_info['call_type'];
+            $order_id = M('shop_order')->insertGetId($kdata);
+            $gdata['order_id']= $order_id;
+            $gdata['goods_id']= $id;
+            $flag= M('shop_order_goods')->insert($gdata);
+
+
+        } catch (Exception $e) {
+            $msg='操作失败，请稍后重试';
+            return ['code'=>0,'msg'=>$msg];
+        }
+
+        $msg='操作成功！';
+        return ['code'=>1,'msg'=>$msg];
+
+    }
+    //技师操作加钟
+    function  addAction(){
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $room=input('room');
+        if (empty($room)){
+            return $this->error('房间号不能为空!');
+        }
+        try {
+            $data['uid']=$this->mid;
+            $map['title']=input('title');
+            $id = M('shop_goods')->where($map)->value('id');
+            // 获取数据
+            $data = D('shop_goods')->getInfo($id, true);
+            $data || $this->error('数据不存在！');
+            $goods_datas['id']=$data['id'];
+            $goods_datas['cover']=$data['cover'];
+            $goods_datas['title']=$data['title'];
+            $goods_datas['market_price']=$data['market_price'];
+            $goods_datas['sale_price']=$data['sale_price'];
+            $goods_datas['num']=1;
+            $goods_datas['send_type']=$data['send_type'];
+            $go[]=$goods_datas;
+            $kdata['goods_datas'] = json_encode($go);
+            $kdata['order_number'] = date('YmdHis') . substr(uniqid(), 4);
+            $kdata['remark'] = I('remark');
+            $kdata['uid'] = $this->mid;
+            $kdata['out_trade_no'] = 'no' . date('ymdHis') . substr(uniqid(), 4);
+            $kdata['cTime'] = NOW_TIME;
+            $kdata['pay_status'] = 0;
+            $kdata['wpid'] = get_wpid();
+            $kdata['stores_id'] = 1;
+            $map1['uid']=$this->mid;
+            $jsbn=M('user')->where($map1)->value('jsbn');
+            $where['status']=0;
+            $where['jsbn']=$jsbn;
+            $where['room']=$room;
+            $call_info=M('calls')->where($where)->find();
+            $calldata['status']=1;
+            $calldata['price']=$data['sale_price'];
+            $calldata['num']=1;
+            $calldata['total']=$data['sale_price'];
+            $calldata['begin_time']=time();
+            $calldata['end_time']=time()+70*60;//70分钟
+            $calldata['goods_id']=$data['id'];
             M('calls')->where($where)->update($calldata);//更新叫钟数据
             $kdata['call_id'] = $call_info['id'];
             $kdata['jsbn'] = $jsbn;
@@ -1845,10 +1922,16 @@ class ApiData extends ApiBase
         if(!$re){
             return $this->error('亲，请扫码上钟！');
         }
+        $id=$re['goods_id'];
+        $goodsdata = D('shop_goods')->getInfo($id, true);
         $timea=$re['end_time']-time();
         $times=$timea>0?$timea:0;
         $data['times']=$times;
         $data['room']=$re['room'];
+        $data['title']=$goodsdata['title'];
+        $data['num']=$re['num'];
+        $data['id']=$id;
+
         return $data;
 
     }
