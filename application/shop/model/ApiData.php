@@ -1834,16 +1834,18 @@ class ApiData extends ApiBase
             if (empty($this->mid))
                 return $this->error('获取不到当前用户，请在微信里打开!');
         }
-        $room=input('room');
-        if (empty($room)){
-            return $this->error('房间号不能为空!');
+        $call_id=input('call_id');
+        $goods_id=input('id');
+        if (empty($call_id)){
+            return $this->error('call_id不能为空!');
+        }
+        if (empty($goods_id)){
+            return $this->error('goods_id不能为空!');
         }
         try {
             $data['uid']=$this->mid;
-            $map['title']=input('title');
-            $id = M('shop_goods')->where($map)->value('id');
             // 获取数据
-            $data = D('shop_goods')->getInfo($id, true);
+            $data = D('shop_goods')->getInfo($goods_id, true);
             $data || $this->error('数据不存在！');
             $goods_datas['id']=$data['id'];
             $goods_datas['cover']=$data['cover'];
@@ -1862,23 +1864,20 @@ class ApiData extends ApiBase
             $kdata['pay_status'] = 0;
             $kdata['wpid'] = get_wpid();
             $kdata['stores_id'] = 1;
-            $map1['uid']=$this->mid;
-            $jsbn=M('user')->where($map1)->value('jsbn');
-            $where['status']=0;
-            $where['jsbn']=$jsbn;
-            $where['room']=$room;
+
+            $where['id']=$call_id;
             $call_info=M('calls')->where($where)->find();
-            $calldata['status']=1;
+            //$calldata['status']=1;
             $calldata['price']=$data['sale_price'];
-            $calldata['num']=1;
-            $calldata['total']=$data['sale_price'];
-            $calldata['begin_time']=time();
-            $calldata['end_time']=time()+70*60;//70分钟
-            $calldata['goods_id']=$data['id'];
+            $calldata['num']=$call_info['num']+1;
+            $calldata['total']=$call_info['total']+$data['sale_price'];
+            //$calldata['begin_time']=time();
+            $calldata['end_time']=$call_info['end_time']+70*60;//+70分钟
+            //$calldata['goods_id']=$data['id'];
             M('calls')->where($where)->update($calldata);//更新叫钟数据
             $kdata['call_id'] = $call_info['id'];
-            $kdata['jsbn'] = $jsbn;
-            $kdata['room'] = $room;
+            $kdata['jsbn'] = $calldata['jsbn'];
+            $kdata['room'] = $calldata['room'];
             $kdata['category_id'] = 0;
             $kdata['total_price'] = $kdata['pay_money']= 1*$data['market_price']*1;
             if($call_info['call_type']==1){
@@ -1889,7 +1888,7 @@ class ApiData extends ApiBase
             $kdata['call_type'] = $call_info['call_type'];
             $order_id = M('shop_order')->insertGetId($kdata);
             $gdata['order_id']= $order_id;
-            $gdata['goods_id']= $id;
+            $gdata['goods_id']= $goods_id;
             $flag= M('shop_order_goods')->insert($gdata);
 
 
@@ -1933,6 +1932,7 @@ class ApiData extends ApiBase
         $data['start']=date('h:i',$re['begin_time']);
         $data['end']=date('h:i',$re['end_time']);
         $data['id']=$id;
+        $data['call_id']=$re['id'];
 
         return $data;
 

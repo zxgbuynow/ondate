@@ -57,7 +57,21 @@
         });
         $(".mbutton").click(function () {
             if(confirm("确定要加钟吗?")){
-               alert('OK');
+                var url = "{:U('addAction')}";
+                var room="{$room}";
+                var id="{$id}";
+                var call_id="{$call_id}";
+                $.post(url, {'id':id,'call_id':call_id}, function(res) {
+                    if (res.code == 0) {
+                        alert((res.msg));
+                    } else {
+                        alert((res.msg));
+                        var hurl = "{:U('work_clock')}";
+                        //window.location.href = hurl+'/room/{$room}';
+                        window.location.href = hurl;
+
+                    }
+                });
             }else{
                 alert('NO');
             }
