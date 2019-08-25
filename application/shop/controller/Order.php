@@ -67,18 +67,12 @@ class Order extends Base
                 'in',
                 '1,2'
             ];
-        } else if ($status == 3) { // 待确认
-            $map['status_code'] = [
-                'in',
-                '3,4,5,6'
-            ];
-        } else if ($status == 4) { // 已完成
-            $map['status_code'] = 7;
-        } else if ($status == 5) { // 退款
-            $map['refund'] = [
-                '>',
-                0
-            ];
+        } else if ($status == 3) { // 待结单
+            $map['status_code'] =3;
+        } else if ($status == 4) { // 已结单
+            $map['status_code'] = 4;
+        } else if ($status == 9) { // 已取消
+            $map['status_code'] = 9;
         }
 
         $event_type = I('event_type/d', - 1);
@@ -274,6 +268,21 @@ class Order extends Base
         $order_id = I('order_id', 0);
         $map['id']=$order_id;
         $data=M('shop_order')->where($map)->field('id,room,jsbn,total_price')->find();
+        echo json_encode($data);
+    }
+    public function cancelOrder(){
+        $order_id = I('id', 0);
+        $map['id']=$order_id;
+        $updata['status_code']=9;
+        $updata['opt']=$this->mid;
+       if(M('shop_order')->where($map)->update($updata)){
+           $data['code']=1;
+           $data['msg']='操作成功';
+
+       }else{
+           $data['code']=2;
+           $data['msg']='操作失败';
+       }
         echo json_encode($data);
     }
     //确认支付

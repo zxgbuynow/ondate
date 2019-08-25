@@ -24,11 +24,11 @@
         <ul class="tab-nav nav">
             <li id="1"><a  href="{:U('lists',array('status'=>1))}">待支付<span class="arrow fa fa-sort-up"></span></a></li>
             <li id="2"><a  href="{:U('lists',array('status'=>2))}">已支付<span class="arrow fa fa-sort-up"></span></a></li>
-            <li id="3"><a  href="{:U('lists',array('status'=>3))}">待确认<span class="arrow fa fa-sort-up"></span></a></li>
-            <li id="4"><a  href="{:U('lists',array('status'=>4))}">已完成<span class="arrow fa fa-sort-up"></span></a></li>
-            <li id="5"><a  href="{:U('lists',array('status'=>5))}">退款<span class="arrow fa fa-sort-up"></span></a></li>
-            <li id="0"><a  href="{:U('lists',array('status'=>0))}">全部<span class="arrow fa fa-sort-up"></span></a></li>
-            <li><a href="{:U('shop/comment/lists')}">商品评价<span class="arrow fa fa-sort-up"></span></a></li>
+            <li id="3"><a  href="{:U('lists',array('status'=>3))}">待结单<span class="arrow fa fa-sort-up"></span></a></li>
+            <li id="4"><a  href="{:U('lists',array('status'=>4))}">已结单<span class="arrow fa fa-sort-up"></span></a></li>
+            <li id="5"><a  href="{:U('lists',array('status'=>9))}">已取消<span class="arrow fa fa-sort-up"></span></a></li>
+            <li id="0"><a  href="{:U('lists')}">全部<span class="arrow fa fa-sort-up"></span></a></li>
+          <!--  <li><a href="{:U('shop/comment/lists')}">商品评价<span class="arrow fa fa-sort-up"></span></a></li>-->
         </ul>
         <div class="table-bar" style="padding: 0 .5em;">
             <div class="fl">
@@ -88,7 +88,7 @@
                                 <td><span style="color: red;">{$data.status_code_name}</span></td>
                                 <td>
                                     <button type="button" class="btn btn-info"  data-toggle="modal" onclick="return get_edit_info({$data.id})" data-target="#addUserModal">支付订单</button>
-                                    <button type="button" class="btn btn-info"  data-toggle="modal" onclick="return cancel({$data.id})" data-target="#addUserModal">取消订单</button>
+                                    <button type="button" class="btn btn-info"   onclick="return cancelview({$data.id})" data-target="#addUserModal">取消订单</button>
 
                                 </td>
 
@@ -179,8 +179,22 @@
 
             $.Dialog.open('审核退款',{width:400,height:200},html);
         });
-    })
 
+    })
+function cancelview(id) {
+    if(confirm("确定要取消吗?")){
+        var url = "{:U('cancelOrder')}"
+        $.post(url,{'id':id},function(res){
+            if(res.code==1){
+                updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
+                window.location.href=window.location.href;
+            }else{
+                updateAlert(res.msg);
+            }
+        })
+    }
+
+}
     function audit_refund(status){
         var url = "{:U('audit_refund')}"
         $.post(url,{refund_id:refund_id,status:status},function(res){
