@@ -5,8 +5,8 @@
         margin: 0 .5em;
     }
     .li_main img{
-        width:70px;
-        height:70px;
+        width:50px;
+        height:50px;
         margin-right: 10px;
     }
     .li_bottom>div{
@@ -27,7 +27,7 @@
          <!--   <li id="3"><a  href="{:U('lists',array('status'=>3))}">待结单<span class="arrow fa fa-sort-up"></span></a></li>-->
             <li id="4"><a  href="{:U('lists',array('status'=>4))}">已结单<span class="arrow fa fa-sort-up"></span></a></li>
             <li id="5"><a  href="{:U('lists',array('status'=>5))}">已取消<span class="arrow fa fa-sort-up"></span></a></li>
-            <li id="0"><a  href="{:U('lists')}">全部<span class="arrow fa fa-sort-up"></span></a></li>
+            <li id="0"><a  href="{:U('lists',array('status'=>9))}">全部<span class="arrow fa fa-sort-up"></span></a></li>
           <!--  <li><a href="{:U('shop/comment/lists')}">商品评价<span class="arrow fa fa-sort-up"></span></a></li>-->
         </ul>
         <div class="table-bar" style="padding: 0 .5em;">
@@ -49,10 +49,10 @@
             <ul class="article_card_list">
                 {volist name="list_data" id="data"}
                 <li style="margin-bottom: 0px" >
-                    <div class="li_top" colspan="6">{if condition="$check_all"}<input class="ids regular-checkbox" type="checkbox" {if condition="$mutif"} checked {/if} value="{$data['id']}" name="ids[]" id="check_{$data['id']}"><label for="check_{$data['id']}"></label>&nbsp;&nbsp;{/if}编号:{$data.id|raw} -订单号 : {$data.order_number|raw} &nbsp;&nbsp;&nbsp;&nbsp;下单时间：{$data.cTime|time_format}&nbsp;&nbsp;&nbsp;&nbsp;{notempty name="data.pay_time"}付款时间：{$data.pay_time|time_format}
+                    <div  style="height: 35px;" class="li_top" colspan="6">{if condition="$check_all"}<input class="ids regular-checkbox" type="checkbox" {if condition="$mutif"} checked {/if} value="{$data['id']}" name="ids[]" id="check_{$data['id']}"><label for="check_{$data['id']}"></label>&nbsp;&nbsp;{/if}编号:{$data.id|raw} -订单号 : {$data.order_number|raw} &nbsp;&nbsp;&nbsp;&nbsp;下单时间：{$data.cTime|time_format}&nbsp;&nbsp;&nbsp;&nbsp;{notempty name="data.pay_time"}付款时间：{$data.pay_time|time_format}
                         &nbsp;&nbsp;{/notempty}<span class="colorless">|</span>&nbsp;&nbsp;&nbsp;<span class="li_top_u"><img width="30" src="{$data.headimgurl}"/>{$data.uid|raw}</span>
                     </div>
-                    <div class="li_main" style="display: flex;">
+                    <div class="li_main" style="display: flex; padding: 5px;">
                         <table width="100%">
                             <tr>
                                 <td style="width:20%;">名称</td>

@@ -74,6 +74,11 @@ class Order extends Base
             $map['status_code'] = 4;
         } else if ($status == 5) { // 已取消
             $map['status_code'] = 5;
+        }else if ($status == 9) { // 全部
+            $map['status_code'] = [
+                '<',
+                '10'
+            ];
         }
 
         $event_type = I('event_type/d', - 1);
