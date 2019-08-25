@@ -1845,8 +1845,7 @@ class ApiData extends ApiBase
         try {
             $data['uid']=$this->mid;
             // 获取数据
-            //$data = D('shop_goods')->getInfo($goods_id, true);
-            $data =M('shop_goods')->where(['id'=>$goods_id])->find();
+            $data = D('shop_goods')->getInfo($goods_id, true);
             $data || $this->error('数据不存在！');
             $goods_datas['id']=$data['id'];
             $goods_datas['cover']=$data['cover'];
