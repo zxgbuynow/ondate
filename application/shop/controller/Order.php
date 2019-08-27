@@ -292,12 +292,12 @@ class Order extends Base
                $maps['id'] = $order_id;
                $order_data = M('shop_order')->where($maps)->find();
                $map1['call_id'] = $order_data['call_id'];
-               $map1['status_code'] =['<>',5];//被取消的订单不计算在内
-               $num1 = M('shop_order')->where($map1)->count();
+              //被取消的订单不计算在内
+               $num1 = M('shop_order')->where($map1)->where('status_code','<>',5)->count();
                $map2['call_id'] = $order_data['call_id'];
                $map2['pay_status'] = 1;
-               $map2['status_code'] =['<>',5];//被取消的订单不计算在内
-               $num2 = M('shop_order')->where($map2)->count();
+               //被取消的订单不计算在内
+               $num2 = M('shop_order')->where($map2)->where('status_code','<>',5)->count();
                if ($num1 == $num2) {
                    //$calldata['status'] = 3;
                    $calldata['type'] = 2;
