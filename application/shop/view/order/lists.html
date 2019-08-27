@@ -193,8 +193,10 @@ function cancelview(id) {
         var url = "{:U('cancelOrder')}"
         $.post(url,{'id':id},function(res){
             if(res.code==1){
-                updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
-                window.location.href=window.location.href;
+               // updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
+               // window.location.href=window.location.href;
+                var hurl = "{:U('work_clock')}";
+                window.location.href = hurl+'/status/1';
             }else{
                 updateAlert(res.msg);
             }
