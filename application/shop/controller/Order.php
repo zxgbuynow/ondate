@@ -280,18 +280,49 @@ class Order extends Base
     //TODO
     public function cancelOrder(){
         $order_id = I('id', 0);
-        $map['id']=$order_id;
-        $updata['status_code']=9;
-        $updata['opt']=$this->mid;
-       if(M('shop_order')->where($map)->update($updata)){
-           $data['code']=1;
-           $data['msg']='操作成功';
 
-       }else{
-           $data['code']=2;
-           $data['msg']='操作失败';
+       try {
+           $map['id'] = $order_id;
+           $updata['status_code'] = 5;
+           $updata['opt'] = $this->mid;
+           if (M('shop_order')->where($map)->update($updata)) {
+               $data['code'] = 1;
+               $data['msg'] = '操作成功';
+///
+               $maps['id'] = $order_id;
+               $order_data = M('shop_order')->where($maps)->find();
+               $map1['call_id'] = $order_data['call_id'];
+               $map1['status_code'] =['<>',5];//被取消的订单不计算在内
+               $num1 = M('shop_order')->where($map1)->count();
+               $map2['call_id'] = $order_data['call_id'];
+               $map2['pay_status'] = 1;
+               $map2['status_code'] =['<>',5];//被取消的订单不计算在内
+               $num2 = M('shop_order')->where($map2)->count();
+               if ($num1 == $num2) {
+                   //$calldata['status'] = 3;
+                   $calldata['type'] = 2;
+                   $map3['id'] = $order_data['call_id'];
+                   M('calls')->where($map3)->update($calldata);
+
+                   $map4['room'] = $order_data['room'];
+                   $map4['type'] = [0, 1];//1已下钟未结账2已下钟已结账0未下钟
+                   $cc = M('calls')->where($map4)->count();
+                   if ($cc < 1) {
+                       M('room')->where(['room_name' => $order_data['room']])->update(['status' => 0]);//更新房间状态
+                   }
+               }
+///
+
+           } else {
+               $data['code'] = 2;
+               $data['msg'] = '操作失败';
+           }
+           echo json_encode($data);
+       }catch (Exception $e) {
+           $data['code'] = 2;
+           $data['msg'] = '操作失败,请稍后重试！';
+           echo json_encode($data);
        }
-        echo json_encode($data);
     }
     //确认支付
     public function pay_action(){
@@ -360,9 +391,9 @@ class Order extends Base
             }
             foreach ($ids as $k => $v) {
                 $maps['id'] = $v;
-                $maps['status_code'] =['<>',5];//被取消的订单不计算在内
                 $order_data = M('shop_order')->where($maps)->find();
                 $map1['call_id'] = $order_data['call_id'];
+                $map1['status_code'] =['<>',5];//被取消的订单不计算在内
                 $num1 = M('shop_order')->where($map1)->count();
                 $map2['call_id'] = $order_data['call_id'];
                 $map2['pay_status'] = 1;
@@ -383,13 +414,14 @@ class Order extends Base
                 }
 
             }
+            echo json_encode($info);
         }catch (Exception $e) {
             $info['type'] =2;
             $info['msg'] = '操作失败,请稍后重试！';
             echo json_encode($info);
         }
 
-        echo json_encode($info);
+
     }
 
     // 通用插件的删除模型
