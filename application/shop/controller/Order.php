@@ -300,7 +300,7 @@ class Order extends Base
                $num2 = M('shop_order')->where($map2)->where('status_code','<>',5)->count();
                if ($num1 == $num2) {
                    //$calldata['status'] = 3;
-                   $calldata['type'] = 2;
+                   $calldata['type'] = 3;
                    $map3['id'] = $order_data['call_id'];
                    M('calls')->where($map3)->update($calldata);
 
