@@ -61,11 +61,21 @@ class Order extends Base
         $et=I('end_time');
         $this->assign('start_time', $st);
         $this->assign('end_time', $et);
-        if($st && empty($et)){
-            $map['cTime']=['>',strtotime($st)];
-        }
-        if($st && $et){
-            $map['cTime']=['between','strtotime($st),strtotime($st)+24*3600'];
+        $startTime = strtotime($st);
+        $map['cTime']  = array(
+            'egt',
+            $startTime
+        );
+        $endTime=$et;
+        if (!empty($endTime)) {
+            $endTime = strtotime($endTime) + 86400 - 1;
+            $map['cTime'] = array(
+                'between',
+                array(
+                    $startTime,
+                    $endTime
+                )
+            );
         }
 
         $status = I('status/d', 1);
