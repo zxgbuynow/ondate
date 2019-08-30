@@ -46,6 +46,23 @@
 </form>
 <script type="text/javascript">
     $(function(){
+        $('.time1').datetimepicker({
+            format: 'yyyy-mm-dd',
+            language:"zh-CN",
+            minView: "month",
+            endDate: new Date,
+            autoclose: !0,
+            todayHighlight: !0,
+        });
+        $('.time2').datetimepicker({
+            format: 'yyyy-mm-dd',
+            language:"zh-CN",
+            minView: "month",
+            startDate: week,
+            endDate: new Date,
+            autoclose: !0,
+            todayHighlight: !0,
+        });
         $("input[type='datetime']").on("click", function() {
 
             $(".time1").datetimepicker().off("changeDate").on("changeDate", function() {
