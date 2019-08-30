@@ -61,7 +61,7 @@ class Order extends Base
         $et=I('end_time');
         $this->assign('start_time', $st);
         $this->assign('end_time', $et);
-        if($st){
+        if($st && empty($et)){
             $map['cTime']=['>',strtotime($st)];
         }
         if($st && $et){
