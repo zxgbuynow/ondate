@@ -268,4 +268,71 @@
 
         return false;
     }
+
+    // 批量结单信息
+    function finish_info()
+    {
+        var ids=[];
+        $("input[name='ids[]']:checked").each(function() {
+            ids.push($(this).val());
+        });
+        order_ids=ids.join(',');
+        if(!ids)
+        {
+            alert('请选择订单！');
+            return false;
+        }
+        // var form_data = new Array();
+        $.ajax(
+            {
+                url: "{:U('finish_info')}",
+                data:{"order_ids":order_ids},
+                type: "post",
+                beforeSend:function()
+                {
+                    // $("#tip").html("<span style='color:blue'>正在处理...</span>");
+                    return true;
+                },
+                success:function(data)
+                {
+                    if(data)
+                    {
+                        $('#msg2').hide();
+                        var data = data;
+                        var data_obj = eval("("+data+")");
+                        if(data_obj.total_price==0){
+                            $("#msg2").html("<strong>请选择要结账的订单</strong>");
+                            $('#msg2').show();
+                        }
+                        // 赋值
+                        $("#jsbn").val(data_obj.jsbn);
+                        $("#ids").val(data_obj.ids);
+                        $("#room").val(data_obj.room);
+                        $("#total_price").val(data_obj.total_price);
+                        // $("#address").val(data_obj.address);
+
+                        // 将input元素设置为readonlyid
+                        $('#jsbn').attr("readonly","readonly");
+                        $('#room').attr("readonly","readonly");
+                        $('#total_price').attr("readonly","total_price");
+                        // location.reload();
+                    }
+                    else
+                    {
+                        $("#tip").html("<span style='color:red'>失败，请重试</span>");
+                        //  alert('操作失败');
+                    }
+                },
+                error:function()
+                {
+                    alert('请求出错');
+                },
+                complete:function()
+                {
+                    // $('#tips').hide();
+                }
+            });
+
+        return false;
+    }
 </script>

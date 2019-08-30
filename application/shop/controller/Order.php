@@ -31,8 +31,11 @@ class Order extends Base
         }
         $room = I('room/d');
         $jsbn = I('jsbn/d');
+
+        $st=I('start_time');
+        $et=I('end_time');
         $mutif=false;
-        if($room || $jsbn){
+        if($room || $jsbn || $st || $et){
             $mutif=true;
         }
         $this->assign('room', $room);
@@ -57,8 +60,7 @@ class Order extends Base
                 );
             }
         }
-        $st=I('start_time');
-        $et=I('end_time');
+
         $this->assign('start_time', $st);
         $this->assign('end_time', $et);
         $startTime = strtotime($st);
@@ -289,11 +291,35 @@ class Order extends Base
         $data['room']=implode(',',$room);
         echo json_encode($data);
     }
+
     //订单支付信息（单笔）
     public function pay_info(){
         $order_id = I('order_id', 0);
         $map['id']=$order_id;
         $data=M('shop_order')->where($map)->field('id,room,jsbn,total_price')->find();
+        echo json_encode($data);
+    }
+    //结单信息（批量）
+    public function finish_info(){
+        $order_ids = I('order_ids', 0);
+        $map['id']=explode(',',$order_ids);
+        $info=M('shop_order')->where($map)->field('id,room,jsbn,total_price')->select();
+        $ids=[];
+        $jsbns=[];
+        $room=[];
+        $total=0;
+        foreach ($info as $k=>$v){
+            $ids[]=$v['id'];
+            $jsbns[]=$v['jsbn'];
+            $room[]=$v['room'];
+            $total+=$v['total_price'];
+        }
+        $jsbns=array_unique($jsbns);
+        $room=array_unique($room);
+        $data['ids']=implode(',',$ids);
+        $data['jsbn']=implode(',',$jsbns);
+        $data['total_price']=$total;
+        $data['room']=implode(',',$room);
         echo json_encode($data);
     }
     //取消订单
