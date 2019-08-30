@@ -65,7 +65,7 @@ class Order extends Base
             $map['cTime']=['>',strtotime($st)];
         }
         if($st && $et){
-            $map['cTime']=['between',[strtotime($st),strtotime($st)+24*3600]];
+            $map['cTime']=['between','strtotime($st),strtotime($st)+24*3600'];
         }
 
         $status = I('status/d', 1);
