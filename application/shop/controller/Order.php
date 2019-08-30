@@ -423,6 +423,29 @@ class Order extends Base
 
 
     }
+    //结订单
+    public function finishOrder(){
+        $order_id = I('id', 0);
+
+        try {
+            $map['id'] = $order_id;
+            $updata['status_code'] = 4;
+            $updata['opt'] = $this->mid;
+            if (M('shop_order')->where($map)->update($updata)) {
+                $data['code'] = 1;
+                $data['msg'] = '操作成功';
+
+            } else {
+                $data['code'] = 2;
+                $data['msg'] = '操作失败';
+            }
+            echo json_encode($data);
+        }catch (Exception $e) {
+            $data['code'] = 2;
+            $data['msg'] = '操作失败,请稍后重试！';
+            echo json_encode($data);
+        }
+    }
 
     // 通用插件的删除模型
     public function del()
