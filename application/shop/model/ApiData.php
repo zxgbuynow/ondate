@@ -1419,6 +1419,16 @@ class ApiData extends ApiBase
 
         }
         try {
+            if (!M('user_queue')->where(['jsbn'=>$jsbn])->find()) {
+                $msg='技师编号错误';
+                return ['code'=>0,'msg'=>$msg];
+                exit;
+            }
+            if (M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0])->find()) {
+                $msg='当前技师空闲,请直接安排点钟';
+                return ['code'=>0,'msg'=>$msg];
+                exit;
+            }
             $save['created_time']=time();
             $save['room_id']=$rooms['id'];
             $save['room']=$roomname;
