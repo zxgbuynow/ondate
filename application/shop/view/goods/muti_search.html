@@ -28,7 +28,7 @@
         </div>
            <div class="condition">
               <span>时间：</span>
-               <input type="datetime" autocomplete="off"  class="time1" name="start_time"><span class="ml-2 mr-2">至</span><input type="datetime" autocomplete="off"  class="time2" name="end_time">
+               <input type="datetime" autocomplete="off"  class="time1" name="start_time" value="{$start_time|default=''}"><span class="ml-2 mr-2">至</span><input type="datetime" autocomplete="off"  class="time2" name="end_time" value="{$end_time|default=''}">
             </div>
         <div class="condition">
             <button type="button" class="sch-btn btn" href="javascript:;" id="muti_search" style="padding: 10px;">搜索</button>

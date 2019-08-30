@@ -57,9 +57,14 @@ class Order extends Base
                 );
             }
         }
-        $times['st']=I('start_time');
-        $times['et']=I('end_time');
-        dump($times);
+        $st=I('start_time');
+        $et=I('end_time');
+        $this->assign('start_time', $st);
+        $this->assign('end_time', $et);
+        if($st){
+            $map['cTime']=['>',strtotime($st)];
+        }
+
         $status = I('status/d', 1);
         $this->assign('status', $status);
         if ($status == 1) { // 待支付
