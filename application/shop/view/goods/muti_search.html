@@ -26,13 +26,21 @@
             <span>房间号：</span>
             <input type="text" name="room" class="search-input" value="{$room|default=''}">
         </div>
-        <!--    <div class="condition">
-              <span>商品名称：</span>
-              <input type="text" name="title" class="search-input" value="{$title|default=''}">
-            </div>-->
+           <div class="condition">
+              <span>时间：</span>
+               <input type="datetime" autocomplete="off"  class="time1" name="start_time"><span class="ml-2 mr-2">至</span><input type="datetime" autocomplete="off"  class="time2" name="end_time">
+            </div>
         <div class="condition">
             <button type="button" class="sch-btn btn" href="javascript:;" id="muti_search" style="padding: 10px;">搜索</button>
+            {switch $status}
+            {case 1}
             <button type="button" class="sch-btn btn" data-toggle="modal"  onclick="return get_info()"  data-target="#addUserModal" id="pay_all" style="padding: 10px;">批量支付</button>
+            {/case}
+            {case 2}
+            <button type="button" class="sch-btn btn" data-toggle="modal"  onclick="return finish_info()"  data-target="#addUserModal" id="finish_all" style="padding: 10px;">批量结单</button>
+            {/case}
+            {default /}
+            {/switch}
         </div>
     </div>
 </form>
