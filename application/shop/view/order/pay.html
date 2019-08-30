@@ -87,6 +87,71 @@
         </div><!-- /.modal -->
     </div>
 </form>
+
+<!-- 模态框示例（Modal） -->
+<form method="post" action="{:U('finish_action')}" class="form-horizontal" role="form" id="form_data2" onsubmit="return check_form()" style="margin: 20px;">
+    <div class="modal fade" id="addUserModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel2">
+                        订单结账
+                    </h4>
+                </div>
+                <div class="alert alert-success" id="msg_finish" style="display: none;">
+                    <strong>操作成功!</strong>
+                </div>
+                <div class="alert alert-danger" id="msg2_finish" style="display: none;">
+                    <strong>错误!</strong>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="user_id" class="col-sm-3 control-label">房间编号</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="room_finish" name="room" value="{room}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user_id" class="col-sm-3 control-label">技师编号</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="jsbn_finish" name="jsbn" value="{jsbn}">
+                                <input type="hidden" id="id" name="id" value="{id}">
+                                <input type="hidden" id="ids" name="ids" value="{ids}">
+                                <input type="hidden" id="romm" name="room" value="{room}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-3 control-label">总金额</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="total_price" value="" id="total_price_finish"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="remark" class="col-sm-3 control-label">备注</label>
+                            <div class="col-sm-9">
+                                <input type="text"  class="form-control" name="remark" value="" id="remark_finish">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" id="sub_finish" class="btn btn-primary"  onclick="return finish_cation()">
+                        确认
+                    </button><span id="tip_finish"> </span>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</form>
 <script>
     $("#pay_type").change(function(){
         var t=$("#pay_type option:selected").val();
@@ -96,7 +161,7 @@
             $("#card").hide();
         }
     });
-    //确认支付（单笔）
+    //确认支付
     $("#sub").click(function(){
         var ids=$('#ids').val();
         var total_price =$('#total_price').val();
@@ -108,6 +173,51 @@
             {
                 url: "{:U('pay_action')}",
                 data:{"ids":ids,"total_price":total_price,"jsbn":jsbn,"pay_type":pay_type,"card_no":card_no,"remark":remark},
+                type: "post",
+                beforeSend:function()
+                {
+                    // $("#tip").html("<span style='color:blue'>正在处理...</span>");
+                    return true;
+                },
+                success:function(data)
+                {
+                    var data = data;
+
+                    var data_obj = eval("("+data+")");
+                    if(data_obj.type==1)
+                    {
+                        $('#msg2').hide();
+                        $('#msg').show();
+                        location.reload();
+                    }
+
+                    if(data_obj.type==2) {
+                        $("#msg2").html("<strong>"+data_obj.msg+"</strong>");
+                        $('#msg2').show();
+                        //  $("#tip").html("<span style='color:red'>请选择支付方式！</span>");
+                        //  alert('操作失败');
+                    }
+                },
+                error:function()
+                {
+                    alert('请求出错');
+                },
+                complete:function()
+                {
+                    // $('#tips').hide();
+                }
+            });
+    });
+    //确认结账
+    $("#sub_finish").click(function(){
+        var ids=$('#ids').val();
+        var total_price =$('#total_price').val();
+        var jsbn=$('#jsbn').val();
+        var remark=$('#remark').val();
+        $.ajax(
+            {
+                url: "{:U('finish_action')}",
+                data:{"ids":ids,"total_price":total_price,"jsbn":jsbn,"remark":remark},
                 type: "post",
                 beforeSend:function()
                 {
