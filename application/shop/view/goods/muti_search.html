@@ -46,6 +46,22 @@
 </form>
 <script type="text/javascript">
     $(function(){
+        $("input[type='datetime']").on("click", function() {
+
+            $(".time1").datetimepicker().off("changeDate").on("changeDate", function() {
+                //$(".time1").datetimepicker("setEndDate", new Date($(".time2").val()))
+                var month_2 = new Date($(".time1").val()).getTime()+2592e6*2 //60天秒数
+                var nowD = new Date((new Date).getTime())                    //当前时间秒数
+                if(month_2>nowD){
+                    month_2=new Date
+                }else{
+                    month_2 = new Date(new Date($(".time1").val()).getTime()+2592e6*2)
+                }
+                $(".time2").datetimepicker("setStartDate", new Date($(".time1").val()))
+                $(".time2").datetimepicker("setEndDate",month_2)
+                $(".time2").datetimepicker("setDate",month_2);
+            })
+        })
         //搜索功能
         $("#muti_search").click(function(){
             var data = $('#muth_search_form').serializeArray();
