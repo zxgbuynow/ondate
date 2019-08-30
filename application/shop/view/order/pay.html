@@ -119,9 +119,9 @@
                             <label for="user_id" class="col-sm-3 control-label">技师编号</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="jsbn_finish" name="jsbn" value="{jsbn}">
-                                <input type="hidden" id="id" name="id" value="{id}">
-                                <input type="hidden" id="ids" name="ids" value="{ids}">
-                                <input type="hidden" id="romm" name="room" value="{room}">
+                                <input type="hidden" id="id_finish" name="id" value="{id}">
+                                <input type="hidden" id="ids_finish" name="ids" value="{ids}">
+                                <input type="hidden" id="romm_finish" name="room" value="{room}">
                             </div>
                         </div>
 
@@ -407,7 +407,7 @@
                 {
                     if(data)
                     {
-                        $('#msg2').hide();
+                        $('#msg2_finish').hide();
                         var data = data;
                         var data_obj = eval("("+data+")");
                         if(data_obj.total_price==0){
@@ -415,21 +415,21 @@
                             $('#msg2').show();
                         }
                         // 赋值
-                        $("#jsbn").val(data_obj.jsbn);
-                        $("#ids").val(data_obj.ids);
-                        $("#room").val(data_obj.room);
-                        $("#total_price").val(data_obj.total_price);
+                        $("#jsbn_finish").val(data_obj.jsbn);
+                        $("#ids_finish").val(data_obj.ids);
+                        $("#room_finish").val(data_obj.room);
+                        $("#total_price_finish").val(data_obj.total_price);
                         // $("#address").val(data_obj.address);
 
                         // 将input元素设置为readonlyid
-                        $('#jsbn').attr("readonly","readonly");
-                        $('#room').attr("readonly","readonly");
-                        $('#total_price').attr("readonly","total_price");
+                        $('#jsbn_finish').attr("readonly","readonly");
+                        $('#room_finish').attr("readonly","readonly");
+                        $('#total_price_finish').attr("readonly","total_price");
                         // location.reload();
                     }
                     else
                     {
-                        $("#tip").html("<span style='color:red'>失败，请重试</span>");
+                        $("#tip_finish").html("<span style='color:red'>失败，请重试</span>");
                         //  alert('操作失败');
                     }
                 },
