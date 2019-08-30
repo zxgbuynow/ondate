@@ -211,13 +211,14 @@ function cancelview(id) {
         if(confirm("确定要结单吗?")){
             var url = "{:U('finishOrder')}"
             $.post(url,{'id':id},function(res){
-                if(res.code==1){
+                var data_obj = eval("("+res+")");
+                if(data_obj.code==1){
                     // updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
                     // window.location.href=window.location.href;
                     var hurl = "{:U('lists')}";
                     window.location.href = hurl+'/status/2';
                 }else{
-                    alert(res.msg);
+                    alert(data_obj.msg);
                 }
             })
         }
