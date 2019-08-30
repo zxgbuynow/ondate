@@ -1330,6 +1330,7 @@ class ApiData extends ApiBase
         $data['myCollect'] = D('Collect')->getMyCollect($follow_id, true);
         return $data;
     }
+    //叫钟页面
     function make_call()
     {
         $pz=[378,379];//经理或者排钟人员有权限
@@ -1347,7 +1348,96 @@ class ApiData extends ApiBase
         $data['openid']=$openid;
         return $data;
     }
+    //添加等待页面
+    function make_waite()
+    {
+        $pz=[378,379];//经理或者排钟人员有权限
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $data['mid']=$this->mid;
+        $group_id=M('auth_group_access')->where(['uid'=>$data['mid']])->value('group_id');
+        if(!in_array($group_id,$pz)){
+            return $this->error('抱歉，您没有排钟权限!');
+        }
+        $data['openid']=$openid;
+        return $data;
+    }
+    //微信端添加等待
+    function addWaite()
+    {
+        $roomname  = trim(input('roomname'));
+        $jsbn=trim(input('jsbn'));
+        $mid=input('mid');
+        $waite_num = trim(input('waite_num'));
+        if(!is_numeric($waite_num) && !empty($waite_num)){
+            $msg='请输入正确的等待人数！';
+            return ['code'=>0,'msg'=>$msg];
+            exit;
+        }
+        if (empty($roomname)) {
+            $msg='请输入房间号';
+            return ['code'=>0,'msg'=>$msg];
+            exit;
+        }
+        //房间类型
+        $rcate = M('room')->where(['room_name'=>$roomname])->value('cate_id');
+        if (empty($rcate)) {
+            $msg='请输入正确的房间号';
+            return ['code'=>0,'msg'=>$msg];
+            exit;
+        }
+        $roomtype = 0;
+        if ($rcate==4) {//spa
+            $roomtype = 1;
+        }
+        $rooms  = M('room')->where(['room_name'=>$roomname])->find();
+        $system=empty($jsbn)?'systemChange':'';
+        //参数处理
+        if($system=='systemChange'){
+            try{
+                $save['created_time']=time();
+                $save['room_id']=$rooms['id'];
+                $save['room']=$roomname;
+                $save['opt']=$mid;
+                $save['waite_num']=$waite_num;
+                $save['service_type']=$roomtype;
+                $save['way']=0;
+                $save['level']=1;
+                M('waite')->insert($save);
+            }catch (Exception $e) {
+                $msg='操作失败，请稍后重试';
+                return ['code'=>0,'msg'=>$msg];
+                exit;
+            }
+            $msg='操作成功';
+            return ['code'=>1,'msg'=>$msg];
+            exit;
 
+        }
+        try {
+            $save['created_time']=time();
+            $save['room_id']=$rooms['id'];
+            $save['room']=$roomname;
+            $save['opt']=$mid;
+            $save['waite_num']=1;
+            $save['service_type']=$roomtype;
+            $save['jsbn']=$jsbn;
+            $save['way']=1;
+            $save['level']=1;
+            M('waite')->insert($save);
+        } catch (Exception $e) {
+            $msg='操作失败，请稍后重试';
+            return ['code'=>0,'msg'=>$msg];
+            exit;
+        }
+        $msg='操作成功';
+        return ['code'=>1,'msg'=>$msg];
+        exit;
+    }
     function my_track()
     {
         $data['track'] = D('Track')->getMyTrack($this->mid);

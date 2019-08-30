@@ -1,0 +1,155 @@
+{extend name="shop@wap/supu_file" /}
+
+{block name="common_body"}
+<script>
+    $(function () {
+        $("input,select").on("blur",function(){
+            setTimeout(function(){
+                window.scrollTo(0,0);
+            },100)
+        }).on('focus',function(){
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            var offsetTop = $(this).offset().top - (clientHeight / 4);
+            setTimeout(function(){
+                window.scrollTo(0,offsetTop);
+            },100)
+        })
+        $(".submit").click(function () {
+            var roomname=$('input[name="roomname"]').val();
+            var waite_num=$('input[name="waite_num"]').val();
+            var set= $("#type").val();
+            var jsbn=$('input[name="jsbn"]').val();
+            if(roomname==''){
+                alert('请输入房间号');
+                return;
+            }
+            if(waite_num=='' && set==1){
+                alert('请输入排钟人数');
+                return;
+            }
+            if(set==2 && jsbn==''){
+                alert('请输入技师编号');
+                return;
+            }
+            fade_out_pull();
+        });
+
+        $(".frame_no").click(function(){
+            fade_out_hide();
+        });
+        $(".frame_yes").click(function(){
+            fade_out_hide();
+            var url = "{:U('addWaite')}";
+            var roomname=$('input[name="roomname"]').val();
+            var jsbn=$('input[name="jsbn"]').val();
+            var waite_num=$('input[name="waite_num"]').val();
+            var mid=$('input[name="mid"]').val();
+            $.post(url, {'roomname': roomname, 'jsbn':jsbn,'waite_num':waite_num,'mid':mid}, function(res) {
+
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
+                    var url = "{:U('make_waite')}";
+                    window.location.href = url;
+
+                }
+            });
+        });
+        $("#type").change(function(){
+            var set= $("#type").val();
+            if(set==1){
+                $("#pz").show();
+                $("#dz").hide();
+            }
+            if(set==2){
+                $("#pz").hide();
+                $("#dz").show();
+            }
+        });
+    });
+
+</script>
+<style>
+    .mbutton {
+        background: #4a2a2a;
+        -webkit-border-radius: 6;
+        -moz-border-radius: 6;
+        border-radius: 6px;
+        text-shadow: 0px -1px 0px #5b6178;
+        -webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+        -moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+        box-shadow: 0px 1px 0px 0px #f0f7fa;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 26px;
+        padding: 12px 30px 12px 30px;
+        border: solid #4a2a2a 1px;
+        text-decoration: none;
+    }
+</style>
+<body>
+<div id="head">
+    <div class="goback"></div>
+    <div class="head_body">
+        <div class="picture"><img src="{$myinfo.headimgurl}"></div>
+        <!--     <div class="head_text">{$myinfo.nickname} </div>-->
+        <div class="head_text"><a class="mbutton" href="{:U('waite_list')}">我的等待</a> </div>
+    </div>
+</div>
+<div id="body">
+    <form action="post" id="makeart">
+        <div class="list1" style="margin-top: 100px;">
+            <div class="label">房间号</div>
+            <div class="list_text">
+                <input style="background: none" type="text" name="roomname" size="12" maxlength="20">
+                <input type="hidden" name="openid" value="{$openid}">
+                <input type="hidden" name="mid" value="{$mid}">
+            </div>
+        </div>
+        <div class="list1">
+            <div class="label">方式</div>
+            <div class="list_text">
+                <select name="type" id="type" style="width: 80%;height: 50px;line-height: 50px;font-size: 26px;padding-left: 10px;margin-top: 15px;">
+                    <option value="1">排钟</option>
+                    <option value="2">点钟</option>
+                </select>
+            </div>
+        </div>
+        <div id="pz">
+            <div class="list1">
+                <div class="label">等待人数</div>
+                <div class="list_text">
+                    <input style="background: none" type="text" name="waite_num" size="12" maxlength="20">
+                </div>
+            </div>
+        </div>
+        <div class="list1" style="display: none" id="dz">
+            <div class="label">技师号</div>
+            <div class="list_text">
+                <input style="background: none" type="text" name="jsbn" size="12" maxlength="20">
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--遮罩层-->
+<div class="outside_pull fade_out"></div>
+<div class="frame fade_out">
+    <div class="frame_title">确认提交？</div>
+    <div class="frame_list">
+        <div class="frame_cho frame_yes" style="border-right: 2px solid #ddd">确 认</div>
+        <!--<div class="frame_border">|</div>-->
+        <div class="frame_cho frame_no">取 消</div>
+    </div>
+</div>
+
+<div class="submit">
+    <img src="__STATIC__/supu/img/tijiao.png" />
+</div>
+</body>
+
+
+
+{/block}
