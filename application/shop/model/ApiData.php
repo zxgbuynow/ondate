@@ -1746,6 +1746,7 @@ class ApiData extends ApiBase
                 //删除等待信息
                 M('waite')->where(['room_id'=>$roomname])->delete();
                 $this->push_wm_msg('1',$msg);
+                $this->push_wm_msg('2','菊花茶一杯，白开水一杯');
 
             } catch (Exception $e) {
                 $msg='操作失败，请稍后重试';

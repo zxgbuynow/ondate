@@ -37,7 +37,12 @@ class User extends Home
     public function cs(){
         return $this->fetch();
     }
+    //安排技师语音播报
     function mymsg(){
+        return $this->fetch();
+    }
+    //茶水间语音播报
+    function msg_tea(){
         return $this->fetch();
     }
     //模板消息发给指定用户
