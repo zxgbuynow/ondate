@@ -36,8 +36,7 @@
         console.log(online_stat);
     });
     function showit(msg) {
-        $('#msg').val(msg);
-        $('#msg').show();
+        $("p").html("<b>"+msg+"</b>");
     }
 
 
@@ -75,5 +74,7 @@
     }
 </script>
 </body>
-<div><span id="msg"></span></div>
+<div>
+    <p>暂无消息</p>
+</div>
 </html>
