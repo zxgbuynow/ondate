@@ -1031,7 +1031,7 @@ class Base extends Controller
     public function push_wm_msg($to_uid,$content)
     {
         // 指明给谁推送，为空表示向所有在线用户推送
-        $to_uid = "";
+        //$to_uid = "";
         // 推送的url地址，使用自己的服务器地址
         $push_api_url = "http://127.0.0.1:2121";
         $post_data = array(
