@@ -1746,7 +1746,6 @@ class ApiData extends ApiBase
                 //删除等待信息
                 M('waite')->where(['room_id'=>$roomname])->delete();
                 $this->push_wm_msg('1',$msg);
-                $this->push_wm_msg('2','菊花茶一杯，白开水一杯');
 
             } catch (Exception $e) {
                 $msg='操作失败，请稍后重试';
@@ -2109,6 +2108,7 @@ class ApiData extends ApiBase
             $calls = M('calls')->where($callp)->find();
             $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
             $this->push_wm_msg('1',$msg);
+            $this->push_wm_msg('2','菊花茶一杯，白开水一杯');
             M('calls')->where(['id'=>$calls['id']])->update(['calltime'=>time()]);
         } catch (Exception $e) {
             $msg='操作失败，请稍后重试';
