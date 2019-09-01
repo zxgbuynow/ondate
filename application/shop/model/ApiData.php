@@ -1473,6 +1473,33 @@ class ApiData extends ApiBase
     }
     //删除等待
     function waiteDelete(){
+        $id=input('id');
+        if (empty($id)) {
+            $msg='操作失败，请稍后重试';
+            return ['code'=>0,'msg'=>$msg];
+        }
+          $room=M('waite')->where(['id'=>$id])->value('room');
+     try{
+            if (M('waite')->where(['id'=>$id])->delete()) {
+                $where['room']=$room;
+                $count=M('waite')->where($where)->count();
+                if($count<1){
+                    $map['room_name']=$room;
+                    $status=M('room')->where($map)->value('status');
+                    if($status !=2){
+                        $up['status']=0;
+                        M('room')->where($map)->update($up);
+                    }
+                }
+
+                $msg='撤销成功！';
+                return ['code'=>1,'msg'=>$msg];
+            }
+    }catch (Exception $e) {
+        $msg='操作失败，请稍后重试';
+        return ['code'=>0,'msg'=>$msg];
+
+     }
 
     }
     function my_track()
