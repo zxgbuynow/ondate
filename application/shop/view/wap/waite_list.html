@@ -52,39 +52,6 @@
         //注销
         $(".frame_zx").click(function () {
             fade_out_hide();
-            var url = "{:U('queueLogout')}";
-            var art_id=$('.bgcolor2').attr('data-id');
-            $.post(url, {'art_id': art_id}, function(res) {
-                if (res.code == 0) {
-                    alert((res.msg));
-                } else {
-                    alert((res.msg));
-                    //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
-                    var url = "{:U('call_list')}";
-                    window.location.href = url;
-
-                }
-            });
-        });
-        //呼叫
-        $(".frame_hj").click(function () {
-            fade_out_hide();
-            var url = "{:U('queueCall')}";
-            var art_id=$('.bgcolor2').attr('data-id');
-            $.post(url, {'art_id': art_id}, function(res) {
-                if (res.code == 0) {
-                    alert((res.msg));
-                } else {
-                    alert((res.msg));
-                    var url = "{:U('call_list')}";
-                    window.location.href = url;
-
-                }
-            });
-        });
-        //撤销
-        $(".frame_ch").click(function () {
-            fade_out_hide();
             var url = "{:U('waiteDelete')}";
             var id=$('.bgcolor2').attr('data-cid');
             $.post(url, {'id': id}, function(res) {
@@ -98,6 +65,7 @@
                 }
             });
         });
+
 
 
 
@@ -125,7 +93,7 @@
         <div class="list2_body">
             <div class="list2_body_top">
                 <div class="list2_body_top_label">技师</div>
-                <div class="list2_body_top_text">{$waite.jsbn}{$waite.waite_num}位</div>
+                <div class="list2_body_top_text">{if $waite.jsbn}{$waite.jsbn}号 {/if}{$waite.waite_num}位</div>
             </div>
             <div class="list2_body_top">
                 <div class="list2_body_top_label2">{$waite.room}号房间</div>
@@ -138,22 +106,6 @@
 
 <!--遮罩层-->
 <div class="outside_pull fade_out"></div>
-<div class="frame fade_out" id="is_hujiao">
-    <div class="frame_title">确认呼叫？</div>
-    <div class="frame_list">
-        <div class="frame_cho frame_hj" style="border-right: 2px solid #ddd">确 认</div>
-        <!--<div class="frame_border">|</div>-->
-        <div class="frame_cho frame_no">取 消</div>
-    </div>
-</div>
-<div class="frame fade_out" id="is_chehui">
-    <div class="frame_title">确认撤回？</div>
-    <div class="frame_list">
-        <div class="frame_cho frame_ch" style="border-right: 2px solid #ddd">确 认</div>
-        <!--<div class="frame_border">|</div>-->
-        <div class="frame_cho frame_no">取 消</div>
-    </div>
-</div>
 <div class="frame fade_out" id="is_zhuxiao">
     <div class="frame_title">确认注销？</div>
     <div class="frame_list">
@@ -170,7 +122,7 @@
     <div class="foot_list but_chehui">
         <img src="__STATIC__/supu/img/chehui.png" />
     </div>-->
-    <div class="foot_list but_zhuxiao">
+    <div class="foot_list but_zhuxiao" style="margin: 0 auto;">
         <img src="__STATIC__/supu/img/zhuxiao.png" />
     </div>
 
