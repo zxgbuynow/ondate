@@ -2212,7 +2212,7 @@ class ApiData extends ApiBase
             return ['code'=>0,'msg'=>$msg];
         }
 
-        if (M('calls')->where(['id'=>$id])->update(['status'=>2])) {
+        if (M('calls')->where(['id'=>$id])->update(['status'=>2,'type'=>3])) {
             $call = M('calls')->where(['id'=>$id])->find();
             //$map['status']=[0,1];
             $map['type'] = [0, 1];//1已下钟未结账2已下钟已结账0未下钟
