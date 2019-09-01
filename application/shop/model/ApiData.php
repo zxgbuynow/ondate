@@ -1408,6 +1408,11 @@ class ApiData extends ApiBase
                 $save['way']=0;
                 $save['level']=1;
                 M('waite')->insert($save);
+                if($rooms['status'] !=2){
+                    $where['room_name']=$roomname;
+                    $roomdata['status']=1;
+                    M('room')->where($where)->update($roomdata);
+                }
             }catch (Exception $e) {
                 $msg='操作失败，请稍后重试';
                 return ['code'=>0,'msg'=>$msg];
@@ -1439,6 +1444,11 @@ class ApiData extends ApiBase
             $save['way']=1;
             $save['level']=1;
             M('waite')->insert($save);
+            if($rooms['status'] !=2){
+                $where['room_name']=$roomname;
+                $roomdata['status']=1;
+                M('room')->where($where)->update($roomdata);
+            }
         } catch (Exception $e) {
             $msg='操作失败，请稍后重试';
             return ['code'=>0,'msg'=>$msg];
@@ -1447,6 +1457,23 @@ class ApiData extends ApiBase
         $msg='操作成功';
         return ['code'=>1,'msg'=>$msg];
         exit;
+    }
+    //我的等待列表
+    function  waite_list (){
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $map['opt']=$this->mid;
+        $waite=M('waite')->where($map)->select();
+        $data['waite']=$waite;
+        return $data;
+    }
+    //删除等待
+    function waiteDelete(){
+        
     }
     function my_track()
     {
@@ -2108,7 +2135,7 @@ class ApiData extends ApiBase
             $calls = M('calls')->where($callp)->find();
             $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
             $this->push_wm_msg('1',$msg);
-            $this->push_wm_msg('2','201房间菊花茶一杯，白开水一杯');
+           // $this->push_wm_msg('2','201房间菊花茶一杯，白开水一杯');
             M('calls')->where(['id'=>$calls['id']])->update(['calltime'=>time()]);
         } catch (Exception $e) {
             $msg='操作失败，请稍后重试';

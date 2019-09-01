@@ -1,0 +1,180 @@
+{extend name="shop@wap/supu_file" /}
+{block name="common_body"}
+<script>
+    $(function () {
+        $("input,select").on("blur",function(){
+            setTimeout(function(){
+                window.scrollTo(0,0);
+            },100)
+        }).on('focus',function(){
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            var offsetTop = $(this).offset().top - (clientHeight / 4);
+            setTimeout(function(){
+                window.scrollTo(0,offsetTop);
+            },100)
+        })
+
+        $(".list2").click(function () {
+            $(".list2").removeClass("bgcolor2");
+            $(this).addClass("bgcolor2");
+        })
+
+        $(".frame_no").click(function () {
+            fade_out_hide();
+        });
+
+        $(".but_hujiao").click(function () {
+            var art_id=$('.bgcolor2').attr('data-id');
+            if(!art_id){
+                alert(('请选择技师'));
+                return;
+            }
+            fade_out_pull("is_hujiao");
+        });
+
+        $(".but_chehui").click(function () {
+            var art_id=$('.bgcolor2').attr('data-id');
+            if(!art_id){
+                alert(('请选择技师'));
+                return;
+            }
+            fade_out_pull("is_chehui");
+        });
+
+        $(".but_zhuxiao").click(function () {
+            var art_id=$('.bgcolor2').attr('data-id');
+            if(!art_id){
+                alert(('请选择技师'));
+                return;
+            }
+            fade_out_pull("is_zhuxiao");
+        });
+        //注销
+        $(".frame_zx").click(function () {
+            fade_out_hide();
+            var url = "{:U('queueLogout')}";
+            var art_id=$('.bgcolor2').attr('data-id');
+            $.post(url, {'art_id': art_id}, function(res) {
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
+                    var url = "{:U('call_list')}";
+                    window.location.href = url;
+
+                }
+            });
+        });
+        //呼叫
+        $(".frame_hj").click(function () {
+            fade_out_hide();
+            var url = "{:U('queueCall')}";
+            var art_id=$('.bgcolor2').attr('data-id');
+            $.post(url, {'art_id': art_id}, function(res) {
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    var url = "{:U('call_list')}";
+                    window.location.href = url;
+
+                }
+            });
+        });
+        //撤销
+        $(".frame_ch").click(function () {
+            fade_out_hide();
+            var url = "{:U('waiteDelete')}";
+            var id=$('.bgcolor2').attr('data-cid');
+            $.post(url, {'id': id}, function(res) {
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    var url = "{:U('waite_list')}";
+                    window.location.href = url;
+
+                }
+            });
+        });
+
+
+
+    });
+    function go_back() {
+        location.href = "{:U('make_waite')}";
+    }
+
+</script>
+<body>
+<div id="head">
+    <div class="goback" onclick="go_back()"><img src="__STATIC__/supu/img/fanhui.png"></div>
+    <div class="head_body">
+        <div class="picture"><img src="{$myinfo.headimgurl}"></div>
+        <div class="head_text">{$myinfo.nickname}</div>
+    </div>
+</div>
+
+<div id="body" style="overflow: auto;">
+    {volist name="waite" id="waite"}
+    <div class="list2 bgcolor1"  data-id="{waite.id}" data-cid="{waite.id}">
+        <div class="list2_tp">
+            <div class="list2_tp_picture"></div>
+        </div>
+        <div class="list2_body">
+            <div class="list2_body_top">
+                <div class="list2_body_top_label">技师</div>
+                <div class="list2_body_top_text">{waite.jsbn}号{waite.waite_num}位</div>
+            </div>
+            <div class="list2_body_top">
+                <div class="list2_body_top_label2">{$waite.room}号房间</div>
+                <div class="list2_body_top_text2">添加时间:{$waite.created_time|time_format}</div>
+            </div>
+        </div>
+    </div>
+    {/volist}
+</div>
+
+<!--遮罩层-->
+<div class="outside_pull fade_out"></div>
+<div class="frame fade_out" id="is_hujiao">
+    <div class="frame_title">确认呼叫？</div>
+    <div class="frame_list">
+        <div class="frame_cho frame_hj" style="border-right: 2px solid #ddd">确 认</div>
+        <!--<div class="frame_border">|</div>-->
+        <div class="frame_cho frame_no">取 消</div>
+    </div>
+</div>
+<div class="frame fade_out" id="is_chehui">
+    <div class="frame_title">确认撤回？</div>
+    <div class="frame_list">
+        <div class="frame_cho frame_ch" style="border-right: 2px solid #ddd">确 认</div>
+        <!--<div class="frame_border">|</div>-->
+        <div class="frame_cho frame_no">取 消</div>
+    </div>
+</div>
+<div class="frame fade_out" id="is_zhuxiao">
+    <div class="frame_title">确认注销？</div>
+    <div class="frame_list">
+        <div class="frame_cho frame_zx" style="border-right: 2px solid #ddd">确 认</div>
+        <!--<div class="frame_border">|</div>-->
+        <div class="frame_cho frame_no">取 消</div>
+    </div>
+</div>
+
+<div class="foot">
+<!--    <div class="foot_list but_hujiao">
+        <img src="__STATIC__/supu/img/hujiao.png" />
+    </div>
+    <div class="foot_list but_chehui">
+        <img src="__STATIC__/supu/img/chehui.png" />
+    </div>-->
+    <div class="foot_list but_zhuxiao">
+        <img src="__STATIC__/supu/img/zhuxiao.png" />
+    </div>
+
+</div>
+</body>
+{/block}
+
