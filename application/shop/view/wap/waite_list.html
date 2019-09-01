@@ -23,23 +23,6 @@
             fade_out_hide();
         });
 
-        $(".but_hujiao").click(function () {
-            var art_id=$('.bgcolor2').attr('data-id');
-            if(!art_id){
-                alert(('请选择技师'));
-                return;
-            }
-            fade_out_pull("is_hujiao");
-        });
-
-        $(".but_chehui").click(function () {
-            var art_id=$('.bgcolor2').attr('data-id');
-            if(!art_id){
-                alert(('请选择技师'));
-                return;
-            }
-            fade_out_pull("is_chehui");
-        });
 
         $(".but_zhuxiao").click(function () {
             var art_id=$('.bgcolor2').attr('data-id');
@@ -116,13 +99,8 @@
 </div>
 
 <div class="foot">
-<!--    <div class="foot_list but_hujiao">
-        <img src="__STATIC__/supu/img/hujiao.png" />
-    </div>
-    <div class="foot_list but_chehui">
-        <img src="__STATIC__/supu/img/chehui.png" />
-    </div>-->
-    <div class="foot_list but_zhuxiao" style="margin: 0 auto;">
+
+    <div class="foot_list but_zhuxiao" style="margin: 0 auto; float: none;">
         <img src="__STATIC__/supu/img/zhuxiao.png" />
     </div>
 
