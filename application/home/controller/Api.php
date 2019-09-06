@@ -35,9 +35,9 @@ class Api extends ApiBase
         $reg_ip=ip2long($ip);
         $where['uid']=1;
         $where['reg_ip']=$reg_ip;
-        dump($where);
         $isLogin=M('user')->where($where)->value('login_code');
         if($isLogin !=1){
+            dump($where);
             echo '请登录！'.$isLogin;
             exit;
         }
