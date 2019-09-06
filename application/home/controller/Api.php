@@ -32,8 +32,7 @@ class Api extends ApiBase
          dump($data);*/
          $where['uid']=1;
         $isLogin=M('user')->where($where)->value('login_code');
-        $request = Request::instance();
-        $ip=$request->ip();
+        $ip = $_SERVER["REMOTE_ADDR"];
         if($isLogin==1){
             echo $ip;
             exit;
