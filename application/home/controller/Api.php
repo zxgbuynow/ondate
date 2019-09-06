@@ -25,10 +25,10 @@ class Api extends ApiBase
 
     function index()
     {
-        // for ($i=2; $i <= 20; $i++) {
-        //     echo $i;
-        // }
-        // exit;
+         for ($i=2; $i <= 20; $i++) {
+             echo $i;
+         }
+         exit;
     	header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: token, Origin, X-Requested-With, Content-Type, Accept, Authorization");
         header('Access-Control-Allow-Methods: POST,GET,PUT,DELETE');
