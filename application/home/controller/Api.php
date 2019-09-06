@@ -30,11 +30,13 @@ class Api extends ApiBase
          }*/
 /*         $data=$_GET;
          dump($data);*/
-         $where['uid']=1;
-        $isLogin=M('user')->where($where)->value('login_code');
         $ip = $_SERVER["REMOTE_ADDR"];
-        if($isLogin==1){
-            echo ip2long($ip);
+        $reg_ip=ip2long($ip);
+        $where['uid']=1;
+        $where['red_ip']=$reg_ip;
+        $isLogin=M('user')->where($where)->value('login_code');
+        if($isLogin !=1){
+            echo '请登录！';
             exit;
         }
 
