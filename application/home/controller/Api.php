@@ -28,9 +28,13 @@ class Api extends ApiBase
 /*         for ($i=2; $i <= 20; $i++) {
              echo $i;
          }*/
-         $data=$_GET;
-         dump($data);
-         exit;
+/*         $data=$_GET;
+         dump($data);*/
+        $isLogin=M('user')->where()->value('jsbn');
+        if(!$isLogin){
+            echo '请登录';
+            exit;
+        }
     	header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: token, Origin, X-Requested-With, Content-Type, Accept, Authorization");
         header('Access-Control-Allow-Methods: POST,GET,PUT,DELETE');
