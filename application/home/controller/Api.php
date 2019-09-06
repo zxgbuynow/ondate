@@ -31,11 +31,14 @@ class Api extends ApiBase
 /*         $data=$_GET;
          dump($data);*/
          $where['uid']=1;
-        $isLogin=M('user')->where($where)->value('jsbn');
-        if(!$isLogin){
-            echo "<script>alert('请先登录');</script>";
+        $isLogin=M('user')->where($where)->value('login_code');
+        $request = Request::instance();
+        $ip=$request->ip();
+        if($isLogin==1){
+            echo $ip;
             exit;
         }
+
     	header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: token, Origin, X-Requested-With, Content-Type, Accept, Authorization");
         header('Access-Control-Allow-Methods: POST,GET,PUT,DELETE');
