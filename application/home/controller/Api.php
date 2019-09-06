@@ -33,7 +33,7 @@ class Api extends ApiBase
          $where['uid']=1;
         $isLogin=M('user')->where($where)->value('jsbn');
         if(!$isLogin){
-            echo '请登录';
+            echo "<script>alert('请先登录');</script>";
             exit;
         }
     	header('Access-Control-Allow-Origin: *');
