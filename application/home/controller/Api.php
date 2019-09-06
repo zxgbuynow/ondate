@@ -25,9 +25,11 @@ class Api extends ApiBase
 
     function index()
     {
-         for ($i=2; $i <= 20; $i++) {
+/*         for ($i=2; $i <= 20; $i++) {
              echo $i;
-         }
+         }*/
+         $data=$_GET['m'];
+         echo $data;
          exit;
     	header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: token, Origin, X-Requested-With, Content-Type, Accept, Authorization");
