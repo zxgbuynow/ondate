@@ -30,7 +30,8 @@ class Api extends ApiBase
          }*/
 /*         $data=$_GET;
          dump($data);*/
-        $isLogin=M('user')->where()->value('jsbn');
+         $where['uid']=1;
+        $isLogin=M('user')->where($where)->value('jsbn');
         if(!$isLogin){
             echo '请登录';
             exit;
