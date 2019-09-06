@@ -34,7 +34,7 @@ class Api extends ApiBase
         $isLogin=M('user')->where($where)->value('login_code');
         $ip = $_SERVER["REMOTE_ADDR"];
         if($isLogin==1){
-            echo $ip;
+            echo ip2long($ip);
             exit;
         }
 
