@@ -30,11 +30,12 @@ class Api extends ApiBase
          }*/
 /*         $data=$_GET;
          dump($data);*/
+/////////  检查登录
         $ip = $_SERVER["REMOTE_ADDR"];
         $reg_ip=ip2long($ip);
         $where['uid']=1;
         $where['reg_ip']=$reg_ip;
-        //dump($where);
+        dump($where);
         $isLogin=M('user')->where($where)->value('login_code');
         if($isLogin !=1){
             echo '请登录！'.$isLogin;
