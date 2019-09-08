@@ -33,24 +33,6 @@
             }
             //fade_out_pull();
         });*/
-        function sbdk(){
-            if(confirm("确定该操作吗?")){
-                var url = "{:U('makeDk')}";
-                var mid=$('input[name="mid"]').val();
-                var type=1;
-                $.post(url,{'mid':mid,'type':type},function(res){
-                    if (res.code == 0) {
-                        alert((res.msg));
-                    } else {
-                        alert((res.msg));
-                        //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
-                        var url = "{:U('kaoqin')}";
-                        window.location.href = url;
-
-                    }
-                })
-            }
-        }
         $(".xb_button").click(function () {
             if(confirm("确定该操作吗?")){
                 var url = "{:U('makeDk')}";
@@ -165,6 +147,24 @@
     </form>
 </div>
 <script>
+    function sbdk(){
+        if(confirm("确定该操作吗?")){
+            var url = "{:U('makeDk')}";
+            var mid=$('input[name="mid"]').val();
+            var type=1;
+            $.post(url,{'mid':mid,'type':type},function(res){
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
+                    var url = "{:U('kaoqin')}";
+                    window.location.href = url;
+
+                }
+            })
+        }
+    }
     wx.config({
         debug: false,
         appId: WX_APPID,
