@@ -71,10 +71,10 @@
         <div class="list1" style="margin-top: 100px; margin-bottom: 50px;">
             <button  type="button" onclick="return sbdk()" class="sb_button">上班打卡</button>
             <span style="font-size: 26px;">
-{empty name="$info.sbtime"}
+{empty name="sb_time"}
 【未打卡】
 {else /}
-【{$info.sb_time|time_format}】
+【{$sb_time|time_format}】
 {/empty}
 
 </span>
@@ -82,10 +82,10 @@
         <div class="list1" style="margin-bottom: 50px;">
             <button  type="button" onclick="return xbdk()" class="xb_button">下班打卡</button>
             <span style="font-size: 26px;">
-{empty name="$info.xbtime"}
+{empty name="xb_time"}
 【未打卡】
 {else /}
-【{$info.xb_time|time_format}】
+【{$xb_time|time_format}】
 {/empty}
 
 </span>

@@ -1872,7 +1872,8 @@ class ApiData extends ApiBase
         $map['uid']=$this->mid;
         //$map['status']=0;
         $info=M('user')->where($map)->find();
-        $data['info']=$info;
+        $data['sb_time']=$info['sb_time'];
+        $data['xb_time']=$info['xb_time'];
         $data['mid']=$this->mid;
         return $data;
 
