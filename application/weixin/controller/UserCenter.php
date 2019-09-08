@@ -281,6 +281,12 @@ class UserCenter extends WebBase
             $map['sex'] = $sex;
         }
         $this->assign('sex', $sex);
+        // 出勤
+        $cq = input('cq', '');
+        if ($cq) {
+            $map['cq'] = $cq;
+        }
+        $this->assign('cq', $cq);
 
         $type = input('type/d', 0);
         $map['f.has_subscribe'] = 1 - $type;

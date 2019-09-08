@@ -50,12 +50,12 @@
             <pre>  </pre>
 
             <label class="mr-1 ml-1" style="align-items: start;">
-                性别：
+                状态：
             </label>
-            <select name="sex" style="max-width:150px;padding:0">
-                <option value="" {eq name=":input('sex')" value=""}selected{/eq} >不限</option>
-                <option value="1" {eq name=":input('sex')" value="1"}selected{/eq} >男</option>
-                <option value="2" {eq name=":input('sex')" value="2"}selected{/eq} >女</option>
+            <select name="cq" style="max-width:150px;padding:0">
+                <option value="" {eq name=":input('cq')" value=""}selected{/eq} >不限</option>
+                <option value="1" {eq name=":input('cq')" value="1"}selected{/eq} >出勤</option>
+                <option value="2" {eq name=":input('cq')" value="0"}selected{/eq} >未出勤</option>
 
             </select>
             <pre>  </pre>
@@ -76,13 +76,14 @@
                     <th class="row-selected row-selected"> <input type="checkbox" class="check-all regular-checkbox" id="checkAll">
                         <label for="checkAll"></label></th>
                     <th>头像</th>
-                    <th>用户昵称</th>
                     <th>姓名</th>
                     <th>性别</th>
                     <th>编号</th>
                     <th>联系电话</th>
-                    <th>打卡时间</th>
+                    <th>上班打卡</th>
+                    <th>下班打卡</th>
                     <th>分组</th>
+                    <th>状态</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -94,14 +95,15 @@
                     <td><input type="checkbox" id="check_{$vo.uid}" name="ids[]" value="{$vo.uid}" class="ids regular-checkbox">
                         <label for="check_{$vo.uid}"></label></td>
                     <td>{$vo.headimgurl|url_img_html|raw}</td>
-                    <td>{$vo.nickname}</td>
                     <td>{$vo.truename}</td>
                     <td>{$vo.sex_name}</td>
                     <td>{$vo.jsbn}</td>
                     <!--  <td>{$vo.province}{$vo.city}</td>-->
                     <td>{$vo.mobile}</td>
                     <td>{$vo.reg_time|time_format}</td>
+                    <td>{$vo.reg_time|time_format}</td>
                     <td>{$vo.group}</td>
+                    <td>出勤</td>
                     <td>
                         <!--     <a href="{:U ( 'weixin/UserCenter/detail',array('uid'=>$vo['uid']))}" target="_self">详细资料</a>-->
                         <a href="{:U ( 'weixin/UserCenter/edit_page',array('uid'=>$vo['uid']))}" target="_self">查看</a>
@@ -184,6 +186,7 @@
             var e_time = $('[name="e_time"]').val();
             var type = "{:input('type/d', 0)}";
             var sex = $('[name="sex"]').val();
+            var cq=$('[name="cq"]').val();
 
             if(s_time == ''){
                 url = url.replace('/s_time/s_s_time','');
@@ -207,6 +210,11 @@
                 url = url.replace('/sex/s_sex','');
             }else{
                 url = url.replace('s_sex',sex);
+            }
+            if(cq == ''){
+                url = url.replace('/cq/s_cq','');
+            }else{
+                url = url.replace('s_cq',cq);
             }
 
             url = url.replace(/[?&=]/g,'/');
