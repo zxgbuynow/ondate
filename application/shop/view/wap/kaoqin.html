@@ -1,0 +1,197 @@
+{extend name="shop@wap/supu_file" /}
+
+{block name="common_body"}
+<script>
+    $(function () {
+        $("input,select").on("blur",function(){
+            setTimeout(function(){
+                window.scrollTo(0,0);
+            },100)
+        }).on('focus',function(){
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            var offsetTop = $(this).offset().top - (clientHeight / 4);
+            setTimeout(function(){
+                window.scrollTo(0,offsetTop);
+            },100)
+        })
+        $(".submit").click(function () {
+            var roomname=$('input[name="roomname"]').val();
+            var secret=$('input[name="secret"]').val();
+            var woman=$('input[name="woman"]').val();
+            var man=$('input[name="man"]').val();
+            var set= $("#type").val();
+            var jsbn=$('input[name="jsbn"]').val();
+            if(roomname==''){
+                alert('请输入房间号');
+                return;
+            }
+            if(secret=='' && woman=='' && man =='' && set==1){
+                alert('请输入排钟人数');
+                return;
+            }
+            if(set==2 && jsbn==''){
+                alert('请输入技师编号');
+                return;
+            }
+            fade_out_pull();
+        });
+
+        $(".frame_no").click(function(){
+            fade_out_hide();
+        });
+        $(".frame_yes").click(function(){
+            fade_out_hide();
+            var url = "{:U('makeArt')}";
+            var roomname=$('input[name="roomname"]').val();
+            //var rs=$('input[name="rs"]').val();
+            var jsbn=$('input[name="jsbn"]').val();
+            var secret=$('input[name="secret"]').val();
+            var woman=$('input[name="woman"]').val();
+            var man=$('input[name="man"]').val();
+            var mid=$('input[name="mid"]').val();
+            //var sex=$('input[name="sex"]:checked').val()
+            $.post(url, {'roomname': roomname, 'woman': woman,'man':man,'jsbn':jsbn,'secret':secret,'mid':mid}, function(res) {
+
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
+                    var url = "{:U('call_list')}";
+                    window.location.href = url;
+
+                }
+            });
+        });
+        $("#type").change(function(){
+            var set= $("#type").val();
+            if(set==1){
+                $("#pz").show();
+                $("#dz").hide();
+            }
+            if(set==2){
+                $("#pz").hide();
+                $("#dz").show();
+            }
+        });
+    });
+
+</script>
+<style>
+    .mbutton {
+        background: #4a2a2a;
+        -webkit-border-radius: 6;
+        -moz-border-radius: 6;
+        border-radius: 6px;
+        text-shadow: 0px -1px 0px #5b6178;
+        -webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+        -moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+        box-shadow: 0px 1px 0px 0px #f0f7fa;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 26px;
+        padding: 12px 30px 12px 30px;
+        border: solid #4a2a2a 1px;
+        text-decoration: none;
+    }
+    .sb_button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+    .xb_button {
+        background-color: #555555; /* Black */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+</style>
+<body>
+<div id="head">
+    <div class="goback"></div>
+    <div class="head_body">
+        <div class="picture"><img src="{$myinfo.headimgurl}"></div>
+        <!--     <div class="head_text">{$myinfo.nickname} </div>-->
+        <div class="head_text"><a class="mbutton" href="{:U('call_list')}">我的考勤</a> </div>
+    </div>
+</div>
+<div id="body">
+    <form action="post" id="makeart">
+        <div class="list1" style="margin-top: 100px;">
+             <button class="sb_button">上班打卡</button>
+        </div>
+        <div class="list1">
+            <button class="xb_button">下班打卡</button>
+        </div>
+    </form>
+</div>
+<script>
+    wx.config({
+        debug: false,
+        appId: WX_APPID,
+        timestamp: WXJS_TIMESTAMP,
+        nonceStr: NONCESTR,
+        signature: SIGNATURE,
+        jsApiList: [
+            // 所有要调用的 API 都要加到这个列表中
+            'getLocation',
+        ]
+    });
+    wx.ready(function () {
+        wx.checkJsApi({
+            jsApiList: [
+                'getLocation'
+            ],
+            success: function (res) {
+                // alert(JSON.stringify(res));
+                // alert(JSON.stringify(res.checkResult.getLocation));
+                //  console.log(res.checkResult.getLocation);
+                if (res.checkResult.getLocation == false) {
+                    alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
+                    return;
+                }
+            }
+        });
+        wx.error(function(res){
+            alert("接口调取失败")
+        });
+        wx.getLocation({
+            success: function (res) {
+                //    alert(JSON.stringify(res));
+                console.log(JSON.stringify(res));
+            },
+            cancel: function (res) {
+                alert('用户拒绝授权获取地理位置');
+            }
+        });
+    });
+</script>
+
+<!--遮罩层-->
+<div class="outside_pull fade_out"></div>
+<div class="frame fade_out">
+    <div class="frame_title">确认提交？</div>
+    <div class="frame_list">
+        <div class="frame_cho frame_yes" style="border-right: 2px solid #ddd">确 认</div>
+        <!--<div class="frame_border">|</div>-->
+        <div class="frame_cho frame_no">取 消</div>
+    </div>
+</div>
+
+<div class="submit">
+    <img src="__STATIC__/supu/img/tijiao.png" />
+</div>
+</body>
+
+
+
+{/block}

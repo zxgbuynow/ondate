@@ -1861,6 +1861,21 @@ class ApiData extends ApiBase
         return ['code'=>1,'msg'=>$msg];
         exit;
     }
+    //考勤页面
+    function  kaoqin(){
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $map['operator']=$this->mid;
+        $map['status']=0;
+        $calls=M('calls')->where($map)->select();
+        $data['calls']=$calls;
+        return $data;
+
+    }
     //呼叫列表
    function  call_list(){
        $openid = get_openid();
