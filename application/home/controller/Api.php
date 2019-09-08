@@ -758,10 +758,16 @@ class Api extends ApiBase
         if (!$params['id']) {
             return api_error('参数缺少');
         }
-
-        //if (M('calls')->where(['id'=>$params['id']])->update(['status'=>3])) {
-        if (M('calls')->where(['id'=>$params['id']])->update(['type'=>1])) {
+        //if (M('calls')->where(['id'=>$params['id']])->update(['type'=>1])) {
+        $upcall['retime']=time();
+        if (M('calls')->where(['id'=>$params['id']])->update($upcall)) {
             $call = M('calls')->where(['id'=>$params['id']])->find();
+            $map1['type']=[0,1];;
+            $map1['room']=$call['room'];
+            $ask=M('calls')->where($map1)->count();
+            if($ask<1){
+                M('room')->where(['id'=>$call['room_id']])->update(['status'=>0]);//更新房间状态
+            }
 /*            $map4['room'] = $call['room'];
             $map4['type'] = [0, 1];//1已下钟未结账2已下钟已结账0未下钟
             $ask = M('calls')->where($map4)->count();
