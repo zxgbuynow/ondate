@@ -109,7 +109,7 @@
                         {/switch}</td>
                     <td>
                         <!--     <a href="{:U ( 'weixin/UserCenter/detail',array('uid'=>$vo['uid']))}" target="_self">详细资料</a>-->
-                        <button type="button" class="btn btn-info"   onclick="return qingjia({$vo.uid})" data-target="#addUserModal">请假</button>
+                        <button type="button" class="btn btn-info"   onclick="return qingjia({$vo.uid})>请假</button>
                         <!--a href="{:U('home/CreditData/lists',array('uid'=>$vo['uid']))}" target="_self">积分记录</a-->
                     </td>
                 </tr>
@@ -160,7 +160,7 @@
     $(function(){
 
         //请假
-        function finish(id) {
+        function qingjia(id) {
             if(confirm("确定要请假吗?")){
                 var url = "{:U('qingjia')}"
                 $.post(url,{'id':id},function(res){
