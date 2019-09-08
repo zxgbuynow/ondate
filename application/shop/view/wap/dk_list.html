@@ -41,19 +41,19 @@
     </div>
 </div>
 
-<div id="body" style="overflow: auto;">
+<div id="body" style="overflow: auto; height: auto;">
     {volist name="dk" id="dk"}
     <div class="list2 bgcolor1"  data-id="{$dk.id}" data-cid="{$dk.id}" style="background: #e7e7e7;">
         <div class="list2_tp">
         </div>
         <div class="list2_body">
             <div class="list2_body_top">
-                <div class="list2_body_top_label2">
+                <div class="list2_body_top_label2" style="color: #0e0e0e;">
                     {if condition="$dk.type == 1"}
                     上班
                     {else /} 下班
                     {/if}</div>
-                <div class="list2_body_top_text2">打卡时间:{$dk.dk_time|time_format}</div>
+                <div class="list2_body_top_text2" style="color: #0e0e0e;">打卡时间:{$dk.dk_time|time_format}</div>
             </div>
         </div>
     </div>

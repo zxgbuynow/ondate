@@ -1480,7 +1480,7 @@ class ApiData extends ApiBase
                 return $this->error('获取不到当前用户，请在微信里打开!');
         }
         $map['uid']=$this->mid;
-        $dk=M('dk')->where($map)->limit(10)->order('dk_time asc')->select();
+        $dk=M('dk')->where($map)->limit(10)->order('dk_time desc')->select();
         $data['dk']=$dk;
         return $data;
     }
