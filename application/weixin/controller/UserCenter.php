@@ -221,7 +221,7 @@ class UserCenter extends WebBase
 
         $group_id = input('group_id/d', 0);
         $this->assign('group_id', $group_id);
-        if ($group_id > 0) {
+        $group_id=[376,377,378,379];
             $uids = M('auth_group_access')->where('group_id', $group_id)->column('uid');
             if (empty($uids)) {
                 $map['f.uid'] = 0;
@@ -231,7 +231,7 @@ class UserCenter extends WebBase
                     $uids
                 );
             }
-        }
+
 
         $param = [];
         // 时间
