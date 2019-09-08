@@ -103,7 +103,7 @@
                     <td>{$vo.mobile}</td>
                     <td>{$vo.sb_time|time_format}</td>
                     <td>{$vo.group}</td>
-                    <td>{switch vo.cq}
+                    <td>{switch $vo.cq}
                         {case 1}出勤{/case}
                         {case 2}请假{/case}
                         {default /}未出勤

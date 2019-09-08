@@ -224,7 +224,6 @@ class UserCenter extends WebBase
         $key = urldecode(input('key'));
         $this->assign('search_key', $key);
         if (! empty($key)) {
-            dump(1111111111);
             $is_opneid = $search_type == 2 ? true : false;
             $uidstr = D('common/User')->searchUser($key, $is_opneid);
             if ($uidstr) {
@@ -282,7 +281,6 @@ class UserCenter extends WebBase
         // 标签
         $tag_id = input('tag_id', '');
         if ($tag_id) {
-            dump($tag_id);
             $param['tag_id'] = $tag_id;
             $uidstr = D('common/User')->searchUserS($param);
             if ($uidstr) {
