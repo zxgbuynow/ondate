@@ -103,11 +103,12 @@
                     <td>{$vo.mobile}</td>
                     <td>{$vo.sb_time|time_format}</td>
                     <td>{$vo.group}</td>
-                    <td>{switch $vo.cq}
-                        {case 1}出勤{/case}
-                        {case 2}请假{/case}
-                        {default /}未出勤
-                        {/switch}</td>
+                    <td> {if $vo.cq == 0}
+                          未出勤
+                        {elseif $vo.cq == 1 /}出勤
+                        {else /}请假
+                        {/if}
+                    </td>
                     <td>
                         {if $vo.cq == 0}
                         <button type="button" class="btn btn-info"   onclick="return qingjia({$vo.uid})" data-target="#addUserModal">请假</button>
