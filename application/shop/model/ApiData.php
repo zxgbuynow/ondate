@@ -1896,6 +1896,11 @@ class ApiData extends ApiBase
         $map['uid']=$uid;
         $cq=M('user')->where($map)->find();
         if($type==1){   //上班
+            if($cq['cq']==1){
+                $data['msg']='失败：请不要重复打卡';
+                $data['code']=0;
+                return $data;
+            }
             $up['sb_time']=time();
             $up['xb_time']='';
             $up['cq']=1;
@@ -1908,14 +1913,14 @@ class ApiData extends ApiBase
             $up['cq']=0;
             if($cq['cq']!=1){
                 $data['msg']='失败：请先打上班卡！';
-                $data['code']=1;
+                $data['code']=0;
                 return $data;
             }
             $where2['jsbn']=$cq['jsbn'];
             $work_status=M('user_queue')->where($where2)->value('type');
-            if($work_status==1){
+            if($work_status!=0){
                 $data['msg']='失败：您有未完成的叫钟安排！';
-                $data['code']=1;
+                $data['code']=0;
                 return $data;
             }
             $queue['cq']=0;
