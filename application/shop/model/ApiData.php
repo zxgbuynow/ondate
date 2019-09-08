@@ -1869,10 +1869,36 @@ class ApiData extends ApiBase
             if (empty($this->mid))
                 return $this->error('获取不到当前用户，请在微信里打开!');
         }
-        $map['operator']=$this->mid;
-        $map['status']=0;
-        $calls=M('calls')->where($map)->select();
-        $data['calls']=$calls;
+        $map['uid']=$this->mid;
+        //$map['status']=0;
+        $info=M('user')->where($map)->find();
+        $data['info']=$info;
+        return $data;
+
+    }
+    //考勤打卡
+    function  makeDk(){
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $type=I('type');
+        $data['uid']=$this->mid;
+        if($type==1){
+            $data['sb_time']=time();
+            $up['sb_time']=time();
+        }else{
+            $data['xb_time']=time();
+            $up['xb_time']=time();
+        }
+        $data['date']=date('Ymd');
+        M('dk')->insert($data);
+        $map['uid']=$this->mid;
+        M('user')->where($map)->update($up);
+        $data['msg']='操作成功！';
+        $data['code']=1;
         return $data;
 
     }
