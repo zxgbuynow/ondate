@@ -41,6 +41,8 @@ class UserCenter extends WebBase
 
         $map['uid'] = $uid;
         $updata['cq'] = 2;
+        $updata['sb_time'] ='';
+        $updata['xb_time'] ='';
         $updata['qj_time'] = time();
         if (M('user')->where($map)->update($updata)) {
             $data['code'] = 1;
