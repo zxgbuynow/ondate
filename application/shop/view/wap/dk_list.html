@@ -1,0 +1,100 @@
+{extend name="shop@wap/supu_file" /}
+{block name="common_body"}
+<script>
+    $(function () {
+        $("input,select").on("blur",function(){
+            setTimeout(function(){
+                window.scrollTo(0,0);
+            },100)
+        }).on('focus',function(){
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            var offsetTop = $(this).offset().top - (clientHeight / 4);
+            setTimeout(function(){
+                window.scrollTo(0,offsetTop);
+            },100)
+        })
+
+        $(".list2").click(function () {
+            $(".list2").removeClass("bgcolor2");
+            $(this).addClass("bgcolor2");
+        })
+
+        $(".frame_no").click(function () {
+            fade_out_hide();
+        });
+
+
+        $(".but_zhuxiao").click(function () {
+            var art_id=$('.bgcolor2').attr('data-id');
+            if(!art_id){
+                alert(('请选择要删除的记录'));
+                return;
+            }
+            fade_out_pull("is_zhuxiao");
+        });
+        //注销
+        $(".frame_zx").click(function () {
+            fade_out_hide();
+            var url = "{:U('waiteDelete')}";
+            var id=$('.bgcolor2').attr('data-cid');
+            $.post(url, {'id': id}, function(res) {
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    var url = "{:U('waite_list')}";
+                    window.location.href = url;
+
+                }
+            });
+        });
+
+
+
+
+    });
+    function go_back() {
+        location.href = "{:U('make_waite')}";
+    }
+
+</script>
+<body>
+<div id="head">
+    <div class="goback" onclick="go_back()"><img src="__STATIC__/supu/img/fanhui.png"></div>
+    <div class="head_body">
+        <div class="picture"><img src="{$myinfo.headimgurl}"></div>
+        <div class="head_text">{$myinfo.nickname}</div>
+    </div>
+</div>
+
+<div id="body" style="overflow: auto;">
+    {volist name="dk" id="dk"}
+    <div class="list2 bgcolor1"  data-id="{$waite.id}" data-cid="{$waite.id}">
+        <div class="list2_tp">
+            <div class="list2_tp_picture"></div>
+        </div>
+        <div class="list2_body">
+            <div class="list2_body_top">
+                <div class="list2_body_top_label2">
+                    {if condition="$dk.type == 1"}
+                    上班
+                    {else /} 下班
+                    {/if}</div>
+                <div class="list2_body_top_text2">打卡时间:{$dk.dk_time|time_format}</div>
+            </div>
+        </div>
+    </div>
+    {/volist}
+</div>
+
+
+<div class="foot">
+
+<!--    <div class="foot_list but_zhuxiao" style="margin: 0 auto; float: none;">
+        <img src="__STATIC__/supu/img/zhuxiao.png" />
+    </div>-->
+
+</div>
+</body>
+{/block}
+

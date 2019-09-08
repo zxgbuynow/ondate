@@ -72,7 +72,7 @@
     <div class="head_body">
         <div class="picture"><img src="{$myinfo.headimgurl}"></div>
         <!--     <div class="head_text">{$myinfo.nickname} </div>-->
-        <div class="head_text"><a class="mbutton" href="{:U('call_list')}">我的考勤</a> </div>
+        <div class="head_text"><a class="mbutton" href="{:U('dk_list')}">我的考勤</a> </div>
     </div>
 </div>
 <div id="body">
@@ -86,7 +86,7 @@
                 {/if}
             </button>
         </div>
-        <div class="list1" style="margin-top: 100px; margin-bottom: 50px;">
+        <div class="list1" style="margin-top: 100px; margin-bottom: 200px;">
             <button  type="button" onclick="return sbdk()" class="sb_button">上班打卡</button>
             <span style="font-size: 26px;">
 {empty name="sb_time"}

@@ -1471,6 +1471,19 @@ class ApiData extends ApiBase
         $data['waite']=$waite;
         return $data;
     }
+    //我的考勤列表
+    function  dk_list (){
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $map['uid']=$this->mid;
+        $dk=M('dk')->where($map)->limit(10)->select();
+        $data['dk']=$dk;
+        return $data;
+    }
     //删除等待
     function waiteDelete(){
         $id=input('id');
