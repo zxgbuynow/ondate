@@ -1901,6 +1901,8 @@ class ApiData extends ApiBase
             M('user_queue')->where($where)->update($queue);
 
         }else{          //下班
+            dump($uid);
+            exit;
             $up['xb_time']=time();
             $where1['uid']=$uid;
             $cq=M('user')->where($where1)->value('cq');
