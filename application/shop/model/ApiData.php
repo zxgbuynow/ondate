@@ -1873,6 +1873,7 @@ class ApiData extends ApiBase
         //$map['status']=0;
         $info=M('user')->where($map)->find();
         $data['info']=$info;
+        $data['mid']=$this->mid;
         return $data;
 
     }
