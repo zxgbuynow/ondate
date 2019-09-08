@@ -1888,16 +1888,16 @@ class ApiData extends ApiBase
         }
         $type=I('type');
         $data['uid']=$this->mid;
-        if($type==1){
-            $data['sb_time']=time();
-            $up['sb_time']=time();
-        }else{
-            $data['xb_time']=time();
-            $up['xb_time']=time();
-        }
+        $data['dk_time']=time();
+        $data['type']=$type;
         $data['date']=date('Ymd');
         M('dk')->insert($data);
         $map['uid']=$this->mid;
+        if($type==1){   //上班
+            $up['sb_time']=time();
+        }else{          //下班
+            $up['xb_time']=time();
+        }
         M('user')->where($map)->update($up);
         $data['msg']='操作成功！';
         $data['code']=1;

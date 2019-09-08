@@ -34,7 +34,7 @@ class Api extends ApiBase
         $ip = $_SERVER["REMOTE_ADDR"];
         $reg_ip=ip2long($ip);
         $where['uid']=1;
-        $where['reg_ip']=$reg_ip;
+        //$where['reg_ip']=$reg_ip;
         $isLogin=M('user')->where($where)->value('login_code');
         if($isLogin !=1){
             dump($where);
