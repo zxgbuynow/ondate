@@ -1905,7 +1905,7 @@ class ApiData extends ApiBase
 
         }else{          //下班
             $up['xb_time']=time();
-
+            $up['cq']=0;
             if($cq['cq']!=1){
                 $data['msg']='失败：请先打上班卡！';
                 $data['code']=1;
