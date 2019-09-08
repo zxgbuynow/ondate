@@ -70,8 +70,8 @@
         <input type="hidden" name="mid" value="{$mid}">
         <div class="list1" style="margin-top: 100px; margin-bottom: 50px;">
             <button  type="button" onclick="return sbdk()" class="sb_button">上班打卡</button>
-            <span style="font-size: 20px;">{
-{empty name="info.sbtime"}
+            <span style="font-size: 26px;">
+{empty name="$info.sbtime"}
 【未打卡】
 {else /}
 【{$info.sb_time|time_format}】
@@ -81,8 +81,8 @@
         </div>
         <div class="list1" style="margin-bottom: 50px;">
             <button  type="button" onclick="return xbdk()" class="xb_button">下班打卡</button>
-            <span style="font-size: 20px;">{
-{empty name="info.xbtime"}
+            <span style="font-size: 26px;">
+{empty name="$info.xbtime"}
 【未打卡】
 {else /}
 【{$info.xb_time|time_format}】
