@@ -80,9 +80,10 @@
         <input type="hidden" name="mid" value="{$mid}">
         <div class="list1" style="margin-top: 100px; margin-bottom: 50px; border-bottom: 0px;">
             <button  type="button"  class="button2">状态：
-                {if condition="$cq == 1"}
+                {if $cq == 1}
                 上班
-                {else /} 下班
+                {elseif $cq == 0 /}下班
+                {else /} 请假
                 {/if}
             </button>
         </div>
