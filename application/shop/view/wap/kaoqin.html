@@ -14,77 +14,7 @@
                 window.scrollTo(0,offsetTop);
             },100)
         })
-/*        $(".sb_button").click(function () {
-            if(confirm("确定该操作吗?")){
-                var url = "{:U('makeDk')}";
-                var mid=$('input[name="mid"]').val();
-                var type=1;
-                $.post(url,{'mid':mid,'type':type},function(res){
-                    if (res.code == 0) {
-                        alert((res.msg));
-                    } else {
-                        alert((res.msg));
-                        //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
-                        var url = "{:U('kaoqin')}";
-                        window.location.href = url;
 
-                    }
-                })
-            }
-            //fade_out_pull();
-        });*/
-        $(".xb_button").click(function () {
-            if(confirm("确定该操作吗?")){
-                var url = "{:U('makeDk')}";
-                var mid=$('input[name="mid"]').val();
-                var type=2;
-                $.post(url,{'mid':mid,'type':type},function(res){
-                    if (res.code == 0) {
-                        alert((res.msg));
-                    } else {
-                        alert((res.msg));
-                        //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
-                        var url = "{:U('kaoqin')}";
-                        window.location.href = url;
-
-                    }
-                })
-            }
-            //fade_out_pull();
-        });
-
-        $(".frame_no").click(function(){
-            fade_out_hide();
-        });
-        $(".frame_yes").click(function(){
-            fade_out_hide();
-            var url = "{:U('makeDk')}";
-            var mid=$('input[name="mid"]').val();
-            //var sex=$('input[name="sex"]:checked').val()
-            $.post(url, {'mid':mid}, function(res) {
-
-                if (res.code == 0) {
-                    alert((res.msg));
-                } else {
-                    alert((res.msg));
-                    //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
-                    var url = "{:U('call_list')}";
-                    window.location.href = url;
-
-                }
-            });
-        });
-        $("#type").change(function(){
-            var set= $("#type").val();
-            if(set==1){
-                $("#pz").show();
-                $("#dz").hide();
-            }
-            if(set==2){
-                $("#pz").hide();
-                $("#dz").show();
-            }
-        });
     });
 
 </script>
@@ -139,19 +69,55 @@
     <form action="post" id="makeart">
         <input type="hidden" name="mid" value="{$mid}">
         <div class="list1" style="margin-top: 100px; margin-bottom: 50px;">
-             <button  type="button" onclick="return sbdk()" class="sb_button">上班打卡</button>(2019/09/08 10:52)
+            <button  type="button" onclick="return sbdk()" class="sb_button">上班打卡</button>
+            <span style="font-size: 20px;">{
+{empty name="info.sbtime"}
+【未打卡】
+{else /}
+【{$info.sb_time|time_format}】
+{/empty}
+
+</span>
         </div>
         <div class="list1" style="margin-bottom: 50px;">
             <button  type="button" onclick="return xbdk()" class="xb_button">下班打卡</button>
+            <span style="font-size: 20px;">{
+{empty name="info.xbtime"}
+【未打卡】
+{else /}
+【{$info.xb_time|time_format}】
+{/empty}
+
+</span>
         </div>
     </form>
 </div>
 <script>
+    //上班打卡
     function sbdk(){
         if(confirm("确定该操作吗?")){
             var url = "{:U('makeDk')}";
             var mid=$('input[name="mid"]').val();
             var type=1;
+            $.post(url,{'mid':mid,'type':type},function(res){
+                if (res.code == 0) {
+                    alert((res.msg));
+                } else {
+                    alert((res.msg));
+                    //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
+                    var url = "{:U('kaoqin')}";
+                    window.location.href = url;
+
+                }
+            })
+        }
+    }
+    //下班打卡
+    function xbdk(){
+        if(confirm("确定该操作吗?")){
+            var url = "{:U('makeDk')}";
+            var mid=$('input[name="mid"]').val();
+            var type=2;
             $.post(url,{'mid':mid,'type':type},function(res){
                 if (res.code == 0) {
                     alert((res.msg));
