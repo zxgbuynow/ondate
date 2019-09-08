@@ -18,10 +18,7 @@
     <!--<section id="contents"> {include file="common@base/_nav" /}-->
     <div class="table-bar">
         <div class="fl">
-            <div class="tools"> <a href="javascript:void(0);" class="btn setting_group">设置用户组S</a> &nbsp; <a href="{:U ( 'home/AuthGroup/export?type='.$type.'&id='.$group_id )}" class="btn">导出用户</a> &nbsp;
-                {if condition="$syc_wechat"}<a href="{:U('syc_auth_group')}" class="btn tongbu">一键同步微信公众号粉丝</a> &nbsp;
-                {/if}
-            </div>
+
         </div>
         <!-- 高级搜索 -->
         <div class="search-form fr cf">
@@ -225,28 +222,7 @@
         $('select[name=group]').change(function(){
             location.href = this.value;
         });
-        //设置分组
-        $('.setting_group').click(function(){
-            var html = $($('.group_html').html());
-            query = $('.ids').serialize();
-            if(query==""){
-                alert('请选择用户');
-                return;
-            }
-            $.Dialog.open('设置用户分组',{width:300,height:160},html);
-            //$.thinkbox(html);
-            $('button',html).click(function(){
-                that = this;
-                target = $(that).attr('url');
-                var group = $('#select_group', html).val();
-                query = query + "&group_id="+group ;//+ "&type="+$('#select_type', html).val();
-                $(that).addClass('disabled').attr('autocomplete','off').prop('disabled',true);
-                $.post(target,query).success(function(data){
-                    location.reload();
-                    $('.thinkbox-modal-blackout-default,.thinkbox-default').hide();
-                });
-            })
-        })
+
         //设置标签
         $('.setting_tag').click(function(){
             //用户标签弹框
