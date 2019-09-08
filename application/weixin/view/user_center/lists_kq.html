@@ -81,7 +81,7 @@
                     <th>编号</th>
                     <th>联系电话</th>
                     <th>上班打卡</th>
-                    <th>下班打卡</th>
+                    <th>请假开始</th>
                     <th>分组</th>
                     <th>状态</th>
                     <th>操作</th>
@@ -100,13 +100,17 @@
                     <td>{$vo.jsbn}</td>
                     <!--  <td>{$vo.province}{$vo.city}</td>-->
                     <td>{$vo.mobile}</td>
-                    <td>{$vo.reg_time|time_format}</td>
-                    <td>{$vo.reg_time|time_format}</td>
+                    <td>{$vo.sb_time|time_format}</td>
+                    <td>{$vo.qj_time|time_format}</td>
                     <td>{$vo.group}</td>
-                    <td>出勤</td>
+                    <td>{switch vo.cq}
+                        {case 1}出勤{/case}
+                        {case 2}请假{/case}
+                        {default /}未出勤
+                        {/switch}</td>
                     <td>
                         <!--     <a href="{:U ( 'weixin/UserCenter/detail',array('uid'=>$vo['uid']))}" target="_self">详细资料</a>-->
-                        <a href="{:U ( 'weixin/UserCenter/edit_page',array('uid'=>$vo['uid']))}" target="_self">查看</a>
+                        <button type="button" class="btn btn-info"   onclick="return qingjia({$vo.id})" data-target="#addUserModal">请假</button>
                         <!--a href="{:U('home/CreditData/lists',array('uid'=>$vo['uid']))}" target="_self">积分记录</a-->
                     </td>
                 </tr>
@@ -155,6 +159,25 @@
 <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js?v={:SITE_VERSION}" charset="UTF-8"></script>
 <script type="text/javascript">
     $(function(){
+
+        //请假
+        function finish(id) {
+            if(confirm("确定要请假吗?")){
+                var url = "{:U('qingjia')}"
+                $.post(url,{'id':id},function(res){
+                    var data_obj = eval("("+res+")");
+                    if(data_obj.code==1){
+                        // updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
+                        // window.location.href=window.location.href;
+                        var hurl = "{:U('lists_kq')}";
+                        window.location.href = hurl;
+                    }else{
+                        alert(data_obj.msg);
+                    }
+                })
+            }
+
+        }
 
         $('.time').datetimepicker({
             format: 'yyyy-mm-dd hh:ii',
