@@ -81,7 +81,7 @@
                     <th>编号</th>
                     <th>联系电话</th>
                     <th>上班打卡</th>
-                    <th>请假开始</th>
+                <!--    <th>请假开始</th>-->
                     <th>分组</th>
                     <th>状态</th>
                     <th>操作</th>
@@ -101,7 +101,7 @@
                     <!--  <td>{$vo.province}{$vo.city}</td>-->
                     <td>{$vo.mobile}</td>
                     <td>{$vo.sb_time|time_format}</td>
-                    <td>{$vo.qj_time|time_format}</td>
+                   <!-- <td>{$vo.qj_time|time_format}</td>-->
                     <td>{$vo.group}</td>
                     <td>{switch vo.cq}
                         {case 1}出勤{/case}
@@ -110,7 +110,7 @@
                         {/switch}</td>
                     <td>
                         <!--     <a href="{:U ( 'weixin/UserCenter/detail',array('uid'=>$vo['uid']))}" target="_self">详细资料</a>-->
-                        <button type="button" class="btn btn-info"   onclick="return qingjia({$vo.id})" data-target="#addUserModal">请假</button>
+                        <button type="button" class="btn btn-info"   onclick="return qingjia({$vo.uid})" data-target="#addUserModal">请假</button>
                         <!--a href="{:U('home/CreditData/lists',array('uid'=>$vo['uid']))}" target="_self">积分记录</a-->
                     </td>
                 </tr>
