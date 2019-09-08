@@ -1887,17 +1887,40 @@ class ApiData extends ApiBase
                 return $this->error('获取不到当前用户，请在微信里打开!');
         }
         $type=I('type');
-        $data['uid']=$this->mid;
+        $uid=$this->mid;
+        $data['uid']=$uid;
         $data['dk_time']=time();
         $data['type']=$type;
         $data['date']=date('Ymd');
-        M('dk')->insert($data);
-        $map['uid']=$this->mid;
+        $map['uid']=$uid;
         if($type==1){   //上班
             $up['sb_time']=time();
+            $up['cq']=1;
+            $where['user_id']=$uid;
+            $queue['cq']=1;
+            M('user_queue')->where($where)->update($queue);
+
         }else{          //下班
             $up['xb_time']=time();
+            $where1['uid']=$uid;
+            $cq=M('user')->where($where1)->value('cq');
+            if($cq!=1){
+                $data['msg']='失败：请先打上班卡！';
+                $data['code']=1;
+                return $data;
+            }
+            $where2['user_id']=$uid;
+            $work_status=M('user_queue')->where($where2)->value('type');
+            if($work_status==1){
+                $data['msg']='失败：您有未完成的叫钟安排！';
+                $data['code']=1;
+                return $data;
+            }
+            $queue['cq']=0;
+            M('user_queue')->where($where2)->update($queue);
+
         }
+        M('dk')->insert($data);
         M('user')->where($map)->update($up);
         $data['msg']='操作成功！';
         $data['code']=1;

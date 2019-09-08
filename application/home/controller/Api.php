@@ -146,7 +146,8 @@ class Api extends ApiBase
      */
     public function homeQueue($params)
     {
-    	$queue =  M('user_queue')->field('service_type,type,id,sex as gender,jsbn as number,status')->order('type,postion ASC')->select();
+        $wh['cq']=1;
+    	$queue =  M('user_queue')->field('service_type,type,id,sex as gender,jsbn as number,status')->where($wh)->order('type,postion ASC')->select();
     	$ret = [];
     	foreach ($queue as $key => $value) {
     		$value['gender'] = $value['gender']==0?'女':'男';
@@ -178,8 +179,8 @@ class Api extends ApiBase
      */
     public function queueList($params)
     {
-
-    	$queue =  M('user_queue')->field('service_type,type,id,sex as artificerGender,jsbn as artificerNumber,status,postion,user_id')->order('service_type ASC,postion ASC')->select();
+        $wh['cq']=1;
+    	$queue =  M('user_queue')->field('service_type,type,id,sex as artificerGender,jsbn as artificerNumber,status,postion,user_id')->where($wh)->order('service_type ASC,postion ASC')->select();
     	foreach ($queue as $key => &$value) {
     		$value['artificerGender'] = $value['artificerGender']==0?'男':'女';
     		$value['artificerType'] = $value['service_type']==0?'足浴':'SPA';
