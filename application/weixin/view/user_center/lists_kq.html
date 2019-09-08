@@ -181,7 +181,7 @@
         });
 
         $(".search_duo").click(function(){
-            var url = "{:U ( 'weixin/UserCenter/lists_kq',['s_time'=>'s_s_time','e_time'=>'s_e_time','type'=>'s_type','sex'=>'s_sex'])}";
+            var url = "{:U ( 'weixin/UserCenter/lists_kq',['s_time'=>'s_s_time','e_time'=>'s_e_time','type'=>'s_type','cq'=>'s_cq'])}";
             var s_time  = $('[name="s_time"]').val();
             var e_time = $('[name="e_time"]').val();
             var type = "{:input('type/d', 0)}";
