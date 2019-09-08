@@ -14,7 +14,7 @@
                 window.scrollTo(0,offsetTop);
             },100)
         })
-        $(".sb_button").click(function () {
+/*        $(".sb_button").click(function () {
             if(confirm("确定该操作吗?")){
                 var url = "{:U('makeDk')}";
                 var mid=$('input[name="mid"]').val();
@@ -32,7 +32,25 @@
                 })
             }
             //fade_out_pull();
-        });
+        });*/
+        function sbdk(){
+            if(confirm("确定该操作吗?")){
+                var url = "{:U('makeDk')}";
+                var mid=$('input[name="mid"]').val();
+                var type=1;
+                $.post(url,{'mid':mid,'type':type},function(res){
+                    if (res.code == 0) {
+                        alert((res.msg));
+                    } else {
+                        alert((res.msg));
+                        //var url = "{:U('call_list')}?out_trade_no=" + res.out_trade_no;
+                        var url = "{:U('kaoqin')}";
+                        window.location.href = url;
+
+                    }
+                })
+            }
+        }
         $(".xb_button").click(function () {
             if(confirm("确定该操作吗?")){
                 var url = "{:U('makeDk')}";
@@ -139,10 +157,10 @@
     <form action="post" id="makeart">
         <input type="hidden" name="mid" value="{$mid}">
         <div class="list1" style="margin-top: 100px; margin-bottom: 50px;">
-             <button class="sb_button">上班打卡</button>(2019/09/08 10:52)
+             <button  type="button" onclick="return sbdk()" class="sb_button">上班打卡</button>(2019/09/08 10:52)
         </div>
         <div class="list1" style="margin-bottom: 50px;">
-            <button class="xb_button">下班打卡</button>
+            <button  type="button" onclick="return xbdk()" class="xb_button">下班打卡</button>
         </div>
     </form>
 </div>
