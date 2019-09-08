@@ -1672,9 +1672,9 @@ class ApiData extends ApiBase
             $man = intval(input('man'));
             $secret = intval(input('secret'));*/
             $wantTot = $woman+$man+$secret;
-            $total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->count();
-            $freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->count();
-            $freewoman = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->count();
+            $total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype,'cq'=>1])->count();
+            $freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype,'cq'=>1])->count();
+            $freewoman = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype,'cq'=>1])->count();
             //先算总人数
             // $difw = $freewoman>$woman?0:($freewoman-$woman);
             if ($wantTot>$total) {
@@ -1710,7 +1710,7 @@ class ApiData extends ApiBase
                 $max=$tot+$free;
                 if ($woman>0) {
                     //优化处理SPA和足浴分开安排
-                    $makew = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($woman)->column('user_id');
+                    $makew = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype,'cq'=>1])->order('postion ASC')->limit($woman)->column('user_id');
                     M('user_queue')->where('user_id','in',$makew)->update(['type'=>1]);
 
                     foreach ($makew as $key => $value) {
@@ -1742,7 +1742,7 @@ class ApiData extends ApiBase
 
                 }
                 if ($man>0) {
-                    $makem = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype])->order('postion ASC')->limit($man)->column('user_id');
+                    $makem = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype,'cq'=>1])->order('postion ASC')->limit($man)->column('user_id');
                     M('user_queue')->where('user_id','in',$makem)->update(['type'=>1]);
                     foreach ($makem as $key => $value) {
                         $userinfo = M('art')->where(['id'=>$value])->find();
@@ -1776,7 +1776,7 @@ class ApiData extends ApiBase
 
                 //不限制
                 if ($secret>0) {
-                    $se = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype])->order('postion ASC')->limit($secret)->column('user_id');
+                    $se = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype,'cq'=>1])->order('postion ASC')->limit($secret)->column('user_id');
                     M('user_queue')->where('user_id','in',$se)->update(['type'=>1]);
                     foreach ($se as $key => $value) {
                         $userinfo = M('art')->where(['id'=>$value])->find();
@@ -1830,7 +1830,7 @@ class ApiData extends ApiBase
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
-            if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0])->find()) {
+            if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0,'cq'=>1])->find()) {
                 $msg='当前技师非空闲';
                 return ['code'=>0,'msg'=>$msg];
                 exit;
