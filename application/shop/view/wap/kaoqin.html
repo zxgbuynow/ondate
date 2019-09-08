@@ -35,6 +35,16 @@
         border: solid #4a2a2a 1px;
         text-decoration: none;
     }
+    .button2 {
+        background-color: #e7e7e7;
+        color: black;
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 36px;
+    }
     .sb_button {
         background-color: #4CAF50; /* Green */
         border: none;
@@ -69,12 +79,20 @@
     <form action="post" id="makeart">
         <input type="hidden" name="mid" value="{$mid}">
         <div class="list1" style="margin-top: 100px; margin-bottom: 50px;">
+            <button  type="button"  class="button2">状态：
+                {if condition="$cq == 1"}
+                上班
+                {else /} 下班
+                {/if}
+            </button>
+        </div>
+        <div class="list1" style="margin-top: 100px; margin-bottom: 50px;">
             <button  type="button" onclick="return sbdk()" class="sb_button">上班打卡</button>
             <span style="font-size: 26px;">
 {empty name="sb_time"}
 【未打卡】
 {else /}
-【{$sb_time|time_format}】
+({$sb_time|time_format})
 {/empty}
 
 </span>
@@ -85,7 +103,7 @@
 {empty name="xb_time"}
 【未打卡】
 {else /}
-【{$xb_time|time_format}】
+({$xb_time|time_format})
 {/empty}
 
 </span>

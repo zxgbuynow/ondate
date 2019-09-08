@@ -1874,6 +1874,7 @@ class ApiData extends ApiBase
         $info=M('user')->where($map)->find();
         $data['sb_time']=$info['sb_time'];
         $data['xb_time']=$info['xb_time'];
+        $data['cq']=$info['cq'];
         $data['mid']=$this->mid;
         return $data;
 
@@ -1896,6 +1897,7 @@ class ApiData extends ApiBase
         $cq=M('user')->where($map)->find();
         if($type==1){   //上班
             $up['sb_time']=time();
+            $up['xb_time']='';
             $up['cq']=1;
             $where['jsbn']=$cq['jsbn'];
             $queue['cq']=1;
