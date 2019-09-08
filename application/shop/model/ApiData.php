@@ -1893,25 +1893,23 @@ class ApiData extends ApiBase
         $data['type']=$type;
         $data['date']=date('Ymd');
         $map['uid']=$uid;
+        $cq=M('user')->where($map)->find();
         if($type==1){   //上班
             $up['sb_time']=time();
             $up['cq']=1;
-            $where['user_id']=$uid;
+            $where['jsbn']=$cq['jsbn'];
             $queue['cq']=1;
             M('user_queue')->where($where)->update($queue);
 
         }else{          //下班
-            dump($uid);
-            exit;
             $up['xb_time']=time();
-            $where1['uid']=$uid;
-            $cq=M('user')->where($where1)->value('cq');
-            if($cq!=1){
+
+            if($cq['cq']!=1){
                 $data['msg']='失败：请先打上班卡！';
                 $data['code']=1;
                 return $data;
             }
-            $where2['user_id']=$uid;
+            $where2['jsbn']=$cq['jsbn'];
             $work_status=M('user_queue')->where($where2)->value('type');
             if($work_status==1){
                 $data['msg']='失败：您有未完成的叫钟安排！';
