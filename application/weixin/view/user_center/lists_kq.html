@@ -123,6 +123,26 @@
     <div class="page"> {$_page|raw|default=''} </div>
     </section>
 </div>
+<script>
+    //请假
+    function qingjia(id) {
+        if(confirm("确定要请假吗?")){
+            var url = "{:U('qingjia')}"
+            $.post(url,{'id':id},function(res){
+                var data_obj = eval("("+res+")");
+                if(data_obj.code==1){
+                    // updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
+                    // window.location.href=window.location.href;
+                    var hurl = "{:U('lists_kq')}";
+                    window.location.href = hurl;
+                }else{
+                    alert(data_obj.msg);
+                }
+            })
+        }
+
+    }
+</script>
 <!-- 用户分组弹框 -->
 <div class="group_html" style="display:none">
     <div class="manage_group normal_dialog">
@@ -161,24 +181,7 @@
 <script type="text/javascript">
     $(function(){
 
-        //请假
-        function qingjia(id) {
-            if(confirm("确定要请假吗?")){
-                var url = "{:U('qingjia')}"
-                $.post(url,{'id':id},function(res){
-                    var data_obj = eval("("+res+")");
-                    if(data_obj.code==1){
-                        // updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
-                        // window.location.href=window.location.href;
-                        var hurl = "{:U('lists_kq')}";
-                        window.location.href = hurl;
-                    }else{
-                        alert(data_obj.msg);
-                    }
-                })
-            }
 
-        }
 
         $('.time').datetimepicker({
             format: 'yyyy-mm-dd hh:ii',
