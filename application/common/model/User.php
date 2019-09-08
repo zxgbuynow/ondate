@@ -309,7 +309,8 @@ class User extends Base
         }
 
 		$key = cache_key('uid:'.$uid, $this->name);
-        $userInfo = S($key);
+       // $userInfo = S($key);
+        $userInfo =false;
 
         if ($userInfo === false || $update) {
             // 获取用户基本信息
@@ -382,7 +383,7 @@ class User extends Base
                 ->select();
             $userInfo['groups'] = $group_info;
 
-            S($key, $userInfo, 3600);
+           // S($key, $userInfo, 1);
         }
 
         $pbid = session('pbid');
