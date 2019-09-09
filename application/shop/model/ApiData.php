@@ -2221,7 +2221,9 @@ class ApiData extends ApiBase
                }
 
                //检查是否有点钟等待   优先
-               $waites=M('waite')->where(['jsbn'=>$jsbn])->order('created_time desc')->select();
+               $waites=M('waite')->where(['jsbn'=>$jsbn])->order('created_time DESC')->select();
+               dump($waites);
+               exit;
                if($waites){
                    $userinfo = M('art')->where(['jsbn'=>$jsbn])->find();
                    $save['jsbn'] = $userinfo['jsbn'];
