@@ -2221,7 +2221,7 @@ class ApiData extends ApiBase
                }
 
                //检查是否有点钟等待   优先
-               $waites=M('waite')->where(['jsbn'=>$jsbn])->order('created_time DESC')->select();
+               $waites=M('waite')->where(['jsbn'=>$jsbn])->order('created_time ASC')->select();
                if($waites){
                    $userinfo = M('art')->where(['jsbn'=>$jsbn])->find();
                    $save['jsbn'] = $userinfo['jsbn'];
@@ -2244,7 +2244,7 @@ class ApiData extends ApiBase
                    M('user_queue')->where(['jsbn'=>$jsbn])->update(['type'=>2]);
                }else{
                    //检查是否有排钟等待
-                   $waites=M('waite')->where(['way'=>0])->order('created_time desc')->select();
+                   $waites=M('waite')->where(['way'=>0])->order('created_time ASC')->select();
                    if($waites){
                        $userinfo = M('art')->where(['jsbn'=>$jsbn])->find();
                        $save['jsbn'] = $userinfo['jsbn'];
