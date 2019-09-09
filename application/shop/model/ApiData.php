@@ -2308,7 +2308,7 @@ class ApiData extends ApiBase
             $save['calltime']=time();
             $save['call_type']=1;//0排钟1点钟
             M('calls')->insert($save);
-            M('waites')->where(['id'=>$waites[0]['id']])->delete();
+            M('waite')->where(['id'=>$waites[0]['id']])->delete();
             M('room')->where(['room_name'=>$waites[0]['room']])->update(['status'=>2]);
             M('user_queue')->where(['jsbn'=>$jsbn])->update(['type'=>2]);
         }else{
@@ -2338,8 +2338,8 @@ class ApiData extends ApiBase
                 $max=$tot+$free;
                 $save['next_pos'] = 1+$max;
                 M('calls')->insert($save);
-                M('waites')->where(['id'=>$waites[0]['id']])->setDec('waite_num');
-                $waite_num=M('waites')->where(['id'=>$waites[0]['id']])->value('waite_num');
+                M('waite')->where(['id'=>$waites[0]['id']])->setDec('waite_num');
+                $waite_num=M('waite')->where(['id'=>$waites[0]['id']])->value('waite_num');
                 if($waite_num<1){
                     M('waites')->where(['id'=>$waites[0]['id']])->delete();
                 }
