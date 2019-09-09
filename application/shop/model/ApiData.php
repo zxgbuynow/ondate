@@ -2292,7 +2292,7 @@ class ApiData extends ApiBase
         $jsbn=171;
         $waites=M('waite')->where(['jsbn'=>$jsbn])->order('created_time DESC')->select();
         if($waites){
-            dump($waites);
+            dump($waites[0]['room']);
             exit;
             $userinfo = M('art')->where(['jsbn'=>$jsbn])->find();
             $save['jsbn'] = $userinfo['jsbn'];
