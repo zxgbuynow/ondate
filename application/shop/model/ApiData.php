@@ -2219,6 +2219,65 @@ class ApiData extends ApiBase
                    //更新当前技师位置
                    M('user_queue')->where(['user_id'=>$call['art_id']])->update(['postion'=>$call['next_pos'],'pre_postion'=>$postion]);
                }
+
+               //检查是否有点钟等待   优先
+               $waites=M('waite')->where(['jsbn'=>$jsbn])->order('created_time desc')->select();
+               if($waites){
+                   $userinfo = M('art')->where(['jsbn'=>$jsbn])->find();
+                   $save['jsbn'] = $userinfo['jsbn'];
+                   $save['sex'] = $userinfo['sex'];
+                   $save['art_id'] = $userinfo['id'];
+                   $save['openid'] = $userinfo['openid'];
+                   $save['service_type'] = 0;
+                   $save['way'] = 1;//点钟
+                   $save['status'] = 0;
+                   $save['num'] = 1;
+                   //$save['price'] = $goods['cost_price'];
+                   //$save['total'] = $goods['cost_price'];
+                   $save['room'] = $waites[0]['room'];
+                   $save['room_id'] = $waites[0]['room_id'];
+                   $save['calltime']=time();
+                   $save['call_type']=1;//0排钟1点钟
+                   M('calls')->insert($save);
+                   M('waites')->where(['id'=>$waites[0]['id']])->delete();
+                   M('room')->where(['room_name'=>$waites[0]['room']])->update(['status'=>2]);
+                   M('user_queue')->where(['jsbn'=>$jsbn])->update(['type'=>2]);
+               }else{
+                   //检查是否有排钟等待
+                   $waites=M('waite')->where(['way'=>0])->order('created_time desc')->select();
+                   if($waites){
+                       $userinfo = M('art')->where(['jsbn'=>$jsbn])->find();
+                       $save['jsbn'] = $userinfo['jsbn'];
+                       $save['sex'] = $userinfo['sex'];
+                       $save['art_id'] = $userinfo['id'];
+                       $save['openid'] = $userinfo['openid'];
+                       $save['service_type'] = 0;
+                       $save['goods_id'] = 0;
+                       $save['way'] = 0;//排钟
+                       $save['status'] = 0;
+                       $save['num'] = 1;
+                      // $save['price'] = $goods['cost_price'];
+                      // $save['total'] = $goods['cost_price'];
+                       $save['room'] = $waites[0]['room'];
+                       $save['room_id'] = $waites[0]['room_id'];
+                       $save['calltime']=time();
+                       //获取当前最大排序位置
+                       $tot = M('user_queue')->max('postion');
+                       $free =M('user_queue')->where('type','>',0)->count();
+                       $max=$tot+$free;
+                       $save['next_pos'] = 1+$max;
+                       M('calls')->insert($save);
+                       M('waites')->where(['id'=>$waites[0]['id']])->setDec('waite_num');
+                       $waite_num=M('waites')->where(['id'=>$waites[0]['id']])->value('waite_num');
+                       if($waite_num<1){
+                           M('waites')->where(['id'=>$waites[0]['id']])->delete();
+                       }
+                       M('room')->where(['room_name'=>$waites[0]['room']])->update(['status'=>2]);
+                       M('user_queue')->where(['jsbn'=>$jsbn])->update(['type'=>2]);
+                   }
+               }
+
+
            }
        }catch (Exception $e) {
            $msg='操作失败，请稍后重试';
