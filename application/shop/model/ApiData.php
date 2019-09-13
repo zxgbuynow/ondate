@@ -2279,8 +2279,8 @@ class ApiData extends ApiBase
                        if($waite_num<1){
                            M('waite')->where(['id'=>$waites[0]['id']])->delete();
                        }
-                       M('room')->where(['room_name'=>$waites[0]['room']])->update(['status'=>1]);//1排2点
-                       M('user_queue')->where(['jsbn'=>$jsbn])->update(['type'=>2]);
+                       M('room')->where(['room_name'=>$waites[0]['room']])->update(['status'=>2]);
+                       M('user_queue')->where(['jsbn'=>$jsbn])->update(['type'=>1]);//1排2点
                    }
                }
 
