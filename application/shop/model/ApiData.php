@@ -2242,6 +2242,7 @@ class ApiData extends ApiBase
                    $save['room'] = $waites[0]['room'];
                    $save['room_id'] = $waites[0]['room_id'];
                    $save['calltime']=time();
+                   $save['operator']=$waites[0]['opt'];
                    $save['call_type']=1;//0排钟1点钟
                    M('calls')->insert($save);
                    M('waite')->where(['id'=>$waites[0]['id']])->delete();
@@ -2266,6 +2267,7 @@ class ApiData extends ApiBase
                        $save['room'] = $waites[0]['room'];
                        $save['room_id'] = $waites[0]['room_id'];
                        $save['calltime']=time();
+                       $save['operator']=$waites[0]['opt'];
                        //获取当前最大排序位置
                        $tot = M('user_queue')->max('postion');
                        $free =M('user_queue')->where('type','>',0)->count();
