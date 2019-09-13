@@ -1876,6 +1876,7 @@ class ApiData extends ApiBase
     }
     //考勤页面
     function  kaoqin(){
+        $kq=[376,377,378,379];//工作人員考勤
         $openid = get_openid();
         if (empty($this->mid)){
             $this->mid=get_uid_by_openid(true,$openid);
@@ -1883,6 +1884,10 @@ class ApiData extends ApiBase
                 return $this->error('获取不到当前用户，请在微信里打开!');
         }
         $map['uid']=$this->mid;
+        $group_id=M('auth_group_access')->where(['uid'=>$map['uid']])->value('group_id');
+        if(!in_array($group_id,$kq)){
+            return $this->error('抱歉，您不是工作人員!');
+        }
         //$map['status']=0;
         $info=M('user')->where($map)->find();
         $data['sb_time']=$info['sb_time'];

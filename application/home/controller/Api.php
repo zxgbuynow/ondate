@@ -755,6 +755,7 @@ class Api extends ApiBase
     }
     //下钟优化，测试
     public function orderFinsh($params){
+        return api_error('失败：权限关闭！');
         if (!$params['id']) {
             return api_error('参数缺少');
         }
