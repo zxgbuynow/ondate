@@ -52,7 +52,7 @@ class User extends Home
         $map['retime']=null;
         $info=M('calls')->where($map)->field('jsbn,end_time,openid')->select();
         foreach ($info as $k=>$v){
-            if($v['end_time']<=time()-60){
+            if($v['end_time']<=time()+60){
                 //$sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
                 $sendOpenid=$v['openid'];
                 $content='尊敬的技师';
