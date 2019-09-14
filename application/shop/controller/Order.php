@@ -38,6 +38,8 @@ class Order extends Base
         if($room || $jsbn || $st || $et){
             $mutif=true;
         }
+        $beiyong=M('room')->where(['cate_id'=>3])->select();
+        $this->assign('beiyong', $beiyong);
         $this->assign('room', $room);
         $this->assign('jsbn', $jsbn);
         $this->assign('mutif', $mutif);
