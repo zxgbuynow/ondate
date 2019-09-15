@@ -379,11 +379,11 @@ class Order extends Base
         try{
             foreach ($ids as $v){
                     $orderInfo=M('shop_order')->where(['id'=>$v])->find();
-                    dump($orderInfo);
-                    exit;
                     $orderUp['true_room']=$orderInfo['room'];
                     $orderUp['room']=$data['new_room'];
                     M('shop_order')->where(['id'=>$v])->update($orderUp);
+                dump($orderUp);
+                exit;
                     $roomUp['status']=2;
                     M('room')->where(['room_name'=>$data['new_room']])->update($roomUp);
                     $roomUp1['status']=0;
