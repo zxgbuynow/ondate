@@ -379,16 +379,18 @@ class Order extends Base
         $ids=explode(',',$data['ids']);
         try{
             foreach ($ids as $k=>$v){
-                $orderInfo=$orderModel->where(['id'=>$v])->find();
-                $orderUp['true_room']=$orderInfo['room'];
-                $orderUp['room']=$data['new_room'];
-                $orderModel->where(['id'=>$v])->update($orderUp);
-                $roomUp['status']=2;
-                M('room')->where(['room_name'=>$data['new_room']])->update($roomUp);
-                $roomUp1['status']=0;
-                M('room')->where(['room_name'=>$orderInfo['room']])->update($roomUp1);
-                $callUp['room']=$data['new_room'];
-                M('calls')->where(['id'=>$orderInfo['call_id']])->update($callUp);
+                if ($v){
+                    $orderInfo=$orderModel->where(['id'=>$v])->find();
+                    $orderUp['true_room']=$orderInfo['room'];
+                    $orderUp['room']=$data['new_room'];
+                    $orderModel->where(['id'=>$v])->update($orderUp);
+                    $roomUp['status']=2;
+                    M('room')->where(['room_name'=>$data['new_room']])->update($roomUp);
+                    $roomUp1['status']=0;
+                    M('room')->where(['room_name'=>$orderInfo['room']])->update($roomUp1);
+                    $callUp['room']=$data['new_room'];
+                    M('calls')->where(['id'=>$orderInfo['call_id']])->update($callUp);
+                }
             }
             $info['type']='1';
             $info['msg'] = '操作成功！';
