@@ -372,6 +372,23 @@ class Order extends Base
            echo json_encode($data);
        }
     }
+    //确认挂单
+    public function gua_action(){
+        $data=I('post.');
+        $info['type']='1';
+        $orderModel=M('shop_order');
+        $ids=explode(',',$data['ids']);
+        foreach ($ids as $k=>$v){
+            $orderInfo=$orderModel->where(['id'=>$v])->find();
+            $orderUp['true_room']=$orderInfo['room'];
+            $orderUp['room']=$data['new_room'];
+            $orderModel->where(['id'=>$v])->update($orderUp);
+            $roomUp['status']=2;
+            M('room')->where(['room_name'=>$data['new_room']])->update($roomUp);
+            $roomUp1['status']=0;
+            M('room')->where(['room_name'=>$orderInfo['room']])->update($roomUp1);
+        }
+    }
     //确认支付
     public function pay_action(){
         $data=I('post.');

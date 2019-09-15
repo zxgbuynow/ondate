@@ -113,7 +113,8 @@ class Api extends ApiBase
     	foreach ($rooms as $key => &$value) {
     		$cparams['status'] = [0,1];
             $cparams['type'] = [0,1];
-    		$cparams['room_id'] = $value['id'];
+    		//$cparams['room_id'] = $value['id'];
+            $cparams['room'] = $value['room_name'];
     		$calls = M('calls')->where($cparams)->limit(3)->select();
     		array_walk($calls,function(&$v,$k){
     			$v['sex'] = $v['sex']==0?'女':'男';
