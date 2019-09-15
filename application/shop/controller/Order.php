@@ -375,19 +375,30 @@ class Order extends Base
     //确认挂单
     public function gua_action(){
         $data=I('post.');
-        $info['type']='1';
         $orderModel=M('shop_order');
         $ids=explode(',',$data['ids']);
-        foreach ($ids as $k=>$v){
-            $orderInfo=$orderModel->where(['id'=>$v])->find();
-            $orderUp['true_room']=$orderInfo['room'];
-            $orderUp['room']=$data['new_room'];
-            $orderModel->where(['id'=>$v])->update($orderUp);
-            $roomUp['status']=2;
-            M('room')->where(['room_name'=>$data['new_room']])->update($roomUp);
-            $roomUp1['status']=0;
-            M('room')->where(['room_name'=>$orderInfo['room']])->update($roomUp1);
+        try{
+            foreach ($ids as $k=>$v){
+                $orderInfo=$orderModel->where(['id'=>$v])->find();
+                $orderUp['true_room']=$orderInfo['room'];
+                $orderUp['room']=$data['new_room'];
+                $orderModel->where(['id'=>$v])->update($orderUp);
+                $roomUp['status']=2;
+                M('room')->where(['room_name'=>$data['new_room']])->update($roomUp);
+                $roomUp1['status']=0;
+                M('room')->where(['room_name'=>$orderInfo['room']])->update($roomUp1);
+                $callUp['room']=$data['new_room'];
+                M('calls')->where(['id'=>$orderInfo['call_id']])->update($callUp);
+            }
+            $info['type']='1';
+            $info['msg'] = '操作成功！';
+            echo json_encode($info);
+        }catch (Exception $e) {
+            $info['type'] =2;
+            $info['msg'] = '操作失败,请稍后重试！';
+            echo json_encode($info);
         }
+
     }
     //确认支付
     public function pay_action(){
