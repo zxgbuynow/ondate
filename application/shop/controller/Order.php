@@ -388,8 +388,6 @@ class Order extends Base
                     M('room')->where(['room_name'=>$orderInfo['room']])->update($roomUp1);
                     $callUp['room']=$data['new_room'];
                     M('calls')->where(['id'=>$orderInfo['call_id']])->update($callUp);
-                dump($callUp);
-                exit;
             }
             $info['type']='1';
             $info['msg'] = '操作成功！';
