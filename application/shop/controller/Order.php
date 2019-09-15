@@ -382,10 +382,10 @@ class Order extends Base
                     $orderUp['true_room']=$orderInfo['room'];
                     $orderUp['room']=$data['new_room'];
                     M('shop_order')->where(['id'=>$v])->update($orderUp);
-                dump($orderUp);
-                exit;
                     $roomUp['status']=2;
                     M('room')->where(['room_name'=>$data['new_room']])->update($roomUp);
+                dump($roomUp);
+                exit;
                     $roomUp1['status']=0;
                     M('room')->where(['room_name'=>$orderInfo['room']])->update($roomUp1);
                     $callUp['room']=$data['new_room'];
