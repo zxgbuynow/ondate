@@ -377,9 +377,10 @@ class Order extends Base
         $data=I('post.');
         $orderModel=M('shop_order');
         $ids=explode(',',$data['ids']);
+        dump($ids);
+        exit;
         try{
             foreach ($ids as $k=>$v){
-                if ($v){
                     $orderInfo=$orderModel->where(['id'=>$v])->find();
                     $orderUp['true_room']=$orderInfo['room'];
                     $orderUp['room']=$data['new_room'];
@@ -390,7 +391,6 @@ class Order extends Base
                     M('room')->where(['room_name'=>$orderInfo['room']])->update($roomUp1);
                     $callUp['room']=$data['new_room'];
                     M('calls')->where(['id'=>$orderInfo['call_id']])->update($callUp);
-                }
             }
             $info['type']='1';
             $info['msg'] = '操作成功！';
