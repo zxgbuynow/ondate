@@ -378,6 +378,17 @@ class Order extends Base
         $ids=explode(',',$data['ids']);
         try{
             foreach ($ids as $v){
+                $retiem='';
+                $call_id=M('shop_order')->where(['id'=>$v])->value('call_id');
+                $retiem=M('calls')->where(['id'=>$call_id])->value('retime');
+                if(empty($retiem)){
+                    $info['type'] =2;
+                    $info['msg'] = '失败！技师还未操作下钟！';
+                    echo json_encode($info);
+                    exit;
+                }
+            }
+            foreach ($ids as $v){
                     $orderInfo=M('shop_order')->where(['id'=>$v])->find();
                     $orderUp['true_room']=$orderInfo['room'];
                     $orderUp['room']=$data['new_room'];
