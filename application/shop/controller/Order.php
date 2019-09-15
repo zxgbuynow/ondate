@@ -377,10 +377,8 @@ class Order extends Base
         $data=I('post.');
         $orderModel=M('shop_order');
         $ids=explode(',',$data['ids']);
-        dump($ids);
-        exit;
         try{
-            foreach ($ids as $k=>$v){
+            foreach ($ids as $v){
                     $orderInfo=$orderModel->where(['id'=>$v])->find();
                     $orderUp['true_room']=$orderInfo['room'];
                     $orderUp['room']=$data['new_room'];
@@ -394,7 +392,7 @@ class Order extends Base
             }
             $info['type']='1';
             $info['msg'] = '操作成功！';
-            echo json_encode($ids);
+            echo json_encode($info);
         }catch (Exception $e) {
             $info['type'] =2;
             $info['msg'] = '操作失败,请稍后重试！';
