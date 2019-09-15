@@ -329,14 +329,12 @@
     });
     //确认挂单
     $("#sub_gua").click(function(){
-        var ids=$('#ids').val();
-        var total_price =$('#total_price').val();
-        var jsbn=$('#jsbn').val();
+        var ids=$('#ids_gua').val();
         var new_room=$("#new_room option:selected").val();
         $.ajax(
             {
                 url: "{:U('gua_action')}",
-                data:{"ids":ids,"total_price":total_price,"jsbn":jsbn,"new_room":new_room},
+                data:{"ids":ids,"new_room":new_room},
                 type: "post",
                 beforeSend:function()
                 {
