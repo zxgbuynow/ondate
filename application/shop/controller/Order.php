@@ -392,7 +392,7 @@ class Order extends Base
             }
             $info['type']='1';
             $info['msg'] = '操作成功！';
-            echo json_encode($info);
+            echo json_encode($ids);
         }catch (Exception $e) {
             $info['type'] =2;
             $info['msg'] = '操作失败,请稍后重试！';
