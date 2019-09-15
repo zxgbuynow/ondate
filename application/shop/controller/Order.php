@@ -375,14 +375,15 @@ class Order extends Base
     //确认挂单
     public function gua_action(){
         $data=I('post.');
-        $orderModel=M('shop_order');
         $ids=explode(',',$data['ids']);
         try{
             foreach ($ids as $v){
-                    $orderInfo=$orderModel->where(['id'=>$v])->find();
+                    $orderInfo=M('shop_order')->where(['id'=>$v])->find();
+                    dump($orderInfo);
+                    exit;
                     $orderUp['true_room']=$orderInfo['room'];
                     $orderUp['room']=$data['new_room'];
-                    $orderModel->where(['id'=>$v])->update($orderUp);
+                    M('shop_order')->where(['id'=>$v])->update($orderUp);
                     $roomUp['status']=2;
                     M('room')->where(['room_name'=>$data['new_room']])->update($roomUp);
                     $roomUp1['status']=0;
