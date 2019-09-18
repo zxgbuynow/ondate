@@ -99,6 +99,49 @@ class User extends Home
 
 
     }
+    //模板消息发给指定用户
+    function send(){
+                $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
+                $content='尊敬的技师';
+                $title=171;
+                $sender=date('m-d h:i',time());;//发起人
+                $data ['send_openids'] = $sendOpenid;
+                if (input('send_type') == 1 && $sendOpenid == '') {
+                    $this->error ( '指定的Openid值不能为空' );
+                }
+                $pbid=get_pbid();
+
+                $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
+                //发消息给指定人
+                $count=0;
+                // $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
+                $templateDao = D('common/TemplateMessage');
+                //  foreach ($openidArr as $openid){
+                $tRes = $templateDao->replyMessage($sendOpenid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
+                //addWeixinLog($tRes,'templatemesaadf');
+                if (isset($tRes['status']) && $tRes['status']==1){
+                    $count++;
+                }
+                //  }
+                if ($count>0){
+                    $model = $this->getModel ( 'template_messages' );
+                    // 获取模型的字段信息
+                    $data = I('post.');
+                    $data['pbid']=$pbid;
+                    $data['cTime']=time();
+                    $data['send_count']=$count;
+                    $id = M ('template_messages' )->insertGetId($data);
+// 	    		M('template_messages')->where('id',$id)->setField('send_count',$count);
+                    // $this->success ( '添加' . $model ['title'] . '成功！' );
+                    echo 'OK';
+
+                }else{
+                    // $this->error('群发失败');
+                    echo 'ERROR';
+                }
+
+
+    }
 
     // 手机绑定登录
     public function wap_scan()
