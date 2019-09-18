@@ -104,7 +104,8 @@ class User extends Home
                 $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
                 $content='尊敬的技师';
                 $title=171;
-                $sender=date('m-d h:i',time());;//发起人
+                $sender=date('m-d h:i',time());;//下钟时间
+                $room=201;
                 $data ['send_openids'] = $sendOpenid;
                 if (input('send_type') == 1 && $sendOpenid == '') {
                     $this->error ( '指定的Openid值不能为空' );
@@ -117,7 +118,7 @@ class User extends Home
                 // $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
                 $templateDao = D('common/TemplateMessage');
                 //  foreach ($openidArr as $openid){
-                $tRes = $templateDao->replyMessage($sendOpenid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
+                $tRes = $templateDao->xzMessage($sendOpenid,$content,$title,$sender,$room,$config['template_id'],input('jamp_url'));
                 //addWeixinLog($tRes,'templatemesaadf');
                 if (isset($tRes['status']) && $tRes['status']==1){
                     $count++;

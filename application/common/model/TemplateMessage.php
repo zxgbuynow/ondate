@@ -88,7 +88,32 @@ class TemplateMessage extends Base
         $templateId == '' && $templateId = '';
         return $this->replyData($uid, $param, $templateId, $url);
     }
+    /*
+     * 模板消息：群发消息
+     * 标题：下钟提醒
+     */
+    public function xzMessage($uid, $first, $title, $sender,$room, $templateId = '', $url = '')
+    {
+        $remark = '';
+        empty($title) && $title = '通知提醒';
+        $param['data']['first']['value'] = $first;
+        $param['data']['first']['color'] = "#173177";
 
+        $param['data']['keyword1']['value'] = $title;
+        $param['data']['keyword1']['color'] = "#173177";
+
+        $param['data']['keyword2']['value'] = $sender;
+        $param['data']['keyword2']['color'] = "#173177"; // #E60B43
+
+        $param['data']['keyword3']['value'] = $room;
+        $param['data']['keyword3']['color'] = "#173177"; // #E60B43
+
+        $param['data']['remark']['value'] = $remark;
+        $param['data']['remark']['color'] = "#173177";
+
+        $templateId == '' && $templateId = '';
+        return $this->replyData($uid, $param, $templateId, $url);
+    }
     /*
      * 礼包领取通知消息模板 OPENTM200977411
      * 线上templateid c1n1Ry0Le6m7JfDSjeHrRs-m2YFYjR8k7BWoezFjqlk
