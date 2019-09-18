@@ -1700,6 +1700,7 @@ class ApiData extends ApiBase
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
+            $templateDao = D('common/TemplateMessage');
 
             //安排
             try {
@@ -1733,10 +1734,15 @@ class ApiData extends ApiBase
                         M('calls')->insert($save);
 
                         //语音推送
-                        // sleep(1);
-                       // $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                        //$msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
                         $msg .= '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
+
+                        //消息推送
+                        $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
+                        $weipushA=date('m-d h:i',time());;//安排时间
+                        $weipushB=$rooms['room_name'];
+                        $weipushC='足浴';
+                        $weipushD=$userinfo['jsbn'];
+                        $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
 
                     }
 
@@ -1864,7 +1870,14 @@ class ApiData extends ApiBase
             //$msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
             $msg = '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
             $this->push_wm_msg('1',$msg);
-           // M('calls')->where(['id'=>$calls['id']])->update(['calltime'=>time()]);
+            //消息推送
+            $templateDao = D('common/TemplateMessage');
+            $sendOpenid=$userinfo['openid'];
+            $weipushA=date('m-d h:i',time());;//安排时间
+            $weipushB=$rooms['room_name'];
+            $weipushC='足浴';
+            $weipushD=$userinfo['jsbn'];
+            $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
         } catch (Exception $e) {
             $msg='操作失败，请稍后重试';
             return ['code'=>0,'msg'=>$msg];

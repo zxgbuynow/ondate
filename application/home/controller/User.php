@@ -45,57 +45,61 @@ class User extends Home
     function msg_tea(){
         return $this->fetch();
     }
-    //模板消息发给指定用户
+    //推送消息：下钟提醒
     function sendmy(){
         $map['status']=1;
         $map['type']=0;
         $map['retime']=null;
         $info=M('calls')->where($map)->field('jsbn,end_time,openid')->select();
-        foreach ($info as $k=>$v){
-            if($v['end_time']<=time()+60){
-                //$sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
-                $sendOpenid=$v['openid'];
-                $content='尊敬的技师';
-                $title=$v['jsbn'];
-                $sender=date('m-d h:i',$v['end_time']);;//发起人
-                $data ['send_openids'] = $sendOpenid;
-                if (input('send_type') == 1 && $sendOpenid == '') {
-                    $this->error ( '指定的Openid值不能为空' );
-                }
-                $pbid=get_pbid();
+        if($info) {
+            foreach ($info as $k => $v) {
+                if ($v['end_time'] <= time() + 60) {
+                    //$sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
+                    $sendOpenid = $v['openid'];
+                    $content = '尊敬的技师';
+                    $title = $v['jsbn'];
+                    $sender = date('m-d h:i', $v['end_time']);;//下钟时间
+                    $room = $v['room'];
+                    $templateId = 'wLUaVTXqQQ3x24kgCA-J1_cZ0pyMpmV5K5G2oUuG9do';//下钟模板ID
+                    $data ['send_openids'] = $sendOpenid;
+                    if (input('send_type') == 1 && $sendOpenid == '') {
+                        $this->error('指定的Openid值不能为空');
+                    }
+                    $pbid = get_pbid();
 
-                $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
-                //发消息给指定人
-                $count=0;
-               // $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
-                $templateDao = D('common/TemplateMessage');
-              //  foreach ($openidArr as $openid){
-                    $tRes = $templateDao->replyMessage($sendOpenid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
+                    $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
+                    //发消息给指定人
+                    $count = 0;
+                    // $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
+                    $templateDao = D('common/TemplateMessage');
+                    //  foreach ($openidArr as $openid){
+                    //  $tRes = $templateDao->replyMessage($sendOpenid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
+                    $tRes = $templateDao->replyMessage($sendOpenid, $content, $title, $sender, $room, $templateId, input('jamp_url'));
                     //addWeixinLog($tRes,'templatemesaadf');
-                    if (isset($tRes['status']) && $tRes['status']==1){
+                    if (isset($tRes['status']) && $tRes['status'] == 1) {
                         $count++;
                     }
-              //  }
-                if ($count>0){
-                    $model = $this->getModel ( 'template_messages' );
-                    // 获取模型的字段信息
-                    $data = I('post.');
-                    $data['pbid']=$pbid;
-                    $data['cTime']=time();
-                    $data['send_count']=$count;
-                    $id = M ('template_messages' )->insertGetId($data);
+                    //  }
+                    if ($count > 0) {
+                        $model = $this->getModel('template_messages');
+                        // 获取模型的字段信息
+                        $data = I('post.');
+                        $data['pbid'] = $pbid;
+                        $data['cTime'] = time();
+                        $data['send_count'] = $count;
+                        $id = M('template_messages')->insertGetId($data);
 // 	    		M('template_messages')->where('id',$id)->setField('send_count',$count);
-                    // $this->success ( '添加' . $model ['title'] . '成功！' );
-                    echo 'OK';
+                        // $this->success ( '添加' . $model ['title'] . '成功！' );
+                        echo 'OK';
 
-                }else{
-                    // $this->error('群发失败');
-                    echo 'ERROR';
+                    } else {
+                        // $this->error('群发失败');
+                        echo 'ERROR';
+                    }
                 }
             }
+
         }
-
-
 
 
     }
@@ -113,7 +117,7 @@ class User extends Home
                 }
                 $pbid=get_pbid();
 
-                $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
+                //$config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
                 //发消息给指定人
                 $count=0;
                 // $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
