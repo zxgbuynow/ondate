@@ -1735,12 +1735,12 @@ class ApiData extends ApiBase
 
                         //语音推送
                         $msg .= '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
-
                         //消息推送
-                        $sendOpenid='olpE21owMcdh5w2GP2mdANVxWoKI';//词正川
+                        //$templateDao = D('common/TemplateMessage');
+                        $sendOpenid=$userinfo['openid'];
                         $weipushA=date('m-d h:i',time());;//安排时间
                         $weipushB=$rooms['room_name'];
-                        $weipushC='足浴';
+                        $weipushC='服务项目';
                         $weipushD=$userinfo['jsbn'];
                         $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
 
@@ -1771,10 +1771,15 @@ class ApiData extends ApiBase
                         M('calls')->insert($save);
 
                         //语音推送
-                        // sleep(1);
-                       // $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                       // $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
                         $msg .= '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
+                        //消息推送
+                       // $templateDao = D('common/TemplateMessage');
+                        $sendOpenid=$userinfo['openid'];
+                        $weipushA=date('m-d h:i',time());;//安排时间
+                        $weipushB=$rooms['room_name'];
+                        $weipushC='服务项目';
+                        $weipushD=$userinfo['jsbn'];
+                        $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
 
                     }
                     // $this->push_wm_msg('1',$msg);
@@ -1805,10 +1810,15 @@ class ApiData extends ApiBase
                         M('calls')->insert($save);
 
                         //语音推送
-                        // sleep(1);
-                        //$calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                        //$msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
                         $msg .= '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
+                        //消息推送
+                       // $templateDao = D('common/TemplateMessage');
+                        $sendOpenid=$userinfo['openid'];
+                        $weipushA=date('m-d h:i',time());;//安排时间
+                        $weipushB=$rooms['room_name'];
+                        $weipushC='服务项目';
+                        $weipushD=$userinfo['jsbn'];
+                        $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
 
                     }
                     $secret=0;

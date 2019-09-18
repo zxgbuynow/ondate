@@ -422,7 +422,7 @@ class Api extends ApiBase
             if ($rooms['seats']<($woman+$man+$secret)) {
                 return api_error('房间座位数'.$rooms['seats']);
             }
-
+            $templateDao = D('common/TemplateMessage');
             //安排
             try {
                 $msg = '';
@@ -454,10 +454,15 @@ class Api extends ApiBase
                         M('calls')->insert($save);
 
                         //语音推送
-                        // sleep(1);
-                       // $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                       // $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
                         $msg .= '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
+                        //消息推送
+                        //$templateDao = D('common/TemplateMessage');
+                        $sendOpenid=$userinfo['openid'];
+                        $weipushA=date('m-d h:i',time());;//安排时间
+                        $weipushB=$rooms['room_name'];
+                        $weipushC='服务项目';
+                        $weipushD=$userinfo['jsbn'];
+                        $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
 
                     }
 
@@ -485,10 +490,15 @@ class Api extends ApiBase
                         M('calls')->insert($save);
 
                         //语音推送
-                        // sleep(1);
-                       // $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                        //$msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
                         $msg .= '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
+                        //消息推送
+                        //$templateDao = D('common/TemplateMessage');
+                        $sendOpenid=$userinfo['openid'];
+                        $weipushA=date('m-d h:i',time());;//安排时间
+                        $weipushB=$rooms['room_name'];
+                        $weipushC='服务项目';
+                        $weipushD=$userinfo['jsbn'];
+                        $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
 
                     }
                     // $this->push_wm_msg('1',$msg);
@@ -518,10 +528,15 @@ class Api extends ApiBase
                         M('calls')->insert($save);
 
                         //语音推送
-                        // sleep(1);
-                      //  $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-                       // $msg .= '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
                         $msg .= '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
+                        //消息推送
+                        //$templateDao = D('common/TemplateMessage');
+                        $sendOpenid=$userinfo['openid'];
+                        $weipushA=date('m-d h:i',time());;//安排时间
+                        $weipushB=$rooms['room_name'];
+                        $weipushC='服务项目';
+                        $weipushD=$userinfo['jsbn'];
+                        $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
 
                     }
                     // $this->push_wm_msg('1',$msg);
@@ -569,11 +584,16 @@ class Api extends ApiBase
             //删除等待信息
             M('waite')->where(['room_id'=>$room])->delete();
             //语音推送
-           // $calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-           // $msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
             $msg = '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
             $this->push_wm_msg('1',$msg);
-           // M('calls')->where(['id'=>$calls['id']])->update(['calltime'=>time()]);
+            //消息推送
+            $templateDao = D('common/TemplateMessage');
+            $sendOpenid=$userinfo['openid'];
+            $weipushA=date('m-d h:i',time());;//安排时间
+            $weipushB=$rooms['room_name'];
+            $weipushC='服务项目';
+            $weipushD=$userinfo['jsbn'];
+            $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
         } catch (Exception $e) {
             return api_error('操作失败，请稍后重试');
         }

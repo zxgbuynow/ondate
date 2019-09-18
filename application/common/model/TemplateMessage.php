@@ -121,15 +121,15 @@ class TemplateMessage extends Base
     public function szMessage($uid, $time, $room, $xmmc,$jsbn,$url = '')
     {
         $remark = '请到指定房间，扫码上钟';
-        empty($title) && $title = '通知提醒';
-        $param['data']['first']['value'] = $time;
+        $title  ='您有一个叫钟安排';
+        $param['data']['first']['value'] = $title;
         $param['data']['first']['color'] = "#173177";
 
-        $param['data']['keyword1']['value'] = $title;
+        $param['data']['keyword1']['value'] = $time;
         $param['data']['keyword1']['color'] = "#173177";
 
         $param['data']['keyword2']['value'] = $room;
-        $param['data']['keyword2']['color'] = "#173177"; // #E60B43
+        $param['data']['keyword2']['color'] = "#DC143C"; // #E60B43
 
         $param['data']['keyword3']['value'] = $xmmc;
         $param['data']['keyword3']['color'] = "#173177"; // #E60B43
