@@ -1875,7 +1875,7 @@ class ApiData extends ApiBase
             $sendOpenid=$userinfo['openid'];
             $weipushA=date('m-d h:i',time());;//安排时间
             $weipushB=$rooms['room_name'];
-            $weipushC='足浴';
+            $weipushC='服务项目';
             $weipushD=$userinfo['jsbn'];
             $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
         } catch (Exception $e) {
