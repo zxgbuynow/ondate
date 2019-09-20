@@ -68,6 +68,7 @@
         }
         #div01 {
             width: 100%;
+            height: auto;
             border: 1px solid red;
             padding-bottom: 20px;
             position: relative;
@@ -78,15 +79,18 @@
 
         }
         table {
-            width: 80%;
+            width: 90%;
             margin: 20px auto;
         }
-        table,td,th {border: 0px solid black;border-collapse: collapse}
+        table,th {font-size: 12px;}
+        table,td,th {border: 0px solid black;border-collapse: collapse;}
         table,td {
             text-align: center;
+            font-size: 10px;
         }
         .remarks {
             text-align: center;
+            font-size: 10px;
         }
         footer {
             text-align: center;
@@ -105,10 +109,10 @@
             width: 100%;
         }
     </style>
-    <h1>lodop打印演示</h1>
+    <h1>华鼎会所</h1>
 
-    <div class="f_left">左边</div>
-    <div class="f_right">右边</div>
+<!--    <div class="f_left">左边</div>
+    <div class="f_right">右边</div>-->
     <table>
         <thead>
         <tr>
@@ -123,31 +127,31 @@
             <td>苹果</td>
             <td>10</td>
             <td>1</td>
-            <td class="price"></td>
+            <td class="price">10</td>
         </tr>
         <tr>
             <td>香蕉</td>
             <td>10</td>
             <td>2</td>
-            <td class="price"></td>
+            <td class="price">20</td>
         </tr>
         <tr>
             <td>橘子</td>
             <td>10</td>
             <td>3</td>
-            <td class="price"></td>
+            <td class="price">30</td>
         </tr>
         <tr>
             <td>柠檬</td>
             <td>10</td>
             <td>4</td>
-            <td class="price"></td>
+            <td class="price">40</td>
         </tr>
 
         </tbody>
     </table>
     <div class="remarks">打印说明:引入lodopFuncs.js用来检测本地的打印服务</div>
-    <div class="bottom">底边</div>
+<!--    <div class="bottom">底边</div>-->
 </div>
 
 <DIV style="POSITION: fixed; TEXT-ALIGN: center; WIDTH: 100%; BOTTOM: 10px; LEFT: 600px; _left: 600px; z_index: 999; _position: absolute; _bottom: 10px">
