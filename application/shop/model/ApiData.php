@@ -2267,6 +2267,14 @@ class ApiData extends ApiBase
                    $save['calltime']=time();
                    $save['operator']=$waites[0]['opt'];
                    $save['call_type']=1;//0排钟1点钟
+                   //消息推送
+                   $templateDao = D('common/TemplateMessage');
+                   $sendOpenid=$userinfo['openid'];
+                   $weipushA=date('m-d h:i',time());;//安排时间
+                   $weipushB=$waites[0]['room'];
+                   $weipushC='服务项目';
+                   $weipushD=$userinfo['jsbn'];
+                   $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
                    M('calls')->insert($save);
                    M('waite')->where(['id'=>$waites[0]['id']])->delete();
                    M('room')->where(['room_name'=>$waites[0]['room']])->update(['status'=>2]);
@@ -2291,6 +2299,14 @@ class ApiData extends ApiBase
                        $save['room_id'] = $waites[0]['room_id'];
                        $save['calltime']=time();
                        $save['operator']=$waites[0]['opt'];
+                       //消息推送
+                       $templateDao = D('common/TemplateMessage');
+                       $sendOpenid=$userinfo['openid'];
+                       $weipushA=date('m-d h:i',time());;//安排时间
+                       $weipushB=$waites[0]['room'];
+                       $weipushC='服务项目';
+                       $weipushD=$userinfo['jsbn'];
+                       $templateDao->szMessage($sendOpenid,$weipushA,$weipushB,$weipushC,$weipushD,input('jamp_url'));
                        //获取当前最大排序位置
                        $tot = M('user_queue')->max('postion');
                        $free =M('user_queue')->where('type','>',0)->count();
