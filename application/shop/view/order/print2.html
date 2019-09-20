@@ -155,10 +155,10 @@
 <script language="javascript" type="text/javascript">
     var LODOP; //声明为全局变量
     function prn1_print() {
-        document.getElementById("div01").style.display="none";
-        CreateWholePage();
+        document.getElementById("printButton").style.display="none";
+        CreateOnePage();
         LODOP.PREVIEW();
-        document.getElementById("div01").style.display="";
+        document.getElementById("printButton").style.display="";
     };
     function CreateWholePage(){
         LODOP=getLodop();
@@ -167,6 +167,12 @@
         LODOP.ADD_PRINT_HTM(60,0,"100%","100%",document.documentElement.innerHTML);
         LODOP.SET_SHOW_MODE("LANDSCAPE_DEFROTATED",1);//横向时的正向显示
 
+    };
+    function CreateOnePage(){
+        LODOP=getLodop();
+        LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_整页缩放打印输出");
+        LODOP.ADD_PRINT_HTM(0,0,"100%","100%",document.getElementById('div01').innerHTML);
+        LODOP.SET_PREVIEW_WINDOW(0,0,0,0,0,"");
     };
 </script>
 </BODY>
