@@ -202,7 +202,9 @@ class Order extends Base
 
         return $this->fetch();
     }
-
+    public function printIndex(){
+        return $this->fetch();
+    }
     private function muti_search($result)
     {
         $map = [];
