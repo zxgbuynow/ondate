@@ -149,7 +149,8 @@
 </div>
 
 <DIV style="POSITION: fixed; TEXT-ALIGN: center; WIDTH: 100%; BOTTOM: 10px; LEFT: 600px; _left: 600px; z_index: 999; _position: absolute; _bottom: 10px">
-    <BUTTON style="WIDTH: 150px; BACKGROUND: #0098fc; HEIGHT: 30px; COLOR: white" id=printButton class=notPrint onclick="prn1_print()" type=submit>打印</BUTTON>
+    <BUTTON style="WIDTH: 150px; BACKGROUND: #0098fc; HEIGHT: 30px; COLOR: white" id=printButton class=notPrint onclick="prn1_print()" type=submit>打印预览</BUTTON>
+    <BUTTON style="WIDTH: 150px; BACKGROUND: #0098fc; HEIGHT: 30px; COLOR: white"  class=notPrint onclick="print1()" type=submit>直接打印</BUTTON>
 </DIV>
 
 <script language="javascript" type="text/javascript">
@@ -174,6 +175,10 @@
         LODOP.ADD_PRINT_HTM(0,0,"100%","100%",document.getElementById('div01').innerHTML);
         LODOP.SET_PREVIEW_WINDOW(0,0,0,0,0,"");
     };
+    function print1() {
+        CreateOnePage();
+        LODOP.PRINT();
+    }
 </script>
 </BODY>
 </html>
