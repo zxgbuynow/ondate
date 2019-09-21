@@ -309,7 +309,7 @@ class Order extends Base
         $map['id']=$order_id;
         $data=M('shop_order')->where($map)->field('goods_datas,total_price')->find();
         $tmp=json_decode($data['goods_datas']);
-        $row="<tr><td>".$tmp[0]['title']."</td><td>".$tmp[0]['sale_price']."</td><td>".$tmp[0]['num']."</td><td>".$data['total_price']."</td></tr>";
+        $row="<tr><td>".$tmp['title']."</td><td>".$tmp['sale_price']."</td><td>".$tmp['num']."</td><td>".$data['total_price']."</td></tr>";
         $info['row']=$tmp;
         $info['money']=$data['total_price'];
         echo json_encode($info);
