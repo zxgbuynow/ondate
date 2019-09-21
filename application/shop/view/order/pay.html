@@ -226,6 +226,7 @@
         </div><!-- /.modal -->
     </div>
 </form>
+{include file="order/print" /}
 <script>
     $("#pay_type").change(function(){
         var t=$("#pay_type option:selected").val();
@@ -237,6 +238,9 @@
     });
     //确认支付
     $("#sub").click(function(){
+        CreateOnePage();
+        LODOP.PRINT();
+        return;
         var ids=$('#ids').val();
         var total_price =$('#total_price').val();
         var jsbn=$('#jsbn').val();

@@ -1,0 +1,201 @@
+
+    <script type="text/javascript" src='__STATIC__/LodopFuncs.js'></script>
+<STYLE>
+    @media print{ .page{ page-break-after :always; } .notPrint { display:none;
+                                                     } }
+    input
+    {
+        width:90%;
+        padding-top:5px;
+        padding-bottom:5px;
+        border:1px solid rgb(204,204,204);
+        font-size:15px;
+        padding-left:5px;
+    }
+    textarea
+    {
+        width:98%;
+        height:90%;
+        border:1px solid rgb(204,204,204);
+        font-size:12px;
+        overflow-y:auto;
+    }
+    img
+    {
+        height:192px;
+    }
+    select
+    {
+        width:90%;
+        font-size:12px;
+    }
+    option
+    {
+        font-size:15px;
+    }
+    .wid3 input
+    {
+        width:24px;
+        padding-top:5px;
+        padding-bottom:5px;
+        font-size:15px;
+        float:left;
+        padding-left:5px;
+    }
+    .big img{
+        width:170px;
+        height:260px;
+    }
+    td.imgh  img
+    {
+        height:150px;
+        width:130px;
+    }
+</STYLE>
+
+</HEAD>
+<body>
+<div id="div01" >
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 15px;
+        }
+        #div01 {
+            width: 100%;
+            height: auto;
+            border: 1px solid red;
+            padding-bottom: 20px;
+            position: relative;
+            font-size: 12px;
+            display: none;
+        }
+        .price {
+            color: red;
+
+        }
+        table {
+            width: 100%;
+            margin: 20px auto;
+        }
+        table,th {font-size: 12px;}
+        table,td,th {border: 0px solid black;border-collapse: collapse;}
+        table,td {
+            text-align: center;
+            font-size: 10px;
+        }
+        .remarks {
+            text-align: center;
+            font-size: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .paytime{
+            font-size: 12px;
+            margin: 20px auto;
+        }
+
+    </style>
+    <h1>华鼎会所</h1>
+    <div><span class="paytime">付款时间：2019-9-20 23:40:48</span></div>
+    <table>
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>价格</th>
+            <th>数量</th>
+            <th>总价</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>华鼎足道</td>
+            <td>78</td>
+            <td>1</td>
+            <td class="price">78</td>
+        </tr>
+        <tr>
+            <td>华鼎足道</td>
+            <td>78</td>
+            <td>1</td>
+            <td class="price">78</td>
+        </tr>
+        <tr>
+            <td>华鼎足道</td>
+            <td>78</td>
+            <td>1</td>
+            <td class="price">78</td>
+        </tr>
+        <tr>
+            <td>华鼎足道</td>
+            <td>78</td>
+            <td>1</td>
+            <td class="price">78</td>
+        </tr>
+        <tr>
+            <td>菊花茶</td>
+            <td>0</td>
+            <td>1</td>
+            <td class="price">0</td>
+        </tr>
+        <tr>
+            <td>采耳</td>
+            <td>30</td>
+            <td>1</td>
+            <td class="price">30</td>
+        </tr>
+        <tr>
+            <td>精油开背</td>
+            <td>180</td>
+            <td>1</td>
+            <td class="price">180</td>
+        </tr>
+        <tr style="font-size: 12px">
+            <td>合计</td>
+            <td></td>
+            <td></td>
+            <td class="price">288</td>
+        </tr>
+
+        </tbody>
+    </table>
+    <div class="remarks">打印说明:用来检测本地的打印服务</div>
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+    <!--    <div class="bottom">******************************</div>-->
+</div>
+
+<!--<DIV style="POSITION: fixed; TEXT-ALIGN: center; WIDTH: 100%; BOTTOM: 10px; LEFT: 600px; _left: 600px; z_index: 999; _position: absolute; _bottom: 10px">
+    <BUTTON style="WIDTH: 150px; BACKGROUND: #0098fc; HEIGHT: 30px; COLOR: white" id=printButton class=notPrint onclick="prn1_print()" type=submit>打印预览</BUTTON>
+    <BUTTON style="WIDTH: 150px; BACKGROUND: #0098fc; HEIGHT: 30px; COLOR: white"  class=notPrint onclick="print1()" type=submit>直接打印</BUTTON>
+</DIV>-->
+
+<script language="javascript" type="text/javascript">
+    var LODOP; //声明为全局变量
+    function prn1_print() {
+        document.getElementById("printButton").style.display="none";
+        CreateOnePage();
+        LODOP.PREVIEW();
+        document.getElementById("printButton").style.display="";
+    };
+    function CreateWholePage(){
+        LODOP=getLodop();
+        LODOP.PRINT_INIT("准考证");//如果是使用pdf打印机的话 会另存为成“准考证.pdf”
+        LODOP.SET_PRINT_PAGESIZE(2, 2970, 2100,"准考证打印");
+        LODOP.ADD_PRINT_HTM(60,0,"100%","100%",document.documentElement.innerHTML);
+        LODOP.SET_SHOW_MODE("LANDSCAPE_DEFROTATED",1);//横向时的正向显示
+
+    };
+    function CreateOnePage(){
+        LODOP=getLodop();
+        LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_整页缩放打印输出");
+        LODOP.ADD_PRINT_HTM(0,0,"100%","100%",document.getElementById('div01').innerHTML);
+        LODOP.SET_PREVIEW_WINDOW(0,0,0,0,0,"");
+    };
+    function print1() {
+        CreateOnePage();
+        LODOP.PRINT();
+    }
+</script>
