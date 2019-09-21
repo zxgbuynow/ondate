@@ -27,6 +27,9 @@
                     <div class="form-group">
                         <label for="lastname" class="col-sm-3 control-label">支付方式</label>
                         <div class="col-sm-9">
+                            <input type="hidden" id="id" name="id" value="{id}">
+                            <input type="hidden" id="ids" name="ids" value="{ids}">
+                            <input type="hidden" id="romm" name="room" value="{room}">
                             <select name="pay_type" id="pay_type">
                                 <option value="0">请选择</option>
                                 <option value="1">微信</option>
@@ -430,6 +433,8 @@
 
                         var data_obj = eval("("+data+")");
                         $("#row").html(data_obj.row);
+                        $("#ids").val(data_obj.id);
+                        $("#total_price").val(data_obj.money);
                        // $("#price").text(data_obj.money);
 
 /*                        // 赋值

@@ -307,12 +307,13 @@ class Order extends Base
     public function pay_info(){
         $order_id = I('order_id', 0);
         $map['id']=$order_id;
-        $data=M('shop_order')->where($map)->field('goods_datas,total_price')->find();
+        $data=M('shop_order')->where($map)->field('goods_datas,total_price,id')->find();
         $tmp=json_decode($data['goods_datas'],true);
         $row="<tr><td>".$tmp[0]['title']."</td><td>".$tmp[0]['sale_price']."</td><td>".$tmp[0]['num']."</td><td>".$data['total_price']."</td></tr>";
         $row.="<tr><td style='font-size: 13px'>合计</td><td></td><td></td><td class='price'>".$data['total_price']."</td></tr>";
         $info['row']=$row;
         $info['money']=$data['total_price'];
+        $info['id']=$data['id'];
         echo json_encode($info);
     }
     //结单信息（批量）
