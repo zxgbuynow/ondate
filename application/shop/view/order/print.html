@@ -13,20 +13,18 @@
             padding-bottom: 20px;
             position: relative;
             font-size: 12px;
+            text-align: center;
         }
         .price {
             color: red;
 
         }
-        table {
+        .ptable {
             width: 100%;
             margin: 20px auto;
         }
         table,td,th {border: 0px solid black;border-collapse: collapse;}
-        table,td {
-            text-align: center;
-            font-size: 10px;
-        }
+
         .remarks {
             text-align: center;
             font-size: 10px;
@@ -42,8 +40,8 @@
 
     </style>
     <h1>华鼎会所</h1>
-    <div><span class="paytime">付款时间：2019-9-20 23:40:48</span></div>
-    <table>
+    <div><span class="paytime" id="paytime">付款时间：0000-0-0 00:00:00</span></div>
+    <table class="ptable">
         <thead>
         <tr>
             <th>名称</th>
@@ -104,7 +102,8 @@
 
         </tbody>
     </table>
-    <div class="remarks">打印说明:用来检测本地的打印服务</div>
+    <div class="remarks">尊敬的贵宾：感谢您的惠顾！</div>
+    <div class="remarks">小票说明:免费的项目没有打印</div>
     <!--    <div class="bottom">******************************</div>-->
 </div>
 

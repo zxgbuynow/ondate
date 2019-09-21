@@ -314,6 +314,7 @@ class Order extends Base
         $info['row']=$row;
         $info['money']=$data['total_price'];
         $info['id']=$data['id'];
+        $info['time']=date('Y-m-d H:i:s');
         echo json_encode($info);
     }
     //订单支付信息（批量）
@@ -334,6 +335,7 @@ class Order extends Base
         $data['row']=$row;
         $data['ids']=implode(',',$ids);
         $data['money']=$total;
+        $data['time']=date('Y-m-d H:i:s');
         echo json_encode($data);
     }
     //结单信息（批量）
@@ -488,9 +490,9 @@ class Order extends Base
                     echo json_encode($info);
                     exit;
                 }
-                $flag1 = $cardModel->where($map)->setDec('money', $data['total_price']);
-                $time['last_time']=time();
-                $cardModel->where($map)->update($time);
+                $cardUp['time']=time();
+                $cardUp['money']=$m['money']-$data['total_price'];
+                $flag1 = $cardModel->where($map)->update($cardUp);
                 $vip['card']=$data['card_no'];
                 $vip['time']=time();
                 $vip['add']=0-$data['total_price'];
