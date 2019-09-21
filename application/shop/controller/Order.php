@@ -273,7 +273,7 @@ class Order extends Base
         return $result;
     }
     //订单支付信息（批量）
-    public function pay_all_info(){
+    public function pay_all_info_back(){
         $order_ids = I('order_ids', 0);
         $map['id']=explode(',',$order_ids);
         $info=M('shop_order')->where($map)->field('id,room,jsbn,total_price')->select();
@@ -315,6 +315,22 @@ class Order extends Base
         $info['money']=$data['total_price'];
         $info['id']=$data['id'];
         echo json_encode($info);
+    }
+    //订单支付信息（批量）
+    public function pay_all_info(){
+        $order_ids = I('order_ids', 0);
+        $map['id']=explode(',',$order_ids);
+        $info=M('shop_order')->where($map)->field('goods_datas,total_price,id')->select();
+        $ids=[];
+        $total=0;
+        foreach ($info as $k=>$v){
+            $ids[]=$v['id'];
+            $total+=$v['total_price'];
+        }
+
+        $data['ids']=implode(',',$ids);
+        $data['money']=$total;
+        echo json_encode($data);
     }
     //结单信息（批量）
     public function finish_info(){

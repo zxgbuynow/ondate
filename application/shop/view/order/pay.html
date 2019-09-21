@@ -407,7 +407,7 @@
             });
     });
 
-    // 支付单笔订单支付信息
+    // 支付【单笔】订单支付信息
     function get_edit_info(order_id)
     {
         if(!order_id)
@@ -422,7 +422,6 @@
                 type: "post",
                 beforeSend:function()
                 {
-                    // $("#tip").html("<span style='color:blue'>正在处理...</span>");
                     return true;
                 },
                 success:function(data)
@@ -431,24 +430,10 @@
                     {
                         // 解析json数据
                         var data = data;
-
                         var data_obj = eval("("+data+")");
                         $("#row").html(data_obj.row);
                         $("#ids").val(data_obj.id);
                         $("#total_price").val(data_obj.money);
-                       // $("#price").text(data_obj.money);
-
-/*                        // 赋值
-                        $("#jsbn").val(data_obj.jsbn);
-                        $("#ids").val(data_obj.id);
-                        $("#room").val(data_obj.room);
-                        $("#total_price").val(data_obj.total_price);
-                        $("#address").val(data_obj.address);
-
-                        // 将input元素设置为readonlyid
-                        $('#jsbn').attr("readonly","readonly");
-                        $('#room').attr("readonly","readonly");
-                        $('#total_price').attr("readonly","total_price");*/
                     }
                     else
                     {
@@ -468,7 +453,7 @@
 
         return false;
     }
-    // 订单支付批量支付信息
+    // 订单支付【批量】支付信息
     function get_info()
     {
         var ids=[];
@@ -481,7 +466,6 @@
             alert('请选择订单！');
             return false;
         }
-        // var form_data = new Array();
         $.ajax(
             {
                 url: "{:U('pay_all_info')}",
@@ -489,7 +473,6 @@
                 type: "post",
                 beforeSend:function()
                 {
-                    // $("#tip").html("<span style='color:blue'>正在处理...</span>");
                     return true;
                 },
                 success:function(data)
@@ -497,24 +480,16 @@
                     if(data)
                     {
                         $('#msg2').hide();
+                        // 解析json数据
                         var data = data;
                         var data_obj = eval("("+data+")");
                         if(data_obj.total_price==0){
                             $("#msg2").html("<strong>请选择要支付的订单</strong>");
                             $('#msg2').show();
                         }
-                        // 赋值
-                        $("#jsbn").val(data_obj.jsbn);
+                        $("#row").html(data_obj.row);
                         $("#ids").val(data_obj.ids);
-                        $("#room").val(data_obj.room);
-                        $("#total_price").val(data_obj.total_price);
-                        // $("#address").val(data_obj.address);
-
-                        // 将input元素设置为readonlyid
-                        $('#jsbn').attr("readonly","readonly");
-                        $('#room').attr("readonly","readonly");
-                        $('#total_price').attr("readonly","total_price");
-                        // location.reload();
+                        $("#total_price").val(data_obj.money);
                     }
                     else
                     {
