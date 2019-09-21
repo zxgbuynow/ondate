@@ -308,12 +308,10 @@ class Order extends Base
         $order_id = I('order_id', 0);
         $map['id']=$order_id;
         $data=M('shop_order')->where($map)->field('goods_datas,total_price')->find();
-        $tmp=json_decode($data['goods_datas']);
-        dump($tmp);
-        exit;
-        //$row="<tr><td>".$tmp['title']."</td><td>".$tmp['sale_price']."</td><td>".$tmp['num']."</td><td>".$data['sale_price']."</td></tr>";
-        $info['row']=$tmp;
-       // $info['money']=$data['total_price'];
+        $tmp=json_decode($data['goods_datas'],true);
+        $row="<tr><td>".$tmp['title']."</td><td>".$tmp['sale_price']."</td><td>".$tmp['num']."</td><td>".$data['sale_price']."</td></tr>";
+        $info['row']=$row;
+        $info['money']=$data['total_price'];
         echo json_encode($info);
     }
     //结单信息（批量）
