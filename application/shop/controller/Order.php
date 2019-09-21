@@ -311,7 +311,7 @@ class Order extends Base
         $tmp=json_decode($data['goods_datas']);
         //$row="<tr><td>".$tmp['title']."</td><td>".$tmp['sale_price']."</td><td>".$tmp['num']."</td><td>".$data['sale_price']."</td></tr>";
         $info['row']=$tmp;
-        $info['money']=$data['total_price'];
+       // $info['money']=$data['total_price'];
         echo json_encode($info);
     }
     //结单信息（批量）
