@@ -323,11 +323,15 @@ class Order extends Base
         $info=M('shop_order')->where($map)->field('goods_datas,total_price,id')->select();
         $ids=[];
         $total=0;
+        $row='';
         foreach ($info as $k=>$v){
             $ids[]=$v['id'];
             $total+=$v['total_price'];
+            $tmp=json_decode($v['goods_datas'],true);
+            $row.="<tr><td>".$tmp[0]['title']."</td><td>".$tmp[0]['sale_price']."</td><td>".$tmp[0]['num']."</td><td>".$tmp[0]['num']*$tmp[0]['sale_price']."</td></tr>";
         }
-
+        $row.="<tr><td style='font-size: 13px'>合计</td><td></td><td></td><td class='price'>".$total."</td></tr>";
+        $data['row']=$row;
         $data['ids']=implode(',',$ids);
         $data['money']=$total;
         echo json_encode($data);
