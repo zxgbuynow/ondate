@@ -308,8 +308,8 @@ class Order extends Base
         $order_id = I('order_id', 0);
         $map['id']=$order_id;
         $data=M('shop_order')->where($map)->field('goods_datas')->find();
-        $info=json_decode($data);
-        echo json_encode($data);
+        $info=json_decode($data['goods_datas']);
+        echo json_encode($info);
     }
     //结单信息（批量）
     public function finish_info(){
