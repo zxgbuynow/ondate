@@ -23,6 +23,9 @@
                     <strong>错误!</strong>
                 </div>
                 <div class="modal-body">
+                    {include file="order/print" /}
+                </div>
+<!--                <div class="modal-body">
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
                             <label for="user_id" class="col-sm-3 control-label">房间编号</label>
@@ -75,7 +78,7 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                </div>-->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                     </button>
@@ -226,7 +229,6 @@
         </div><!-- /.modal -->
     </div>
 </form>
-{include file="order/print" /}
 <script>
     $("#pay_type").change(function(){
         var t=$("#pay_type option:selected").val();
@@ -262,7 +264,7 @@
                     if(data_obj.type==1)
                     {
                         CreateOnePage();
-                        LODOP.PRINT();
+                       // LODOP.PRINT();
                         console.log(data_obj.printData);
                         return;
                         $('#msg2').hide();
