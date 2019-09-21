@@ -297,10 +297,18 @@ class Order extends Base
     }
 
     //订单支付信息（单笔）
-    public function pay_info(){
+    public function pay_info_back(){
         $order_id = I('order_id', 0);
         $map['id']=$order_id;
         $data=M('shop_order')->where($map)->field('id,room,jsbn,total_price')->find();
+        echo json_encode($data);
+    }
+    //订单支付信息（单笔）
+    public function pay_info(){
+        $order_id = I('order_id', 0);
+        $map['id']=$order_id;
+        $data=M('shop_order')->where($map)->field('goods_datas')->find();
+        $info=json_decode($data);
         echo json_encode($data);
     }
     //结单信息（批量）
@@ -477,7 +485,6 @@ class Order extends Base
                 $orderModel->where($where)->update($orderData);
                 $info['msg'] = '操作成功！';
             }
-            $printData=[];
             foreach ($ids as $k => $v) {
                 $maps['id'] = $v;
                 $order_data = M('shop_order')->where($maps)->find();
@@ -501,10 +508,8 @@ class Order extends Base
                         M('room')->where(['room_name' => $order_data['room']])->update(['status' => 0]);//更新房间状态
                     }
                 }
-                $printData[]=$order_data;
 
             }
-            $info['printData']=$printData;
             echo json_encode($info);
         }catch (Exception $e) {
             $info['type'] =2;
