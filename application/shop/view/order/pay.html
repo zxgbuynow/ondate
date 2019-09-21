@@ -24,6 +24,33 @@
                 </div>
                 <div class="modal-body">
                     {include file="order/print" /}
+                    <div class="form-group">
+                        <label for="lastname" class="col-sm-3 control-label">支付方式</label>
+                        <div class="col-sm-9">
+                            <select name="pay_type" id="pay_type">
+                                <option value="0">请选择</option>
+                                <option value="1">微信</option>
+                                <option value="2">支付宝</option>
+                                <option value="3">现金</option>
+                                <option value="4">会员卡</option>
+                                <option value="5">免单</option>
+                                <option value="6">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: none" id="card">
+                        <label for="lastname" class="col-sm-3 control-label">请输入卡号</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="card_no" value="" id="card_no"
+                            >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="remark" class="col-sm-3 control-label">备注</label>
+                        <div class="col-sm-9">
+                            <input type="text"  class="form-control" name="remark" value="" id="remark">
+                        </div>
+                    </div>
                 </div>
 <!--                <div class="modal-body">
                     <form class="form-horizontal" role="form">
@@ -240,9 +267,6 @@
     });
     //确认支付
     $("#sub").click(function(){
-        CreateOnePage();
-        LODOP.PRINT();
-        return;
         var ids=$('#ids').val();
         var total_price =$('#total_price').val();
         var jsbn=$('#jsbn').val();
@@ -266,6 +290,8 @@
                     var data_obj = eval("("+data+")");
                     if(data_obj.type==1)
                     {
+                        CreateOnePage();
+                        LODOP.PRINT();
                         $('#msg2').hide();
                         $('#msg').show();
                         location.reload();
