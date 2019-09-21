@@ -238,9 +238,6 @@
     });
     //确认支付
     $("#sub").click(function(){
-        CreateOnePage();
-        LODOP.PRINT();
-        return;
         var ids=$('#ids').val();
         var total_price =$('#total_price').val();
         var jsbn=$('#jsbn').val();
@@ -264,6 +261,10 @@
                     var data_obj = eval("("+data+")");
                     if(data_obj.type==1)
                     {
+                        CreateOnePage();
+                        LODOP.PRINT();
+                        console.log(data_obj.printData);
+                        return;
                         $('#msg2').hide();
                         $('#msg').show();
                         location.reload();

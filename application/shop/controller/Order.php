@@ -474,9 +474,10 @@ class Order extends Base
 
 
             } else {
-                $flag2 = $orderModel->where($where)->update($orderData);
+                $orderModel->where($where)->update($orderData);
                 $info['msg'] = '操作成功！';
             }
+            $printData=[];
             foreach ($ids as $k => $v) {
                 $maps['id'] = $v;
                 $order_data = M('shop_order')->where($maps)->find();
@@ -500,8 +501,10 @@ class Order extends Base
                         M('room')->where(['room_name' => $order_data['room']])->update(['status' => 0]);//更新房间状态
                     }
                 }
+                $printData[]=$order_data;
 
             }
+            $info['printData']=$printData;
             echo json_encode($info);
         }catch (Exception $e) {
             $info['type'] =2;
