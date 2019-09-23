@@ -20,6 +20,7 @@ class Salary extends WebBase
     function lists()
     {
         $isAjax = I('isAjax/d', 0);
+        dump($isAjax);
 
         $search = input('name');
 
