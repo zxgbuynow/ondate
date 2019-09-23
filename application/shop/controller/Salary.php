@@ -55,9 +55,9 @@ class Salary extends WebBase
     function list_data()
     {
         $map['wpid'] = WPID;
-        $page_data = M('salary_log')->where(wp_where($map))
+        $page_data = M('salary')->where(wp_where($map))
             ->order('id DESC')
-            ->paginate(20);
+            ->paginate(10);
         $list = dealPage($page_data);
 
         echo json_url($list);

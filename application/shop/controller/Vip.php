@@ -57,7 +57,7 @@ class Vip extends WebBase
         $map['wpid'] = WPID;
         $page_data = M('vip_log')->where(wp_where($map))
             ->order('id DESC')
-            ->paginate(20);
+            ->paginate(10);
         $list = dealPage($page_data);
 
         echo json_url($list);
