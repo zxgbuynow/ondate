@@ -6,19 +6,13 @@
         {if condition="$add_button || $del_button || $search_button || !empty($top_more_button)"}
         <div class="table-bar">
             <div class="fl">
-                {empty name="model.extend"}
+
                 <div class="tools">
 
-                    {volist name="top_more_button" id="vo"}
-                    {notempty name="$vo['is_buttion']"}
-                    <button class="btn {$vo.class}" target-form="ids" url="{$vo.url}">{$vo.title}</button>
-                    {else/}
-                    <a class="btn" href="{$vo.url}">{$vo.title}</a>
-                    {/notempty}
-                    &nbsp;
-                    {/volist}
+                    <a class="btn" href="{:U('output')}">导出工资数据</a>
+
                 </div>
-                {/empty}
+
             </div>
             <!-- 高级搜索 -->
 <!--            {if condition="$search_button"}
