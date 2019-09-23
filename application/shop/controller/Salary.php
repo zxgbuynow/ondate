@@ -17,7 +17,7 @@ class Salary extends Base
         $this->model = $this->getModel('salary');
     }
 
-    function lists()
+    public function lists()
     {
         $isAjax = I('isAjax/d', 0);
 
