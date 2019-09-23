@@ -76,17 +76,11 @@
 <script type="text/javascript">
     $(function(){
         var outurl=$('#output').attr('href');
-        var url = $(this).attr('url');
         var query  = $('.muti_search').find('input').serialize();
         query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
         query = query.replace(/^&/g,'');
-        if( url.indexOf('?')>0 ){
-            url += '&' + query;
-        }else{
-            url += '?' + query;
-        }
         if(query == '' ){
-            url="{:U('lists')}";
+            outurl="{:U('output')}";
         }else {
             outurl +='?' +query;
             $('#output').attr('href',outurl);
