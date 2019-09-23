@@ -3,7 +3,7 @@ namespace app\shop\controller;
 
 use app\common\controller\WebBase;
 
-class Salary extends WebBase
+class Salary extends Base
 {
 
     var $model;
