@@ -21,8 +21,10 @@ class Salary extends Base
     {
         $isAjax = I('isAjax/d', 0);
 
-        $search = input('name');
-
+        $sdate = input('sdate');
+        $jsbn= input('jsbn');
+        $this->assign('sdate', $sdate);
+        $this->assign('jsbn', $jsbn);
 /*        $top_more_button[] = array(
             'title' => '导入数据',
             'url' => U('import')

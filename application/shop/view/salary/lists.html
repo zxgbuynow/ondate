@@ -29,9 +29,9 @@
             <form class="muti_search cf">
                 <div style="line-height: 30px;">
                     <span>工资月份：</span>
-                    <input type="text"  name="sdate" class="search-input" value="" placeholder="输入时间">
+                    <input type="text"  name="sdate" class="search-input" value="{$sdate}" placeholder="输入时间">
                     <span>员工编号：</span>
-                    <input type="text"  name="jsbn" class="search-input" value="" placeholder="输入员工编号">
+                    <input type="text"  name="jsbn" class="search-input" value="{$jsbn}" placeholder="输入员工编号">
 
                     <!-- <a class="sort " href="#" title="排序">排序:高->低</a> -->
                     <button type="button" class="sch-btn btn" href="javascript:;" url="{:U('lists')}" id="search">搜索</button> </div>
@@ -75,6 +75,23 @@
 {block name="script"}
 <script type="text/javascript">
     $(function(){
+        var outurl=$('#output').attr('href');
+        var url = $(this).attr('url');
+        var query  = $('.muti_search').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+        if(query == '' ){
+            url="{:U('lists')}";
+        }else {
+            outurl +='?' +query;
+            $('#output').attr('href',outurl);
+        }
+
         //搜索功能
         $("#search").click(function(){
             var outurl=$('#output').attr('href');
@@ -93,7 +110,7 @@
                 outurl +='?' +query;
                 $('#output').attr('href',outurl);
             }
-            
+
             url = change_search_url(url);
             window.location.href = url;
         });
