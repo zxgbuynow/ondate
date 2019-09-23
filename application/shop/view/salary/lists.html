@@ -61,18 +61,15 @@
                     <!-- 列表 -->
                     <tbody>
                     {volist name="list_data" id="data"}
-                    <!--                    <tr>
+                                        <tr>
                                             <td>{$data.id}</td>
-                                            <td>{$data.card}</td>
+                                            <td>{$data.jsbn}</td>
                                             <td>
-                                                {$data.type}
+                                                {$data.sdate}
                                             </td>
-                                            <td>{$data.add}</td>
-                                            <td>{$data.pay}</td>
-                                            <td>{$data.time|date="Y-m-d H:i:s"}</td>
-                                            <td>{$data.uid}</td>
-                                            <td>{$data.remark}</td>
-                                        </tr>-->
+                                            <td>{$data.total}</td>
+                                            
+                                        </tr>
                     {/volist}
                     </tbody>
                 </table>
