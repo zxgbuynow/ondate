@@ -77,6 +77,7 @@
     $(function(){
         //搜索功能
         $("#search").click(function(){
+            var outurl=$('#output').attr('href');
             var url = $(this).attr('url');
             var query  = $('.muti_search').find('input').serialize();
             query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
@@ -88,10 +89,12 @@
             }
             if(query == '' ){
                 url="{:U('lists')}";
+            }else {
+                outurl +='?' +query;
+                $('#output').attr('href',outurl);
             }
-            console.log(query);
+            
             url = change_search_url(url);
-            return;
             window.location.href = url;
         });
 
