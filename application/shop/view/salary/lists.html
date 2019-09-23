@@ -32,7 +32,7 @@
             </div>
             {/if}-->
             <!-- 多维过滤 -->
-            <form class="muti_search cf" action="{:U('lists')}">
+            <form class="search-form cf">
                 <div style="line-height: 30px;">
                     <span>工资所属月份：</span>
                     <input type="text"  name="sdate" class="search-input" value="" placeholder="输入时间">
@@ -40,7 +40,7 @@
                     <input type="text"  name="jsbn" class="search-input" value="" placeholder="输入员工编号">
 
                     <!-- <a class="sort " href="#" title="排序">排序:高->低</a> -->
-                    <button type="button" class="sch-btn btn" href="javascript:;" id="search">搜索</button> </div>
+                    <button type="button" class="sch-btn btn" href="javascript:;" url="{:U('lists')}" id="search">搜索</button> </div>
             </form>
         </div>
         {/if}
