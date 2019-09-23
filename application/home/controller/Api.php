@@ -74,7 +74,7 @@ class Api extends ApiBase
     {
     	//$user = M('user')->find();
     	//session('userinfo',$user);
-    	$login=$_SESSION;
+    	$login=$_COOKIE;
     	dump($login);
 
 /*        //查找用户并插入队列
