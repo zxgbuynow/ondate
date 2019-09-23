@@ -72,8 +72,8 @@ class Api extends ApiBase
      */
     static function autoLogin()
     {
-    	$user = M('user')->find();
-    	session('userinfo',$user);
+    	//$user = M('user')->find();
+    	//session('userinfo',$user);
     	$login=$_SESSION;
     	dump($login);
 
