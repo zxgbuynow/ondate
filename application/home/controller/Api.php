@@ -74,8 +74,6 @@ class Api extends ApiBase
     {
     	//$user = M('user')->find();
     	//session('userinfo',$user);
-    	$login=$_REQUEST;
-    	dump($login);
 
 /*        //查找用户并插入队列
         $user = M('art')->count();
