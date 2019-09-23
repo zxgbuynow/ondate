@@ -74,8 +74,9 @@ class Api extends ApiBase
     {
     	$user = M('user')->find();
     	session('userinfo',$user);
+    	dump(99999999999888888);
 
-        //查找用户并插入队列
+/*        //查找用户并插入队列
         $user = M('art')->count();
         $userInfo = M('art')->select();
         $queue = M('user_queue')->count();
@@ -95,7 +96,7 @@ class Api extends ApiBase
                     M('user_queue')->insert($save);
                 }
             }
-        }
+        }*/
         return true;
     	// return api_success($user);
     }
