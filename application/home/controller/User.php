@@ -50,7 +50,7 @@ class User extends Home
         $map['status']=1;
         $map['type']=0;
         $map['retime']=null;
-        $info=M('calls')->where($map)->field('jsbn,end_time,openid')->select();
+        $info=M('calls')->where($map)->field('jsbn,end_time,openid,room')->select();
         if($info) {
             foreach ($info as $k => $v) {
                 if ($v['end_time'] <= time() + 60) {
