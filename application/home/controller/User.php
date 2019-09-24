@@ -67,14 +67,14 @@ class User extends Home
                     }
                     $pbid = get_pbid();
 
-                    $config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
+                    //$config = D('common/PublicConfig')->getConfig('template_message', 'weixin_end_clock', $pbid);
                     //发消息给指定人
                     $count = 0;
                     // $openidArr = $this->_get_user_openid ( $send_type, $group_id, $sendOpenid );
                     $templateDao = D('common/TemplateMessage');
                     //  foreach ($openidArr as $openid){
                     //  $tRes = $templateDao->replyMessage($sendOpenid,$content,$title,$sender,$config['template_id'],input('jamp_url'));
-                    $tRes = $templateDao->replyMessage($sendOpenid, $content, $title, $sender, $room, $templateId, input('jamp_url'));
+                    $tRes = $templateDao->xzMessage($sendOpenid, $content, $title, $sender, $room, $templateId, input('jamp_url'));
                     //addWeixinLog($tRes,'templatemesaadf');
                     if (isset($tRes['status']) && $tRes['status'] == 1) {
                         $count++;
