@@ -94,7 +94,7 @@ class TemplateMessage extends Base
      */
     public function xzMessage($uid, $first, $title, $sender,$room, $templateId = '', $url = '')
     {
-        $remark = '';
+        $remark = '下钟步骤：1、点击“我的工作”。2、点击“结束”。';
         empty($title) && $title = '通知提醒';
         $param['data']['first']['value'] = $first;
         $param['data']['first']['color'] = "#173177";
@@ -109,7 +109,7 @@ class TemplateMessage extends Base
         $param['data']['keyword3']['color'] = "#173177"; // #E60B43
 
         $param['data']['remark']['value'] = $remark;
-        $param['data']['remark']['color'] = "#173177";
+        $param['data']['remark']['color'] = "#DC143C";
 
         $templateId == '' && $templateId = '';
         return $this->replyData($uid, $param, $templateId, $url);
