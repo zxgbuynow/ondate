@@ -169,6 +169,7 @@ class Goods extends Base
         $kdata['category_id'] = $postdata['category_id'];
         $kdata['total_price'] = $kdata['pay_money']= $postdata['num']*$data['market_price']*1;
         $kdata['event_type'] = 2;//PC手动下单
+        $kdata['call_type']  =$postdata['call_type'];
 
 
         $order_id = M('shop_order')->insertGetId($kdata);
