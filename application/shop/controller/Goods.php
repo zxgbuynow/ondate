@@ -365,9 +365,9 @@ class Goods extends Base
         // 没有规格
         $markPrice = floatval($data['market_price']); // 市场价格
         $salePrice = floatval($data['sale_price']); // 促销价格
-        if ($markPrice <= 0) {
+/*        if ($markPrice <= 0) {
             $this->error('原价必须大于0元', '', true);
-        }
+        }*/
         if ($salePrice > $markPrice) {
             $this->error('促销价应小于原价', '', true);
         }
