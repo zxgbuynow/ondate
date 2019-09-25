@@ -216,7 +216,7 @@ class Api extends ApiBase
     {
     	$goods['data']  = M('shop_goods')->where(['type'=>1])->select();
     	foreach ($goods['data'] as $key => &$value) {
-    		$value['duration'] = '70';
+    		$value['duration'] = $value['fwtime'];
     		$value['fee'] = intval($value['cost_price']); 
     	}
     	return api_success($goods);
