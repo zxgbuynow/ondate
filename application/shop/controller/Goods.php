@@ -609,7 +609,7 @@ class Goods extends Base
     // 保存商品参数
     public function set_param($goods_id, $post)
     {
-        foreach ($post['goods_param_title'] as $key => $opt) {
+/*        foreach ($post['goods_param_title'] as $key => $opt) {
             if (empty($opt)) {
                 continue;
             }
@@ -640,7 +640,7 @@ class Goods extends Base
         if (empty($post['goods_param_title'])) {
             $map['goods_id'] = $goods_id;
             M('goods_param_link')->where(wp_where($map))->delete();
-        }
+        }*/
     }
 
     public function set_show()
