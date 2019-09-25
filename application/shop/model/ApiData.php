@@ -2069,7 +2069,7 @@ class ApiData extends ApiBase
             $calldata['num']=1;
             $calldata['total']=$data['sale_price'];
             $calldata['begin_time']=time();
-            $calldata['end_time']=time()+70*60;//70分钟
+            $calldata['end_time']=time()+$data['fwtime']*60;//服务时长
             $calldata['goods_id']=$data['id'];
             M('calls')->where($where)->update($calldata);//更新叫钟数据
             $kdata['call_id'] = $call_info['id'];
