@@ -306,7 +306,7 @@ class Goods extends Base
         $data = M($name)->alias('g')
             ->join('shop_goods_stock s', 's.goods_id = g.id and s.event_type=' . SHOP_EVENT_TYPE)
             ->where(wp_where($map))
-            ->order('g.id desc')
+            ->order('g.id asc')
             ->paginate($row);
 
         // 分类数据
