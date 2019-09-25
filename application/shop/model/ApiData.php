@@ -1738,7 +1738,7 @@ class ApiData extends ApiBase
                         //消息推送
                         //$templateDao = D('common/TemplateMessage');
                         $sendOpenid=$userinfo['openid'];
-                        $weipushA=date('m-d h:i',time());;//安排时间
+                        $weipushA=date('m-d H:i',time());;//安排时间
                         $weipushB=$rooms['room_name'];
                         $weipushC='服务项目';
                         $weipushD=$userinfo['jsbn'];
@@ -1775,7 +1775,7 @@ class ApiData extends ApiBase
                         //消息推送
                        // $templateDao = D('common/TemplateMessage');
                         $sendOpenid=$userinfo['openid'];
-                        $weipushA=date('m-d h:i',time());;//安排时间
+                        $weipushA=date('m-d H:i',time());;//安排时间
                         $weipushB=$rooms['room_name'];
                         $weipushC='服务项目';
                         $weipushD=$userinfo['jsbn'];
@@ -1814,7 +1814,7 @@ class ApiData extends ApiBase
                         //消息推送
                        // $templateDao = D('common/TemplateMessage');
                         $sendOpenid=$userinfo['openid'];
-                        $weipushA=date('m-d h:i',time());;//安排时间
+                        $weipushA=date('m-d H:i',time());;//安排时间
                         $weipushB=$rooms['room_name'];
                         $weipushC='服务项目';
                         $weipushD=$userinfo['jsbn'];
@@ -1883,7 +1883,7 @@ class ApiData extends ApiBase
             //消息推送
             $templateDao = D('common/TemplateMessage');
             $sendOpenid=$userinfo['openid'];
-            $weipushA=date('m-d h:i',time());;//安排时间
+            $weipushA=date('m-d H:i',time());;//安排时间
             $weipushB=$rooms['room_name'];
             $weipushC='服务项目';
             $weipushD=$userinfo['jsbn'];
@@ -2302,7 +2302,7 @@ class ApiData extends ApiBase
                        //消息推送
                        $templateDao = D('common/TemplateMessage');
                        $sendOpenid=$userinfo['openid'];
-                       $weipushA=date('m-d h:i',time());;//安排时间
+                       $weipushA=date('m-d H:i',time());;//安排时间
                        $weipushB=$waites[0]['room'];
                        $weipushC='服务项目';
                        $weipushD=$userinfo['jsbn'];
