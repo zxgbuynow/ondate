@@ -296,7 +296,7 @@ class ApiData extends ApiBase
         return $data;
     }
     // 茶水服务
-    public function cxfw()
+    public function csfw()
     {
         $mid = session('mid_' . get_pbid());
         $list = D('Cart')->getMyCart($mid, true);
