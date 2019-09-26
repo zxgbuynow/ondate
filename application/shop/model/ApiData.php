@@ -302,6 +302,7 @@ class ApiData extends ApiBase
         M('csfw')->where(['uid'=>$mid])->delete();
         $goods_id=M('goods_category_link')->where(['category_first'=>104])->column('goods_id');
         foreach ($goods_id as $k=>$v){
+            $cs['uid']=$mid;
             $cs['goods_id']=$v;
             $cs['price'] = 0.0;
             $cs['wpid'] = 1;
