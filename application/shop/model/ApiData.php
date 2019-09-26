@@ -299,7 +299,18 @@ class ApiData extends ApiBase
     public function csfw()
     {
         $mid = session('mid_' . get_pbid());
-        $list = D('Cart')->getMyCart($mid, true);
+        M('csfw')->where(['uid'=>$mid])->delete();
+        $goods_id=M('goods_category_link')->where(['category_first'=>104])->column('goods_id');
+        foreach ($goods_id as $k=>$v){
+            $cs['goods_id']=$v;
+            $cs['price'] = 0.0;
+            $cs['wpid'] = 1;
+            $cs['num'] =1;
+            $cs['cTime']=time();
+            M('csfw')->insert($cs);
+        }
+
+        $list = D('Cart')->getCsfw($mid, true);
         // diy
         $data['diyData'] = D('DiyPage')->getInfoByPage('cart');
         // dump($list);

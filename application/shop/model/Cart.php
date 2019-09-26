@@ -33,6 +33,28 @@ class Cart extends Base
         
         return $list = isset($list) ? $list : [];
     }
+    function getCsfw($uid, $update = false)
+    {
+        $goodsDao = D('shop/ShopGoods');
+        $shopDao = D('shop/Shop');
+
+        $list = [];
+
+        $map['uid'] = intval($uid);
+        $info = M('csfw')->where($map)->select();
+        foreach ($info as &$v) {
+            $v = $v->toArray();
+
+            $v['goods'] = $goodsDao->getInfo($v['goods_id']);
+            $v['shop'] = $shopDao->getInfo($v['wpid']);
+            $v['goods_name'] = $v['goods']['title'];
+            $v['shop_name'] = $v['shop']['title'];
+
+            $list[] = $v;
+        }
+
+        return $list = isset($list) ? $list : [];
+    }
 
     function addToCart($goods)
     {
