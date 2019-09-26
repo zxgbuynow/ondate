@@ -41,7 +41,7 @@ class Cart extends Base
         $list = [];
 
         $map['uid'] = intval($uid);
-        $info = M('csfw')->where($map)->select();
+        $info = M('csfw')->where($map)->order('id asc')->select();
         foreach ($info as $k=>&$v) {
             //$v = $v->toArray();
 
