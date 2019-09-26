@@ -295,7 +295,19 @@ class ApiData extends ApiBase
         // dump($list);
         return $data;
     }
-
+    // 茶水服务
+    public function cxfw()
+    {
+        $mid = session('mid_' . get_pbid());
+        $list = D('Cart')->getMyCart($mid, true);
+        // diy
+        $data['diyData'] = D('DiyPage')->getInfoByPage('cart');
+        // dump($list);
+        $data['lists'] = $list;
+        $data['wpid'] = WPID;
+        // dump($list);
+        return $data;
+    }
     private function confirm_order_goods($dao, $id, $num, &$data)
     {
         $shop_goods_id = $id;
