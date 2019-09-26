@@ -102,7 +102,39 @@ function isPoint(num) {
   }
   return num;
 }
+//提交检查
+function checkCsfwSubmit(){
+    if($('input[name="goods_ids[]"]:checked').length==0){
+        // $.Dialog.fail("请先选择要购买的商品");
+        $.toast("请先勾选茶水", "text");
+        return false;
+    }
+    var cartids="";
+    var istrue=1;
+    $('input[name="goods_ids[]"]:checked').each(function(){
+        var cid =  $(this).attr('rel');
+        cartids += cid+',';
+        var buy_num=parseInt($("#setnum_"+cid).val());
+        var snum= parseInt($("#stockNum_"+cid).text());
 
+        if(isNaN(buy_num)){
+            buy_num=0;
+        }
+        if(istrue==1 && buy_num <= 0 ){
+            istrue=0;
+        }else if(istrue==1 &&buy_num >snum ){
+            istrue=2;
+        }
+    });
+    if( istrue==0){
+        $.toast("购物数量不能小于1件", "text");
+        return false;
+    }else if( istrue==2 ){
+        $.Dialog.fail("库存数量不足");
+        return false;
+    }
+    $("input[name='cart_ids']").val(cartids);
+}
 //提交检查
 function checkCartSubmit(){
 	if($('input[name="goods_ids[]"]:checked').length==0){

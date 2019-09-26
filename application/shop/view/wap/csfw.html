@@ -19,7 +19,7 @@
     {empty name="lists"}
     {:W('common/EmptyTip/html', ['remark'=>'空空是也~'])}
     {else/}
-    <form action="{:U ( 'Shop/Wap/confirm_csfw')}" method="post" onSubmit="return checkCartSubmit()" id="form">
+    <form action="{:U ( 'Shop/Wap/confirm_csfw')}" method="post" onSubmit="return checkCsfwSubmit()" id="form">
         <div class="">
             <!-- 购物车商品 -->
             {volist name="lists" id="vo"}
@@ -75,7 +75,7 @@
 
 
 </div>
-<div class="flex m-bottom-nav2 f-text-c white-bg">
+<div class="flex m-bottom-nav2 f-text-c white-bg" style="bottom: 0px;">
     <!-- 复选框 -->
     <label class="m-checkbox f-lh-xs" for="checkAll">
         <input type="checkbox" id="checkAll" class="whole-check check_all" name="checkAll">
