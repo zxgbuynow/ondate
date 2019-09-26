@@ -42,8 +42,8 @@ class Cart extends Base
 
         $map['uid'] = intval($uid);
         $info = M('csfw')->where($map)->select();
-        foreach ($info as &$v) {
-            $v = $v->toArray();
+        foreach ($info as $k=>&$v) {
+            //$v = $v->toArray();
 
             $v['goods'] = $goodsDao->getInfo($v['goods_id']);
             $v['shop'] = $shopDao->getInfo($v['wpid']);
