@@ -1,0 +1,198 @@
+{extend name="shop@wap/common_file" /} {block name="common_body"}
+
+<body class="submit_order">
+<!-- 头部导航 -->
+<div class="top-nav">
+    <div class="flex">
+        <i class="iconfont icon-back"></i>
+        <slot>
+            <span class="title">确认茶水内容</span>
+        </slot>
+    </div>
+</div>
+<div class="wrap">
+
+
+    {volist name="lists" id="goods_block"}
+    {php}$block = empty($key) ? 1 : $key; {/php}
+
+    <!-- 商品信息 -->
+    <div class="">
+        <div class="switch-card">
+            <div class="switch-card-list">
+                <div class="weui-panel weui-panel_access">
+                    <div class="weui-panel__bd">
+                        {volist name="goods_block" id="vo"}
+                        <a href="{:U('goods_detail', ['id'=>$vo['shop_goods_id']])}" class="weui-media-box weui-media-box_appmsg">
+                            <div class="weui-media-box__hd">
+                                <img class="weui-media-box__thumb" src="{$vo.cover}" alt="{$vo.title}">
+                            </div>
+                            <div class="weui-media-box__bd">
+                                <h4 class="weui-media-box__title">{notempty name="event_type_title"}<strong class="red">[{$event_type_title}]</strong>{/notempty}{$vo.title}</h4>
+                                <p class="weui-media-box__desc">
+                                    <span>
+                                      <strong style="color:#000">{neq name="pay_type" value="90"}<span class="prize-icon">¥</span>{$vo.sale_price} {else / }积分 {$vo.sale_price|intval}{/neq}</strong>
+                                      {if condition="$vo['sale_price'] < $vo['market_price']"}<del><span class="prize-icon">¥</span>{$vo.market_price}</del>{/if}
+                                  </span>
+                                    <span class="fr">x{$vo.num}</span>
+                                </p>
+                            </div>
+                        </a>
+                        {/volist}
+                    </div>
+                </div>
+
+                <div class="weui-cells m0">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p>商品金额</p>
+                        </div>
+                        <div class="weui-cell__ft">{neq name="pay_type" value="90"}<small><span class="prize-icon">¥</span></small><span class="total_money">{$total_price[$block]|default=0}</span>{else / }<small>积分</small><span class="total_money"> {$total_price[$block]|default=0|intval}</span>{/neq}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    {/volist}
+
+
+
+
+
+    <!-- 买家留言 -->
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__hd" style="flex:1">
+                <label class="weui-label">房间号：</label>
+            </div>
+            <div class="weui-cell__bd" style="flex:3">
+                <input class="weui-input" type="text" placeholder="输入房间号" name="remark" id="remark">
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+<!-- 底部导航 -->
+<div class="bottom-nav flex">
+    <div class="btn-group">
+        <a class="btn" href="javascript:void(0)" onClick="doPost()">提交</a>
+    </div>
+</div>
+<!-- /底部导航 -->
+</body>
+
+<script type="text/javascript">
+
+
+
+    var show_1 = "{$show_1}"
+    var show_2 = "{$show_2}"
+    var my_socre = parseInt({$my_score});
+
+
+
+    var total_money = 0;
+
+    // 缓存的数据
+    var cacheVal = sessionStorage.getItem('send_type') ? sessionStorage.getItem('send_type') : 1;
+    $(function() {
+
+
+
+    })
+
+    // 多个订单的情况下判断是否选择一致，返回一个布尔值
+    // 思路：在多个订单的情况下，取所有订单选中的value，放入一个数组中,遍历数组，全等返回true，反之则false
+    // 确认订单的逻辑：
+    // 1. 默认选中第一个（无论它是自提还是邮寄）
+    // 2. 只要有一个是自提（【显示门店】，如果有不同的显示【提示】）
+    // 3. 邮寄要显示优惠劵，邮费【不同方式例外】
+    // 4. 点击选择门点后才存在取【自提状态】
+    // 5. 选择门点后返回读取状态，【设置自提】
+
+    // 构造函数
+    function Order(num) {
+        this.allVal = [];
+    }
+
+
+
+    function show(isSet, ele) {
+        var _this = ele;
+
+        // 只有一个为自提的话
+
+        // if(isSet==0){
+        //  var default_type = sessionStorage.getItem('send_type');
+        //  if(default_type!=1){
+        //   $('#x83').prop('checked',true);
+        //  }
+        // }
+
+
+        // $('.m-checkbox input').eq(isSet-1).attr('checked',true);
+
+
+        sessionStorage.setItem('send_type', isSet);
+        if (isSet == 2) {
+            $(_this).prop('checked', true);
+
+
+        }
+
+
+
+            }
+            function doPost() {
+
+
+                    var room = $('#room').val();
+                    if ($('#send_type_2').is(':visible')) {
+                        if (!room) {
+                            $.Dialog.fail("请输入房间号");
+                            return false;
+                        }
+                    }
+
+                    var url = "{:U('add_csfw')}";
+
+                    $.showLoading();
+
+                    $.post(url, {'room': room}, function(res) {
+                        //console.log(res); return false;
+
+                        if (res) $.hideLoading();
+
+                        if (res.code == 0) {
+                            $.Dialog.fail(res.msg);
+                        } else {
+                            var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
+                            window.location.href = url;
+
+                        }
+                    });
+
+
+                }
+
+
+
+                // 给金额没有小数点的加上小数点
+                function isPoint(num) {
+                    var reg = /\./;
+                    if (!reg.test(num)) {
+                        var number = num + '.00';
+                        return number;
+                    }
+                    return num;
+                }
+
+
+</script>
+{/block}

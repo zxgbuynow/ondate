@@ -399,6 +399,15 @@ class ApiData extends ApiBase
             'msg' => ''
         ];
     }
+    public function confirm_csfw(){
+        // 订单信息
+        $goods_id = input('goods_ids', 0);
+        dunp($goods_id);
+        exit;
+
+
+        return $data;
+    }
 
     // 订单确认
     public function confirm_order()

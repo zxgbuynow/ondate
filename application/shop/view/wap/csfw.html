@@ -19,7 +19,7 @@
     {empty name="lists"}
     {:W('common/EmptyTip/html', ['remark'=>'您的购物车空空是也~'])}
     {else/}
-    <form action="{:U ( 'Shop/Wap/confirm_order')}" method="post" onSubmit="return checkCartSubmit()" id="form">
+    <form action="{:U ( 'Shop/Wap/confirm_csfw')}" method="post" onSubmit="return checkCartSubmit()" id="form">
         <div class="">
             <!-- 购物车商品 -->
             {volist name="lists" id="vo"}
@@ -84,7 +84,6 @@
     </label>
 
     <div class="flex-item">
-        <span class="gray">不含运费</span>
         <span class="cart-price">
           	<span>总计:</span>
           	<p class="red">
@@ -92,10 +91,10 @@
           	</p> </span>
     </div>
 
-    <a class="btn" onclick="doPost()">提交(<span id="totalCount">12</span>)</a>
+    <a class="btn" onclick="doPost()">下一步(<span id="totalCount">12</span>)</a>
 </div>
 <!-- 底部导航 -->
-{include file="wap/_footer"}
+<!--{include file="wap/_footer"}-->
 </body>
 
 <script type="text/javascript">
