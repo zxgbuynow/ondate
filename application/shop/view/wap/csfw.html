@@ -7,7 +7,7 @@
         <slot>
             <span class="title">茶水服务</span>
         </slot>
-        <a href="javascript:;" onClick="deleteCartItem()"><i class="iconfont icon-delete"></i></a>
+   <!--     <a href="javascript:;" onClick="deleteCartItem()"><i class="iconfont icon-delete"></i></a>-->
     </div>
 </div>
 
@@ -17,7 +17,7 @@
 
 
     {empty name="lists"}
-    {:W('common/EmptyTip/html', ['remark'=>'您的购物车空空是也~'])}
+    {:W('common/EmptyTip/html', ['remark'=>'空空是也~'])}
     {else/}
     <form action="{:U ( 'Shop/Wap/confirm_csfw')}" method="post" onSubmit="return checkCartSubmit()" id="form">
         <div class="">
@@ -94,7 +94,6 @@
     <a class="btn" onclick="doPost()">下一步(<span id="totalCount">12</span>)</a>
 </div>
 <!-- 底部导航 -->
-<!--{include file="wap/_footer"}-->
 </body>
 
 <script type="text/javascript">
