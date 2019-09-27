@@ -23,7 +23,7 @@ $(function(){
 	})
 
 	$('.buy_count input[type="number"]').blur(function(){
-		if($(this).val()<0){
+		if($(this).val()<=0){
 			$.Dialog.fail("购物数量不能小于1件");
 			$(this).val(1);
 		}else{
