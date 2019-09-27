@@ -21,7 +21,6 @@
     {else/}
     <form action="{:U ( 'Shop/Wap/confirm_csfw')}" method="post" onSubmit="return checkCsfwSubmit()" id="form">
         <div class="">
-            <input type="hidden"  id="nums"  name="nums" value="">
             <!-- 购物车商品 -->
             {volist name="lists" id="vo"}
             <div class="m-goods flex card weui-cell_swiped">
@@ -46,7 +45,7 @@
                             <span class="m-goods-add buy_count" onClick="return false;">
                   <!-- 默认是1,可点加号,可操作样式是active -->
                   <i class="iconfont icon-jian1 reduce {if condition='$vo.num>=2'}active{/if}"></i>
-                  <input type="number" name="buyCount[]" value="{$vo.num|intval}" rel="buyCount" data-cid="{$vo.id}" id="setnum_{$vo.id}" class="sum" placeholder="1" max="{$vo.goods.stock_active}" onBlur="set_num(this)">
+                  <input type="number" name="buyCount[{$vo.goods_id}]" value="{$vo.num|intval}" rel="buyCount" data-cid="{$vo.id}" id="setnum_{$vo.id}" class="sum" placeholder="1" max="{$vo.goods.stock_active}" onBlur="set_num(this)">
                   <i class="iconfont icon-tianjia plus add active"></i>
                 </span>
 
@@ -138,13 +137,7 @@
 
 
     function doPost(){
-        var nums="";
-        $('input[name="buyCount[]"]').each(function(index, element) {
-            nums += $(this).val()+",";
-        });
-        $("#nums").val(nums);
         $('#form').submit();
-        //confirm_csfw();
     }
     function set_num(_this){
         var cartId= $(_this).attr('data-cid');
@@ -164,30 +157,25 @@
 
 
     //删除购物车的商品
-    function confirm_csfw(){
+    function deleteCartItem(){
         if($('input[name="goods_ids[]"]:checked').length==0){
-            $.Dialog.fail("请选择茶水");
-        }else
+            $.Dialog.fail("请选择要删除的购物车物品");
+        }else if(confirm('确认删除？')){
             var cartIds = "";
             $('input[name="goods_ids[]"]:checked').each(function(index, element) {
                 cartIds += $(this).attr('rel')+",";
             });
-        var nums="";
-        $('input[name="buyCount[]"]').each(function(index, element) {
-            nums += $(this).val()+",";
-        });
-        console.log(nums);
             $.Dialog.loading();
             $.ajax({
-                url:"{:U('confirm_csfw')}",
-                data:{goods_ids:cartIds,nums:nums},
+                url:"{:U('delCart')}",
+                data:{ids:cartIds},
                 dataType:"json",
                 type:"post",
                 success:function(data){
                     window.location.reload();
                 }
             })
-
+        }
     }
 
     // 给金额没有小数点的加上小数点
