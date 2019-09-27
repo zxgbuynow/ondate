@@ -30,7 +30,7 @@
                     <i class="iconfont icon-selected"></i>
                 </label>
                 <!-- 商品 -->
-                <a href="{:U('goods_detail',array('id'=>$vo['goods_id']))}" class="m-goods-card flex">
+                <a href="" class="m-goods-card flex">
                     <div class="m-goods-img">
                         <img src="{$vo.goods.cover}">
                     </div>
@@ -45,7 +45,7 @@
                             <span class="m-goods-add buy_count" onClick="return false;">
                   <!-- 默认是1,可点加号,可操作样式是active -->
                   <i class="iconfont icon-jian1 reduce {if condition='$vo.num>=2'}active{/if}"></i>
-                  <input type="number" name="buyCount[{$vo.goods_id}]" value="{$vo.num|intval}" rel="buyCount" data-cid="{$vo.id}" id="setnum_{$vo.id}" class="sum" placeholder="1" max="{$vo.goods.stock_active}" onBlur="set_num(this)">
+                  <input type="number" name="buyCount[]" value="{$vo.num|intval}" rel="buyCount" data-cid="{$vo.id}" id="setnum_{$vo.id}" class="sum" placeholder="1" max="{$vo.goods.stock_active}" onBlur="set_num(this)">
                   <i class="iconfont icon-tianjia plus add active"></i>
                 </span>
 

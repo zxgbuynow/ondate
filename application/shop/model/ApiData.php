@@ -399,9 +399,19 @@ class ApiData extends ApiBase
             'msg' => ''
         ];
     }
+    //todo
     public function confirm_csfw(){
-        // 订单信息
+        // 茶水信息
         $goods_id = input('goods_ids', 0);
+        $nums=input('buyCount');
+        dump($goods_id);
+        dump($nums);
+        exit;
+        $data=[];
+        foreach ($goods_id as $k=>$v){
+            $tmp=M('title')->where(['id'=>$v])->value('title');
+            $data[]=$tmp;
+        }
         dump($goods_id);
         exit;
 
