@@ -306,7 +306,7 @@ class ApiData extends ApiBase
             $cs['goods_id']=$v;
             $cs['price'] = 0.0;
             $cs['wpid'] = 1;
-            $cs['num'] =0;
+            $cs['num'] =1;
             $cs['cTime']=time();
             M('csfw')->insert($cs);
         }
