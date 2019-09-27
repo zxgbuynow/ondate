@@ -46,7 +46,7 @@
                             <span class="m-goods-add buy_count" onClick="return false;">
                   <!-- 默认是1,可点加号,可操作样式是active -->
                   <i class="iconfont icon-jian1 reduce {if condition='$vo.num>=2'}active{/if}"></i>
-                  <input type="number" name="buyCount[]" value="0" rel="buyCount" data-cid="{$vo.id}" id="setnum_{$vo.id}" class="sum" placeholder="0" max="{$vo.goods.stock_active}" onBlur="set_num(this)">
+                  <input type="number" name="buyCount[]" value="{$vo.num|intval}" rel="buyCount" data-cid="{$vo.id}" id="setnum_{$vo.id}" class="sum" placeholder="0" max="{$vo.goods.stock_active}" onBlur="set_num(this)">
                   <i class="iconfont icon-tianjia plus add active"></i>
                 </span>
 
