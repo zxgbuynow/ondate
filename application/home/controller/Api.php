@@ -47,7 +47,6 @@ class Api extends ApiBase
         header('Access-Control-Allow-Methods: POST,GET,PUT,DELETE');
         // 接口请求日志记录 TODO
         $params = input();
-        dump($params);
         //获得定义接口
         $api =  array_flip(config()['apis']['api']);
         if (isset($params['method'])) {
