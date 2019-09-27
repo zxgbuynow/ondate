@@ -170,10 +170,11 @@
         $('input[name="buyCount[]"]').each(function(index, element) {
             nums += $(this).val()+",";
         });
+        console.log(nums);
             $.Dialog.loading();
             $.ajax({
                 url:"{:U('confirm_csfw')}",
-                data:{ids:cartIds,nums:nums},
+                data:{goods_ids:cartIds,nums:nums},
                 dataType:"json",
                 type:"post",
                 success:function(data){

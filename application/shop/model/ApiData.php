@@ -403,7 +403,7 @@ class ApiData extends ApiBase
     public function confirm_csfw(){
         // 茶水信息
         $goods_id = input('goods_ids', 0);
-        $nums=input('buyCount');
+        $nums=input('nums');
         dump($goods_id);
         dump($nums);
         exit;
