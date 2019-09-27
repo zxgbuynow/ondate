@@ -21,6 +21,7 @@
     {else/}
     <form action="{:U ( 'Shop/Wap/confirm_csfw')}" method="post" onSubmit="return checkCsfwSubmit()" id="form">
         <div class="">
+            <input type="hidden"  id="nums"  name="nums" value="">
             <!-- 购物车商品 -->
             {volist name="lists" id="vo"}
             <div class="m-goods flex card weui-cell_swiped">
@@ -137,8 +138,13 @@
 
 
     function doPost(){
-       // $('#form').submit();
-        confirm_csfw();
+        var nums="";
+        $('input[name="buyCount[]"]').each(function(index, element) {
+            nums += $(this).val()+",";
+        });
+        $("#nums").val(nums);
+        $('#form').submit();
+        //confirm_csfw();
     }
     function set_num(_this){
         var cartId= $(_this).attr('data-cid');
