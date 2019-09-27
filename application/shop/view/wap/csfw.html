@@ -137,7 +137,8 @@
 
 
     function doPost(){
-        $('#form').submit();
+       // $('#form').submit();
+        confirm_csfw();
     }
     function set_num(_this){
         var cartId= $(_this).attr('data-cid');
@@ -157,25 +158,29 @@
 
 
     //删除购物车的商品
-    function deleteCartItem(){
+    function confirm_csfw(){
         if($('input[name="goods_ids[]"]:checked').length==0){
-            $.Dialog.fail("请选择要删除的购物车物品");
-        }else if(confirm('确认删除？')){
+            $.Dialog.fail("请选择茶水");
+        }else
             var cartIds = "";
             $('input[name="goods_ids[]"]:checked').each(function(index, element) {
                 cartIds += $(this).attr('rel')+",";
             });
+        var nums="";
+        $('input[name="buyCount[]"]').each(function(index, element) {
+            nums += $(this).val()+",";
+        });
             $.Dialog.loading();
             $.ajax({
-                url:"{:U('delCart')}",
-                data:{ids:cartIds},
+                url:"{:U('confirm_csfw')}",
+                data:{ids:cartIds,nums:nums},
                 dataType:"json",
                 type:"post",
                 success:function(data){
                     window.location.reload();
                 }
             })
-        }
+
     }
 
     // 给金额没有小数点的加上小数点
