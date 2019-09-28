@@ -343,14 +343,6 @@
             }
             function doPost() {
 
-                {eq name="pay_type" value="90"}
-
-                if (my_socre < total_money) {
-                    $.Dialog.fail('您的积分不足');
-                    return false;
-                }
-
-                {/eq}
 
                     var address_id = $('#address_id').val();
                     if ($('#send_type_2').is(':visible')) {
@@ -369,10 +361,6 @@
                             $.Dialog.fail("请选择自提门店");
                             return false;
                         }
-                    }
-                    if (!$('#weuiAgree').prop('checked')) {
-                        $.Dialog.fail("请同意客户协议");
-                        return false;
                     }
 
                     var room = $('#room').val();
