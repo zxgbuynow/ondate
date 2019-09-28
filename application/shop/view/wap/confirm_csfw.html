@@ -21,40 +21,11 @@
     <!-- 商品信息 -->
     <div class="">
         <div class="switch-card">
-            <div class="switch-card-title flex">
-                <div class="weui-cells flex-item">
-                    <div class="weui-cell__bd">
-                        <div class="weui-cells weui-cells_radio m0">
-                            {neq name="block" value="2"}
-                            <label class="weui-cell weui-check__label m-checkbox" for="x8{$block}">
-                                <div class="weui-cell__ft">
-                                    {eq name="block" value="3"}<input id="x8{$block}" type="radio" class="weui-check send_type" value="1" name="send_type" checked="checked">
-                                    {else /}<input id="x8{$block}" type="radio" value="1" class="weui-check" name="express" checked="checked" readonly>{/eq}
-                                    <i class="iconfont icon-selected"></i>
-                                </div>
-                                <span class="f-ml-base">邮寄</span>
-                            </label>
-                            {/neq}
-                            {neq name="block" value="1"}
-                            <label class="weui-cell weui-check__label m-checkbox" for="x9{$block}">
-                                <div class="weui-cell__ft">
-                                    {eq name="block" value="3"}<input id="x9{$block}" type="radio" class="weui-check send_type" value="2" name="send_type">
-                                    {else /}<input id="x8{$block}" type="radio" value="2" class="weui-check" name="ziti" readonly>{/eq}
-                                    <i class="iconfont icon-selected"></i>
-                                </div>
-                                <span class="f-ml-base">自提</span>
-                            </label>
-                            {/neq}
-                        </div>
-                    </div>
-                </div>
-                <i class="iconfont icon-moreunfold switch-btn"></i>
-            </div>
             <div class="switch-card-list">
                 <div class="weui-panel weui-panel_access">
                     <div class="weui-panel__bd">
                         {volist name="goods_block" id="vo"}
-                        <a href="{:U('goods_detail', ['id'=>$vo['shop_goods_id']])}" class="weui-media-box weui-media-box_appmsg">
+                        <span info="{$vo['shop_goods_id']}" class="weui-media-box weui-media-box_appmsg">
                             <div class="weui-media-box__hd">
                                 <img class="weui-media-box__thumb" src="{$vo.cover}" alt="{$vo.title}">
                             </div>
@@ -68,7 +39,7 @@
                                     <span class="fr">x{$vo.num}</span>
                                 </p>
                             </div>
-                        </a>
+                        </span>
                         {/volist}
                     </div>
                 </div>
@@ -80,14 +51,6 @@
                         </div>
                         <div class="weui-cell__ft">{neq name="pay_type" value="90"}<small><span class="prize-icon">¥</span></small><span class="total_money">{$total_price[$block]|default=0}</span>{else / }<small>积分</small><span class="total_money"> {$total_price[$block]|default=0|intval}</span>{/neq}</div>
                     </div>
-                    {if condition="$pay_type!=90 && $block!=2"}<!--使用积分结算时无邮费-->
-                    <div class="weui-cell" id="express_{$block}">
-                        <div class="weui-cell__bd">
-                            <p>邮费</p>
-                        </div>
-                        <div class="weui-cell__ft"><small>+ <span class="prize-icon">¥</span></small><span {eq name="block" value="1"}class="total_money"{/eq} id="express_money_{$block}">{$total_express[$block]|default=0}</span></div>
-                    </div>
-                    {/if}
                 </div>
             </div>
 
@@ -95,25 +58,6 @@
 
     </div>
     {/volist}
-
-
-
-    <!-- 订单用户 -->
-    <a class="weui-cell order_user" href="{:U('add_address?is_choose=1')}" id="send_type_1">
-        <input type="hidden" name="address_id" id="address_id" value="{$address.id|default=''}">
-        <div class="weui-cell__bd order-user-name">
-            <p>{$address.truename|default=''}</p>
-        </div>
-        <div class="weui-cell__bd order-user-moblie">
-            <strong>{$address.mobile|default=''}</strong>
-            <p>{$address.address|default=''} {$address.address_detail|default=''}</p>
-        </div>
-
-        <div class="iconfont icon-more"></div>
-    </a>
-    <!-- /订单用户 -->
-
-
 
 
     <!-- 买家留言 -->
