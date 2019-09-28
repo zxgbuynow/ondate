@@ -36,7 +36,7 @@
                                       <strong style="color:#000">{neq name="pay_type" value="90"}<span class="prize-icon">¥</span>{$vo.sale_price} {else / }积分 {$vo.sale_price|intval}{/neq}</strong>
                                       {if condition="$vo['sale_price'] < $vo['market_price']"}<del><span class="prize-icon">¥</span>{$vo.market_price}</del>{/if}
                                   </span>
-                                    <h4 class="fr">{$vo.num}</h4>
+                                    <span class="fr" style="font-size: 20px;color: red;">{$vo.num}</span>
                                 </p>
                             </div>
                         </span>
@@ -64,7 +64,7 @@
     <div class="weui-cells">
         <div class="weui-cell">
             <div class="weui-cell__hd" style="flex:1">
-                <label class="weui-label">房间号：</label>
+                <label class="weui-label" style="font-size: 24px;">房间号：</label>
             </div>
             <div class="weui-cell__bd" style="flex:3">
                 <input class="weui-input" type="text" placeholder="输入房间号" name="room" id="room">
@@ -117,14 +117,6 @@
        // console.log('状态:' + cacheVal);
     })
 
-    // 多个订单的情况下判断是否选择一致，返回一个布尔值
-    // 思路：在多个订单的情况下，取所有订单选中的value，放入一个数组中,遍历数组，全等返回true，反之则false
-    // 确认订单的逻辑：
-    // 1. 默认选中第一个（无论它是自提还是邮寄）
-    // 2. 只要有一个是自提（【显示门店】，如果有不同的显示【提示】）
-    // 3. 邮寄要显示优惠劵，邮费【不同方式例外】
-    // 4. 点击选择门点后才存在取【自提状态】
-    // 5. 选择门点后返回读取状态，【设置自提】
 
     // 构造函数
     function Order(num) {
@@ -173,28 +165,6 @@
     }
 
 
-    // 切换邮寄和自提的状态
-    Order.prototype.ToggleState = function(num) {
-        var _this = this;
-        $('.coupon').show(); // 显示优惠卷
-        // 选中邮寄
-        if (num == 1) {
-            $('#send_type_2').hide(); // 隐藏门店
-            $('#express_3').show(); //显示邮费
-            $('.freight-text').show(); // 显示含邮费
-        } else if (num == 2) {
-            $('#send_type_2').show(); // 显示门店
-            $('#express_3').hide(); //隐藏邮费
-            $('.freight-text').hide(); // 隐藏含邮费
-        }
-
-        // 只要有一个选择自提，就显示门店
-        if (_this.allVal.indexOf("2") != -1) {
-            $('#send_type_2').show();
-        }
-
-
-    }
 
     function show(isSet, ele) {
         var _this = ele;
@@ -272,7 +242,6 @@
             }
             function doPost() {
 
-
                 var goods = "";
                 $('.weui-media-box__title').each(function(index, element) {
                     goods += $(this).text()+",";
@@ -282,6 +251,10 @@
                     nums += $(this).text()+",";
                 });
                     var room = $('#room').val();
+                if (!room) {
+                    $.Dialog.fail("请输入房间号");
+                    return false;
+                }
 
                     var url = "{:U('add_csfw')}";
 
