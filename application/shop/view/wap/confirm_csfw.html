@@ -293,10 +293,11 @@
                         if (res) $.hideLoading();
 
                         if (res.code == 0) {
-                            $.Dialog.fail(res.msg);
+                            $.Dialog.fail('操作失败！');
                         } else {
-                            var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
-                            window.location.href = url;
+                           // var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
+                           // window.location.href = url;
+                            alert('操作成功！');
 
                         }
                     });
