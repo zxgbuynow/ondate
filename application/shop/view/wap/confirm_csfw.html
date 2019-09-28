@@ -30,13 +30,13 @@
                                 <img class="weui-media-box__thumb" src="{$vo.cover}" alt="{$vo.title}">
                             </div>
                             <div class="weui-media-box__bd">
-                                <h4 class="weui-media-box__title">{notempty name="event_type_title"}<strong class="red">[{$event_type_title}]</strong>{/notempty}{$vo.title}</h4>
+                                <h4 class="weui-media-box__title">{$vo.title}</h4>
                                 <p class="weui-media-box__desc">
                                     <span>
                                       <strong style="color:#000">{neq name="pay_type" value="90"}<span class="prize-icon">¥</span>{$vo.sale_price} {else / }积分 {$vo.sale_price|intval}{/neq}</strong>
                                       {if condition="$vo['sale_price'] < $vo['market_price']"}<del><span class="prize-icon">¥</span>{$vo.market_price}</del>{/if}
                                   </span>
-                                    <span class="fr">x{$vo.num}</span>
+                                    <h4 class="fr">{$vo.num}</h4>
                                 </p>
                             </div>
                         </span>
@@ -83,10 +83,9 @@
     <p class="pay-info">
         <strong>实付款：</strong>
         <strong class="red" id="total_money">0.00</strong>
-        <small class="freight-text">含运费</small>
     </p>
     <div class="btn-group">
-        <a class="btn" href="javascript:void(0)" onClick="doPost()">提交订单</a>
+        <a class="btn" href="javascript:void(0)" onClick="doPost()">提交</a>
     </div>
 </div>
 <!-- /底部导航 -->
@@ -107,29 +106,15 @@
     // 缓存的数据
     var cacheVal = sessionStorage.getItem('send_type') ? sessionStorage.getItem('send_type') : 1;
     $(function() {
-        $('.icon-back').click(function () {
-            // 没进过活动页
-            if(sessionStorage.getItem('eventState') == null) {
-                window.location.href = '{:U('shop/wap/cart')}';
-            } else {
-                history.back(-1);
-            }
-        })
-
-
 
         // 存个url
-        sessionStorage.setItem('orderUrl', window.location.href);
+        //sessionStorage.setItem('orderUrl', window.location.href);
 
-        console.log(show_1, show_2, my_socre);
-        $('.send_type').bind('click', function() {
-            var selfVal = $(this).val();
-            show(selfVal, $(this));
-        });
+       // console.log(show_1, show_2, my_socre);
 
         // 有sesstion的情况
-        cacheVal != 2 ? show(1) : show(2);
-        console.log('状态:' + cacheVal);
+       // cacheVal != 2 ? show(1) : show(2);
+       // console.log('状态:' + cacheVal);
     })
 
     // 多个订单的情况下判断是否选择一致，返回一个布尔值
@@ -288,42 +273,21 @@
             function doPost() {
 
 
-                    var address_id = $('#address_id').val();
-                    if ($('#send_type_2').is(':visible')) {
-
-                        //邮寄
-
-                        if (!address_id) {
-                            $.Dialog.fail("请选择收货地址");
-                            return false;
-                        }
-                    }
-                    store = $('#store_id').val();
-                    if ($('#send_type_2').is(':visible')) {
-                        //门店
-                        if (!store) {
-                            $.Dialog.fail("请选择自提门店");
-                            return false;
-                        }
-                    }
-                var good_ids = "";
-                $('.weui-media-box_appmsg').each(function(index, element) {
-                    good_ids += $(this).attr('info')+",";
+                var goods = "";
+                $('.weui-media-box__title').each(function(index, element) {
+                    good_ids += $(this).text()+",";
                 });
                 var nums = "";
                 $('.fr').each(function(index, element) {
                     nums += $(this).text()+",";
                 });
                     var room = $('#room').val();
-                    var sendType = $('input[name="send_type"]:checked').val()
-
-                    var sn_id = '{$sn_id}'; // 优惠券
 
                     var url = "{:U('add_csfw')}";
 
                     $.showLoading();
 
-                    $.post(url, {'good_ids': good_ids, 'room': room, 'nums': nums}, function(res) {
+                    $.post(url, {'goods': goods, 'room': room, 'nums': nums}, function(res) {
                         //console.log(res); return false;
 
                         if (res) $.hideLoading();

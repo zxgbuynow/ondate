@@ -321,10 +321,30 @@ class ApiData extends ApiBase
         return $data;
     }
     public function add_csfw(){
-        $data['room']=I('room');
-        $data['good_ids']=I('good_ids');
-        $data['nums']=I('nums');
-        dump($data);
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $uid=$this->mid;
+        $res['code']=0;
+        $data['room']=$room=I('room');
+        $data['goods']=$goods=I('goods');
+        $data['nums']=$nums=I('nums');
+        //dump($data);
+        $goods_arr=explode(',',$goods);
+        $nums_arr=explode(',',$nums);
+        foreach ($goods_arr as $k=>$v){
+            $tmp['goods_name']=$v;
+            $tmp['num']=$nums_arr[$k];
+            $tmp['room']=$room;
+            $tmp['cTime']=time();
+            $tmp['uid']=$uid;
+            M('csfw_log')->insert($tmp);
+        }
+        $res['code']=1;
+        echo json_encode($res);
     }
     private function confirm_order_goods($dao, $id, $num, &$data)
     {
