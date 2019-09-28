@@ -36,7 +36,7 @@
                                       <strong style="color:#000">{neq name="pay_type" value="90"}<span class="prize-icon">¥</span>{$vo.sale_price} {else / }积分 {$vo.sale_price|intval}{/neq}</strong>
                                       {if condition="$vo['sale_price'] < $vo['market_price']"}<del><span class="prize-icon">¥</span>{$vo.market_price}</del>{/if}
                                   </span>
-                                 <span style="font-size: 20px;color: red;float: right;">数量：</span>   <span class="fr" style="font-size: 20px;color: red;">{$vo.num}</span>
+                                 <span class="fr" style="font-size: 20px;color: red;">{$vo.num}</span>   <span style="font-size: 20px;color: red;float: right;">数量：</span>
                                 </p>
                             </div>
                         </span>
