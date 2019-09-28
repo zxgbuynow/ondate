@@ -336,15 +336,19 @@ class ApiData extends ApiBase
         $goods_arr=explode(',',$goods);
         $nums_arr=explode(',',$nums);
         foreach ($goods_arr as $k=>$v){
-            $tmp['goods_name']=$v;
-            $tmp['num']=$nums_arr[$k];
-            $tmp['room']=$room;
-            $tmp['cTime']=time();
-            $tmp['uid']=$uid;
-            M('csfw_log')->insert($tmp);
+            if($v){
+                $tmp['goods_name']=$v;
+                $tmp['num']=$nums_arr[$k];
+                $tmp['room']=$room;
+                $tmp['cTime']=time();
+                $tmp['uid']=$uid;
+                M('csfw_log')->insert($tmp);
+            }
+
         }
         $res['code']=1;
-        echo json_encode($res);
+      //  echo json_encode($res);
+        return $res;
     }
     private function confirm_order_goods($dao, $id, $num, &$data)
     {
