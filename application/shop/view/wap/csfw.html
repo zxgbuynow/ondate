@@ -19,7 +19,7 @@
     {empty name="lists"}
     {:W('common/EmptyTip/html', ['remark'=>'空空是也~'])}
     {else/}
-    <form action="{:U ( 'Shop/Wap/confirm_order')}" method="post" onSubmit="return checkCartSubmit()" id="form">
+    <form action="{:U ( 'Shop/Wap/confirm_csfw')}" method="post" onSubmit="return checkCartSubmit()" id="form">
         <div class="">
             <!-- 购物车商品 -->
             {volist name="lists" id="vo"}
@@ -30,7 +30,7 @@
                     <i class="iconfont icon-selected"></i>
                 </label>
                 <!-- 商品 -->
-                <a href="{:U('goods_detail',array('id'=>$vo['goods_id']))}" class="m-goods-card flex">
+                <sapn class="m-goods-card flex">
                     <div class="m-goods-img">
                         <img src="{$vo.goods.cover}">
                     </div>
@@ -53,7 +53,7 @@
 
                     </div>
 
-                </a>
+                </sapn>
             </div>
             {/volist}
 
@@ -92,7 +92,7 @@
           	</p> </span>
     </div>
 
-    <a class="btn" onclick="doPost()">去结算(<span id="totalCount">12</span>)</a>
+    <a class="btn" onclick="doPost()">下一步(<span id="totalCount">12</span>)</a>
 </div>
 <!-- 底部导航 -->
 {include file="wap/_footer"}

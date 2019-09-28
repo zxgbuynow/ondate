@@ -320,6 +320,10 @@ class ApiData extends ApiBase
         // dump($list);
         return $data;
     }
+    public function add_csfw(){
+        $room=I('room');
+        dump($room);
+    }
     private function confirm_order_goods($dao, $id, $num, &$data)
     {
         $shop_goods_id = $id;
