@@ -7,7 +7,7 @@
         <slot>
             <span class="title">茶水服务</span>
         </slot>
-   <!--     <a href="javascript:;" onClick="deleteCartItem()"><i class="iconfont icon-delete"></i></a>-->
+        <a href="javascript:;" onClick="deleteCartItem()"><i class="iconfont icon-delete"></i></a>
     </div>
 </div>
 
@@ -19,7 +19,7 @@
     {empty name="lists"}
     {:W('common/EmptyTip/html', ['remark'=>'空空是也~'])}
     {else/}
-    <form action="{:U ( 'Shop/Wap/confirm_csfw')}" method="post" onSubmit="return checkCsfwSubmit()" id="form">
+    <form action="{:U ( 'Shop/Wap/confirm_order')}" method="post" onSubmit="return checkCartSubmit()" id="form">
         <div class="">
             <!-- 购物车商品 -->
             {volist name="lists" id="vo"}
@@ -30,7 +30,7 @@
                     <i class="iconfont icon-selected"></i>
                 </label>
                 <!-- 商品 -->
-                <span href="" class="m-goods-card flex">
+                <a href="{:U('goods_detail',array('id'=>$vo['goods_id']))}" class="m-goods-card flex">
                     <div class="m-goods-img">
                         <img src="{$vo.goods.cover}">
                     </div>
@@ -53,7 +53,7 @@
 
                     </div>
 
-                </span>
+                </a>
             </div>
             {/volist}
 
@@ -75,7 +75,7 @@
 
 
 </div>
-<div class="flex m-bottom-nav2 f-text-c white-bg" style="bottom: 10px;">
+<div class="flex m-bottom-nav2 f-text-c white-bg">
     <!-- 复选框 -->
     <label class="m-checkbox f-lh-xs" for="checkAll">
         <input type="checkbox" id="checkAll" class="whole-check check_all" name="checkAll">
@@ -84,6 +84,7 @@
     </label>
 
     <div class="flex-item">
+        <span class="gray">不含运费</span>
         <span class="cart-price">
           	<span>总计:</span>
           	<p class="red">
@@ -91,9 +92,10 @@
           	</p> </span>
     </div>
 
-    <a class="btn" onclick="doPost()">下一步(<span id="totalCount">12</span>)</a>
+    <a class="btn" onclick="doPost()">去结算(<span id="totalCount">12</span>)</a>
 </div>
 <!-- 底部导航 -->
+{include file="wap/_footer"}
 </body>
 
 <script type="text/javascript">
