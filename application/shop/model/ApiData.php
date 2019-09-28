@@ -321,8 +321,10 @@ class ApiData extends ApiBase
         return $data;
     }
     public function add_csfw(){
-        $room=I('room');
-        dump($room);
+        $data['room']=I('room');
+        $data['good_ids']=I('good_ids');
+        $data['nums']=I('nums');
+        dump($data);
     }
     private function confirm_order_goods($dao, $id, $num, &$data)
     {

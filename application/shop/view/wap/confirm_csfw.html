@@ -306,7 +306,14 @@
                             return false;
                         }
                     }
-
+                var good_ids = "";
+                $('.weui-media-box_appmsg').each(function(index, element) {
+                    good_ids += $(this).attr('info')+",";
+                });
+                var nums = "";
+                $('.fr').each(function(index, element) {
+                    nums += $(this).text()+",";
+                });
                     var room = $('#room').val();
                     var sendType = $('input[name="send_type"]:checked').val()
 
@@ -316,7 +323,7 @@
 
                     $.showLoading();
 
-                    $.post(url, {'address_id': address_id, 'room': room, 'sn_id': sn_id, 'send_type': sendType, 'stores_id': store}, function(res) {
+                    $.post(url, {'good_ids': good_ids, 'room': room, 'nums': nums}, function(res) {
                         //console.log(res); return false;
 
                         if (res) $.hideLoading();
