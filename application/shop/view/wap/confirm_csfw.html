@@ -107,7 +107,7 @@
         // 有sesstion的情况
        // cacheVal != 2 ? show(1) : show(2);
        // console.log('状态:' + cacheVal);
-        $('#room').focus();
+        $('#room')[0].focus();
     })
 
 
@@ -246,7 +246,7 @@
                     var room = $('#room').val();
                 if (!room) {
                     $.Dialog.fail("请输入房间号");
-                    $('#room').focus();
+                    $('#room')[0].focus();
                     return false;
                 }
 
