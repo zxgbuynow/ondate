@@ -36,7 +36,7 @@
                                       <strong style="color:#000">{neq name="pay_type" value="90"}<span class="prize-icon">¥</span>{$vo.sale_price} {else / }积分 {$vo.sale_price|intval}{/neq}</strong>
                                       {if condition="$vo['sale_price'] < $vo['market_price']"}<del><span class="prize-icon">¥</span>{$vo.market_price}</del>{/if}
                                   </span>
-                                 <span class="fr" style="font-size: 20px;color: red;">{$vo.num}</span>   <span style="font-size: 20px;color: red;float: right;">数量：</span>
+                                 <span class="fr" style="font-size: 20px;color: red;">{$vo.num}</span> <span  style="font-size: 20px;color: red;float: right;">数量：</span>
                                 </p>
                             </div>
                         </span>
@@ -93,7 +93,10 @@
 
 
 
+    var total_money = 0;
 
+    // 缓存的数据
+    var cacheVal = sessionStorage.getItem('send_type') ? sessionStorage.getItem('send_type') : 1;
     $(function() {
 
         // 存个url
@@ -114,12 +117,121 @@
 
 
 
+    // 遍历订单
+    Order.prototype.whileData = function() {
+        var _this = this;
+
+        $('.switch-card').each(function(index, ele) {
+            console.log($(this).eq(index));
+            // 默认选中第一个
+            $(this).find('input').eq(0).attr('checked', true);
+            // 有sesstion的情况下 选中第2个
+            if (cacheVal == 2) {
+                if ($(this).find('input').length > 1) {
+                    $(this).find('input').eq(1).attr('checked', true);
+                }
+            }
+
+            // 判断选中的值
+            var val = $(this).find("input:checked").attr('value');
+            console.log('第' + index + '订单选中值是' + val);
+            _this.allVal.push(val);
+        })
+
+    }
+
+    // 多个订单情况下判断选中的值是否相等
+    Order.prototype.isEq = function() {
+        var _this = this;
+        // 判断数组是否全等
+        if (_this.allVal.length > 0) {
+            console.log(_this.allVal);
+            return !_this.allVal.some(function(value, index) {
+                return value !== _this.allVal[0];
+            });
+
+
+        } else {
+            return true;
+        }
+    }
+
+
+
+    function show(isSet, ele) {
+        var _this = ele;
+
+        // 只有一个为自提的话
+
+        // if(isSet==0){
+        //  var default_type = sessionStorage.getItem('send_type');
+        //  if(default_type!=1){
+        //   $('#x83').prop('checked',true);
+        //  }
+        // }
+
+
+        // $('.m-checkbox input').eq(isSet-1).attr('checked',true);
+
+
+        sessionStorage.setItem('send_type', isSet);
+        if (isSet == 2) {
+            $(_this).prop('checked', true);
+
+
+        }
+
+        //选择邮寄
+        if (isSet == 1) {
+            $(_this).prop('checked', true);
+        }
+
+        var order = new Order(isSet);
+        order.whileData();
+        order.ToggleState(isSet);
+
+        // 多个订单才判断
+        if ($('.switch-card').length > 1) {
+            if (order.isEq()) {
+                console.log(order.allVal);
+                // 两个都选择的邮寄或者自提
+                $('.coupon').show();
+                $('.no-coupon').hide();
+
+            } else {
+                $('.coupon').hide();
+                $('.no-coupon').show();
+            }
+        }
 
 
 
 
 
+        total_money = 0
 
+        $('.total_money').each(function(index, element) {
+            total_money += parseMoney($(element).text());
+        });
+
+        if ($('#x83').prop('checked')) {
+            total_money += parseMoney($('#express_money_3').text());
+        }
+
+        {neq name="pay_type" value="90"}
+        var coupon_money = parseMoney({$coupon_price|default=0});
+        total_money = total_money - coupon_money;
+        if (total_money < 0) {
+            total_money = 0;
+        }
+
+        var total_money = isPoint(total_money);
+        $('#total_money').html('<span class="prize-icon">¥</span>' + total_money)
+        {else /}
+            $('#total_money').html('<div class="integral-icon"></div>' + '<span>' + total_money + '</span>');
+            {/neq}
+
+            }
             function doPost() {
 
                 var goods = "";
