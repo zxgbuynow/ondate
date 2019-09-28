@@ -19,7 +19,7 @@
     {empty name="lists"}
     {:W('common/EmptyTip/html', ['remark'=>'空空如也~'])}
     {else/}
-    <form action="{:U ( 'Shop/Wap/confirm_order')}" method="post" onSubmit="return checkCartSubmit()" id="form">
+    <form action="{:U ( 'Shop/Wap/confirm_csfw')}" method="post" onSubmit="return checkCsfwSubmit()" id="form">
         <div class="">
             <!-- 购物车商品 -->
             {volist name="lists" id="vo"}
