@@ -123,14 +123,7 @@ $(function() {
 		switchToggle(this);
 	})
 
-	// 解决安卓输入框被挡住
-/*	$('input[type="text"],input[type="number"],textarea').on('click', function () {
-	  var target = this;
-	  setTimeout(function(){
-	        target.scrollIntoViewIfNeeded();
-	        console.log('scrollIntoViewIfNeeded');
-	      },400);
-	});*/
+
 	// 安卓固定定位失效
 	$('input[type="text"],input[type="number"],textarea').focus(function () {
 		$('.bottom-nav, .m-bottom-nav2').css('position', 'absolute');
