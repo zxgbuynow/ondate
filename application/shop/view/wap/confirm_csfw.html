@@ -117,45 +117,7 @@
     }
 
 
-
-    // 遍历订单
-    Order.prototype.whileData = function() {
-        var _this = this;
-
-        $('.switch-card').each(function(index, ele) {
-            console.log($(this).eq(index));
-            // 默认选中第一个
-            $(this).find('input').eq(0).attr('checked', true);
-            // 有sesstion的情况下 选中第2个
-            if (cacheVal == 2) {
-                if ($(this).find('input').length > 1) {
-                    $(this).find('input').eq(1).attr('checked', true);
-                }
-            }
-
-            // 判断选中的值
-            var val = $(this).find("input:checked").attr('value');
-            console.log('第' + index + '订单选中值是' + val);
-            _this.allVal.push(val);
-        })
-
-    }
-
-    // 多个订单情况下判断选中的值是否相等
-    Order.prototype.isEq = function() {
-        var _this = this;
-        // 判断数组是否全等
-        if (_this.allVal.length > 0) {
-            console.log(_this.allVal);
-            return !_this.allVal.some(function(value, index) {
-                return value !== _this.allVal[0];
-            });
-
-
-        } else {
-            return true;
-        }
-    }
+    
 
 
 
