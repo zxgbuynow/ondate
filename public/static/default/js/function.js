@@ -132,11 +132,11 @@ $(function() {
 	      },400);
 	});
 	// 安卓固定定位失效
-	$('input[type="text"],input[type="number"],textarea').focus(function () {
+/*	$('input[type="text"],input[type="number"],textarea').focus(function () {
 		$('.bottom-nav, .m-bottom-nav2').css('position', 'absolute');
 	}).blur(function () {
 		$('.bottom-nav, .m-bottom-nav2').css('position', 'fixed');
-	})
+	})*/
 
 	
 })
