@@ -91,12 +91,7 @@
     var show_2 = "{$show_2}"
     var my_socre = parseInt({$my_score});
 
-
-
-    var total_money = 0;
-
-    // 缓存的数据
-    var cacheVal = sessionStorage.getItem('send_type') ? sessionStorage.getItem('send_type') : 1;
+    
     $(function() {
 
         // 存个url
@@ -111,90 +106,21 @@
     })
 
 
-    // 构造函数
-    function Order(num) {
-        this.allVal = [];
-    }
-
-
-    
-
-
-
-    function show(isSet, ele) {
-        var _this = ele;
-
-        // 只有一个为自提的话
-
-        // if(isSet==0){
-        //  var default_type = sessionStorage.getItem('send_type');
-        //  if(default_type!=1){
-        //   $('#x83').prop('checked',true);
-        //  }
-        // }
-
-
-        // $('.m-checkbox input').eq(isSet-1).attr('checked',true);
-
-
-        sessionStorage.setItem('send_type', isSet);
-        if (isSet == 2) {
-            $(_this).prop('checked', true);
-
-
-        }
-
-        //选择邮寄
-        if (isSet == 1) {
-            $(_this).prop('checked', true);
-        }
-
-        var order = new Order(isSet);
-        order.whileData();
-        order.ToggleState(isSet);
-
-        // 多个订单才判断
-        if ($('.switch-card').length > 1) {
-            if (order.isEq()) {
-                console.log(order.allVal);
-                // 两个都选择的邮寄或者自提
-                $('.coupon').show();
-                $('.no-coupon').hide();
-
-            } else {
-                $('.coupon').hide();
-                $('.no-coupon').show();
-            }
-        }
 
 
 
 
 
-        total_money = 0
 
-        $('.total_money').each(function(index, element) {
-            total_money += parseMoney($(element).text());
-        });
 
-        if ($('#x83').prop('checked')) {
-            total_money += parseMoney($('#express_money_3').text());
-        }
 
-        {neq name="pay_type" value="90"}
-        var coupon_money = parseMoney({$coupon_price|default=0});
-        total_money = total_money - coupon_money;
-        if (total_money < 0) {
-            total_money = 0;
-        }
 
-        var total_money = isPoint(total_money);
+
+
+
+        var total_money = 0
         $('#total_money').html('<span class="prize-icon">¥</span>' + total_money)
-        {else /}
-            $('#total_money').html('<div class="integral-icon"></div>' + '<span>' + total_money + '</span>');
-            {/neq}
 
-            }
             function doPost() {
 
                 var goods = "";
