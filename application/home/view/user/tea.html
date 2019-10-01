@@ -132,7 +132,7 @@
 </body>
 <div>
     <table id="row">
-        <tr><th>待配送的茶水</th></tr>
+        <tr><th colspan="5" style="text-align: center;">待配送的茶水</th></tr>
         <tr><th>房间</th><th>物品</th><th>数量</th><th>时间</th><th>操作</th></tr>
         {volist name="list_data" id="data"}
         <tr><td>{$data.room}</td><td>{$data.goods_name}</td><td>{$data.num}位</td><td>{$data.cTime|time_format}</td><td><button onclick="return finish({$data.id})">确认</button></td></tr>
