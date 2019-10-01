@@ -56,7 +56,7 @@ class User extends Home
         $data=M('csfw_log')->where($map)->select();
         $row='';
         foreach ($data as $k=>$v){
-            $row.="<tr><td>".$v['room']."</td><td>".$v['goods_name']."</td><td>".$v['num']."位</td><td><button onclick='finish(".$v['id'].")'>确认</button></td></tr>";
+            $row.="<tr><td>".$v['room']."</td><td>".$v['goods_name']."</td><td>".$v['num']."位</td><td>".date('Y-m-d H:i')."</td><td><button onclick='finish(".$v['id'].")'>确认</button></td></tr>";
         }
 
         $info['row']=$row;
