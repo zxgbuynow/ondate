@@ -126,10 +126,11 @@
 </script>
 </body>
 <div>
-    <div id="row">待配送的茶水
+    <table id="row">
+        <tr><th>待配送的茶水</th></tr>
         {volist name="list_data" id="data"}
         <tr><td>{$data.room}</td><td>{$data.goods_name}</td><td>{$data.num}位</td><td><button onclick="return finish({$data.id})">确认</button></td></tr>
         {/volist}
-    </div>
+    </table>
 </div>
 </html>
