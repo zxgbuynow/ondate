@@ -1,0 +1,173 @@
+{extend name="shop@wap/common_file" /} {block name="common_body"}
+
+<body class="submit_order">
+<!-- 头部导航 -->
+<div class="top-nav" style="position: unset;">
+    <div class="flex">
+        <slot>
+            <span class="title">确认信息</span>
+        </slot>
+    </div>
+</div>
+<div class="">
+
+
+
+
+    {volist name="lists" id="goods_block"}
+    {php}$block = empty($key) ? 1 : $key; {/php}
+
+    <!-- 商品信息 -->
+    <div class="">
+        <div class="switch-card">
+            <div class="switch-card-list">
+                <div class="weui-panel weui-panel_access">
+                    <div class="weui-panel__bd">
+                        {volist name="goods_block" id="vo"}
+                        <span info="{$vo['shop_goods_id']}" class="weui-media-box weui-media-box_appmsg">
+                            <div class="weui-media-box__hd">
+                                <img class="weui-media-box__thumb" src="{$vo.cover}" alt="{$vo.title}">
+                            </div>
+                            <div class="weui-media-box__bd">
+                                <h4 class="weui-media-box__title">{$vo.title}</h4>
+                                <p class="weui-media-box__desc">
+                                    <span>
+                                      <strong style="color:#000">{neq name="pay_type" value="90"}<span class="prize-icon">¥</span>{$vo.sale_price} {else / }积分 {$vo.sale_price|intval}{/neq}</strong>
+                                      {if condition="$vo['sale_price'] < $vo['market_price']"}<del><span class="prize-icon">¥</span>{$vo.market_price}</del>{/if}
+                                  </span>
+                                 <span class="fr" style="font-size: 20px;color: red;">{$vo.num}</span> <span  style="font-size: 20px;color: red;float: right;">数量：</span>
+                                </p>
+                            </div>
+                        </span>
+                        {/volist}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    {/volist}
+
+
+    <!-- 买家留言 -->
+    <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__hd" style="flex:1">
+                <label class="weui-label" style="font-size: 24px;">房间号：</label>
+            </div>
+            <div class="weui-cell__bd" style="flex:3">
+                <input class="weui-input" type="text" placeholder="输入房间号" name="room" id="room">
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+<!-- 底部导航 -->
+<div>
+    <div class="btn-group">
+        <a class="btn" href="javascript:void(0)" onClick="doPost()">提交</a>
+    </div>
+</div>
+<!-- /底部导航 -->
+</body>
+
+<script type="text/javascript">
+
+
+
+    var show_1 = "{$show_1}"
+    var show_2 = "{$show_2}"
+    var my_socre = parseInt({$my_score});
+
+
+    $(function() {
+
+        // 存个url
+        //sessionStorage.setItem('orderUrl', window.location.href);
+
+        // console.log(show_1, show_2, my_socre);
+
+        // 有sesstion的情况
+        // cacheVal != 2 ? show(1) : show(2);
+        // console.log('状态:' + cacheVal);
+        $('#room')[0].focus();
+        //console.log("32332");
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var total_money = 0
+    $('#total_money').html('<span class="prize-icon">¥</span>' + total_money)
+
+    function doPost() {
+
+        var goods = "";
+        $('.weui-media-box__title').each(function(index, element) {
+            goods += $(this).text()+",";
+        });
+        var nums = "";
+        $('.fr').each(function(index, element) {
+            nums += $(this).text()+",";
+        });
+        var room = $('#room').val();
+        if (!room) {
+            $.Dialog.fail("请输入房间号");
+            $('#room')[0].focus();
+            return false;
+        }
+
+        var url = "{:U('add_buy')}";
+
+        $.showLoading();
+
+        $.post(url, {'goods': goods, 'room': room, 'nums': nums}, function(res) {
+            //console.log(res); return false;
+
+            if (res) $.hideLoading();
+
+            if (res.code == 0) {
+                $.Dialog.fail('操作失败！');
+            } else {
+                // alert('操作成功！');
+                var url = "{:U('csfw_ok')}";
+                window.location.href = url;
+
+            }
+        });
+
+
+    }
+
+
+
+    // 给金额没有小数点的加上小数点
+    function isPoint(num) {
+        var reg = /\./;
+        if (!reg.test(num)) {
+            var number = num + '.00';
+            return number;
+        }
+        return num;
+    }
+
+
+</script>
+{/block}

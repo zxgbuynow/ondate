@@ -395,6 +395,41 @@ class ApiData extends ApiBase
       //  echo json_encode($res);
         return $res;
     }
+    public function add_buy(){
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $uid=$this->mid;
+        $res['code']=0;
+        $data['room']=$room=I('room');
+        $data['goods']=$goods=I('goods');
+        $data['nums']=$nums=I('nums');
+        //dump($data);
+        $goods_arr=explode(',',$goods);
+        $nums_arr=explode(',',$nums);
+        $no=date('YmdHis').rand(1,98).$uid;
+        $tea=$data['room'].'房间';
+        foreach ($goods_arr as $k=>$v){
+            if($v){
+                $tmp['goods_name']=$v;
+                $tmp['num']=$nums_arr[$k];
+                $tmp['room']=$room;
+                $tmp['cTime']=time();
+                $tmp['uid']=$uid;
+                $tmp['no']=$no;
+                M('csfw_log')->insert($tmp);
+                $tea.=$v.$nums_arr[$k].'位';
+            }
+
+        }
+        $this->push_wm_msg('2',$no);
+        $res['code']=1;
+        //  echo json_encode($res);
+        return $res;
+    }
     private function confirm_order_goods($dao, $id, $num, &$data)
     {
         $shop_goods_id = $id;
@@ -474,7 +509,288 @@ class ApiData extends ApiBase
             'msg' => ''
         ];
     }
+    public function confirm_buy()
+    {
+        // 订单信息
+        $goods_id = input('goods_id', 0);
+        $shop_order_id = input('shop_order_id/d', 0);
+        $confirm_order_from = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : U('shop/wap/index');
+        if ((IS_POST || !empty($goods_id)) && $shop_order_id<=0) {
+            session('confirm_order_from', $confirm_order_from);
+            $data['event_type'] = $event_type = input('event_type/d', 0);
+            $data['event_type_title'] = D('shop/Order')->from_type($event_type);
+            $data['event_id'] = input('event_id/d', 0);
+            $data['is_original'] = $is_original = input('is_original/d', 0);
+            $data['pay_type'] = 0;
 
+            $dao = D('ShopGoods');
+            $is_weiapp = input('is_weiapp/d', 0);
+
+            $data['cart_ids'] = input('cart_ids', 0);
+            if ($data['cart_ids'] != 0) {
+                //购物车
+                $goods_ids = input('goods_ids');
+                if (!is_array($goods_ids)) {
+                    $goods_ids = explode(',', $goods_ids);
+                }
+                $numArr = input('buyCount');
+                if (!is_array($numArr)) {
+                    $numArr = json_decode($numArr, true);
+                }
+            } else {
+                //直接购买
+                $goods_ids = explode(',', $goods_id);
+                $numArr = [];
+                foreach ($goods_ids as $gid) {
+                    $numArr[$gid] = 1;
+                }
+            }
+
+            $total_price = $total_express = $expessArr = [];
+            foreach ($goods_ids as $id) {
+                if (!isset($numArr[$id])) {
+                    $numArr[$id] = 1;
+                }
+
+                $res = $this->confirm_order_goods($dao, $id, $numArr[$id], $data);
+                if ($res['code'] == 0) {
+                    return $res;
+                }
+                $send_type = explode(',', $res['send_type']);
+                if (count($send_type) == 2) {
+                    $type = 3;
+                } else {
+                    $type = $res['send_type'];
+                }
+                $list[$type][] = $res['goods'];
+
+                // 总价计算
+                if (isset($total_price[$type])) {
+                    $total_price[$type] += $res['total_price'];
+                } else {
+                    $total_price[$type] = $res['total_price'];
+                }
+
+                // 邮费计算
+                if ($type == 2) {
+                    $total_express[$type] = 0;
+                } elseif (!isset($expessArr[$id])) {
+                    $expessArr[$id] = 1;
+
+                    if (isset($total_express[$type])) {
+                        $total_express[$type] += $res['goods']['express'];
+                    } else {
+                        $total_express[$type] = $res['goods']['express'];
+                    }
+                }
+            }
+
+            $data['goods_id'] = isset($res['goods']['id']) ? $res['goods']['id'] : 0; // 给单个商品回传商品ID
+            $data['lists'] = $list;
+            $data['total_price'] = $total_price;
+            $data['total_express'] = $total_express;
+            session('confirm_order', $data);
+            if ($is_weiapp == 1) {
+                return $data;
+            }
+        } elseif ($shop_order_id > 0) {
+            session('confirm_order_from', $confirm_order_from);
+            $data = D('shop/Order')->findById($shop_order_id);
+            $data['event_id'] = input('event_id/d', 0);
+            $data['shop_order_id'] = $shop_order_id;
+
+
+            $goods = json_decode($data['goods_datas'], true);
+
+            $data['goods_id'] = isset($goods['id']) ? $goods['id'] : 0; // 给单个商品回传商品ID
+
+//             $send_type = strpos($data['extra'], ',') === false ? $data['send_type'] : 3;
+            $send_type = explode(',', $data['extra']);
+            if (count($send_type) == 2) {
+                $send_type = 3;
+            } else {
+                $send_type = $data['send_type'];
+            }
+
+            $data['lists'][$send_type] = $goods;
+
+            $total_price = $data['total_price'];
+            unset($data['total_price']);
+
+            $data['total_price'][$send_type] = $total_price;
+            $data['total_express'][$send_type] = $data['mail_money'];
+
+            session('confirm_order', $data);
+        } else {
+            $data = session('confirm_order');
+        }
+        if (empty($data) || !isset($data['event_type'])) {
+            return redirect('index'); // 报错时回跳时参数如果丢失，不再继续，直接返回商城首页
+        }
+
+        // 前端显示控制
+        $data['show_1'] = $data['show_2'] = 0;
+        isset($data['total_price'][3]) && $data['show_1'] = $data['show_2'] = 1;
+        isset($data['total_price'][1]) && $data['show_1'] = 2;
+        isset($data['total_price'][2]) && $data['show_2'] = 2;
+
+        // 收货地址
+        $uid = session('mid_' . get_pbid());
+        if (empty($uid)){
+            $this->error('找不到用户');
+        }
+        $data['address'] = D('Address')->getMyAddress($uid);
+
+        if (empty($data['address'])) {
+            return redirect(U('add_address?is_order=1'));
+        }
+
+        // 自动获取自提门店
+        $data['allow_stores'] = D('shop/GoodsStoreLink')->getOrderStores($data);
+        $store_id = input('store_id/d', 0);
+        if ($store_id > 0) {
+            D('Stores')->setDefault($uid, $store_id);
+            $data['default_store'] = D('Stores')->getDefaultStore($uid);
+        } else {
+            $data['default_store'] = [
+                'id' => 0,
+                'name' => ''
+            ];
+        }
+
+
+        // 可用的优惠券
+        if ($data['event_type'] == SHOP_EVENT_TYPE) {
+            $coupons = D('common/SnCode')->getMyAll($uid, true, '', 1);
+        } else {
+            $coupons = [];
+        }
+
+        // 获取
+        $strCouponId = '';
+        $id = I('goods_id');
+        $couponDao = D('coupon/Coupon');
+        $hasGet = [];
+        foreach ($coupons as &$v) {
+            if (!isset($hasGet[$v['target_id']])) {
+                $hasGet[$v['target_id']] = $couponDao->getInfo($v['target_id']);
+            }
+
+            $v = array_merge($hasGet[$v['target_id']], $v);
+        }
+        $sn_id = I('sn_id/d', 0);
+        if ($sn_id > 0) {
+            session('order_sn_id', $sn_id);
+        } else {
+            $sn_id = session('order_sn_id');
+        }
+        $count = 0;
+        $sn_info = [];
+        $data['coupon_price'] = 0;
+        if (!empty($coupons)) {
+            $total_sale_price = $total_market_price = 0;
+            $goods_ids = $coupon_check = $cate_list = [];
+            foreach ($data['lists'] as $lists) {
+                foreach ($lists as $g) {
+                    $goods_ids[] = $id = empty($g['shop_goods_id']) ? $g['id'] : $g['shop_goods_id'];
+                    $total_sale_price += $g['sale_price'];
+                    $total_market_price += $g['market_price'];
+
+                    $coupon_check[$id]['price'] = $g['sale_price'];
+                }
+            }
+            if (!empty($goods_ids)) {
+                $cate_list = M('goods_category_link')->whereIn('goods_id', $goods_ids)
+                    ->field('goods_id,category_first,category_second')
+                    ->select();
+                foreach ($cate_list as $c) {
+                    $coupon_check[$c['goods_id']]['cate'][] = $c['category_first'] . '_' . $c['category_second'];
+                }
+            }
+
+            foreach ($coupons as $cp) {
+                if (empty($cp['money'])) {
+                    continue;
+                }
+
+                if ($cp['over_time'] > 0 && $cp['over_time'] < NOW_TIME) {
+                    continue;
+                }
+
+                // 指定商品分类
+                $goods_category = json_decode($cp['goods_category'], true);
+                if (!empty($goods_category)) {
+                    $cate_arr = [];
+                    foreach ($goods_category as $cate) {
+                        $cate_arr[] = $cate['category_first'] . '_' . $cate['category_second'];
+                    }
+                    // dump($cate_arr);
+                    $check_arr = $coupon_check;
+                    // dump($check_arr);
+                    foreach ($check_arr as $k => $gd) {
+                        isset($gd['cate']) || $gd['cate'] = [];
+
+                        $in = array_intersect($cate_arr, $gd['cate']);
+                        if (empty($in)) { // 没有交集，删除不在指定的分类内的商品
+                            unset($check_arr[$k]);
+                        }
+                    }
+                    // dump($check_arr);
+                    if (empty($check_arr)) { // 所有的商品都不在指定分类里，该优惠券不可用
+                        continue;
+                    }
+                } else {
+                    $check_arr = $coupon_check;
+                }
+
+                // 订单满多少可使用
+                if ($cp['order_money'] > 0) {
+                    if ($cp['only_goods'] == 1) { // 单件
+                        $check = true;
+                        foreach ($check_arr as $check) {
+                            if ($check['price'] >= $cp['order_money']) {
+                                $check = false; // 只有有商品（被分类过虑后的商品）满足单品要求就可用
+                                break;
+                            }
+                        }
+                        if ($check) {
+                            // dump(444);
+                            continue;
+                        }
+                    } else { // 整单
+                        $total_price = array_sum($data['total_price']);
+                        if ($total_price < $cp['order_money']) {
+                            // dump(555);
+                            continue;
+                        }
+                    }
+                }
+
+                if ($cp['can_use'] && $cp['is_use'] == 0) {
+                    $count += 1;
+                    $strCouponId .= $cp['target_id'] . ',';
+                }
+                if ($cp['id'] == $sn_id) {
+                    $sn_info = $cp;
+                    $data['coupon_price'] = $cp['money'];
+                }
+            }
+        }
+        $data['sn_id'] = $sn_id;
+        $data['str_coupon_id'] = $strCouponId;
+        // dump($data['total_price']);
+        $data['coupon_num'] = $count;
+        $data['sn_info'] = $sn_info;
+        $data['is_cart_goods'] = input('is_cart_goods/d', 0);
+
+        $data['my_score'] = 0; // 用户积分，用于前端判断是否足够使用积分支付
+        if ($data['pay_type'] == 90) {
+            $data['my_score'] = D('common/User')->where('uid', $this->mid)->value('score'); // 实时从数据库取，不走缓存
+        }
+
+
+        return $data;
+    }
     public function confirm_csfw()
     {
         // 订单信息
@@ -1155,6 +1471,8 @@ class ApiData extends ApiBase
         $info = session('confirm_order');
         //判断商品是否下架
         $dao = D('ShopGoods');
+        dump($info);
+        exit;
         foreach ($info['lists'] as $lists) {
         	foreach ($lists as $g) {
         		$gg = $dao->getInfo($g['shop_goods_id']);
