@@ -124,9 +124,14 @@
 
     }
 </script>
+<style>
+    #row tr th,#row tr td{
+        border: 1px solid #ccc;
+    }
+</style>
 </body>
 <div>
-    <table id="row" class="border: 1px solid #ccc;">
+    <table id="row">
         <tr><th>待配送的茶水</th></tr>
         {volist name="list_data" id="data"}
         <tr><td>{$data.room}</td><td>{$data.goods_name}</td><td>{$data.num}位</td><td><button onclick="return finish({$data.id})">确认</button></td></tr>
