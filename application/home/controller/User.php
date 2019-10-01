@@ -35,6 +35,10 @@ class User extends Home
         return $this->fetch();
     }
     public function cs(){
+        $map['status']=0;
+        $data=M('csfw_log')->where($map)->select();
+        $this->assign('list_data', $data);
+
         return $this->fetch();
     }
     //安排技师语音播报
