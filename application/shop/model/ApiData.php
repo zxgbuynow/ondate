@@ -1464,6 +1464,7 @@ class ApiData extends ApiBase
     // 生成订单
     public function add_order()
     {
+        $jsbn=99;
         $openid = get_openid();
         if (empty($openid) || $openid == -1) {
             return $this->error('获取openid失败,请在微信里打开!');
@@ -1618,6 +1619,7 @@ class ApiData extends ApiBase
                 $data['dec_money']=0;
                 $data['pay_money'] = $data['total_price'] - $data['dec_money'];
                 $data['pay_money'] < 0 && $data['pay_money'] = 0;
+                $data['jsbn']=$jsbn;
                 if (isset($info['shop_order_id']) && $info['shop_order_id'] > 0) {
                     $ids[] = $id = $info['shop_order_id'];
                     D('Shop/Order')->updateOrder($id, $data);
