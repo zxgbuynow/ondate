@@ -52,12 +52,26 @@ class User extends Home
         $data=M('csfw_log')->where($map)->select();
         $row='';
         foreach ($data as $k=>$v){
-            $row.="<tr><td>".$v['room']."</td><td>".$v['goods_name']."</td><td>".$v['num']."位</td><td><button>确认</button></td></tr>";
+            $row.="<tr><td>".$v['room']."</td><td>".$v['goods_name']."</td><td>".$v['num']."位</td><td><button onclick='finish(".$v['id'].")'>确认</button></td></tr>";
         }
-       // $tmp=json_decode($data['goods_datas'],true);
 
         $info['row']=$row;
         echo json_encode($info);
+    }
+    function finishCs(){
+        $id = I('id', 0);
+
+        $map['id'] = $id;
+         $updata['status']=1;
+        if (M('csfw_log')->where($map)->update($updata)) {
+            $data['code'] = 1;
+            $data['msg'] = '操作成功';
+
+        } else {
+            $data['code'] = 2;
+            $data['msg'] = '操作失败';
+        }
+        echo json_encode($data);
     }
     //推送消息：下钟提醒
     function sendmy(){

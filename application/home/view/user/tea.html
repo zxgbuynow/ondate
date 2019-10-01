@@ -108,9 +108,28 @@
         // ttsAudio.play();
         console.log('play');
     }
+    //
+    function finish(id) {
+            var url = "{:U('finishCs')}"
+            $.post(url,{'id':id},function(res){
+                var data_obj = eval("("+res+")");
+                if(data_obj.code==1){
+                    // updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
+                    // window.location.href=window.location.href;
+                    var hurl = "{:U('tea')}";
+                    window.location.href = hurl;
+                }
+            })
+
+
+    }
 </script>
 </body>
 <div>
-    <div id="row">暂无消息</div>
+    <div id="row">待配送的茶水
+        {volist name="list_data" id="data"}
+        <tr><td>{$data.room}</td><td>{$data.goods_name}</td><td>{$data.num}位</td><td><button onclick="return finish({$data.id})">确认</button></td></tr>
+        {/volist}
+    </div>
 </div>
 </html>
