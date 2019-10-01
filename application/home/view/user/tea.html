@@ -29,7 +29,7 @@
         // dotts(msg)
         speckText(msg)
         // sound(msg)
-        showit(msg);
+        showMsg(no);
     });
     // 后端推送来在线数据时
     socket.on('update_online_count', function(online_stat){
@@ -38,7 +38,43 @@
     function showit(msg) {
         $("p").html("<b>"+msg+"</b>");
     }
+    function showMsg(no)
+    {
+        if(!no)
+        {
+            return false;
+        }
+        $.ajax(
+            {
+                url: "{:U('teaInfo')}",
+                data:{"no":no},
+                type: "post",
+                beforeSend:function()
+                {
+                    return true;
+                },
+                success:function(data)
+                {
+                    if(data)
+                    {
+                        // 解析json数据
+                        var data = data;
+                        var data_obj = eval("("+data+")");
+                        $("#row").html(data_obj.row);
+                    }
+                },
+                error:function()
+                {
+                    alert('请求出错');
+                },
+                complete:function()
+                {
+                    // $('#tips').hide();
+                }
+            });
 
+        return false;
+    }
 
     function speckText(msg){
         var url = "http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&text=" + encodeURI(msg);        // baidu

@@ -362,7 +362,7 @@ class ApiData extends ApiBase
             }
 
         }
-        $this->push_wm_msg('2',$tea);
+        $this->push_wm_msg('2',$no);
         $res['code']=1;
       //  echo json_encode($res);
         return $res;

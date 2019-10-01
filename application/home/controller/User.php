@@ -45,6 +45,20 @@ class User extends Home
     function tea(){
         return $this->fetch();
     }
+    function teaInfo(){
+        $no = I('no', 0);
+        $map['no']=$no;
+        $map['status']=0;
+        $data=M('csfw_log')->where($map)->select();
+        $row='';
+        foreach ($data as $k=>$v){
+            $row.="<tr><td>".$v['room']."</td><td>".$v['goods_name']."</td><td>".$v['num']."位</td><td><button>确认</button></td></tr>";
+        }
+       // $tmp=json_decode($data['goods_datas'],true);
+
+        $info['row']=$row;
+        echo json_encode($info);
+    }
     //推送消息：下钟提醒
     function sendmy(){
         $map['status']=1;
