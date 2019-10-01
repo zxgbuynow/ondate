@@ -42,7 +42,7 @@ class User extends Home
         return $this->fetch();
     }
     //茶水间语音播报
-    function msg_tea(){
+    function tea(){
         return $this->fetch();
     }
     //推送消息：下钟提醒
