@@ -1528,9 +1528,7 @@ class ApiData extends ApiBase
             		}
             	}
             }
-            dump($ziti);
-            //dump($info);
-            exit;
+
             $total_price = array_sum($info['total_price']);
 
             $data['event_type'] = $info['event_type'];
@@ -1546,7 +1544,8 @@ class ApiData extends ApiBase
             $data['openid'] = $openid;
             $data['pay_status'] = 0;
             $data['wpid'] = get_wpid();
-            $data['stores_id'] = $stores_id;
+            //$data['stores_id'] = $stores_id;
+            $data['stores_id'] = 99;
             $data['notice_erp'] = NOW_TIME; // 增加订单时通知ERP
             isset($info['extra']) && $data['extra'] = $info['extra']; // 扩展字段
 
@@ -1608,8 +1607,8 @@ class ApiData extends ApiBase
             	//剩下的就给邮寄
             	$express_dec = $data ['dec_money'] - $ziti_dec;
             }
-
-            if (!empty($ziti)) {
+              $ziti=true;
+            if ($ziti) {
                 $data['order_number'] = date('YmdHis') . substr(uniqid(), 4);
                 $data['mail_money'] = 0;
                 $data['goods_datas'] = json_encode($ziti);
