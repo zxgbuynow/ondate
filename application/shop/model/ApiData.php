@@ -333,7 +333,7 @@ class ApiData extends ApiBase
         return $data;
     }
     public function csfw_ok(){
-        return $this->success('操作成功，茶水准备中..');
+        return $this->error('操作成功，茶水准备中..');
     }
     public function add_csfw(){
         $openid = get_openid();
