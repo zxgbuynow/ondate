@@ -1526,7 +1526,10 @@ class ApiData extends ApiBase
             				$ziti[]=$goods;
             				$ziti_price += $goods ['sale_price'] * intval ( $goods['num']);
             			}
-            		}
+            		}else{
+                        $ziti[]=$goods;
+                        $ziti_price += $goods ['sale_price'] * intval ( $goods['num']);
+                    }
             	}
             }
 
@@ -1608,7 +1611,7 @@ class ApiData extends ApiBase
                 //剩下的就给邮寄
                 $express_dec = $data ['dec_money'] - $ziti_dec;
             }*/
-              $ziti=true;
+             // $ziti=true;
             if ($ziti) {
                 $data['order_number'] = date('YmdHis') . substr(uniqid(), 4);
                 $data['mail_money'] = 0;
