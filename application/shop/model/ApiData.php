@@ -333,8 +333,6 @@ class ApiData extends ApiBase
         return $data;
     }
     public function csfw_ok(){
-        $str="<h1>操作成功，茶水准备中..</h1>";
-        echo $str;
 
     }
     public function add_csfw(){
