@@ -347,6 +347,8 @@ class ApiData extends ApiBase
         //dump($data);
         $goods_arr=explode(',',$goods);
         $nums_arr=explode(',',$nums);
+        $no=date('YmdHis').rand(1,98).$uid;
+        $tea=$data['room'].'房间';
         foreach ($goods_arr as $k=>$v){
             if($v){
                 $tmp['goods_name']=$v;
@@ -354,11 +356,13 @@ class ApiData extends ApiBase
                 $tmp['room']=$room;
                 $tmp['cTime']=time();
                 $tmp['uid']=$uid;
+                $tmp['no']=$no;
                 M('csfw_log')->insert($tmp);
+                $tea.=$v.$nums_arr[$k].'位';
             }
 
         }
-        $this->push_wm_msg('2','您有一次茶水呼叫');
+        $this->push_wm_msg('2',$tea);
         $res['code']=1;
       //  echo json_encode($res);
         return $res;
