@@ -1471,8 +1471,6 @@ class ApiData extends ApiBase
         $info = session('confirm_order');
         //判断商品是否下架
         $dao = D('ShopGoods');
-        dump($info);
-        exit;
         foreach ($info['lists'] as $lists) {
         	foreach ($lists as $g) {
         		$gg = $dao->getInfo($g['shop_goods_id']);
@@ -1488,6 +1486,9 @@ class ApiData extends ApiBase
         
         $sendType = input('send_type');
         $stores_id = input('stores_id');
+        dump($goodsSendType);
+        //dump($info);
+        exit;
         if ($sendType == 2 && empty($stores_id)) {
             return $this->error('请先选择门店');
         }
@@ -1529,33 +1530,14 @@ class ApiData extends ApiBase
             		}
             	}
             }
-
-            /* if (isset($info['lists'][1])) {
-                $express = $info['lists'][1];
-                $express_price = $info['total_price'][1];
-                $mail_money = $info['total_express'][1];
-            }
-            if (isset($info['lists'][2])) {
-                $ziti = $info['lists'][2];
-                $ziti_price = $info['total_price'][2];
-            }
-            if (isset($info['lists'][3])) {
-                if ($sendType == 2) { // 自提
-                    $ziti = array_merge($ziti, $info['lists'][3]);
-                    $ziti_price += $info['total_price'][3];
-                } else { // 邮寄
-                    $express = array_merge($express, $info['lists'][3]);
-                    $express_price += $info['total_price'][3];
-                    $mail_money += $info['total_express'][3];
-                }
-            } */
             $total_price = array_sum($info['total_price']);
 
             $data['event_type'] = $info['event_type'];
             $data['event_id'] = $info['event_id'];
             $data['is_original'] = $info['is_original'];
             $data['pay_type'] = isset($info['pay_type']) ? $info['pay_type'] : 0; // 默认微信支付
-            $data['address_id'] = D('Address')->where('uid', $this->mid)->value('id');
+            //$data['address_id'] = D('Address')->where('uid', $this->mid)->value('id');
+            $data['address_id'] = 99;
             $data['remark'] = I('remark');
             $data['uid'] = $this->mid;
             $data['out_trade_no'] = 'no' . date('ymdHis') . substr(uniqid(), 4);
@@ -1571,11 +1553,11 @@ class ApiData extends ApiBase
                 exception('请选择门店!!!');
             }
 				
-				// 使用优惠券
+/*				// 使用优惠券
 			$data ['dec_money'] = 0;
             $can_use_coupon = !empty($ziti) && !empty($express) ? false : true; // 不同配送方式时不能使用优惠券
             $can_use_coupon=true;//暂时可以试试
-            if ($can_use_coupon && $data['pay_type'] != 90 && $data['event_type'] == SHOP_EVENT_TYPE) { // 活动不能使用优惠券
+            if ($can_use_coupon && $data['pay_type'] != 90 && $data['event_type'] == SHOP_EVENT_TYPE) {
                 $sn_id = I('sn_id');
 //                 addWeixinLog($sn_id,'addeatadafdksf_11sncoupon');
                 if ($sn_id > 0) {
@@ -1610,7 +1592,7 @@ class ApiData extends ApiBase
             }
             if (isset($extArr)) {
                 $data['extra'] = json_encode($extArr);
-            }
+            }*/
 //             addWeixinLog($data['dec_money'],'addeatadafdksf_decmoney');
 //             addWeixinLog($ziti,'addeatadafdksf_allz');
 //             addWeixinLog($express,'addeatadafdksf_alle');
@@ -1680,23 +1662,6 @@ class ApiData extends ApiBase
             ];
         }
 
-        if ($data['event_type'] == SHOP_EVENT_TYPE) {
-            // 删除购物车消息
-            $info['cart_ids'] != 0 && D('Cart')->delUserCart($this->mid, $goods_ids, $info['cart_ids']);
-        } else {
-            // 活动中，删除之前本人重复提交未支付的订单，以便释放库存
-            $old_map['pay_status'] = 0;
-            $old_map['is_lock'] = 1;
-            $old_map['uid'] = $data['uid'];
-            $old_map['event_id'] = $data['event_id'];
-            $old_map['event_type'] = $data['event_type'];
-            $old_map['id'] = [
-                'NOT IN',
-                $ids
-            ];
-
-            D('shop/Stock')->cronDealOrderStock($old_map);
-        }
         return [
             'code' => 1,
             'msg' => '',
