@@ -298,7 +298,19 @@ class ApiData extends ApiBase
     // 茶水服务
     public function csfw()
     {
-        $mid = session('mid_' . get_pbid());
+        $kq=[376,377,378,379];//工作人員才能呼叫茶水
+        $openid = get_openid();
+        if (empty($this->mid)){
+            $this->mid=get_uid_by_openid(true,$openid);
+            if (empty($this->mid))
+                return $this->error('获取不到当前用户，请在微信里打开!');
+        }
+        $map['uid']=$this->mid;
+        $group_id=M('auth_group_access')->where(['uid'=>$map['uid']])->value('group_id');
+        if(!in_array($group_id,$kq)){
+            return $this->error('抱歉，您不是工作人員!');
+        }
+        $mid = $this->mid;
         M('csfw')->where(['uid'=>$mid])->delete();
         $goods_id=M('goods_category_link')->where(['category_first'=>104])->column('goods_id');
         foreach ($goods_id as $k=>$v){
@@ -346,6 +358,7 @@ class ApiData extends ApiBase
             }
 
         }
+        $this->push_wm_msg('2','您有一次茶水呼叫');
         $res['code']=1;
       //  echo json_encode($res);
         return $res;
