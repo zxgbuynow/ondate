@@ -1596,17 +1596,17 @@ class ApiData extends ApiBase
 //             addWeixinLog($data['dec_money'],'addeatadafdksf_decmoney');
 //             addWeixinLog($ziti,'addeatadafdksf_allz');
 //             addWeixinLog($express,'addeatadafdksf_alle');
-            $ziti_dec = $express_dec = $data ['dec_money'];
+/*            $ziti_dec = $express_dec = $data ['dec_money'];
             if ($data['dec_money']>0 && !empty($ziti) && !empty($express)){
-            	//计算分单使用优惠券获得可减金额比例
-            	//自提可减金额
-            	$ziti_dec=($ziti_price/($ziti_price+$express_price))*$data['dec_money'];
-            	//保留两位数字
-            	$ziti_dec = round ( $ziti_dec, 2 );
-            	$ziti_dec = $ziti_dec >= $data ['dec_money'] ? $data ['dec_money'] : $ziti_dec;
-            	//剩下的就给邮寄
-            	$express_dec = $data ['dec_money'] - $ziti_dec;
-            }
+                //计算分单使用优惠券获得可减金额比例
+                //自提可减金额
+                $ziti_dec=($ziti_price/($ziti_price+$express_price))*$data['dec_money'];
+                //保留两位数字
+                $ziti_dec = round ( $ziti_dec, 2 );
+                $ziti_dec = $ziti_dec >= $data ['dec_money'] ? $data ['dec_money'] : $ziti_dec;
+                //剩下的就给邮寄
+                $express_dec = $data ['dec_money'] - $ziti_dec;
+            }*/
               $ziti=true;
             if ($ziti) {
                 $data['order_number'] = date('YmdHis') . substr(uniqid(), 4);
@@ -1614,7 +1614,8 @@ class ApiData extends ApiBase
                 $data['goods_datas'] = json_encode($ziti);
                 $data['total_price'] = $ziti_price > 0 ? $ziti_price : 0;
                 $data['send_type'] = 2;
-                $data['dec_money']=$ziti_dec;
+                //$data['dec_money']=$ziti_dec;
+                $data['dec_money']=0;
                 $data['pay_money'] = $data['total_price'] - $data['dec_money'];
                 $data['pay_money'] < 0 && $data['pay_money'] = 0;
                 if (isset($info['shop_order_id']) && $info['shop_order_id'] > 0) {
