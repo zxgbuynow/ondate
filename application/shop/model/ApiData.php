@@ -1486,9 +1486,7 @@ class ApiData extends ApiBase
         
         $sendType = input('send_type');
         $stores_id = input('stores_id');
-        dump($goodsSendType);
-        //dump($info);
-        exit;
+
         if ($sendType == 2 && empty($stores_id)) {
             return $this->error('请先选择门店');
         }
@@ -1530,6 +1528,9 @@ class ApiData extends ApiBase
             		}
             	}
             }
+            dump($ziti);
+            //dump($info);
+            exit;
             $total_price = array_sum($info['total_price']);
 
             $data['event_type'] = $info['event_type'];
