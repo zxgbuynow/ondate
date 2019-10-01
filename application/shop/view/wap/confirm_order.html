@@ -438,14 +438,6 @@ function show(isSet, ele) {
 }
 function doPost() {
 
-    {eq name="pay_type" value="90"}
-
-    if (my_socre < total_money) {
-        $.Dialog.fail('您的积分不足');
-        return false;
-      }
-
-    {/eq}
 
       var address_id = $('#address_id').val();
       if ($('#send_type_2').is(':visible')) {
@@ -487,7 +479,8 @@ function doPost() {
           if (res.code == 0) {
               $.Dialog.fail(res.msg);
           } else {
-              var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
+              //var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
+              var url = "{:U('csfw_ok')}";
               window.location.href = url;
 
           }
