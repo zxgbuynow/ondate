@@ -295,6 +295,31 @@ class ApiData extends ApiBase
         // dump($list);
         return $data;
     }
+    // 商品购买
+    public function js_buy()
+    {
+        $mid = $this->mid;
+        M('csfw')->where(['uid'=>$mid])->delete();
+        $goods_id=M('goods_category_link')->where(['category_first'=>103])->column('goods_id');
+        foreach ($goods_id as $k=>$v){
+            $cs['uid']=$mid;
+            $cs['goods_id']=$v;
+            $cs['price'] = 0.0;
+            $cs['wpid'] = 1;
+            $cs['num'] =1;
+            $cs['cTime']=time();
+            M('csfw')->insert($cs);
+        }
+
+        $list = D('Cart')->getCsfw($mid, true);
+        // diy
+        $data['diyData'] = D('DiyPage')->getInfoByPage('cart');
+        // dump($list);
+        $data['lists'] = $list;
+        $data['wpid'] = WPID;
+        // dump($list);
+        return $data;
+    }
     // 茶水服务
     public function csfw()
     {
