@@ -35,9 +35,6 @@ class User extends Home
         return $this->fetch();
     }
     public function cs(){
-        $map['status']=0;
-        $data=M('csfw_log')->where($map)->select();
-        $this->assign('list_data', $data);
 
         return $this->fetch();
     }
@@ -47,6 +44,9 @@ class User extends Home
     }
     //茶水间语音播报
     function tea(){
+        $map['status']=0;
+        $data=M('csfw_log')->where($map)->select();
+        $this->assign('list_data', $data);
         return $this->fetch();
     }
     function teaInfo(){
