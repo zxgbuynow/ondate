@@ -1555,8 +1555,8 @@ class ApiData extends ApiBase
                 $data['dec_money']=0;
                 $data['pay_money'] = $data['total_price'] - $data['dec_money'];
                 $data['pay_money'] < 0 && $data['pay_money'] = 0;
-                $data['jsbn']=$jsbn;
-                $data['room']=$room;
+                $data['jsbn']=$call['jsbn'];
+                $data['room']=$call['room'];
                 if (isset($info['shop_order_id']) && $info['shop_order_id'] > 0) {
                     $ids[] = $id = $info['shop_order_id'];
                     D('Shop/Order')->updateOrder($id, $data);
