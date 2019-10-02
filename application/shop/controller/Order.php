@@ -311,7 +311,7 @@ class Order extends Base
         $tmp=json_decode($data['goods_datas'],true);
         $row='';
         foreach ($tmp as $k=>$v){
-            $row.="<tr><td>".$v['title']."</td><td>".$v['sale_price']."</td><td>".$v['num']."</td><td>".$data['total_price']."</td></tr>";
+            $row.="<tr><td>".$v['title']."</td><td>".$v['sale_price']."</td><td>".$v['num']."</td><td>".$v['sale_price']."</td></tr>";
 
         }
         //$row="<tr><td>".$tmp[0]['title']."</td><td>".$tmp[0]['sale_price']."</td><td>".$tmp[0]['num']."</td><td>".$data['total_price']."</td></tr>";
