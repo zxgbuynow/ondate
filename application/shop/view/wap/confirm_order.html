@@ -41,16 +41,7 @@
               <div class="weui-cells flex-item">
                       <div class="weui-cell__bd">
                               <div class="weui-cells weui-cells_radio m0">
-                              {neq name="block" value="2"}
-                                  <label class="weui-cell weui-check__label m-checkbox" for="x8{$block}">
-                                      <div class="weui-cell__ft">
-                                          {eq name="block" value="3"}<input id="x8{$block}" type="radio" class="weui-check send_type" value="1" name="send_type" checked="checked">
-                                          {else /}<input id="x8{$block}" type="radio" value="1" class="weui-check" name="express" checked="checked" readonly>{/eq}
-                                          <i class="iconfont icon-selected"></i>
-                                      </div>
-                                          <span class="f-ml-base">邮寄</span>
-                                  </label>
-                                  {/neq}
+    
                                   {neq name="block" value="1"}
                                    <label class="weui-cell weui-check__label m-checkbox" for="x9{$block}">
                                       <div class="weui-cell__ft">
@@ -96,14 +87,7 @@
                         </div>
                         <div class="weui-cell__ft">{neq name="pay_type" value="90"}<small><span class="prize-icon">¥</span></small><span class="total_money">{$total_price[$block]|default=0}</span>{else / }<small>积分</small><span class="total_money"> {$total_price[$block]|default=0|intval}</span>{/neq}</div>
                     </div>
-                {if condition="$pay_type!=90 && $block!=2"}<!--使用积分结算时无邮费-->
-                    <div class="weui-cell" id="express_{$block}">
-                        <div class="weui-cell__bd">
-                            <p>邮费</p>
-                        </div>
-                        <div class="weui-cell__ft"><small>+ <span class="prize-icon">¥</span></small><span {eq name="block" value="1"}class="total_money"{/eq} id="express_money_{$block}">{$total_express[$block]|default=0}</span></div>
-                    </div>
-                    {/if}
+
                 </div>
               </div>
                 
@@ -126,20 +110,7 @@
       </div>
       <!-- /选择门店  -->
 
-      <!-- 订单用户 -->    
-        <a class="weui-cell order_user" href="{:U('add_address?is_choose=1')}" id="send_type_1">
-      <input type="hidden" name="address_id" id="address_id" value="{$address.id|default=''}">
-            <div class="weui-cell__bd order-user-name">
-                <p>{$address.truename|default=''}</p>
-            </div>
-            <div class="weui-cell__bd order-user-moblie">
-                <strong>{$address.mobile|default=''}</strong>
-                <p>{$address.address|default=''} {$address.address_detail|default=''}</p>
-            </div>
 
-            <div class="iconfont icon-more"></div>
-        </a>
-      <!-- /订单用户 -->
 
       
 
@@ -149,53 +120,20 @@
       {neq name="pay_type" value="90"}
       <!--使用积分结算时不能使用券-->
 
-      {notempty name="coupon_num"}
-          <a class="weui-cell f-border-b f-small-border no-coupon" href="###" style="display:none">
-              <div class="weui-cell__bd">
-                  <p>优惠券</p>
-              </div>
-              <div class="weui-cell__ft" id="coupon_tips">配送方式不同时无法使用优惠券</div>
-              <div class="iconfont icon-more"></div>
-          </a>
-          <a class="weui-cell f-border-b f-small-border coupon" href="{:U ( 'coupon/Wap/personal',array('from'=>'select','str_coupon_id'=>$str_coupon_id))}">
-              <div class="weui-cell__bd">
-                  <p>优惠券</p>
-              </div>
-              <div class="weui-cell__ft" id="coupon_tips">{empty name="sn_info"}你有{$coupon_num|intval} 张可用的优惠券，点击选择{else/}可优惠 {$sn_info.money}元{/empty}</div>
-              <div class="iconfont icon-more"></div>
-          </a>          
-      {/notempty}
-  {else /}        
-           <a class="weui-cell f-border-b f-small-border" href="javascript:;">
-              <div class="weui-cell__bd">
-                  <p>您的可用积分</p>
-              </div>
-              <div class="weui-cell__ft">{$my_score} 积分</div>
-          </a>       
-  {/neq}
+
           <div class="weui-cell">
               <div class="weui-cell__hd" style="flex:1">
-                  <label class="weui-label">买家留言：</label>
+                  <label class="weui-label">备注：</label>
               </div>
               <div class="weui-cell__bd" style="flex:3">
-                  <input class="weui-input" type="text" placeholder="输入买家留言" name="remark" id="remark">
+                  <input class="weui-input" type="text" placeholder="输入备注" name="remark" id="remark">
               </div>
           </div>
 
       </div>
 
 
-      <!-- 同意协议 -->
-      
 
-          <span class="weui-agree__text">
-                <label for="weuiAgree" class="weui-agree">
-          <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox" checked="checked">
-
-              <span>我已同意</span></label><a href="{:U('tcp')}" target="_blank" class="s-blue">《客户协议》</a>
-          </span>
-      
-      <!-- /同意协议 -->
 
       
       
@@ -203,9 +141,8 @@
   <!-- 底部导航 -->
   <div class="bottom-nav flex">
       <p class="pay-info">
-          <strong>实付款：</strong>
+          <strong>总价：</strong>
           <strong class="red" id="total_money">0.00</strong>
-          <small class="freight-text">含运费</small>
       </p>
       <div class="btn-group">
           <a class="btn" href="javascript:void(0)" onClick="doPost()">提交订单</a>
@@ -336,18 +273,6 @@ Order.prototype.ToggleState = function(num) {
 function show(isSet, ele) {
     var _this = ele;
 
-    // 只有一个为自提的话
-
-    // if(isSet==0){
-    //  var default_type = sessionStorage.getItem('send_type');
-    //  if(default_type!=1){
-    //   $('#x83').prop('checked',true);
-    //  }
-    // }
-
-
-    // $('.m-checkbox input').eq(isSet-1).attr('checked',true);
-
     
     sessionStorage.setItem('send_type', isSet);
     if (isSet == 2) {
@@ -384,35 +309,6 @@ function show(isSet, ele) {
 
 
     total_money = 0
-    // if(show_2==2){ $('#send_type_2').show(); }
-
-    // $('.send_type').each(function(i,e) {
-    //      if($(e).is(":checked")){
-    //     var val = $(e).val();
-
-    //       // 存取当前选中的val
-    //     sessionStorage.setItem('send_type',val);
-
-    //     if(val==1){ //选择邮寄时
-    //      $('#send_type_2').show();
-    //      //假如上面没有只支持自提的商品，自提门店关闭
-    //      if(show_2!=2){
-    //        $('#send_type_2').hide();
-    //      }
-    //        $('#express_3').show(); //显示邮费
-    //        $('.freight-text').show();
-    //     }else{
-    //       $('#send_type_2').hide();
-    //      //假如上面没有只支持自提的商品，自提门店开启
-    //      if(show_2!=2){
-    //        $('#send_type_2').show();
-    //          $('#express_3').hide(); //隐藏邮费
-    //          $('.freight-text').hide();
-    //      }
-
-    //     }
-    //  }
-    //    }); 
 
     $('.total_money').each(function(index, element) {
         total_money += parseMoney($(element).text());
@@ -446,7 +342,7 @@ function doPost() {
       }
 
     {/eq}
-
+      var call_id='{$call_id}';
       var address_id = $('#address_id').val();
       if ($('#send_type_2').is(':visible')) {
 
@@ -479,7 +375,7 @@ function doPost() {
 
       $.showLoading();
 
-      $.post(url, {'address_id': address_id, 'remark': remark, 'sn_id': sn_id, 'send_type': sendType, 'stores_id': store}, function(res) {
+      $.post(url, {'call_id':call_id,'address_id': address_id, 'remark': remark, 'sn_id': sn_id, 'send_type': sendType, 'stores_id': store}, function(res) {
           //console.log(res); return false;
 
           if (res) $.hideLoading();

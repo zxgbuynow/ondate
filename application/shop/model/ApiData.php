@@ -1079,6 +1079,7 @@ class ApiData extends ApiBase
     public function confirm_order()
     {
         // 订单信息
+        $call_id= input('call_id', 0);
         $goods_id = input('goods_id', 0);
         $shop_order_id = input('shop_order_id/d', 0);
         $confirm_order_from = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : U('shop/wap/index');
@@ -1355,7 +1356,7 @@ class ApiData extends ApiBase
             $data['my_score'] = D('common/User')->where('uid', $this->mid)->value('score'); // 实时从数据库取，不走缓存
         }
         
-
+        $data['call_id']=$call_id;
         return $data;
     }
 
@@ -1465,8 +1466,8 @@ class ApiData extends ApiBase
     // 生成订单
     public function add_order()
     {
-        $jsbn=input('jsbn');
-        $room=input('room');
+        $call_id=input('call_id');
+        $call=M('calls')->where(['id'=>$call_id])->field('jsbn,room,id')->find();
         $openid = get_openid();
         if (empty($openid) || $openid == -1) {
             return $this->error('获取openid失败,请在微信里打开!');
