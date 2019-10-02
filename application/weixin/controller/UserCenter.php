@@ -55,6 +55,23 @@ class UserCenter extends WebBase
         echo json_encode($data);
 
     }
+    //预约
+    public function yuyue(){
+        $uid = I('id', 0);
+
+        $map['uid'] = $uid;
+        $updata['yuyue_status'] = 1;
+        if (M('user')->where($map)->update($updata)) {
+            $data['code'] = 1;
+            $data['msg'] = '操作成功';
+
+        } else {
+            $data['code'] = 2;
+            $data['msg'] = '操作失败';
+        }
+        echo json_encode($data);
+
+    }
     /**
      * 微信用户列表数据
      */

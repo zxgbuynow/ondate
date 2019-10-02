@@ -108,10 +108,16 @@
                         {elseif $vo.cq == 1 /}出勤
                         {else /}请假
                         {/if}
+                        {if $vo.yuyue_satus == 1}
+                        <span style="color: red">（已预约）</span>
+                        {/if}
                     </td>
                     <td>
                         {if $vo.cq == 0}
                         <button type="button" class="btn btn-info"   onclick="return qingjia({$vo.uid})" data-target="#addUserModal">请假</button>
+                        {/if}
+                        {if $vo.cq == 1}
+                        <button type="button" class="btn btn-info"   onclick="return yuyue({$vo.uid})" data-target="#addUserModal">预约</button>
                         {/if}
 
                     </td>
@@ -129,6 +135,24 @@
     function qingjia(id) {
         if(confirm("确定要请假吗?")){
             var url = "{:U('qingjia')}"
+            $.post(url,{'id':id},function(res){
+                var data_obj = eval("("+res+")");
+                if(data_obj.code==1){
+                    // updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
+                    // window.location.href=window.location.href;
+                    var hurl = "{:U('lists_kq')}";
+                    window.location.href = hurl;
+                }else{
+                    alert(data_obj.msg);
+                }
+            })
+        }
+
+    }
+    //预约
+    function yuyue(id) {
+        if(confirm("确定要预约吗?")){
+            var url = "{:U('yuyue')}"
             $.post(url,{'id':id},function(res){
                 var data_obj = eval("("+res+")");
                 if(data_obj.code==1){
