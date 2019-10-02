@@ -310,7 +310,8 @@ class ApiData extends ApiBase
             $cs['cTime']=time();
             M('csfw')->insert($cs);
         }
-
+         dump($goods_id);
+        exit;
         $list = D('Cart')->getCsfw($mid, true);
         // diy
         $data['diyData'] = D('DiyPage')->getInfoByPage('cart');
