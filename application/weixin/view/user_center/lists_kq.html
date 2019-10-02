@@ -104,8 +104,8 @@
                     <td>{$vo.sb_time|time_format}</td>
                     <td>{$vo.group}</td>
                     <td> {if $vo.cq == 0}
-                          未出勤
-                        {elseif $vo.cq == 1 /}出勤
+                         未出勤
+                        {elseif $vo.cq == 1 /}<span style="color: #1dbd03;">出勤</span>
                         {else /}请假
                         {/if}
                         {if $vo.yuyue_status == 1}
@@ -133,7 +133,7 @@
     </section>
 </div>
 <div class="wrap bottom" style="background:#fff; border-top:#ddd;">
-    <p style="color: red;text-align: center;font-size: 13px;">1、请假：前提员工是未出勤状态；2、预约：前提是员工是出勤状态</p>
+    <p style="color: red;text-align: center;font-size: 13px;">1、请假：前提员工状态是“未出勤”；2、预约：前提员工状态是“出勤”</p>
 </div>
 <script>
     //请假
