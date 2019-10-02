@@ -41,7 +41,7 @@
               <div class="weui-cells flex-item">
                       <div class="weui-cell__bd">
                               <div class="weui-cells weui-cells_radio m0">
-    
+
                                   {neq name="block" value="1"}
                                    <label class="weui-cell weui-check__label m-checkbox" for="x9{$block}">
                                       <div class="weui-cell__ft">
@@ -81,12 +81,7 @@
                   </div>
 
                 <div class="weui-cells m0">
-                    <div class="weui-cell">
-                        <div class="weui-cell__bd">
-                            <p>商品金额</p>
-                        </div>
-                        <div class="weui-cell__ft">{neq name="pay_type" value="90"}<small><span class="prize-icon">¥</span></small><span class="total_money">{$total_price[$block]|default=0}</span>{else / }<small>积分</small><span class="total_money"> {$total_price[$block]|default=0|intval}</span>{/neq}</div>
-                    </div>
+
 
                 </div>
               </div>
@@ -117,7 +112,6 @@
 
       <!-- 买家留言 -->
       <div class="weui-cells">
-      {neq name="pay_type" value="90"}
       <!--使用积分结算时不能使用券-->
 
 
@@ -343,7 +337,7 @@ function doPost() {
 
     {/eq}
       var call_id='{$call_id}';
-      var address_id = $('#address_id').val();
+      var address_id = 1;
       if ($('#send_type_2').is(':visible')) {
 
           //邮寄
@@ -353,7 +347,7 @@ function doPost() {
               return false;
           }
       }
-      store = $('#store_id').val();
+      store = 1;
       if ($('#send_type_2').is(':visible')) {
           //门店
           if (!store) {
@@ -361,10 +355,10 @@ function doPost() {
               return false;
           }
       }
-      if (!$('#weuiAgree').prop('checked')) {
+/*      if (!$('#weuiAgree').prop('checked')) {
           $.Dialog.fail("请同意客户协议");
           return false;
-      }
+      }*/
 
       var remark = $('#remark').val();
       var sendType = $('input[name="send_type"]:checked').val()
