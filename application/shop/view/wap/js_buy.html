@@ -20,6 +20,7 @@
     {:W('common/EmptyTip/html', ['remark'=>'空空如也~'])}
     {else/}
     <form action="{:U ( 'Shop/Wap/confirm_order')}" method="post" onSubmit="return checkCsfwSubmit()" id="form">
+        <input type="hidden" name="call_id" value="{$call_id}">
         <div class="">
             <!-- 购物车商品 -->
             {volist name="lists" id="vo"}

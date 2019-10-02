@@ -299,6 +299,7 @@ class ApiData extends ApiBase
     public function js_buy()
     {
         $mid = $this->mid;
+        $call_id=I('call_id');
         M('csfw')->where(['uid'=>$mid])->delete();
         $goods_id=M('goods_category_link')->where(['category_first'=>103])->column('goods_id');
         foreach ($goods_id as $k=>$v){
@@ -315,6 +316,7 @@ class ApiData extends ApiBase
         $data['diyData'] = D('DiyPage')->getInfoByPage('cart');
         // dump($list);
         $data['lists'] = $list;
+        $data['call_id']=$call_id;
         $data['wpid'] = WPID;
         // dump($list);
         return $data;
