@@ -309,7 +309,12 @@ class Order extends Base
         $map['id']=$order_id;
         $data=M('shop_order')->where($map)->field('goods_datas,total_price,id')->find();
         $tmp=json_decode($data['goods_datas'],true);
-        $row="<tr><td>".$tmp[0]['title']."</td><td>".$tmp[0]['sale_price']."</td><td>".$tmp[0]['num']."</td><td>".$data['total_price']."</td></tr>";
+        $row='';
+        foreach ($tmp as $k=>$v){
+            $row.="<tr><td>".$v['title']."</td><td>".$v['sale_price']."</td><td>".$v['num']."</td><td>".$data['total_price']."</td></tr>";
+
+        }
+        //$row="<tr><td>".$tmp[0]['title']."</td><td>".$tmp[0]['sale_price']."</td><td>".$tmp[0]['num']."</td><td>".$data['total_price']."</td></tr>";
         $row.="<tr><td style='font-size: 13px'>合计</td><td></td><td></td><td class='price'>".$data['total_price']."</td></tr>";
         $info['row']=$row;
         $info['money']=$data['total_price'];
@@ -329,7 +334,10 @@ class Order extends Base
             $ids[]=$v['id'];
             $total+=$v['total_price'];
             $tmp=json_decode($v['goods_datas'],true);
-            $row.="<tr><td>".$tmp[0]['title']."</td><td>".$tmp[0]['sale_price']."</td><td>".$tmp[0]['num']."</td><td>".$tmp[0]['num']*$tmp[0]['sale_price']."</td></tr>";
+            foreach ($tmp as $key=>$value){
+                $row.="<tr><td>".$value['title']."</td><td>".$value['sale_price']."</td><td>".$value['num']."</td><td>".$value['num']*$value['sale_price']."</td></tr>";
+            }
+            //$row.="<tr><td>".$tmp[0]['title']."</td><td>".$tmp[0]['sale_price']."</td><td>".$tmp[0]['num']."</td><td>".$tmp[0]['num']*$tmp[0]['sale_price']."</td></tr>";
         }
         $row.="<tr><td style='font-size: 13px'>合计</td><td></td><td></td><td class='price'>".$total."</td></tr>";
         $data['row']=$row;
