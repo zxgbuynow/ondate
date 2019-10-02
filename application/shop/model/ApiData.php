@@ -295,29 +295,6 @@ class ApiData extends ApiBase
         // dump($list);
         return $data;
     }
-    function getCsfw($uid, $update = false)
-    {
-        $goodsDao = D('shop/ShopGoods');
-        $shopDao = D('shop/Shop');
-
-        $list = [];
-
-        $map['uid'] = intval($uid);
-        $info = M('csfw')->where($map)->order('id asc')->select();
-        foreach ($info as $k=>&$v) {
-            //$v = $v->toArray();
-
-            $v['goods'] = $goodsDao->getInfo($v['goods_id']);
-            $v['shop'] = $shopDao->getInfo($v['wpid']);
-            $v['goods_name'] = $v['goods']['title'];
-            $v['shop_name'] = $v['shop']['title'];
-
-            $list[] = $v;
-        }
-
-        return $list = isset($list) ? $list : [];
-    }
-
     // 商品购买
     public function js_buy()
     {
@@ -333,7 +310,7 @@ class ApiData extends ApiBase
             $cs['cTime']=time();
             M('csfw')->insert($cs);
         }
-        $list = $this->getCsfw($mid, true);
+        $list = D('Cart')->getCsfw($mid, true);
         // diy
         $data['diyData'] = D('DiyPage')->getInfoByPage('cart');
         // dump($list);

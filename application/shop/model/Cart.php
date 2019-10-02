@@ -25,8 +25,8 @@ class Cart extends Base
             
             $v['goods'] = $goodsDao->getInfo($v['goods_id']);
             $v['shop'] = $shopDao->getInfo($v['wpid']);
-            $v['goods_name'] = $v['goods']['title'];
-            $v['shop_name'] = $v['shop']['title'];
+           // $v['goods_name'] = $v['goods']['title'];
+           // $v['shop_name'] = $v['shop']['title'];
             
             $list[] = $v;
         }
