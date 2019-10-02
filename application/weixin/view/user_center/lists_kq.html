@@ -134,10 +134,10 @@
 </div>
 <script>
     //请假
-    function qingjia(id,status) {
+    function qingjia(id) {
         if(confirm("确定要请假吗?")){
             var url = "{:U('qingjia')}"
-            $.post(url,{'id':id,'status':status},function(res){
+            $.post(url,{'id':id},function(res){
                 var data_obj = eval("("+res+")");
                 if(data_obj.code==1){
                     // updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
@@ -152,10 +152,10 @@
 
     }
     //预约
-    function yuyue(id) {
-        if(confirm("确定要预约吗?")){
+    function yuyue(id,status) {
+        if(confirm("确定要操作吗?")){
             var url = "{:U('yuyue')}"
-            $.post(url,{'id':id},function(res){
+            $.post(url,{'id':id,'status':status},function(res){
                 var data_obj = eval("("+res+")");
                 if(data_obj.code==1){
                     // updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');
