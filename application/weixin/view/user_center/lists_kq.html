@@ -116,8 +116,10 @@
                         {if $vo.cq == 0}
                         <button type="button" class="btn btn-info"   onclick="return qingjia({$vo.uid})" data-target="#addUserModal">请假</button>
                         {/if}
-                        {if $vo.cq == 1}
-                        <button type="button" class="btn btn-info"   onclick="return yuyue({$vo.uid})" data-target="#addUserModal">预约</button>
+                        {if $vo.cq == 1 && $vo.yuyue_status == 0}
+                        <button type="button" class="btn btn-info"   onclick="return yuyue({$vo.uid},1)" data-target="#addUserModal">预约</button>
+                        {elseif $vo.cq == 1 && $vo.yuyue_status == 1 /}
+                        <button type="button" class="btn btn-info"   onclick="return yuyue({$vo.uid},0)" data-target="#addUserModal">取消预约</button>
                         {/if}
 
                     </td>
@@ -132,10 +134,10 @@
 </div>
 <script>
     //请假
-    function qingjia(id) {
+    function qingjia(id,status) {
         if(confirm("确定要请假吗?")){
             var url = "{:U('qingjia')}"
-            $.post(url,{'id':id},function(res){
+            $.post(url,{'id':id,'status':status},function(res){
                 var data_obj = eval("("+res+")");
                 if(data_obj.code==1){
                     // updateAlert(res.msg + ' 页面即将自动刷新~', 'alert-success');

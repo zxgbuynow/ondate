@@ -58,9 +58,9 @@ class UserCenter extends WebBase
     //预约
     public function yuyue(){
         $uid = I('id', 0);
-
+        $status = I('status', 0);
         $map['uid'] = $uid;
-        $updata['yuyue_status'] = 1;
+        $updata['yuyue_status'] = $status;
         if (M('user')->where($map)->update($updata)) {
             $data['code'] = 1;
             $data['msg'] = '操作成功';
