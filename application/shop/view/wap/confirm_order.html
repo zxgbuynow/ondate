@@ -120,14 +120,14 @@
       <!--使用积分结算时不能使用券-->
 
 
-          <div class="weui-cell">
+<!--          <div class="weui-cell">
               <div class="weui-cell__hd" style="flex:1">
                   <label class="weui-label">备注：</label>
               </div>
               <div class="weui-cell__bd" style="flex:3">
                   <input class="weui-input" type="text" placeholder="输入备注" name="remark" id="remark">
               </div>
-          </div>
+          </div>-->
 
       </div>
 
@@ -333,14 +333,6 @@ function show(isSet, ele) {
 }
 function doPost() {
 
-    {eq name="pay_type" value="90"}
-
-    if (my_socre < total_money) {
-        $.Dialog.fail('您的积分不足');
-        return false;
-      }
-
-    {/eq}
       var call_id='{$call_id}';
       var address_id = 1;
       if ($('#send_type_2').is(':visible')) {
@@ -383,6 +375,7 @@ function doPost() {
               $.Dialog.fail(res.msg);
           } else {
               var url = "{:U('work_clock')}";
+              alert('操作成功！');
               window.location.href = url;
 
           }
