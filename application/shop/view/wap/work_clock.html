@@ -55,7 +55,7 @@
         $(".submit").click(function () {
             fade_out_pull();
         });
-        $(".mbutton").click(function () {
+        $("#mbutton").click(function () {
             if(confirm("确定要加钟吗?")){
                 var url = "{:U('addAction')}";
                 var room="{$room}";
@@ -113,7 +113,7 @@
         <div class="picture"><img src="{$myinfo.headimgurl}"></div>
        <!-- <div class="head_text">{$myinfo.nickname}</div>-->
         <div class="head_text"><a class="mbutton" href="{:U('start_work',['call_id'=>$call_id])}">购买商品+</a> </div>
-        <div class="head_text"><a class="mbutton" href="">我要加钟+</a> </div>
+        <div class="head_text"><a class="mbutton" id="mbutton" href="">我要加钟+</a> </div>
     </div>
 </div>
 <div id="body">
