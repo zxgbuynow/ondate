@@ -1464,7 +1464,8 @@ class ApiData extends ApiBase
     // 生成订单
     public function add_order()
     {
-        $jsbn=99;
+        $jsbn=input('jsbn');
+        $room=input('room');
         $openid = get_openid();
         if (empty($openid) || $openid == -1) {
             return $this->error('获取openid失败,请在微信里打开!');
@@ -1483,7 +1484,7 @@ class ApiData extends ApiBase
         	}
         }
         //商品对应配送类型
-        $goodsSendType = input('goods_send_type');
+       // $goodsSendType = input('goods_send_type');
         
         $sendType = input('send_type');
         $stores_id = input('stores_id');
@@ -1512,24 +1513,9 @@ class ApiData extends ApiBase
             			$stockDao->beforeOrder($goods['num'], $goods['id'], $info['event_type']);
             		}
             		$goods_ids[] = $goods['id'];
-            		
-            		//根据商品的配送方式保存到对应的数组
-            		if (isset($goodsSendType[$goods['id']])){
-           				$goods['send_type']=$goodsSendType[$goods['id']] ;
-            			if ($goodsSendType[$goods['id']] == 1){
-            				//邮寄
-            				$express[]=$goods;
-							$express_price += $goods ['sale_price'] * intval ( $goods['num']);
-							$mail_money += $goods['express'];
-            			}else{
-            				//自提
-            				$ziti[]=$goods;
-            				$ziti_price += $goods ['sale_price'] * intval ( $goods['num']);
-            			}
-            		}else{
-                        $ziti[]=$goods;
-                        $ziti_price += $goods ['sale_price'] * intval ( $goods['num']);
-                    }
+            		$ziti[]=$goods;
+            		$ziti_price += $goods ['sale_price'] * intval ( $goods['num']);
+
             	}
             }
 
@@ -1556,62 +1542,7 @@ class ApiData extends ApiBase
             if (!empty($ziti) && empty($data['stores_id'])) {
                 exception('请选择门店!!!');
             }
-				
-/*				// 使用优惠券
-			$data ['dec_money'] = 0;
-            $can_use_coupon = !empty($ziti) && !empty($express) ? false : true; // 不同配送方式时不能使用优惠券
-            $can_use_coupon=true;//暂时可以试试
-            if ($can_use_coupon && $data['pay_type'] != 90 && $data['event_type'] == SHOP_EVENT_TYPE) {
-                $sn_id = I('sn_id');
-//                 addWeixinLog($sn_id,'addeatadafdksf_11sncoupon');
-                if ($sn_id > 0) {
-                    $dao = D('common/SnCode');
-                    $coupons = $dao->getMyAll($this->mid);
 
-                    $res = 0;
-                    foreach ($coupons as $cp) {
-                        if ($cp['can_use'] && $cp['id'] == $sn_id) {
-                            // 设置优惠券为已使用
-                            $res = $dao->set_use($sn_id);
-
-                            if ($res) {
-                                $map['is_use'] = 1;
-                                $map['target_id'] = $cp['target_id'];
-                                $save['use_count'] = intval($dao->where(wp_where($map))->count());
-                                D('coupon/Coupon')->updateInfo($cp['target_id'], $save);
-
-                                $data['dec_money'] = $cp['prize_title'];
-
-                                session('order_sn_id', null);
-                            }
-                            break;
-                        }
-                    }
-                    // 保存代金券信息
-                    $extArr['sn_info'] = array(
-                        'sn_id' => $sn_id,
-                        'is_use' => $res
-                    );
-                }
-            }
-            if (isset($extArr)) {
-                $data['extra'] = json_encode($extArr);
-            }*/
-//             addWeixinLog($data['dec_money'],'addeatadafdksf_decmoney');
-//             addWeixinLog($ziti,'addeatadafdksf_allz');
-//             addWeixinLog($express,'addeatadafdksf_alle');
-/*            $ziti_dec = $express_dec = $data ['dec_money'];
-            if ($data['dec_money']>0 && !empty($ziti) && !empty($express)){
-                //计算分单使用优惠券获得可减金额比例
-                //自提可减金额
-                $ziti_dec=($ziti_price/($ziti_price+$express_price))*$data['dec_money'];
-                //保留两位数字
-                $ziti_dec = round ( $ziti_dec, 2 );
-                $ziti_dec = $ziti_dec >= $data ['dec_money'] ? $data ['dec_money'] : $ziti_dec;
-                //剩下的就给邮寄
-                $express_dec = $data ['dec_money'] - $ziti_dec;
-            }*/
-             // $ziti=true;
             if ($ziti) {
                 $data['order_number'] = date('YmdHis') . substr(uniqid(), 4);
                 $data['mail_money'] = 0;
@@ -1623,38 +1554,17 @@ class ApiData extends ApiBase
                 $data['pay_money'] = $data['total_price'] - $data['dec_money'];
                 $data['pay_money'] < 0 && $data['pay_money'] = 0;
                 $data['jsbn']=$jsbn;
+                $data['room']=$room;
                 if (isset($info['shop_order_id']) && $info['shop_order_id'] > 0) {
                     $ids[] = $id = $info['shop_order_id'];
                     D('Shop/Order')->updateOrder($id, $data);
                 } else {
                     $ids[] = $id = D('Shop/Order')->addOrder($data);
-                	addWeixinLog($data,'addeatadafdksf_ziti_'.$id);
+                	//addWeixinLog($data,'addeatadafdksf_ziti_'.$id);
                 }
                 if (!$id) {
                     exception('生成订单失败');
                 }
-                $this->add_event_order($data, $info, $id);
-            }
-            if (!empty($express)) {
-                $data['order_number'] = date('YmdHis') . substr(uniqid(), 4);
-                $data['mail_money'] = $mail_money;
-                $data['goods_datas'] = json_encode($express);
-                $data['total_price'] = $express_price > 0 ? $express_price : 0;
-                $data['send_type'] = 1;
-                $data['dec_money']=$express_dec;
-                $data['pay_money'] = $data['total_price'] + $mail_money - $data['dec_money'];
-                $data['pay_money'] < 0 && $data['pay_money'] = 0;
-                if (isset($info['shop_order_id']) && $info['shop_order_id'] > 0) {
-                    $ids[] = $id = $info['shop_order_id'];
-                    D('Shop/Order')->updateOrder($id, $data);
-                } else {
-                    $ids[] = $id = D('Shop/Order')->addOrder($data);
-                    addWeixinLog($data,'addeatadafdksf_youji_'.$id);
-                }
-                if (!$id) {
-                    exception('生成订单失败');
-                }
-
                 $this->add_event_order($data, $info, $id);
             }
             // 提交事务
