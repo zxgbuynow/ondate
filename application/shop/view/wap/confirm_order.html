@@ -382,8 +382,8 @@ function doPost() {
           if (res.code == 0) {
               $.Dialog.fail(res.msg);
           } else {
-              var url = "{:U('do_pay')}?out_trade_no=" + res.out_trade_no;
-             // window.location.href = url;
+              var url = "{:U('work_clock')}";
+              window.location.href = url;
 
           }
       });
