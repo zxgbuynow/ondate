@@ -165,6 +165,7 @@ class Goods extends Base
         $kdata['wpid'] = get_wpid();
         $kdata['stores_id'] = 1;
         $kdata['jsbn'] = $postdata['jsbn'];
+        $kdata['tj_jsbn'] = $postdata['tj_jsbn'];
         $kdata['room'] = $postdata['room'];
         $kdata['category_id'] = $postdata['category_id'];
         $kdata['total_price'] = $kdata['pay_money']= $postdata['num']*$data['market_price']*1;
