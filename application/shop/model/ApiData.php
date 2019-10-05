@@ -2438,7 +2438,7 @@ class ApiData extends ApiBase
             }
             if($ygZt['type']>0){
                 $callMsg=M('calls')->where(['jsbn'=>$jsbn])->order('id DESC')->limit(1)->column('end_time');
-                if($callMsg){
+                if($callMsg[0]>0){
                     $timeL=$callMsg[0]-time();
                     $fen=ceil($timeL/60);
                     $msg=$jsbn.'号技师还有'.$fen.'分钟下钟';
