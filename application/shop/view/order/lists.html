@@ -200,7 +200,7 @@ function cancelview(id) {
         $.post(url,{'id':id},function(res){
             var data_obj = eval("("+res+")");
             if(data_obj.code==1){
-                alert(res.msg);
+                alert(data_obj.msg);
                 var hurl = "{:U('lists')}";
                 window.location.href = hurl+'/status/1';
             }else{
