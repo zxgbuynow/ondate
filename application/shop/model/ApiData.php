@@ -2412,7 +2412,9 @@ class ApiData extends ApiBase
                 M('room')->where(['room_name'=>$roomname])->update(['status'=>2]);
                 //删除等待信息
                 M('waite')->where(['room_id'=>$roomname])->delete();
-                $this->push_wm_msg('1',$msg);
+                if($roomtype==0){
+                    $this->push_wm_msg('1',$msg);
+                }
 
             } catch (Exception $e) {
                 $msg='操作失败，请稍后重试';
@@ -2480,7 +2482,9 @@ class ApiData extends ApiBase
             M('waite')->where(['room_id'=>$rooms['id']])->delete();
             //语音推送
             $msg = '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
-            $this->push_wm_msg('1',$msg);
+            if($roomtype==0){
+                $this->push_wm_msg('1',$msg);
+            }
             //消息推送
             $templateDao = D('common/TemplateMessage');
             $sendOpenid=$userinfo['openid'];
