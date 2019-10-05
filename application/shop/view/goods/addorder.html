@@ -84,6 +84,16 @@
                     <div class="card-header">下单信息</div>
                     <div class="card-body">
                         <p class="card-text">
+                            {if $category_id==105}
+                        <div class="form-item-spec">
+                            <div class="form-group row cf">
+                                <label class="col-sm-2"> <span class="need_flag">*</span>推荐者</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="text input-large" name="tj_jsbn" value="" placeholder="填写推荐者技师编号">
+                                </div>
+                            </div>
+                        </div>
+                             {/if}
                         <div class="form-item-spec">
                             <div class="form-group row cf">
                                 <label class="col-sm-2"> <span class="need_flag">*</span> 技师编号</label>
