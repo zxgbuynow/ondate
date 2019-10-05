@@ -2436,12 +2436,11 @@ class ApiData extends ApiBase
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
-            dump($ygZt);
-            exit;
             if($ygZt['type']>0){
                 $callMsg=M('calls')->where(['jsbn'=>$jsbn])->order('id DESC')->limit(1)->field('end_time')->select();
                 if($callMsg>0){
-                    $timeL=$callMsg-time();
+                    //$timeL=$callMsg-time();
+                    $timeL=100;
                     $fen=ceil($timeL/60);
                     $msg='还有'.$fen.'分钟下钟';
                 }else{
