@@ -2441,7 +2441,7 @@ class ApiData extends ApiBase
                 if($callMsg){
                     $timeL=$callMsg[0]-time();
                     $fen=ceil($timeL/60);
-                    $msg='还有'.$fen.'分钟下钟';
+                    $msg=$jsbn.'号技师还有'.$fen.'分钟下钟';
                 }else{
                     $msg='该技师已被安排';
                 }
