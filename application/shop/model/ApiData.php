@@ -2437,9 +2437,9 @@ class ApiData extends ApiBase
                 exit;
             }
             if($ygZt['type']>0){
-                $callMsg=M('calls')->where(['jsbn'=>$jsbn])->order('id DESC')->limit(1)->field('end_time')->select();
-                if($callMsg['end_time']>0){
-                    $timeL=$callMsg['end_time']-time();
+                $callMsg=M('calls')->where(['jsbn'=>$jsbn])->order('id DESC')->limit(1)->column('end_time');
+                if($callMsg){
+                    $timeL=$callMsg[0]-time();
                     $fen=ceil($timeL/60);
                     $msg='还有'.$fen.'分钟下钟';
                 }else{
