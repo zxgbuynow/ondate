@@ -2438,8 +2438,15 @@ class ApiData extends ApiBase
             }
             if($ygZt['type']>0){
                 $callMsg=M('calls')->where(['jsbn'=>$jsbn])->order('id DESC')->limit(1)->column('end_time');
+                if($callMsg>0){
+                    $timeL=$callMsg-time();
+                    $fen=ceil($timeL/60);
+                    $msg='还有'.$fen.'分钟下钟';
+                }else{
+                    $msg='该技师已被安排';
+                }
 
-                return ['code'=>0,'msg'=>$callMsg];
+                return ['code'=>0,'msg'=>$msg];
                 exit;
             }
 /*            if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0,'cq'=>1])->find()) {
