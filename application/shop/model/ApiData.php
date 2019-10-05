@@ -2438,7 +2438,7 @@ class ApiData extends ApiBase
             }
             if($ygZt['type']>0){
                 $callMsg=M('calls')->where(['jsbn'=>$jsbn])->order('id DESC')->limit(1)->field('end_time')->select();
-                dump($callMsg);
+                dump($ygZt['type']);
                 exit;
                 if($callMsg>0){
                     $timeL=$callMsg-time();
