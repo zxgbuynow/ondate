@@ -2438,6 +2438,8 @@ class ApiData extends ApiBase
             }
             if($ygZt['type']>0){
                 $callMsg=M('calls')->where(['jsbn'=>$jsbn])->order('id DESC')->limit(1)->column('end_time');
+                dump($callMsg);
+                exit;
                 if($callMsg>0){
                     $timeL=$callMsg-time();
                     $fen=ceil($timeL/60);
@@ -2447,7 +2449,6 @@ class ApiData extends ApiBase
                 }
 
                 return ['code'=>0,'msg'=>$msg];
-                exit;
             }
 /*            if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0,'cq'=>1])->find()) {
                 $msg='当前技师非空闲';
