@@ -2430,11 +2430,23 @@ class ApiData extends ApiBase
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
-            if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0,'cq'=>1])->find()) {
-                $msg='当前技师非空闲';
+            $ygZt=M('user_queue')->where(['jsbn'=>$jsbn,'cq'=>1])->find();
+            if (!$ygZt) {
+                $msg=$jsbn.'号技师未上班';
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
+            if($ygZt['status']>0){
+                $callMsg=M('calls')->where(['jsbn'=>$jsbn])->order('id DESC')->limit(1)->column('end_time');
+
+                return ['code'=>0,'msg'=>$callMsg];
+                exit;
+            }
+/*            if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0,'cq'=>1])->find()) {
+                $msg='当前技师非空闲';
+                return ['code'=>0,'msg'=>$msg];
+                exit;
+            }*/
             $userinfo = M('art')->where(['jsbn'=>$jsbn,'type'=>$roomtype])->find();
             M('room')->where(['room_name'=>$roomname])->update(['status'=>2]);
             //主动选择
@@ -2460,8 +2472,6 @@ class ApiData extends ApiBase
             //删除等待信息
             M('waite')->where(['room_id'=>$rooms['id']])->delete();
             //语音推送
-            //$calls = M('calls')->where(['art_id'=>$userinfo['id']])->find();
-            //$msg = '请技师'.$calls['jsbn'].'到'.$calls['room'].'房间';
             $msg = '请技师'.$userinfo['jsbn'].'到'.$rooms['room_name'].'房间';
             $this->push_wm_msg('1',$msg);
             //消息推送
