@@ -2436,7 +2436,7 @@ class ApiData extends ApiBase
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
-            if($ygZt['status']>0){
+            if($ygZt['type']>0){
                 $callMsg=M('calls')->where(['jsbn'=>$jsbn])->order('id DESC')->limit(1)->column('end_time');
 
                 return ['code'=>0,'msg'=>$callMsg];
