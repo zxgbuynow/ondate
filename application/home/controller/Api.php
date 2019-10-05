@@ -557,9 +557,26 @@ class Api extends ApiBase
             if (!M('user_queue')->where(['jsbn'=>$params['id']])->find()) {
                 return  api_error('技师编号错误');
             }
-            if (!M('user_queue')->where(['jsbn'=>$params['id'],'type'=>0,'cq'=>1])->find()) {
-                return  api_error('当前技师非空闲');
+            $ygZt=M('user_queue')->where(['jsbn'=>$params['id'],'cq'=>1])->find();
+            if (!$ygZt) {
+                $msg=$params['id'].'号技师未上班';
+                return  api_error($msg);
             }
+            if($ygZt['type']>0){
+                $callMsg=M('calls')->where(['jsbn'=>$params['id']])->order('id DESC')->limit(1)->column('end_time');
+                if($callMsg[0]>0){
+                    $timeL=$callMsg[0]-time();
+                    $fen=ceil($timeL/60);
+                    $msg=$params['id'].'号技师还有'.$fen.'分钟下钟';
+                }else{
+                    $msg='该技师已被安排';
+                }
+
+                return  api_error($msg);
+            }
+/*            if (!M('user_queue')->where(['jsbn'=>$params['id'],'type'=>0,'cq'=>1])->find()) {
+                return  api_error('当前技师非空闲');
+            }*/
             $userinfo = M('art')->where(['jsbn'=>$params['id'],'type'=>$roomtype])->find();
             M('room')->where(['id'=>$room])->update(['status'=>2]);
             //主动选择
