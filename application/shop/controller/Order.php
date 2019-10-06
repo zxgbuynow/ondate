@@ -347,6 +347,7 @@ class Order extends Base
         $data['ids']=implode(',',$ids);
         $data['money']=$total;
         $data['time']=date('Y-m-d H:i:s');
+        $data['pay_no']=date('ymdHis').rand(10,99);
         echo json_encode($data);
     }
     //结单信息（批量）
