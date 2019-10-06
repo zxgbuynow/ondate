@@ -2269,7 +2269,7 @@ class ApiData extends ApiBase
                 $whereDD['type']=0;
                 $whereDD['retime']=null;
                 $limitDD=$wantTot-$freewoman-$freeman;
-                $winfo=M('calls')->where($whereDD)->limit($limitDD)->order('end_time asc')->field('jsbn,end_time')->select();
+                $winfo=M('calls')->where($whereDD)->limit($limitDD)->order('end_time desc')->field('jsbn,end_time')->select();
                 $wmsg='';
                 foreach ($winfo as $k=>$v){
                    if($v['end_time']==''){
@@ -2280,7 +2280,7 @@ class ApiData extends ApiBase
                        $wmsg.=$v['jsbn'].'号（'.$fen.'分钟）';
                    }
                 }
-                $msg='需求技师不够，当前技师：女'.$freewoman.'男'.$freeman;
+                $msg='技师不够，当前技师：女'.$freewoman.'男'.$freeman.'-';
                 $msg.=$wmsg;
                 return ['code'=>0,'msg'=>$msg];
                 exit;
