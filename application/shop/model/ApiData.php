@@ -2281,19 +2281,38 @@ class ApiData extends ApiBase
                    }
                 }
                 $msg='技师不够，空闲技师：女'.$freewoman.'男'.$freeman;
-                $msg.='<br/>'.$wmsg;
+                $msg.='【'.$wmsg.'】';
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
             //男
             if ($man>$freeman &&$man>0) {
-                $msg='需求技师不够，当前技师：男'.$freeman;
+                //
+                $whereDD['status']=[0,1];
+                $whereDD['type']=0;
+                $whereDD['retime']=null;
+                $whereDD['sex']=1;
+                $limitDD=$wantTot-$freewoman-$freeman;
+                $winfo=M('calls')->where($whereDD)->limit($limitDD)->order('end_time desc')->field('jsbn,end_time')->select();
+                $wmsg='';
+                foreach ($winfo as $k=>$v){
+                    if($v['end_time']==''){
+                        $wmsg.=$v['jsbn'].'号（70分钟）';
+                    }else{
+                        $wtime=$v['end_time']-time();
+                        $fen=ceil($wtime/60);
+                        $wmsg.=$v['jsbn'].'号（'.$fen.'分钟）';
+                    }
+                }
+                $msg='技师不够，空闲技师：男'.$freeman;
+                $msg.='【'.$wmsg.'】';
+                //
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
             //女
             if ($woman>$freewoman) {
-                $msg='需求技师不够，当前技师：女'.$freewoman;
+                $msg='技师不够，空闲技师：女'.$freewoman;
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
