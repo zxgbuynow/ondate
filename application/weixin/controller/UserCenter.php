@@ -174,7 +174,7 @@ class UserCenter extends WebBase
         $tag_id = input('tag_id', '');
         if ($tag_id) {
             $param['tag_id'] = $tag_id;
-            $uidstr = D('common/User')->searchUserS($param);
+            $uidstr = D('common/User')->searchUser($param);
             if ($uidstr) {
                 $map['u.uid'] = array(
                     'in',
