@@ -2280,8 +2280,8 @@ class ApiData extends ApiBase
                        $wmsg.=$v['jsbn'].'号（'.$fen.'分钟）';
                    }
                 }
-                $msg='技师不够，当前技师：女'.$freewoman.'男'.$freeman.'-';
-                $msg.=$wmsg;
+                $msg='技师不够，空闲技师：女'.$freewoman.'男'.$freeman;
+                $msg.='<br>'.$wmsg;
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
