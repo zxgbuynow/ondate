@@ -90,7 +90,7 @@
                                     <button type="button" class="btn btn-info"   onclick="return cancelview({$data.id})" data-target="#addUserModal">取消订单</button>
                                     {/case}
                                     {case 1}
-                                    <button type="button" class="btn btn-info"   onclick="return cancelview({$data.id})" data-target="#addUserModal">取消订单</button>
+                                    <button type="button" class="btn btn-info"   onclick="return cancelview({$data.id})" data-target="#addUserModal">退单</button>
                                     <button type="button" class="btn btn-info"   onclick="return finish({$data.id})" data-target="#addUserModal">结单</button>
                                     {/case}
                                     {default /}
@@ -196,7 +196,7 @@
     })
     //单笔取消订单
 function cancelview(id) {
-    if(confirm("确定要取消吗?")){
+    if(confirm("确定要操作吗?")){
         var url = "{:U('cancelOrder')}"
         $.post(url,{'id':id},function(res){
             var data_obj = eval("("+res+")");
