@@ -2281,7 +2281,7 @@ class ApiData extends ApiBase
                    }
                 }
                 $msg='技师不够，空闲技师：女'.$freewoman.'男'.$freeman;
-                $msg.='<br>'.$wmsg;
+                $msg.='<br/>'.$wmsg;
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }
