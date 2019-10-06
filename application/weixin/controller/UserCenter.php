@@ -684,6 +684,8 @@ class UserCenter extends WebBase
     public function changeGroup()
     {
         $uids = array_unique((array) I('ids', 0));
+        dump($uids);
+        exit;
 
         if (empty($uids)) {
             $this->error('请选择用户!');
