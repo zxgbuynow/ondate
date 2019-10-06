@@ -31,6 +31,7 @@ class Order extends Base
         }
         $room = I('room/d');
         $jsbn = I('jsbn/d');
+        $pay_no = I('pay_no');
 
         $st=I('start_time');
         $et=I('end_time');
@@ -39,6 +40,7 @@ class Order extends Base
             $mutif=true;
         }
         $beiyong=M('room')->where(['cate_id'=>3,'status'=>0])->select();
+        $this->assign('pay_no', $pay_no);
         $this->assign('beiyong', $beiyong);
         $this->assign('room', $room);
         $this->assign('jsbn', $jsbn);
@@ -320,7 +322,7 @@ class Order extends Base
         $info['money']=$data['total_price'];
         $info['id']=$data['id'];
         $info['time']=date('Y-m-d H:i:s');
-        $info['pay_no']=date('YmdHis').rand(1000,9999);
+        $info['pay_no']=date('ymdHis').rand(10,99);
         echo json_encode($info);
     }
     //订单支付信息（批量）
