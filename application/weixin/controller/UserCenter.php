@@ -684,8 +684,6 @@ class UserCenter extends WebBase
     public function changeGroup()
     {
         $uids = array_unique((array) I('ids', 0));
-        dump($uids);
-        exit;
 
         if (empty($uids)) {
             $this->error('请选择用户!');
@@ -696,6 +694,8 @@ class UserCenter extends WebBase
         }
         $jss=['376','377'];//技师分组
         if(in_array($group_id,$jss)){
+            dump($group_id);
+            exit;
             foreach ($uids as $v) {
                 $jsbn=M('art')->where(array('user_id'=>$v))->value('jsbn');
                 if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0])->find()) {
