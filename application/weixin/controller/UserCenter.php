@@ -65,7 +65,7 @@ class UserCenter extends WebBase
         $jsbn=M('user')->where($map)->value('jsbn');
         $where['jsbn']=$jsbn;
         $js=M('user_queue')->where($where)->value('type');//技师状态
-        if($status=1){
+        if($status==1){
             if($js==0){
                 M('user_queue')->where($where)->update(['type'=>2]);
             }
