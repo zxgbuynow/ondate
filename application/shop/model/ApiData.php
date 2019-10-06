@@ -2258,7 +2258,7 @@ class ApiData extends ApiBase
         //参数处理
         if ($system=='systemChange') {
 
-            $wantTot = $woman+$man+$secret;
+            //$wantTot = $woman+$man+$secret;
             $total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype,'cq'=>1])->count();
             $freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype,'cq'=>1])->count();
             $freewoman = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype,'cq'=>1])->count();
@@ -2278,6 +2278,7 @@ class ApiData extends ApiBase
                    }else{
                        $wtime=$v['end_time']-time();
                        $fen=ceil($wtime/60);
+                       $fen=$fen>0?$fen:0;
                        $wmsg.=$v['jsbn'].'号（'.$fen.'分钟）';
                    }
                 }
@@ -2302,6 +2303,7 @@ class ApiData extends ApiBase
                     }else{
                         $wtime=$v['end_time']-time();
                         $fen=ceil($wtime/60);
+                        $fen=$fen>0?$fen:0;
                         $wmsg.=$v['jsbn'].'号（'.$fen.'分钟）';
                     }
                 }
@@ -2327,6 +2329,7 @@ class ApiData extends ApiBase
                     }else{
                         $wtime=$v['end_time']-time();
                         $fen=ceil($wtime/60);
+                        $fen=$fen>0?$fen:0;
                         $wmsg.=$v['jsbn'].'号（'.$fen.'分钟）';
                     }
                 }
