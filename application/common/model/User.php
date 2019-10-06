@@ -502,7 +502,7 @@ class User extends Base
             $uids = (array) M('public_follow')->where('openid', 'like', "%$openid%")->column('uid');
         } else {
             // 搜索用户表
-            $where = "nickname LIKE '%$key%' OR truename LIKE '%$key%' OR jsbn=$key";
+            $where = "nickname LIKE '%$key%' OR truename LIKE '%$key%' OR jsbn='$key'";
             $uids = (array) $this->where(wp_where($where))->column('uid');
             // 搜索用户名备注
             $where2 = "remark LIKE '%$key%'";
