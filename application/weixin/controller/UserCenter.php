@@ -701,7 +701,7 @@ class UserCenter extends WebBase
                 }
             }*/
             foreach ($uids as $v) {
-                 $info=M('art')->where(array('user_id'=>$v))->value('jsbn');
+                 $info=M('user')->where(array('uid'=>$v))->value('jsbn');
                  M('art')->where(array('user_id'=>$v))->delete();
                  M('user_queue')->where(array('jsbn'=>$info))->delete();
                  $openid=M('public_follow')->where(['uid'=>$v])->value('openid');
