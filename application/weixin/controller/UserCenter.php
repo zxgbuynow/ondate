@@ -694,8 +694,6 @@ class UserCenter extends WebBase
         }
         $jss=['376','377'];//技师分组
         if(in_array($group_id,$jss)){
-            dump($group_id);
-            exit;
             foreach ($uids as $v) {
                 $jsbn=M('art')->where(array('user_id'=>$v))->value('jsbn');
                 if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0])->find()) {
@@ -708,10 +706,11 @@ class UserCenter extends WebBase
                  M('user_queue')->where(array('jsbn'=>$info))->delete();
                  $openid=M('public_follow')->where(['uid'=>$v])->value('openid');
                 $info1= M('user')->where(['uid'=>$v])->value('sex');
-                $info2= M('art')->max('jsbn');
+                //$info2= M('art')->max('jsbn');
                 $info3= M('user_queue')->max('postion');
                 $sex=$info1>1?'0':'1';//0女技师1男技师
-                $new_jsbn=$info2+1;
+                //$new_jsbn=$info2+1;
+                $new_jsbn=$info;
                 $art['user_id'] = $v;
                 $art['sex']=$sex;
                 $art['username'] = $v;
