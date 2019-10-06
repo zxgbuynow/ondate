@@ -320,6 +320,7 @@ class Order extends Base
         $info['money']=$data['total_price'];
         $info['id']=$data['id'];
         $info['time']=date('Y-m-d H:i:s');
+        $info['pay_no']=date('YmdHis').rand(1000,9999);
         echo json_encode($info);
     }
     //订单支付信息（批量）
@@ -464,6 +465,7 @@ class Order extends Base
 
         $where['id']=$ids;
         $where['pay_status']=0;
+        $orderData['pay_no']=$data['pay_no'];
         $orderData['opt']=$this->mid;
         $orderData['pay_status']=1;
         $orderData['pay_type']=$data['pay_type'];
