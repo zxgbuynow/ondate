@@ -59,9 +59,19 @@ class UserCenter extends WebBase
     public function yuyue(){
         $uid = I('id', 0);
         $status = I('status', 0);
+
         $map['uid'] = $uid;
         $updata['yuyue_status'] = $status;
         if($status=1){
+            $jsbn=M('user')->where($map)->value('jsbn');
+            $where['jsbn']=$jsbn;
+            $js=M('user_queue')->where($where)->value('type');//技师状态
+            if($js==0){
+                M('user_queue')->where($where)->update(['type'=>2]);
+            }
+            $yuyue['cTime']=time();
+            $yuyue['jsbn']=$jsbn;
+            M('yuyue')->insert($yuyue);
             $updata['yuyue_time'] = date('m-d H:i');
         }else{
             $updata['yuyue_time'] = '';
