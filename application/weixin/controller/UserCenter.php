@@ -62,10 +62,10 @@ class UserCenter extends WebBase
 
         $map['uid'] = $uid;
         $updata['yuyue_status'] = $status;
+        $jsbn=M('user')->where($map)->value('jsbn');
+        $where['jsbn']=$jsbn;
+        $js=M('user_queue')->where($where)->value('type');//技师状态
         if($status=1){
-            $jsbn=M('user')->where($map)->value('jsbn');
-            $where['jsbn']=$jsbn;
-            $js=M('user_queue')->where($where)->value('type');//技师状态
             if($js==0){
                 M('user_queue')->where($where)->update(['type'=>2]);
             }
@@ -74,6 +74,11 @@ class UserCenter extends WebBase
             M('yuyue')->insert($yuyue);
             $updata['yuyue_time'] = date('m-d H:i');
         }else{
+/*            if($js==0){
+                M('user_queue')->where($where)->update(['type'=>2]);
+            }*/
+           //TODO
+            M('yuyue')->where(['jsbn'=>$jsbn])->delete();
             $updata['yuyue_time'] = '';
         }
         if (M('user')->where($map)->update($updata)) {
