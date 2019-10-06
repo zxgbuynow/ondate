@@ -2264,11 +2264,12 @@ class ApiData extends ApiBase
             $freewoman = M('user_queue')->where(['type'=>0,'sex'=>0,'service_type'=>$roomtype,'cq'=>1])->count();
             //先算总人数
             // $difw = $freewoman>$woman?0:($freewoman-$woman);
-            if ($wantTot>$total) {
+            if ($secret>$total) {
                 $whereDD['status']=[0,1];
                 $whereDD['type']=0;
                 $whereDD['retime']=null;
-                $limitDD=$wantTot-$freewoman-$freeman;
+               // $limitDD=$wantTot-$freewoman-$freeman;
+                $limitDD=$secret;
                 $winfo=M('calls')->where($whereDD)->limit($limitDD)->order('end_time desc')->field('jsbn,end_time')->select();
                 $wmsg='';
                 foreach ($winfo as $k=>$v){
@@ -2292,7 +2293,7 @@ class ApiData extends ApiBase
                 $whereDD['type']=0;
                 $whereDD['retime']=null;
                 $whereDD['sex']=1;
-                $limitDD=$wantTot-$freewoman-$freeman;
+                $limitDD=$man;
                 $winfo=M('calls')->where($whereDD)->limit($limitDD)->order('end_time desc')->field('jsbn,end_time')->select();
                 $wmsg='';
                 foreach ($winfo as $k=>$v){
