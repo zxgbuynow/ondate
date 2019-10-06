@@ -2052,6 +2052,11 @@ class ApiData extends ApiBase
         }
         $map['opt']=$this->mid;
         $waite=M('waite')->where($map)->select();
+/*        foreach ($waite as $k=>$v){
+            if($v['type']==0){
+
+            }
+        }*/
         $data['waite']=$waite;
         return $data;
     }
@@ -2252,9 +2257,7 @@ class ApiData extends ApiBase
         $system=empty($jsbn)?'systemChange':'';
         //参数处理
         if ($system=='systemChange') {
-/*            $woman = intval(input('woman'));
-            $man = intval(input('man'));
-            $secret = intval(input('secret'));*/
+
             $wantTot = $woman+$man+$secret;
             $total = M('user_queue')->where(['type'=>0,'service_type'=>$roomtype,'cq'=>1])->count();
             $freeman = M('user_queue')->where(['type'=>0,'sex'=>1,'service_type'=>$roomtype,'cq'=>1])->count();
@@ -2262,7 +2265,15 @@ class ApiData extends ApiBase
             //先算总人数
             // $difw = $freewoman>$woman?0:($freewoman-$woman);
             if ($wantTot>$total) {
-                $msg='需求技师不够，当前技师：女'.$freewoman.'男'.$freeman;
+                $whereDD['status']=[0,1];
+                $whereDD['type']=0;
+                $whereDD['retime']=null;
+                $limitDD=$wantTot-$freewoman-$freeman;
+                $winfo=M('calls')->where($whereDD)->limit($limitDD)->order('end_time asc')->field('jsbn,end_time')->select();
+                foreach ($winfo as $k=>$v){
+
+                }
+                $msg='需求技师不够，当前技师：女'.$freewoman.'男'.$freeman.'测试大所大奥大所大所大所大啊奥所大所多多阿打算';
                 return ['code'=>0,'msg'=>$msg];
                 exit;
             }

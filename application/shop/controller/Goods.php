@@ -128,7 +128,7 @@ class Goods extends Base
             $list = M('goods_category_link')->where('goods_id', $id)->select();
             $this->assign('cate_list', $list);
             $this->assign('category_id', $list[0]['category_first']);//商品分类
-            dump($list[0]['category_first']);
+            //dump($list[0]['category_first']);
             // 获取商品参数
             $param_lists = M('goods_param_link')->where('goods_id', $id)
                 ->order('id asc')
