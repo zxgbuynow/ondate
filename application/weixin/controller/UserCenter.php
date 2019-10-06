@@ -694,12 +694,12 @@ class UserCenter extends WebBase
         }
         $jss=['376','377'];//技师分组
         if(in_array($group_id,$jss)){
-            foreach ($uids as $v) {
+/*            foreach ($uids as $v) {
                 $jsbn=M('art')->where(array('user_id'=>$v))->value('jsbn');
                 if (!M('user_queue')->where(['jsbn'=>$jsbn,'type'=>0])->find()) {
                     $this->error('技师:'.$jsbn.'非空闲，暂时无法操作');
                 }
-            }
+            }*/
             foreach ($uids as $v) {
                  $info=M('art')->where(array('user_id'=>$v))->value('jsbn');
                  M('art')->where(array('user_id'=>$v))->delete();
