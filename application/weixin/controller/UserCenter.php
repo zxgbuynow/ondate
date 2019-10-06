@@ -61,6 +61,11 @@ class UserCenter extends WebBase
         $status = I('status', 0);
         $map['uid'] = $uid;
         $updata['yuyue_status'] = $status;
+        if($status=1){
+            $updata['yuyue_time'] = date('m-d H:i');
+        }else{
+            $updata['yuyue_time'] = '';
+        }
         if (M('user')->where($map)->update($updata)) {
             $data['code'] = 1;
             $data['msg'] = '操作成功';
