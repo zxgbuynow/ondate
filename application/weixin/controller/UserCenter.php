@@ -681,7 +681,7 @@ class UserCenter extends WebBase
     }
 
     // 设置用户组
-    public function changeGroup1()
+    public function changeGroup()
     {
         $uids = array_unique((array) I('ids', 0));
         dump($uids);
