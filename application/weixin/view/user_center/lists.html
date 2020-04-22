@@ -242,7 +242,7 @@ $(function(){
 			query = query + "&group_id="+group ;//+ "&type="+$('#select_type', html).val();
 			$(that).addClass('disabled').attr('autocomplete','off').prop('disabled',true);
             $.post(target,query).success(function(data){
-				//location.reload();
+				location.reload();
 				$('.thinkbox-modal-blackout-default,.thinkbox-default').hide();
             });
 		})

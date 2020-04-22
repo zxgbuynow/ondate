@@ -190,6 +190,9 @@ class Goods extends Base
     public function lists()
     {
         $isAjax = I('isAjax');
+        $temp=['first','second','third'];
+        echo json_encode($temp);
+        exit;
         $this->assign('add_button', false);
         $this->assign('del_button', false);
         $type = I('type/d', 0);
